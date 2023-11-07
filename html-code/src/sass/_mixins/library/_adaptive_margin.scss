@@ -1,0 +1,29 @@
+@mixin adapt-margin-top($desktop, $laptop-l, $laptop, $mobile) {
+  $breakpoints: (
+          (max-width: #{$mobile-breakpoint + 1}) $mobile,
+          (min-width: #{$mobile-breakpoint + 1}) $laptop,
+          (min-width: #{$tablet-landscape-breakpoint + 1}) $laptop-l,
+          (min-width: #{$tablet-breakpoint + 1}) $desktop
+  );
+
+  @each $breakpoint in $breakpoints {
+    @media #{$breakpoint} {
+      margin-top: nth($breakpoint, 2) + px;
+    }
+  }
+}
+
+@mixin adapt-margin-bottom($desktop, $laptop-l, $laptop, $mobile) {
+  $breakpoints: (
+          (max-width: #{$mobile-breakpoint + 1}) $mobile,
+          (min-width: #{$mobile-breakpoint + 1}) $laptop,
+          (min-width: #{$tablet-landscape-breakpoint + 1}) $laptop-l,
+          (min-width: #{$tablet-breakpoint + 1}) $desktop
+  );
+
+  @each $breakpoint in $breakpoints {
+    @media #{$breakpoint} {
+      margin-bottom: nth($breakpoint, 2) + px;
+    }
+  }
+}

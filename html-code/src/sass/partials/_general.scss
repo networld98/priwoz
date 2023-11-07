@@ -1,0 +1,29 @@
+body {
+  &.-overflow-hidden {
+    overflow: hidden;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color .5s, opacity .5s, background .5s;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+button {
+  transition: color .5s, opacity .5s, background .5s;
+  cursor: pointer;
+}
+
+.bg-img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

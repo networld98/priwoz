@@ -1,0 +1,6 @@
+//@include font-face("BentonSans", "../../fonts/BentonSans-Bold", 600);
+
+[class^="icon-"]:before, [class*=" icon-"]:before {
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+}
