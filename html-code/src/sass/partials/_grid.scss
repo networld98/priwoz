@@ -1,0 +1,15 @@
+section {
+  overflow: hidden;
+}
+
+.site {
+  min-height: 100vh;
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.container {
+  width: 100%;
+}
