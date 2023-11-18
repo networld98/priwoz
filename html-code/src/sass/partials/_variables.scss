@@ -1,12 +1,32 @@
-$base-font-size: 18px;
+$base-font-size: 16px;
 
-$color-gray-1: #646464;
+$color-gray-dark: #20262C;
 
+$color-gray-1: #303943;
+$color-gray-2: #3D4A59;
+$color-gray-3: #526172;
 
-$main-font: 'BentonSans', sans-serif;
+$color-lightgray-1: #BDC9C9;
+$color-lightgray-2: #E6E6E6;
+$color-lightgray-3: #EDEDED;
+$color-lightgray-4: #F4F5F5;
+
+$color-green-1: #409313;
+$color-green-2: #52A823;
+$color-green-3: #5DBE28;
+
+$color-yellow-1: #CAA003;
+$color-yellow-2: #D8B225;
+$color-yellow-3: #FBD030;
+
+$color-orange-1: #EA4800;
+$color-orange-2: #FB7437;
+
+$color-blue-1: #2B618F;
+$color-blue-2: #3E7BAF;
+
 $fontello-font: 'fontello';
-
-
-$desktop-breakpoint: 1919px;
-$tablet-breakpoint: 991px;
-$mobile-breakpoint: 767px;
+$open-sans-font: 'Open Sans', sans-serif;
+$barista-font: 'Barista', sans-serif;
+$roboto-font: 'Roboto', sans-serif;
+$roboto-condensed-font: 'Roboto Condensed', sans-serif;

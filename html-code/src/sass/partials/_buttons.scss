@@ -1,0 +1,71 @@
+.btn {
+  outline: none;
+  transition: .4s;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 5px;
+  height: 36px;
+  border-radius: 20px;
+
+  &.btn-large {
+    display: block;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    font-family: $roboto-font;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 160%;
+    text-transform: uppercase;
+    padding: 5px 20px;
+    border-radius: 0;
+    height: 48px;
+  }
+
+  &.btn-green {
+    background: $color-green-1;
+    color: #fff;
+  }
+
+  &.btn-orange {
+    background: $color-yellow-2;
+    color: #fff;
+  }
+
+  &.btn-search {
+    padding: 5px 32px 5px 51px;
+    border-radius: 20px;
+    border: 1px solid $color-lightgray-3;
+    background: $color-lightgray-4;
+    color: $color-gray-3;
+    font-family: $roboto-condensed-font;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 1;
+    height: 36px;
+    @include media-breakpoint-down(xl) {
+      padding: 5px 20px 5px 45px;
+      font-size: 16px;
+    }
+    svg {
+      position: absolute;
+      top: 7px;
+      left: 27px;
+      width: 18px;
+      height: 19px;
+      @include media-breakpoint-down(xl) {
+        top: 10px;
+        left: 26px;
+        width: 14px;
+        height: 15px;
+      }
+    }
+    &:hover {
+      background: $color-gray-1;
+    }
+  }
+}

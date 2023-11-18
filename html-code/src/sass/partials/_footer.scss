@@ -1,0 +1,154 @@
+.site-footer {
+  margin-top: auto;
+
+  .top-part {
+    background: $color-gray-1;
+    overflow: hidden;
+
+    .container {
+      position: relative;
+      padding-top: 80px;
+      padding-bottom: 80px;
+      z-index: 0;
+      @include media-breakpoint-down(xl) {
+        padding-top: 30px;
+        padding-bottom: 30px;
+      }
+      @include media-breakpoint-down(md) {
+        padding-top: 20px;
+        padding-bottom: 20px;
+      }
+
+      &:before {
+        content: '';
+        position: absolute;
+        left: 74.3%;
+        top: 0;
+        height: 100%;
+        width: 100vw;
+        background: $color-gray-2;
+        z-index: -2;
+        @include media-breakpoint-down(xxl) {
+          left: 74.1%;
+        }
+        @include media-breakpoint-down(xl) {
+          left: 65.1%;
+        }
+        @include media-breakpoint-down(md) {
+          left: 70%;
+        }
+      }
+
+      &:after {
+        content: '';
+        position: absolute;
+        left: calc(74.3% + 30px);
+        bottom: 80px;
+        width: 55px;
+        height: 72px;
+        background: url('../../../images/icons/dots.svg') no-repeat 50% 50%/ contain;
+        z-index: -1;
+        @include media-breakpoint-down(xxl) {
+          left: calc(74.1% + 30px);
+        }
+        @include media-breakpoint-down(xl) {
+          bottom: 48px;
+          left: 51%;
+          width: 42px;
+          height: 55px;
+        }
+        @include media-breakpoint-down(md) {
+          left: calc(70% + 3px);
+          bottom: 20px;
+        }
+      }
+    }
+
+    .menu-title {
+      & + .menu.-md-link {
+        margin-top: 15px;
+      }
+
+      & + .menu.-social {
+        margin-top: 30px;
+        @include media-breakpoint-down(xl) {
+          margin-top: 21px;
+        }
+        @include media-breakpoint-down(md) {
+          margin-top: 17px;
+        }
+      }
+    }
+
+    .menu.-social {
+      & + .link {
+        margin-top: 20px;
+      }
+    }
+
+    .widget-box {
+      padding-top: 59px;
+      @include media-breakpoint-down(xl) {
+        padding-top: 3px;
+      }
+      @include media-breakpoint-down(md) {
+        padding-top: 0;
+        margin-top: 20px;
+      }
+
+      > div {
+        max-width: 100%;
+        @include media-breakpoint-down(md) {
+          min-width: 329px;
+        }
+      }
+
+      & + .link {
+        margin-top: 30px;
+        @include media-breakpoint-down(md) {
+          margin-top: 20px;
+        }
+      }
+    }
+
+    *.-md-link {
+      color: rgba(255, 255, 255, 0.80);
+    }
+
+    *.-lg-link {
+      color: #fff;
+    }
+
+    a {
+      &:hover {
+        color: $color-orange-2;
+      }
+    }
+  }
+
+  .bottom-part {
+    padding: 25px 0 103px;
+    @include media-breakpoint-down(xxl) {
+      padding: 25px 0 67px;
+    }
+    @include media-breakpoint-down(xl) {
+      padding: 20px 0 40px;
+    }
+    @include media-breakpoint-down(md) {
+      padding: 12px 0 0;
+    }
+
+    .copyright {
+      color: rgba(0, 0, 0, 0.75);
+      font-family: $open-sans-font;
+      font-size: $base-font-size;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 140%;
+    }
+  }
+
+  .SinoptikInformer .siHeader .siMh {
+    height: 100% !important;
+  }
+}
