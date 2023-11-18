@@ -4,6 +4,13 @@ body {
   }
 }
 
+.site {
+  padding-top: 70px;
+  @include media-breakpoint-down(xl) {
+    padding-top: 60px;
+  }
+}
+
 a {
   text-decoration: none;
   color: inherit;
@@ -26,4 +33,161 @@ button {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &.-lg-link {
+    li {
+      margin-bottom: 14px;
+    }
+  }
+
+  &.-md-link {
+    li {
+      margin-bottom: 15px;
+      a {
+        display: inline-block;
+        max-width: 111px;
+      }
+    }
+  }
+
+  &.-cols {
+    columns: 2;
+  }
+
+  &.-social {
+    max-width: 150px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    column-gap: 20px;
+    row-gap: 20px;
+    @include media-breakpoint-down(xl) {
+      column-gap: 26px;
+      max-width: 100%;
+    }
+    @include media-breakpoint-down(md) {
+      column-gap: 20px;
+    }
+    li {
+      a {
+        width: 50px;
+        height: 50px;
+        display: inline-flex;
+        @include media-breakpoint-down(xl) {
+          width: 36px;
+          height: 36px;
+        }
+        svg {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          .hover-path {
+            opacity: 0;
+            transition: .4s;
+          }
+        }
+        &:hover {
+          svg {
+            .hover-path {
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+  }
+  &.lang-menu {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+    li {
+      padding: 0 8px;
+      position: relative;
+
+      &:not(:last-child) {
+        &:after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          right: 0;
+          height: 10px;
+          width: 1px;
+          background: rgba(255, 255, 255, 0.50);
+        }
+      }
+
+      a {
+        color: #fff;
+        font-family: $roboto-font;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 160%;
+        text-transform: uppercase;
+
+        &.active, &:hover {
+          color: $color-green-3;
+        }
+      }
+    }
+  }
+}
+
+.link-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: .4s;
+  a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    svg {
+      width: 20px;
+      height: 20px;
+      max-height: 100%;
+      max-width: 100%;
+    }
+  }
+}
+
+*.-md-link {
+  font-family: $roboto-condensed-font;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 120%;
+  @include media-breakpoint-down(xl) {
+    font-size: 14px;
+  }
+}
+
+*.-lg-link {
+  font-family: $roboto-condensed-font;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 160%;
+}
+
+.full-height {
+  height: 100%;
 }
