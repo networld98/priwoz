@@ -19,6 +19,7 @@
     "eslint-webpack-plugin": "^4.0.0",
     "file-loader": "^6.2.0",
     "legacy-loader": "^0.0.2",
+    "masonry-layout": "^4.2.2",
     "mini-css-extract-plugin": "^2.7.2",
     "node-sass": "^8.0.0",
     "overlayscrollbars": "^2.2.1",
