@@ -8,7 +8,7 @@
     .container {
       position: relative;
       padding-top: 80px;
-      padding-bottom: 80px;
+      padding-bottom: 77px;
       z-index: 0;
       @include media-breakpoint-down(xl) {
         padding-top: 30px;
@@ -22,7 +22,7 @@
       &:before {
         content: '';
         position: absolute;
-        left: 74.3%;
+        left: 74.1%;
         top: 0;
         height: 100%;
         width: 100vw;
@@ -35,14 +35,14 @@
           left: 65.1%;
         }
         @include media-breakpoint-down(md) {
-          left: 70%;
+          left: 67%;
         }
       }
 
       &:after {
         content: '';
         position: absolute;
-        left: calc(74.3% + 30px);
+        left: calc(74.1% + 30px);
         bottom: 80px;
         width: 55px;
         height: 72px;
@@ -58,7 +58,7 @@
           height: 55px;
         }
         @include media-breakpoint-down(md) {
-          left: calc(70% + 3px);
+          left: calc(67% + 3px);
           bottom: 20px;
         }
       }
@@ -66,7 +66,7 @@
 
     .menu-title {
       & + .menu.-md-link {
-        margin-top: 15px;
+        margin-top: 12px;
       }
 
       & + .menu.-social {
@@ -75,7 +75,14 @@
           margin-top: 21px;
         }
         @include media-breakpoint-down(md) {
-          margin-top: 17px;
+          margin-top: 14px;
+        }
+      }
+      &.-md-link {
+        padding-top: 7px;
+        letter-spacing: -0.015em;
+        @include media-breakpoint-down(xl) {
+          padding-top: 4px;
         }
       }
     }
@@ -83,17 +90,20 @@
     .menu.-social {
       & + .link {
         margin-top: 20px;
+        @include media-breakpoint-down(xl) {
+          margin-top: 14px;
+        }
       }
     }
 
     .widget-box {
-      padding-top: 59px;
+      padding-top: 58px;
       @include media-breakpoint-down(xl) {
         padding-top: 3px;
       }
       @include media-breakpoint-down(md) {
         padding-top: 0;
-        margin-top: 20px;
+        margin-top: 15px;
       }
 
       > div {
@@ -127,15 +137,13 @@
   }
 
   .bottom-part {
-    padding: 25px 0 103px;
-    @include media-breakpoint-down(xxl) {
-      padding: 25px 0 67px;
-    }
+    background: $color-lightgray-4;
+    padding: 25px 0;
     @include media-breakpoint-down(xl) {
-      padding: 20px 0 40px;
+      padding: 20px 0;
     }
     @include media-breakpoint-down(md) {
-      padding: 12px 0 0;
+      padding: 12px 0;
     }
 
     .copyright {
@@ -145,6 +153,9 @@
       font-style: normal;
       font-weight: 400;
       line-height: 140%;
+      @include media-breakpoint-down(xl) {
+        font-size: 14px;
+      }
     }
   }
 

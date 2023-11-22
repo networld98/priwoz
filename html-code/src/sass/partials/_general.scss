@@ -48,8 +48,9 @@ button {
   }
 
   &.-lg-link {
+    letter-spacing: -0.014em;
     li {
-      margin-bottom: 14px;
+      margin-bottom: 15px;
     }
   }
 
@@ -74,13 +75,13 @@ button {
     align-items: flex-start;
     justify-content: flex-start;
     column-gap: 20px;
-    row-gap: 20px;
+    row-gap: 13px;
     @include media-breakpoint-down(xl) {
       column-gap: 26px;
       max-width: 100%;
     }
     @include media-breakpoint-down(md) {
-      column-gap: 20px;
+      column-gap: 22px;
     }
     li {
       a {
@@ -114,9 +115,10 @@ button {
     display: flex;
     align-items: flex-start;
     justify-content: center;
+    padding-left: 8px;
 
     li {
-      padding: 0 8px;
+      padding: 0 6px;
       position: relative;
 
       &:not(:last-child) {
@@ -162,8 +164,8 @@ button {
     width: 40px;
     height: 40px;
     svg {
-      width: 20px;
-      height: 20px;
+      width: 22px;
+      height: 22px;
       max-height: 100%;
       max-width: 100%;
     }
@@ -200,4 +202,22 @@ button {
   font-style: normal;
   font-weight: 400;
   line-height: 100%;
+  @include media-breakpoint-down(xl) {
+    font-size: 40px;
+  }
+}
+
+.blue-link {
+  color: $color-blue-2;
+  font-family: $roboto-condensed-font;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 160%;
+  @include media-breakpoint-down(xl) {
+    font-size: 16px;
+  }
+  &:hover {
+    color: $color-green-1;
+  }
 }

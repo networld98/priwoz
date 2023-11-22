@@ -191,7 +191,7 @@
             </div>
 
             <div class="load-more-box">
-                <a href="/">Все объявления</a>
+                <a href="/" class="blue-link">Все объявления</a>
             </div>
         </div>
 

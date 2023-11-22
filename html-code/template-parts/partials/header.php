@@ -599,7 +599,7 @@
         <div class="inner">
             <div class="container">
                 <div class="search-box">
-                    <div class="row align-items-center">
+                    <div class="row align-items-xs-center">
                         <div class="col-xs-12 col-md-6">
                             <label class="form-label">
                                 <input type="text" class="form-control -search" placeholder="Шо найти на Priwoze">
@@ -667,7 +667,7 @@
                     <div class="buttons-wrap">
                         <div class="row">
                             <div class="col-xs-12 col-md-6"><a href="/" class="btn btn-green">Добавить компанию</a></div>
-                            <div class="col-xs-12 col-md-6"><a href="/" class="btn btn-orange">Добавить компанию</a></div>
+                            <div class="col-xs-12 col-md-6"><a href="/" class="btn btn-orange">Добавить объявление</a></div>
                         </div>
                     </div>
                 </div>

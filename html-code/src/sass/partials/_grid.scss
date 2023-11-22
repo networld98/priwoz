@@ -12,11 +12,16 @@ section {
 
 .container {
   width: 100%;
-  max-width: 1600px;
+  max-width: 1594px;
   @include media-breakpoint-down(xxl) {
-    max-width: 1200px;
+    max-width: 1196px;
   }
   @include media-breakpoint-down(xl) {
-    max-width: 754px;
+    max-width: 748px;
+  }
+  @include media-breakpoint-down(md) {
+    max-width: 560px;
+    padding-left: 16px;
+    padding-right: 16px;
   }
 }

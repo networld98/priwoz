@@ -47,3 +47,9 @@ popupMenu.on('click', function (e) {
     $('body').removeClass('-overflow-hidden');
 });
 
+
+$(window).on('resize', function(){
+    submenuOpener.removeClass('active');
+    popupMenu.removeClass('active');
+    $('body').removeClass('-overflow-hidden');
+});

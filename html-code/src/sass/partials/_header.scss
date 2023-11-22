@@ -15,6 +15,10 @@
 
   .link-icon {
     height: 100%;
+    @include media-breakpoint-down(xl) {
+      margin-left: -5px;
+      margin-right: -5px;
+    }
 
     &[data-open] {
       &.-round {
@@ -117,9 +121,11 @@
     display: inline-block;
     width: 171px;
     height: 61px;
+    margin-bottom: 7px;
     @include media-breakpoint-down(xl) {
       width: 103px;
       height: 38px;
+      margin-bottom: 0;
     }
 
     img {
@@ -136,7 +142,8 @@
     align-items: stretch;
     justify-content: flex-start;
     @include media-breakpoint-down(xxl) {
-      margin: 0 -20px;
+      justify-content: center;
+      margin: 0 -18px;
     }
 
     .item {
@@ -147,16 +154,16 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        padding: 20px 30px;
+        padding: 20px 34px;
         color: rgba(255, 255, 255, 0.80);
-        font-family: $roboto-font;
+        font-family: $roboto-condensed-font;
         font-size: 14px;
         font-style: normal;
         font-weight: 500;
         line-height: 160%;
         text-transform: uppercase;
         @include media-breakpoint-down(xxl) {
-          padding: 24px 20px;
+          padding: 24px 18px;
         }
 
         &:hover {
@@ -196,13 +203,16 @@
   .main-link {
     height: 100%;
     margin: 0 -15px;
+    @include media-breakpoint-down(xl) {
+      margin: 0 -13px;
+    }
 
     a {
       display: inline-flex;
       height: 100%;
       padding: 20px 15px;
       color: rgba(255, 255, 255, 0.80);
-      font-family: $roboto-font;
+      font-family: $roboto-condensed-font;
       font-size: 14px;
       font-style: normal;
       font-weight: 500;
@@ -308,7 +318,7 @@
           align-items: center;
           justify-content: flex-start;
           padding-left: 100px;
-          height: 70px;
+          height: 68px;
           color: rgba(0, 0, 0, 0.75);
           font-family: $roboto-condensed-font;
           font-size: 20px;
@@ -342,6 +352,9 @@
 
     .search-box {
       padding: 18px 0 16px;
+      @include media-breakpoint-down(xl) {
+        padding: 18px 0 15px;
+      }
       @include media-breakpoint-down(md) {
         padding: 0;
       }
@@ -372,8 +385,10 @@
 
     .buttons-wrap {
       padding-top: 22px;
+      padding-bottom: 22px;
       @include media-breakpoint-down(md) {
         padding-top: 0;
+        padding-bottom: 0;
       }
       .btn {
         @include media-breakpoint-down(md) {
@@ -433,7 +448,7 @@
           > a {
             color: rgba(255, 255, 255, 0.80);
             background: $color-gray-1;
-            font-family: $roboto-font;
+            font-family: $roboto-condensed-font;
             font-size: 14px;
             font-style: normal;
             font-weight: 500;
@@ -501,6 +516,9 @@
                 height: 12px;
                 background: url('../../../images/icons/arrow.svg') no-repeat 50% 50%/ contain;
                 transition: .3s;
+                @include media-breakpoint-down(md) {
+                  left: 75%;
+                }
               }
             }
           }
@@ -605,7 +623,7 @@
           > a {
             color: rgba(255, 255, 255, 0.80);
             background: $color-gray-1;
-            font-family: $roboto-font;
+            font-family: $roboto-condensed-font;
             font-size: 14px;
             font-style: normal;
             font-weight: 500;
