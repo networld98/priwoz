@@ -1,3 +1,13 @@
+<div class="video-modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-box">
+        <div class="close-button"></div>
+        <div class="video-box">
+
+        </div>
+    </div>
+</div>
+
 <footer class="site-footer">
     <div class="top-part">
         <div class="container">
