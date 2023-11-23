@@ -214,60 +214,11 @@
                 </div>
                 <div class="col-xs-12 col-md-4 col-xl-3">
                     <div class="widget-box">
-                        <div id="SinoptikInformer" style="width:270px;" class="SinoptikInformer type1">
-                            <div class="siHeader">
-                                <div class="siLh">
-                                    <div class="siMh"><a onmousedown="siClickCount();" class="siLogo"
-                                                         href="https://ua.sinoptik.ua/" target="_blank" rel="nofollow"
-                                                         title="Погода"> </a>Погода <span id="siHeader"></span></div>
-                                </div>
-                            </div>
-                            <div class="siBody">
-                                <table>
-                                    <tbody>
-                                    <tr>
-                                        <td class="siCityV" style="width:100%;"><a onmousedown="siClickCount();"
-                                                                                   href="https://ua.sinoptik.ua/погода-київ"
-                                                                                   title="Погода у Києві"
-                                                                                   target="_blank">
-                                                <div class="siCityName"><span>Київ</span>
-                                            </a>
-                            </div>
-                            </tr>
-                            <tr>
-                                <td style="width:100%;">
-                                    <div class="siCityV2"><a onmousedown="siClickCount();"
-                                                             href="https://ua.sinoptik.ua/погода-київ"
-                                                             title="Погода у Києві" target="_blank">
-                                            <div id="siCont0" class="siBodyContent">
-                                                <div class="siLeft">
-                                                    <div class="siTerm"></div>
-                                                    <div class="siT" id="siT0"></div>
-                                                    <div id="weatherIco0"></div>
-                                                </div>
-                                                <div class="siInf"><p>вологість: <span id="vl0"></span></p>
-                                                    <p>тиск: <span id="dav0"></span></p>
-                                                    <p>вітер: <span id="wind0"></span></p></div>
-                                            </div>
-                                        </a></div>
-                                </td>
-                            </tr>
-                            </tbody></table>
-                            <div class="siLinks">Погода на 10 днів від <a
-                                        href="https://ua.sinoptik.ua/погода-київ/10-днів" title="Погода на 10 днів"
-                                        target="_blank" onmousedown="siClickCount();">sinoptik.ua</a></div>
-                        </div>
-                        <div class="siFooter">
-                            <div class="siLf">
-                                <div class="siMf"></div>
-                            </div>
-                        </div>
+                        <div id="SinoptikInformer" style="width:270px;" class="SinoptikInformer type1c1"><div class="siHeader"><div class="siLh"><div class="siMh"><a onmousedown="siClickCount();" class="siLogo" href="https://sinoptik.ua/" target="_blank" rel="nofollow" title="Погода"> </a>Погода <span id="siHeader"></span></div></div></div><div class="siBody"><a onmousedown="siClickCount();" href="https://sinoptik.ua/погода-киев" title="Погода в Киеве" target="_blank"><div class="siCity"><div class="siCityName"><span>Киев</span></div><div id="siCont0" class="siBodyContent"><div class="siLeft"><div class="siTerm"></div><div class="siT" id="siT0"></div><div id="weatherIco0"></div></div><div class="siInf"><p>влажность: <span id="vl0"></span></p><p>давление: <span id="dav0"></span></p><p>ветер: <span id="wind0"></span></p></div></div></div></a><div class="siLinks">Погода на 10 дней от <a href="https://sinoptik.ua/погода-киев/10-дней" title="Погода на 10 дней" target="_blank" onmousedown="siClickCount();">sinoptik.ua</a></div></div><div class="siFooter"><div class="siLf"><div class="siMf"></div></div></div></div><script type="text/javascript" charset="UTF-8" src="//sinoptik.ua/informers_js.php?title=4&amp;wind=3&amp;cities=303010783&amp;lang=ru"></script>
                     </div>
-                    <script type="text/javascript" charset="UTF-8"
-                            src="//sinoptik.ua/informers_js.php?title=4&amp;wind=3&amp;cities=303010783&amp;lang=ua"></script>
-                </div>
-                <div class="link d-xs-block d-md-none d-xl-block -md-link">
-                    <a href="/">Политика конфендициальности</a>
+                    <div class="link d-xs-block d-md-none d-xl-block -md-link">
+                        <a href="/">Политика конфендициальности</a>
+                    </div>
                 </div>
             </div>
         </div>
