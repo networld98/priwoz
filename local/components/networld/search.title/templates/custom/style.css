@@ -113,8 +113,8 @@ div.title-search-fader {
 	background-repeat: repeat-y;
 	position:absolute;
 }
-#title-search {
-	width: 100%;
+form.smartfilter {
+	display: flex;
 }
 #title-search-input {
 	width: 100%;
