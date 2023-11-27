@@ -11,7 +11,7 @@
             <div class="grid products-masonry">
                 <div class="grid-sizer"></div>
                 <div class="gutter-sizer"></div>
-                <div class="grid-item">
+                <div class="grid-item product-grid-item">
                     <a href="/" class="box">
                         <div class="img">
                             <img class="bg-img" src="/html-code/temporary-images/home/product1.png" alt="Priwoz product">
@@ -31,7 +31,7 @@
                         </svg>
                     </a>
                 </div>
-                <div class="grid-item">
+                <div class="grid-item product-grid-item">
                     <a href="/" class="box">
                         <div class="img">
                             <img class="bg-img" src="/html-code/temporary-images/home/product2.png" alt="Priwoz product">
@@ -51,7 +51,7 @@
                         </svg>
                     </a>
                 </div>
-                <div class="grid-item">
+                <div class="grid-item product-grid-item">
                     <a href="/" class="box">
                         <div class="text">
                             <h2 class="product-title">Срочно требуется грузчик, оплата ежедневная</h2>
@@ -68,7 +68,7 @@
                         </svg>
                     </a>
                 </div>
-                <div class="grid-item">
+                <div class="grid-item product-grid-item">
                     <a href="/" class="box">
                         <div class="img">
                             <img class="bg-img" src="/html-code/temporary-images/home/product4.png" alt="Priwoz product">
@@ -88,7 +88,7 @@
                         </svg>
                     </a>
                 </div>
-                <div class="grid-item">
+                <div class="grid-item product-grid-item">
                     <a href="/" class="box">
                         <div class="img">
                             <img class="bg-img" src="/html-code/temporary-images/home/product5.png" alt="Priwoz product">
@@ -108,7 +108,7 @@
                         </svg>
                     </a>
                 </div>
-                <div class="grid-item">
+                <div class="grid-item product-grid-item">
                     <a href="/" class="box">
                         <div class="text">
                             <h2 class="product-title">Срочно требуется грузчик, оплата ежедневная</h2>
@@ -125,7 +125,7 @@
                         </svg>
                     </a>
                 </div>
-                <div class="grid-item">
+                <div class="grid-item product-grid-item">
                     <a href="/" class="box">
                         <div class="text">
                             <h2 class="product-title">Срочно требуется грузчик, оплата ежедневная</h2>
@@ -142,7 +142,7 @@
                         </svg>
                     </a>
                 </div>
-                <div class="grid-item">
+                <div class="grid-item product-grid-item">
                     <a href="/" class="box -adv">
                         <div class="img">
                             <img class="bg-img" src="/html-code/temporary-images/home/advertisement-3.png" alt="Priwoz advertisement">
@@ -154,7 +154,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="grid-item">
+                <div class="grid-item product-grid-item">
                     <a href="/" class="box">
                         <div class="text">
                             <h2 class="product-title">Срочно требуется грузчик, оплата ежедневная</h2>
@@ -171,7 +171,7 @@
                         </svg>
                     </a>
                 </div>
-                <div class="grid-item">
+                <div class="grid-item product-grid-item">
                     <a href="/" class="box">
                         <div class="text">
                             <h2 class="product-title">Срочно требуется грузчик, оплата ежедневная</h2>

@@ -221,3 +221,29 @@ button {
     color: $color-green-1;
   }
 }
+
+.complaint-box {
+  text-align: right;
+  padding: 30px 0 12px;
+  a {
+    color: rgba(0, 0, 0, 0.75);
+    font-family: $roboto-condensed-font;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 160%;
+    padding-left: 24px;
+    position: relative;
+    &:before {
+      content: '\e800';
+      font-family: 'fontello';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    &:hover {
+      color: $color-orange-1;
+    }
+  }
+}

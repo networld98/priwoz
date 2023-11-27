@@ -1,0 +1,223 @@
+.product-grid-item {
+    padding: 15px;
+    position: relative;
+    @include media-breakpoint-down(xl) {
+      padding: 10px;
+    }
+    @include media-breakpoint-down(md) {
+      padding: 5px;
+    }
+
+    .add-to-favourite {
+      position: absolute;
+      right: 30px;
+      bottom: 38px;
+      width: 18px;
+      height: 18px;
+      z-index: 2;
+      color: $color-gray-1;
+      @include media-breakpoint-down(xl) {
+        right: 26px;
+        bottom: 32px;
+      }
+      @include media-breakpoint-down(md) {
+        right: 12px;
+        bottom: 28px;
+      }
+
+      svg {
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+        max-height: 100%;
+      }
+
+      &:hover {
+        color: $color-green-3;
+      }
+    }
+
+    .box {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      display: block;
+
+      .img {
+        padding-bottom: 74.1%;
+        position: relative;
+        overflow: hidden;
+
+        img {
+          transform: scale(1);
+          transition: .6s;
+        }
+      }
+
+      .text {
+        background: #fff;
+        padding: 20px 16px 13px;
+        @include media-breakpoint-down(md) {
+          padding: 13px 7px 13px;
+        }
+
+        h2.product-title {
+          margin-bottom: 0;
+          color: #000;
+          font-family: $roboto-condensed-font;
+          font-size: 20px;
+          font-style: normal;
+          font-weight: 300;
+          line-height: 160%;
+          letter-spacing: -0.015em;
+          @include media-breakpoint-down(xl) {
+            font-size: 16px;
+          }
+        }
+
+        .location-date {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          flex-wrap: wrap;
+          margin-top: 19px;
+          max-width: calc(100% - 34px);
+          @include media-breakpoint-down(xxl) {
+            margin-top: 15px;
+          }
+          @include media-breakpoint-down(xl) {
+            margin-top: 18px;
+          }
+          @include media-breakpoint-down(md) {
+            max-width: calc(100% - 25px);
+          }
+
+          .location, .date {
+            color: rgba(0, 0, 0, 0.75);
+            font-family: $roboto-condensed-font;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 300;
+            line-height: 160%; /* 19.2px */
+          }
+
+          .location {
+            position: relative;
+            padding-left: 17px;
+            margin-right: 12px;
+
+            &:before {
+              content: '';
+              position: absolute;
+              top: 50%;
+              left: 0;
+              width: 9px;
+              height: 12px;
+              transform: translateY(-50%);
+              background: url('../../../images/icons/location-filled.svg') no-repeat 50% 50%/ contain;
+            }
+          }
+        }
+
+        .price {
+          margin-top: 16px;
+          color: $color-green-1;
+          font-family: $roboto-condensed-font;
+          font-size: 20px;
+          font-style: normal;
+          font-weight: 300;
+          line-height: 160%;
+          max-width: calc(100% - 34px);
+          @include media-breakpoint-down(xl) {
+            margin-top: 18px;
+            font-size: 16px;
+          }
+        }
+      }
+
+      &.-adv {
+        min-height: 470px;
+        z-index: 0;
+        @include media-breakpoint-down(xl) {
+          min-height: 398px;
+        }
+        @include media-breakpoint-down(md) {
+          min-height: 320px;
+        }
+
+        .img {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          z-index: -1;
+          padding-bottom: 0;
+        }
+
+        .text {
+          background: transparent;
+          width: 100%;
+          display: flex;
+          align-items: flex-end;
+          justify-content: flex-start;
+          flex-wrap: wrap;
+          padding: 14px 16px;
+        }
+
+        .adv-logo {
+          width: 80px;
+          height: 41px;
+          margin-right: 24px;
+          @include media-breakpoint-down(xl) {
+            margin-right: 22px;
+          }
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+          }
+        }
+
+        .date {
+          display: inline-flex;
+          color: #fff;
+          font-family: $barista-font;
+          font-size: 26px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 100%;
+          @include media-breakpoint-down(xl) {
+            font-size: 20px;
+          }
+        }
+
+        h2.product-title {
+          width: 100%;
+          margin-top: 34px;
+          color: #fff;
+          font-family: $roboto-font;
+          font-size: 48px;
+          font-style: normal;
+          font-weight: 800;
+          line-height: 100%;
+          padding-left: 6px;
+          @include media-breakpoint-down(xl) {
+            font-size: 36px;
+            padding-left: 0;
+          }
+          @include media-breakpoint-down(md) {
+            font-size: 30px;
+          }
+        }
+      }
+
+      &:hover {
+        .img {
+          img {
+            transform: scale(1.06);
+          }
+        }
+      }
+    }
+}

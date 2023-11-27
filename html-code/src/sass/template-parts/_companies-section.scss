@@ -21,6 +21,13 @@
   .companies-masonry {
     padding-top: 15px;
     padding-bottom: 15px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    transition: .4s;
+    opacity: 0;
+
     @include media-breakpoint-down(xl) {
       padding-top: 10px;
       padding-bottom: 10px;
