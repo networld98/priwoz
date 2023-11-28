@@ -1,25 +1,39 @@
 <?
-$aMenuLinks = Array(
-	Array(
-		"Персональные данные",
-		"/personal/",
-		Array(), 
-		Array(), 
-		"" 
-	),
-	Array(
-		"Добавить обьявление ",
-		"/personal/announcement/",
-		Array(), 
-		Array(), 
-		"" 
-	),
-Array(
-    "Мои обьявления",
-    "/personal/ads-list/",
-    Array(),
-    Array(),
-    ""
-),
+$aMenuLinks = array(
+    array(
+        "Профиль",
+        "/personal/",
+        array(),
+        array(),
+        ""
+    ),
+    array(
+        "Избранное",
+        "/personal/favorite/",
+        array(),
+        array(),
+        ""
+    ),
+    array(
+        "Добавить обьявление ",
+        "/personal/announcement/",
+        array(),
+        array(),
+        ""
+    ),
+    array(
+        "Мои обьявления",
+        "/personal/ads-list/",
+        array(),
+        array(),
+        ""
+    ),
+    array(
+        "Выход",
+        "/?logout=yes",
+        array(),
+        array(),
+        ""
+    )
 );
 ?>

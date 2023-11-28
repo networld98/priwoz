@@ -11,7 +11,7 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
-$this->addExternalCss("/bitrix/css/main/bootstrap.css");
+
 $this->addExternalCss("/bitrix/css/main/font-awesome.css");
 
 $INPUT_ID = trim($arParams["~INPUT_ID"]);

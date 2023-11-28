@@ -4,229 +4,273 @@ $APPLICATION->SetPageProperty("keywords", "priwoz.info");
 $APPLICATION->SetPageProperty("description", "priwoz.info");
 $APPLICATION->SetTitle("priwoz.info");
 ?>
-    <div class="container mt-4">
-        <?$APPLICATION->IncludeComponent(
-            "bitrix:advertising.banner",
-            "",
-            Array(
-                "BS_ARROW_NAV" => "N",
-                "BS_BULLET_NAV" => "Y",
-                "BS_CYCLING" => "N",
-                "BS_EFFECT" => "fade",
-                "BS_HIDE_FOR_PHONES" => "Y",
-                "BS_HIDE_FOR_TABLETS" => "N",
-                "BS_KEYBOARD" => "Y",
-                "BS_PAUSE" => "Y",
-                "BS_WRAP" => "Y",
-                "CACHE_TIME" => "36000000",
-                "CACHE_TYPE" => "A",
-                "COMPONENT_TEMPLATE" => "",
-                "NOINDEX" => "Y",
-                "QUANTITY" => "5",
-                "TYPE" => "mainhead"
-            )
-        );?>
-    </div>
-
-    <div class="container mt-4">
-        <div class="row">
-            <div class="col-md-12">
-                <h2>Популярные объявления</h2>
+    <section class="filter-section d-xs-none d-xl-block">
+        <div class="container">
+            <div class="row align-items-md-center">
+                <div class="col-xl-8">
+                    <div class="search-box">
+                        <? $APPLICATION->IncludeComponent(
+                            "bitrix:catalog.smart.filter",
+                            "header_filter",
+                            array(
+                                "CACHE_GROUPS" => "Y",
+                                "CACHE_TIME" => "36000000",
+                                "CACHE_TYPE" => "N",
+                                "COMPONENT_TEMPLATE" => "header_filter",
+                                "CONVERT_CURRENCY" => "N",
+                                "DISPLAY_ELEMENT_COUNT" => "N",
+                                "FILTER_NAME" => "smartPreFilter",
+                                "FILTER_VIEW_MODE" => "vertical",
+                                "HIDE_NOT_AVAILABLE" => "N",
+                                "IBLOCK_TYPE" => "ads",
+                                "IBLOCK_ID" => "19",
+                                "PAGER_PARAMS_NAME" => "arrPager",
+                                "SAVE_IN_SESSION" => "N",
+                                "SECTION_CODE" => "search",
+                                "SECTION_DESCRIPTION" => "-",
+                                "SECTION_ID" => "",
+                                "SECTION_TITLE" => "-",
+                                "SEF_MODE" => "N",
+                                "TEMPLATE_THEME" => "blue",
+                                "XML_EXPORT" => "N",
+                                "POPUP_POSITION" => "left",
+                                "NOT_FILTER" => "N",
+                                "SEF_RULE" => "#SMART_FILTER_PATH#",
+                                "SECTION_CODE_PATH" => "",
+                                "SMART_FILTER_PATH" => $_REQUEST["SMART_FILTER_PATH"],
+                                "PRICE_CODE" => array(
+                                ),
+                            ),
+                            false
+                        );
+                        ?>
+                       
+                    </div>
+                </div>
+                <div class="col-xl-4">
+                    <div class="buttons-wrap">
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6"><a href="/" class="btn btn-green">Добавить компанию</a></div>
+                            <div class="col-xs-12 col-md-6"><a href="/" class="btn btn-orange">Добавить объявление</a></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <?$APPLICATION->IncludeComponent(
-	"bitrix:news.list", 
-	"ads", 
-	array(
-		"ADD_ELEMENT_CHAIN" => "Y",
-		"ADD_SECTIONS_CHAIN" => "Y",
-		"AJAX_MODE" => "N",
-		"AJAX_OPTION_ADDITIONAL" => "",
-		"AJAX_OPTION_HISTORY" => "N",
-		"AJAX_OPTION_JUMP" => "N",
-		"AJAX_OPTION_STYLE" => "Y",
-		"BROWSER_TITLE" => "-",
-		"CACHE_FILTER" => "N",
-		"CACHE_GROUPS" => "N",
-		"CACHE_TIME" => "36000000",
-		"CACHE_TYPE" => "N",
-		"CHECK_DATES" => "N",
-		"COMPONENT_TEMPLATE" => "ads",
-		"DETAIL_ACTIVE_DATE_FORMAT" => "d.m.Y",
-		"DETAIL_DISPLAY_BOTTOM_PAGER" => "Y",
-		"DETAIL_DISPLAY_TOP_PAGER" => "N",
-		"DETAIL_FIELD_CODE" => array(
-			0 => "",
-			1 => "",
-		),
-		"DETAIL_PAGER_SHOW_ALL" => "Y",
-		"DETAIL_PAGER_TEMPLATE" => "",
-		"DETAIL_PAGER_TITLE" => "Страница",
-		"DETAIL_PROPERTY_CODE" => array(
-			0 => "PRICE",
-			1 => "CONDITION",
-			2 => "PHOTOS",
-			3 => "AUTHOR",
-			4 => "PHONE",
-			5 => "DOPPHONE",
-			6 => "CITY",
-			7 => "TELEGRAM",
-			8 => "VIBER",
-			9 => "WHATSAPP",
-			10 => "CATEGORY",
-			11 => "SUBCATEGORY",
-		),
-		"DETAIL_SET_CANONICAL_URL" => "N",
-		"DISPLAY_BOTTOM_PAGER" => "N",
-		"DISPLAY_DATE" => "Y",
-		"DISPLAY_NAME" => "Y",
-		"DISPLAY_PICTURE" => "Y",
-		"DISPLAY_PREVIEW_TEXT" => "Y",
-		"DISPLAY_TOP_PAGER" => "N",
-		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
-		"IBLOCK_TYPE" => "ads",
-		"INCLUDE_IBLOCK_INTO_CHAIN" => "N",
-		"LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",
-		"LIST_FIELD_CODE" => array(
-			0 => "",
-			1 => "",
-		),
-		"LIST_PROPERTY_CODE" => array(
-			0 => "PRICE",
-			1 => "CONDITION",
-			2 => "PHOTOS",
-			3 => "AUTHOR",
-			4 => "PHONE",
-			5 => "DOPPHONE",
-			6 => "CITY",
-			7 => "TELEGRAM",
-			8 => "VIBER",
-			9 => "WHATSAPP",
-			10 => "CATEGORY",
-			11 => "SUBCATEGORY",
-		),
-		"MESSAGE_404" => "",
-		"META_DESCRIPTION" => "-",
-		"META_KEYWORDS" => "-",
-		"NEWS_COUNT" => "24",
-		"PAGER_BASE_LINK_ENABLE" => "N",
-		"PAGER_DESC_NUMBERING" => "N",
-		"PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
-		"PAGER_SHOW_ALL" => "N",
-		"PAGER_SHOW_ALWAYS" => "N",
-		"PAGER_TEMPLATE" => "arrows",
-		"PAGER_TITLE" => "Новости",
-		"PREVIEW_TRUNCATE_LEN" => "",
-		"SEF_FOLDER" => "/",
-		"SEF_MODE" => "Y",
-		"SET_LAST_MODIFIED" => "Y",
-		"SET_STATUS_404" => "Y",
-		"SET_TITLE" => "N",
-		"SHOW_404" => "Y",
-		"SORT_BY1" => "ACTIVE_FROM",
-		"SORT_BY2" => "SORT",
-		"SORT_ORDER1" => "DESC",
-		"SORT_ORDER2" => "ASC",
-		"STRICT_SECTION_CHECK" => "N",
-		"USE_CATEGORIES" => "N",
-		"USE_FILTER" => "Y",
-		"SHOW_ALL_WO_SECTION" => "Y",
-		"USE_PERMISSIONS" => "N",
-		"USE_RATING" => "N",
-		"USE_REVIEW" => "N",
-		"USE_RSS" => "N",
-		"USE_SEARCH" => "N",
-		"USE_SHARE" => "N",
-		"FILTER_NAME" => "arrFilter",
-		"FILTER_FIELD_CODE" => array(
-			0 => "",
-			1 => "",
-		),
-		"FILTER_PROPERTY_CODE" => array(
-			0 => "",
-			1 => "",
-			2 => "",
-			3 => "",
-			4 => "",
-			5 => "",
-		),
-		"IBLOCK_ID" => "19",
-		"FILE_404" => "",
-		"SHARE_HIDE" => "N",
-		"SHARE_TEMPLATE" => "",
-		"SHARE_HANDLERS" => array(
-			0 => "twitter",
-			1 => "lj",
-			2 => "mailru",
-			3 => "vk",
-			4 => "delicious",
-			5 => "facebook",
-		),
-		"SHARE_SHORTEN_URL_LOGIN" => "",
-		"SHARE_SHORTEN_URL_KEY" => "",
-		"FIELD_CODE" => array(
-			0 => "",
-			1 => "",
-		),
-		"PROPERTY_CODE" => array(
-			0 => "PRICE",
-			1 => "TELEGRAM",
-			2 => "VIBER",
-			3 => "WHATSAPP",
-			4 => "AUTHOR",
-			5 => "DOPPHONE",
-			6 => "PHONE",
-			7 => "",
-		),
-		"TEMPLATE_THEME" => "blue",
-		"DETAIL_URL" => "",
-		"ACTIVE_DATE_FORMAT" => "d.m.Y",
-		"SET_BROWSER_TITLE" => "Y",
-		"SET_META_KEYWORDS" => "Y",
-		"SET_META_DESCRIPTION" => "Y",
-		"PARENT_SECTION" => "",
-		"PARENT_SECTION_CODE" => "",
-		"INCLUDE_SUBSECTIONS" => "Y",
-		"MEDIA_PROPERTY" => "",
-		"SLIDER_PROPERTY" => "",
-		"SEARCH_PAGE" => "/search/"
-	),
-	false
-);?>
-    </div>
+    </section>
 
-    <div class="container mt-4">
-        <?$APPLICATION->IncludeComponent(
-            "bitrix:advertising.banner",
-            "",
-            Array(
-                "BS_ARROW_NAV" => "N",
-                "BS_BULLET_NAV" => "Y",
-                "BS_CYCLING" => "N",
-                "BS_EFFECT" => "fade",
-                "BS_HIDE_FOR_PHONES" => "Y",
-                "BS_HIDE_FOR_TABLETS" => "N",
-                "BS_KEYBOARD" => "Y",
-                "BS_PAUSE" => "Y",
-                "BS_WRAP" => "Y",
-                "CACHE_TIME" => "36000000",
-                "CACHE_TYPE" => "A",
-                "COMPONENT_TEMPLATE" => "",
-                "NOINDEX" => "Y",
-                "QUANTITY" => "5",
-                "TYPE" => "mainpage"
-            )
-        );?>
-    </div>
-
-
-    <div class="container mt-4">
-        <div class="row">
-            <div class="col-md-12">
-                <h2>Компании</h2>
+    <section class="products-section">
+        <div class="container">
+            <div class="advertisement advertisement-type-1">
+                <?$APPLICATION->IncludeComponent(
+                    "bitrix:advertising.banner",
+                    "",
+                    Array(
+                        "BS_ARROW_NAV" => "N",
+                        "BS_BULLET_NAV" => "Y",
+                        "BS_CYCLING" => "N",
+                        "BS_EFFECT" => "fade",
+                        "BS_HIDE_FOR_PHONES" => "Y",
+                        "BS_HIDE_FOR_TABLETS" => "N",
+                        "BS_KEYBOARD" => "Y",
+                        "BS_PAUSE" => "Y",
+                        "BS_WRAP" => "Y",
+                        "CACHE_TIME" => "36000000",
+                        "CACHE_TYPE" => "A",
+                        "COMPONENT_TEMPLATE" => "",
+                        "NOINDEX" => "Y",
+                        "QUANTITY" => "5",
+                        "TYPE" => "mainhead"
+                    )
+                );?>
+            </div>
+            <?$APPLICATION->IncludeComponent(
+                "bitrix:news.list",
+                "ads",
+                array(
+                    "ADD_ELEMENT_CHAIN" => "Y",
+                    "ADD_SECTIONS_CHAIN" => "Y",
+                    "AJAX_MODE" => "N",
+                    "AJAX_OPTION_ADDITIONAL" => "",
+                    "AJAX_OPTION_HISTORY" => "N",
+                    "AJAX_OPTION_JUMP" => "N",
+                    "AJAX_OPTION_STYLE" => "Y",
+                    "BROWSER_TITLE" => "-",
+                    "CACHE_FILTER" => "N",
+                    "CACHE_GROUPS" => "N",
+                    "CACHE_TIME" => "36000000",
+                    "CACHE_TYPE" => "N",
+                    "CHECK_DATES" => "N",
+                    "COMPONENT_TEMPLATE" => "ads",
+                    "DETAIL_ACTIVE_DATE_FORMAT" => "d.m.Y",
+                    "DETAIL_DISPLAY_BOTTOM_PAGER" => "Y",
+                    "DETAIL_DISPLAY_TOP_PAGER" => "N",
+                    "DETAIL_FIELD_CODE" => array(
+                        0 => "",
+                        1 => "",
+                    ),
+                    "DETAIL_PAGER_SHOW_ALL" => "Y",
+                    "DETAIL_PAGER_TEMPLATE" => "",
+                    "DETAIL_PAGER_TITLE" => "Страница",
+                    "DETAIL_PROPERTY_CODE" => array(
+                        0 => "PRICE",
+                        1 => "CONDITION",
+                        2 => "PHOTOS",
+                        3 => "AUTHOR",
+                        4 => "PHONE",
+                        5 => "DOPPHONE",
+                        6 => "CITY",
+                        7 => "TELEGRAM",
+                        8 => "VIBER",
+                        9 => "WHATSAPP",
+                        10 => "CATEGORY",
+                        11 => "SUBCATEGORY",
+                    ),
+                    "DETAIL_SET_CANONICAL_URL" => "N",
+                    "DISPLAY_BOTTOM_PAGER" => "N",
+                    "DISPLAY_DATE" => "Y",
+                    "DISPLAY_NAME" => "Y",
+                    "DISPLAY_PICTURE" => "Y",
+                    "DISPLAY_PREVIEW_TEXT" => "Y",
+                    "DISPLAY_TOP_PAGER" => "N",
+                    "HIDE_LINK_WHEN_NO_DETAIL" => "N",
+                    "IBLOCK_TYPE" => "ads",
+                    "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+                    "LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",
+                    "LIST_FIELD_CODE" => array(
+                        0 => "",
+                        1 => "",
+                    ),
+                    "LIST_PROPERTY_CODE" => array(
+                        0 => "PRICE",
+                        1 => "CONDITION",
+                        2 => "PHOTOS",
+                        3 => "AUTHOR",
+                        4 => "PHONE",
+                        5 => "DOPPHONE",
+                        6 => "CITY",
+                        7 => "TELEGRAM",
+                        8 => "VIBER",
+                        9 => "WHATSAPP",
+                        10 => "CATEGORY",
+                        11 => "SUBCATEGORY",
+                    ),
+                    "MESSAGE_404" => "",
+                    "META_DESCRIPTION" => "-",
+                    "META_KEYWORDS" => "-",
+                    "NEWS_COUNT" => "24",
+                    "PAGER_BASE_LINK_ENABLE" => "N",
+                    "PAGER_DESC_NUMBERING" => "N",
+                    "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+                    "PAGER_SHOW_ALL" => "N",
+                    "PAGER_SHOW_ALWAYS" => "N",
+                    "PAGER_TEMPLATE" => "arrows",
+                    "PAGER_TITLE" => "Новости",
+                    "PREVIEW_TRUNCATE_LEN" => "",
+                    "SEF_FOLDER" => "/",
+                    "SEF_MODE" => "Y",
+                    "SET_LAST_MODIFIED" => "Y",
+                    "SET_STATUS_404" => "Y",
+                    "SET_TITLE" => "N",
+                    "SHOW_404" => "Y",
+                    "SORT_BY1" => "ACTIVE_FROM",
+                    "SORT_BY2" => "SORT",
+                    "SORT_ORDER1" => "DESC",
+                    "SORT_ORDER2" => "ASC",
+                    "STRICT_SECTION_CHECK" => "N",
+                    "USE_CATEGORIES" => "N",
+                    "USE_FILTER" => "Y",
+                    "SHOW_ALL_WO_SECTION" => "Y",
+                    "USE_PERMISSIONS" => "N",
+                    "USE_RATING" => "N",
+                    "USE_REVIEW" => "N",
+                    "USE_RSS" => "N",
+                    "USE_SEARCH" => "N",
+                    "USE_SHARE" => "N",
+                    "FILTER_NAME" => "arrFilter",
+                    "FILTER_FIELD_CODE" => array(
+                        0 => "",
+                        1 => "",
+                    ),
+                    "FILTER_PROPERTY_CODE" => array(
+                        0 => "",
+                        1 => "",
+                        2 => "",
+                        3 => "",
+                        4 => "",
+                        5 => "",
+                    ),
+                    "IBLOCK_ID" => "19",
+                    "FILE_404" => "",
+                    "SHARE_HIDE" => "N",
+                    "SHARE_TEMPLATE" => "",
+                    "SHARE_HANDLERS" => array(
+                        0 => "twitter",
+                        1 => "lj",
+                        2 => "mailru",
+                        3 => "vk",
+                        4 => "delicious",
+                        5 => "facebook",
+                    ),
+                    "SHARE_SHORTEN_URL_LOGIN" => "",
+                    "SHARE_SHORTEN_URL_KEY" => "",
+                    "FIELD_CODE" => array(
+                        0 => "",
+                        1 => "",
+                    ),
+                    "PROPERTY_CODE" => array(
+                        0 => "PRICE",
+                        1 => "TELEGRAM",
+                        2 => "VIBER",
+                        3 => "WHATSAPP",
+                        4 => "AUTHOR",
+                        5 => "DOPPHONE",
+                        6 => "PHONE",
+                        7 => "CITY",
+                    ),
+                    "TEMPLATE_THEME" => "blue",
+                    "DETAIL_URL" => "",
+                    "ACTIVE_DATE_FORMAT" => "d.m.Y",
+                    "SET_BROWSER_TITLE" => "Y",
+                    "SET_META_KEYWORDS" => "Y",
+                    "SET_META_DESCRIPTION" => "Y",
+                    "PARENT_SECTION" => "",
+                    "PARENT_SECTION_CODE" => "",
+                    "INCLUDE_SUBSECTIONS" => "Y",
+                    "MEDIA_PROPERTY" => "",
+                    "SLIDER_PROPERTY" => "",
+                    "SEARCH_PAGE" => "/search/"
+                ),
+                false
+            );?>
+            <div class="advertisement advertisement-type-2">
+                <?$APPLICATION->IncludeComponent(
+                    "bitrix:advertising.banner",
+                    "",
+                    Array(
+                        "BS_ARROW_NAV" => "N",
+                        "BS_BULLET_NAV" => "Y",
+                        "BS_CYCLING" => "N",
+                        "BS_EFFECT" => "fade",
+                        "BS_HIDE_FOR_PHONES" => "Y",
+                        "BS_HIDE_FOR_TABLETS" => "N",
+                        "BS_KEYBOARD" => "Y",
+                        "BS_PAUSE" => "Y",
+                        "BS_WRAP" => "Y",
+                        "CACHE_TIME" => "36000000",
+                        "CACHE_TYPE" => "A",
+                        "COMPONENT_TEMPLATE" => "",
+                        "NOINDEX" => "Y",
+                        "QUANTITY" => "5",
+                        "TYPE" => "mainpage"
+                    )
+                );?>
             </div>
         </div>
-        <div class="companys">
+    </section>
+
+    <section class="companies-section">
+        <div class="container">
             <?$APPLICATION->IncludeComponent(
                 "bitrix:news.list",
                 "companies",
@@ -323,6 +367,16 @@ $APPLICATION->SetTitle("priwoz.info");
                         4 => "",
                         5 => "",
                     ),
+                    "PROPERTY_CODE" => array(
+                        0 => "LOGO",
+                        1 => "TELEGRAM",
+                        2 => "VIBER",
+                        3 => "WHATSAPP",
+                        4 => "AUTHOR",
+                        5 => "DOPPHONE",
+                        6 => "PHONE",
+                        7 => "CITY",
+                    ),
                     "IBLOCK_ID" => "24",
                     "FILE_404" => "",
                     "SHARE_HIDE" => "N",
@@ -346,142 +400,173 @@ $APPLICATION->SetTitle("priwoz.info");
                 false
             );?>
         </div>
-    </div>
-
-    <!-- Еще один баннер на всю ширину сайта -->
-    <div class="container mt-4">
-        <img src="https://via.placeholder.com/1600x200" alt="Баннер">
-    </div>
-
-    <!-- Блок "О проекте" -->
-    <div class="container mt-4">
-        <h2>О проекте</h2>
-        <p>Описание вашего проекта и его цели.</p>
-    </div>
-
-    <!-- Блок блога -->
-    <div class="container mt-4">
-        <h2>Блог</h2>
-        <div class="row">
-            <?$APPLICATION->IncludeComponent(
-                "bitrix:news.list",
-                "blog",
-                array(
-                    "ADD_ELEMENT_CHAIN" => "Y",
-                    "ADD_SECTIONS_CHAIN" => "Y",
-                    "AJAX_MODE" => "N",
-                    "AJAX_OPTION_ADDITIONAL" => "",
-                    "AJAX_OPTION_HISTORY" => "N",
-                    "AJAX_OPTION_JUMP" => "N",
-                    "AJAX_OPTION_STYLE" => "Y",
-                    "BROWSER_TITLE" => "-",
-                    "CACHE_FILTER" => "N",
-                    "CACHE_GROUPS" => "N",
-                    "CACHE_TIME" => "36000000",
-                    "CACHE_TYPE" => "N",
-                    "CHECK_DATES" => "N",
-                    "COMPONENT_TEMPLATE" => ".default",
-                    "DETAIL_ACTIVE_DATE_FORMAT" => "d.m.Y",
-                    "DETAIL_DISPLAY_BOTTOM_PAGER" => "Y",
-                    "DETAIL_DISPLAY_TOP_PAGER" => "N",
-                    "DETAIL_FIELD_CODE" => array(
-                        0 => "",
-                        1 => "",
-                    ),
-                    "DETAIL_PAGER_SHOW_ALL" => "Y",
-                    "DETAIL_PAGER_TEMPLATE" => "",
-                    "DETAIL_PAGER_TITLE" => "Страница",
-                    "DETAIL_PROPERTY_CODE" => array(
-                        0 => "",
-                        1 => "",
-                    ),
-                    "DETAIL_SET_CANONICAL_URL" => "N",
-                    "DISPLAY_BOTTOM_PAGER" => "N",
-                    "DISPLAY_DATE" => "Y",
-                    "DISPLAY_NAME" => "Y",
-                    "DISPLAY_PICTURE" => "Y",
-                    "DISPLAY_PREVIEW_TEXT" => "Y",
-                    "DISPLAY_TOP_PAGER" => "N",
-                    "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                    "IBLOCK_TYPE" => "ads",
-                    "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
-                    "LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",
-                    "LIST_FIELD_CODE" => array(
-                        0 => "",
-                        1 => "",
-                    ),
-                    "LIST_PROPERTY_CODE" => array(
-                        0 => "",
-                        1 => "",
-                    ),
-                    "MESSAGE_404" => "",
-                    "META_DESCRIPTION" => "-",
-                    "META_KEYWORDS" => "-",
-                    "NEWS_COUNT" => "24",
-                    "PAGER_BASE_LINK_ENABLE" => "N",
-                    "PAGER_DESC_NUMBERING" => "N",
-                    "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
-                    "PAGER_SHOW_ALL" => "N",
-                    "PAGER_SHOW_ALWAYS" => "N",
-                    "PAGER_TEMPLATE" => "arrows",
-                    "PAGER_TITLE" => "Новости",
-                    "PREVIEW_TRUNCATE_LEN" => "",
-                    "SEF_FOLDER" => "/",
-                    "SEF_MODE" => "Y",
-                    "SET_LAST_MODIFIED" => "Y",
-                    "SET_STATUS_404" => "Y",
-                    "SET_TITLE" => "N",
-                    "SHOW_404" => "Y",
-                    "SORT_BY1" => "ACTIVE_FROM",
-                    "SORT_BY2" => "SORT",
-                    "SORT_ORDER1" => "DESC",
-                    "SORT_ORDER2" => "ASC",
-                    "STRICT_SECTION_CHECK" => "N",
-                    "USE_CATEGORIES" => "N",
-                    "USE_FILTER" => "Y",
-                    "SHOW_ALL_WO_SECTION" => "Y",
-                    "USE_PERMISSIONS" => "N",
-                    "USE_RATING" => "N",
-                    "USE_REVIEW" => "N",
-                    "USE_RSS" => "N",
-                    "USE_SEARCH" => "N",
-                    "USE_SHARE" => "Y",
-                    "FILTER_NAME" => "arrFilter",
-                    "FILTER_FIELD_CODE" => array(
-                        0 => "",
-                        1 => "",
-                    ),
-                    "FILTER_PROPERTY_CODE" => array(
-                        0 => "",
-                        1 => "",
-                        2 => "",
-                        3 => "",
-                        4 => "",
-                        5 => "",
-                    ),
-                    "IBLOCK_ID" => "25",
-                    "FILE_404" => "",
-                    "SHARE_HIDE" => "N",
-                    "SHARE_TEMPLATE" => "",
-                    "SHARE_HANDLERS" => array(
-                        0 => "twitter",
-                        1 => "lj",
-                        2 => "mailru",
-                        3 => "vk",
-                        4 => "delicious",
-                        5 => "facebook",
-                    ),
-                    "SHARE_SHORTEN_URL_LOGIN" => "",
-                    "SHARE_SHORTEN_URL_KEY" => "",
-                    "SEF_URL_TEMPLATES" => array(
-                        "news" => "",
-                        "section" => "",
-                        "detail" => "#ELEMENT_CODE#/",
-                    )
-                ),
-                false
-            );?>
+    </section>
+    <? $APPLICATION->IncludeComponent(
+        "bitrix:main.include",
+        "",
+        array(
+            "AREA_FILE_SHOW" => "file",
+            "PATH" => SITE_DIR."includes/partnership-section.php"
+        )
+    ); ?>
+    <? $APPLICATION->IncludeComponent(
+        "bitrix:main.include",
+        "",
+        array(
+            "AREA_FILE_SHOW" => "file",
+            "PATH" => SITE_DIR."includes/about-section.php"
+        )
+    ); ?>
+    <section class="blog-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-md-4 col-xl-3">
+                    <? $APPLICATION->IncludeComponent(
+                        "bitrix:main.include",
+                        "",
+                        array(
+                            "AREA_FILE_SHOW" => "file",
+                            "PATH" => SITE_DIR."includes/blog-section.php"
+                        )
+                    ); ?>
+                </div>
+                <div class="col-xs-12 col-md-8 col-xl-9">
+                    <?$APPLICATION->IncludeComponent(
+	"bitrix:news.list", 
+	"blog", 
+	array(
+		"ADD_ELEMENT_CHAIN" => "Y",
+		"ADD_SECTIONS_CHAIN" => "Y",
+		"AJAX_MODE" => "N",
+		"AJAX_OPTION_ADDITIONAL" => "",
+		"AJAX_OPTION_HISTORY" => "N",
+		"AJAX_OPTION_JUMP" => "N",
+		"AJAX_OPTION_STYLE" => "Y",
+		"BROWSER_TITLE" => "-",
+		"CACHE_FILTER" => "N",
+		"CACHE_GROUPS" => "N",
+		"CACHE_TIME" => "36000000",
+		"CACHE_TYPE" => "N",
+		"CHECK_DATES" => "N",
+		"COMPONENT_TEMPLATE" => "blog",
+		"DETAIL_ACTIVE_DATE_FORMAT" => "d.m.Y",
+		"DETAIL_DISPLAY_BOTTOM_PAGER" => "Y",
+		"DETAIL_DISPLAY_TOP_PAGER" => "N",
+		"DETAIL_FIELD_CODE" => array(
+			0 => "YOUTUBE",
+			1 => "COMPANY",
+			2 => "YOUTUBE_IN_MAIN",
+		),
+		"DETAIL_PAGER_SHOW_ALL" => "Y",
+		"DETAIL_PAGER_TEMPLATE" => "",
+		"DETAIL_PAGER_TITLE" => "Страница",
+		"DETAIL_PROPERTY_CODE" => array(
+			0 => "YOUTUBE",
+			1 => "COMPANY",
+			2 => "YOUTUBE_IN_MAIN",
+		),
+		"DETAIL_SET_CANONICAL_URL" => "N",
+		"DISPLAY_BOTTOM_PAGER" => "N",
+		"DISPLAY_DATE" => "Y",
+		"DISPLAY_NAME" => "Y",
+		"DISPLAY_PICTURE" => "Y",
+		"DISPLAY_PREVIEW_TEXT" => "Y",
+		"DISPLAY_TOP_PAGER" => "N",
+		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
+		"IBLOCK_TYPE" => "ads",
+		"INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+		"LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",
+		"LIST_FIELD_CODE" => array(
+			0 => "YOUTUBE",
+			1 => "COMPANY",
+			2 => "YOUTUBE_IN_MAIN",
+		),
+		"LIST_PROPERTY_CODE" => array(
+			0 => "YOUTUBE",
+			1 => "COMPANY",
+			2 => "YOUTUBE_IN_MAIN",
+		),
+		"MESSAGE_404" => "",
+		"META_DESCRIPTION" => "-",
+		"META_KEYWORDS" => "-",
+		"NEWS_COUNT" => "24",
+		"PAGER_BASE_LINK_ENABLE" => "N",
+		"PAGER_DESC_NUMBERING" => "N",
+		"PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+		"PAGER_SHOW_ALL" => "N",
+		"PAGER_SHOW_ALWAYS" => "N",
+		"PAGER_TEMPLATE" => "arrows",
+		"PAGER_TITLE" => "Новости",
+		"PREVIEW_TRUNCATE_LEN" => "",
+		"SEF_FOLDER" => "/",
+		"SEF_MODE" => "Y",
+		"SET_LAST_MODIFIED" => "Y",
+		"SET_STATUS_404" => "Y",
+		"SET_TITLE" => "N",
+		"SHOW_404" => "Y",
+		"SORT_BY1" => "ACTIVE_FROM",
+		"SORT_BY2" => "SORT",
+		"SORT_ORDER1" => "DESC",
+		"SORT_ORDER2" => "ASC",
+		"STRICT_SECTION_CHECK" => "N",
+		"USE_CATEGORIES" => "N",
+		"USE_FILTER" => "Y",
+		"SHOW_ALL_WO_SECTION" => "Y",
+		"USE_PERMISSIONS" => "N",
+		"USE_RATING" => "N",
+		"USE_REVIEW" => "N",
+		"USE_RSS" => "N",
+		"USE_SEARCH" => "N",
+		"USE_SHARE" => "N",
+		"FILTER_NAME" => "arrFilter",
+		"IBLOCK_ID" => "25",
+		"FILE_404" => "",
+		"SHARE_HIDE" => "N",
+		"SHARE_TEMPLATE" => "",
+		"SHARE_HANDLERS" => array(
+			0 => "twitter",
+			1 => "lj",
+			2 => "mailru",
+			3 => "vk",
+			4 => "delicious",
+			5 => "facebook",
+		),
+		"SHARE_SHORTEN_URL_LOGIN" => "",
+		"SHARE_SHORTEN_URL_KEY" => "",
+		"FIELD_CODE" => array(
+			0 => "",
+			1 => "",
+		),
+		"PROPERTY_CODE" => array(
+			0 => "YOUTUBE",
+			1 => "YOUTUBE_IN_MAIN",
+			2 => "",
+		),
+		"TEMPLATE_THEME" => "blue",
+		"DETAIL_URL" => "",
+		"ACTIVE_DATE_FORMAT" => "d.m.Y",
+		"SET_BROWSER_TITLE" => "Y",
+		"SET_META_KEYWORDS" => "Y",
+		"SET_META_DESCRIPTION" => "Y",
+		"PARENT_SECTION" => "",
+		"PARENT_SECTION_CODE" => "",
+		"INCLUDE_SUBSECTIONS" => "Y",
+		"MEDIA_PROPERTY" => "",
+		"SLIDER_PROPERTY" => "",
+		"SEARCH_PAGE" => "/search/"
+	),
+	false
+);?>
+                </div>
+            </div>
         </div>
-    </div>
-
+    </section>
+    <? $APPLICATION->IncludeComponent(
+        "bitrix:main.include",
+        "",
+        array(
+            "AREA_FILE_SHOW" => "file",
+            "PATH" => SITE_DIR."includes/social-section.php"
+        )
+    ); ?>
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

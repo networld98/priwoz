@@ -1,5 +1,17 @@
 <?
-/*КОСТЫЛЬ ТРНАСЛИТА */
+AddEventHandler("iblock", "OnBeforeIBlockElementAdd", Array("CustomFields", "OnBeforeIBlockElementAddHandler"));
+class CustomFields
+{
+// создаем обработчик события "OnBeforeIBlockElementAdd" 
+    function OnBeforeIBlockElementAddHandler(&$arFields)
+    {
+        $transName = CUtil::translit(trim($arFields["NAME"]), "ru", $arTransParams);//функция генерации сим. кода из имени
+        $arFields["CODE"] = transName."_".date('dmY');
+        $arFields["ACTIVE"] = "Y"; 
+        return;
+    }
+}
+    /*КОСТЫЛЬ ТРНАСЛИТА */
 class CUtilEx extends \CUtil{
 
     private static function mb_strtr($str, $from, $to)

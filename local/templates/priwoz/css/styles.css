@@ -1,72 +1,105 @@
-@font-face{font-family:'MADE Barista';src:url(../fonts/MADEBarista.otf);font-display:swap;}
-@font-face{font-family:'Roboto';src:url(../fonts/Roboto.ttf);font-display:swap;}
-@font-face{font-family:'Roboto Condensed Light';src:url(../fonts/RobotoCondensed-Light.ttf);font-display:swap;}
-body {
-    color:#000;
-    background:#F5F5F5;
+.fa-star-custom-o:before {
+    content: url('../images/icons/star.svg');
+    font-size: 21px;
 }
-a {
-    color: #2B618F;
+.fa-star-custom:before {
+    content: url('../images/icons/star-selected.svg');
+    font-size: 21px;
 }
-.gray-b {
-    background-color:#3D4A59;
-}
-.gray-light-b {
-    background-color:#526172;
-}
-.gray-dark-b {
-    background-color:#303943;
-}
-.gray {
-    color:#3D4A59;
-}
-.green {
-    color:#409313;
-}
-.green-light {
-    color:#5DBE28;
-}
-.white {
-    color:#fff;
-}
-.gray-b {
-    background-color:#3D4A59;
-}
-.gray {
-    color:#3D4A59;
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
 }
 
-.ads {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(5, auto); /* Увеличиваем количество строк до 4 */
-    gap: 10px;
+.inputfile + label {
+    max-width: 80%;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    padding: 0.625rem 1.25rem;
 }
 
-.ads .item .text{
-    padding: 10px;
-    text-align: center;
-    display: grid;
-    grid-template-rows: auto auto auto auto auto auto;
-    grid-auto-rows: minmax(100px, auto); /* Минимальная высота строки */
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    background-color: #fff;
+.no-js .inputfile + label {
+    display: none;
 }
-.ads .banner {
-    grid-row: 2; /* Указываем, что баннер займет строки с 4 по 6 */
-    grid-column: 3;
+
+.inputfile:focus + label,
+.inputfile.has-focus + label {
+    outline: 1px dotted #000;
+    outline: -webkit-focus-ring-color auto 5px;
 }
-.ads .item img {
+
+.inputfile + label svg {
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+    fill: currentColor;
+    margin-top: -0.25em;
+    margin-right: 0.25em;
+}
+
+
+.inputfile-5 + label {
+    color: #d3394c;
+}
+
+.inputfile-5:focus + label,
+.inputfile-5.has-focus + label,
+.inputfile-5 + label:hover {
+    color: #722040;
+}
+
+.inputfile-5 + label figure {
+    width: 69px;
+    height: 69px;
+    background-color: #d3394c;
+    display: block;
+    position: relative;
+    padding: 14px;
+    margin: 0 auto 10px;
+}
+
+.inputfile-5:focus + label figure,
+.inputfile-5.has-focus + label figure,
+.inputfile-5 + label:hover figure {
+    background-color: #722040;
+}
+
+.inputfile-5 + label figure::before,
+.inputfile-5 + label figure::after {
+    width: 0;
+    height: 0;
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.inputfile-5 + label figure::before {
+    border-top: 20px solid #dfc8ca;
+    border-left: 20px solid transparent;
+}
+
+.inputfile-5 + label figure::after {
+    border-bottom: 20px solid #722040;
+    border-right: 20px solid transparent;
+}
+
+.inputfile-5:focus + label figure::after,
+.inputfile-5.has-focus + label figure::after,
+.inputfile-5 + label:hover figure::after {
+    border-bottom-color: #d3394c;
+}
+
+.inputfile-5 + label svg {
     width: 100%;
-    max-height: 300px;
-    object-fit: cover;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
-.ads .banner img {
-    width: 100%;
-    object-fit: cover;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    height: 100%;
+    fill: #f1e5e6;
 }
