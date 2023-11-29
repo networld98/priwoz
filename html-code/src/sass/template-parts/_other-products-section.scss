@@ -9,6 +9,9 @@
   }
   .section-title {
     font-size: 48px;
+    @include media-breakpoint-down(xl) {
+      font-size: 40px;
+    }
   }
 
   .title-wrap {
@@ -17,10 +20,17 @@
     justify-content: flex-start;
     margin-bottom: 15px;
     @include media-breakpoint-down(xl) {
-      margin-bottom: 18px;
+      align-items: baseline;
+      margin-bottom: 16px;
     }
     @include media-breakpoint-down(md) {
-      margin-bottom: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 15px;
+    }
+    .section-title {
+      @include media-breakpoint-down(md) {
+        width: 100%;
+      }
     }
   }
 
@@ -32,6 +42,12 @@
     justify-content: center;
     margin-left: auto;
     margin-right: -5px;
+    @include media-breakpoint-down(xl) {
+      margin-right: 10px;
+    }
+    @include media-breakpoint-down(md) {
+      margin-top: 17px;
+    }
 
     .swiper-button-prev, .swiper-button-next {
       position: relative;
@@ -40,6 +56,9 @@
       width: 22px;
       height: 22px;
       transition: .4s;
+      @include media-breakpoint-down(md) {
+        margin-top: 0;
+      }
 
       &:after {
         content: '';
@@ -58,6 +77,12 @@
 
     .swiper-button-prev {
       margin-right: 27px;
+      @include media-breakpoint-down(xl) {
+        margin-right: 41px;
+      }
+      @include media-breakpoint-down(md) {
+        margin-right: 37px;
+      }
 
       &:after {
         transform: translate(-50%, -50%) rotate(180deg);
@@ -67,6 +92,14 @@
   .other-products-slider-box {
     margin-left: -15px;
     margin-right: -15px;
+    @include media-breakpoint-down(xl) {
+      margin-left: -10px;
+      margin-right: -10px;
+    }
+    @include media-breakpoint-down(md) {
+      margin-left: -5px;
+      margin-right: -5px;
+    }
   }
   .other-products-slider {
     overflow: hidden;

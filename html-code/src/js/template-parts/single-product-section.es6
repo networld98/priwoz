@@ -7,22 +7,27 @@ let thumbnails_slider = new Swiper(".thumbnails-slider", {
     watchOverflow: true,
     watchSlidesVisibility: true,
     watchSlidesProgress: true,
+    spaceBetween: 12,
     breakpoints: {
         360: {
             slidesPerView: 6,
             direction: "horizontal",
+            spaceBetween: 9,
         },
         780: {
-            slidesPerView: 5.3,
+            slidesPerView: 5.46,
             direction: "vertical",
+            spaceBetween: 8,
         },
         1366: {
-            slidesPerView: 6.6,
+            slidesPerView: 6.68,
             direction: "vertical",
+            spaceBetween: 12,
         },
         1920: {
-            slidesPerView: 9,
+            slidesPerView: 9.5,
             direction: "vertical",
+            spaceBetween: 12,
         },
     },
 });
@@ -47,10 +52,10 @@ let main_slider = new Swiper(".big-image-slider", {
     },
 });
 
-main_slider.on('slideChangeTransitionStart', function() {
-    thumbnails_slider.slideTo(main_slider.activeIndex);
-});
-
-thumbnails_slider.on('transitionStart', function(){
-    thumbnails_slider.slideTo(thumbnails_slider.activeIndex);
-});
+// main_slider.on('slideChangeTransitionStart', function() {
+//     thumbnails_slider.slideTo(main_slider.activeIndex);
+// });
+//
+// thumbnails_slider.on('transitionStart', function(){
+//     thumbnails_slider.slideTo(thumbnails_slider.activeIndex);
+// });

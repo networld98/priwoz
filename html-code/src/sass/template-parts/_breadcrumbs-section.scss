@@ -1,5 +1,12 @@
 .breadcrumbs-section {
   padding: 20px 0 36px;
+  @include media-breakpoint-down(xl) {
+    padding: 10px 0 19px;
+  }
+  @include media-breakpoint-down(md) {
+    padding: 10px 0 17px;
+  }
+
   .breadcrumbs {
     color: rgba(0, 0, 0, 0.75);
     font-family: $roboto-condensed-font;
@@ -7,14 +14,24 @@
     font-style: normal;
     font-weight: 300;
     line-height: 160%;
+    @include media-breakpoint-down(xl) {
+      font-size: 12px;
+      letter-spacing: 0.002em;
+    }
+
     a {
       color: rgba(0, 0, 0, 0.75);
+
       &:hover {
         color: rgba(0, 0, 0, 1);
       }
     }
+
     .sep {
       margin: 0 4px;
+      @include media-breakpoint-down(xl) {
+        margin: 0 3px;
+      }
     }
   }
 }

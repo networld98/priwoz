@@ -224,7 +224,22 @@ button {
 
 .complaint-box {
   text-align: right;
-  padding: 30px 0 12px;
+  padding-top: 30px;
+  @include media-breakpoint-down(xxl) {
+    padding-top: 33px;
+    padding-right: 8px;
+    padding-left: 8px;
+  }
+  @include media-breakpoint-down(xl) {
+    padding-top: 22px;
+    padding-right: 7px;
+    padding-left: 7px;
+  }
+  @include media-breakpoint-down(md) {
+    padding-top: 14px;
+    padding-left: 0;
+    padding-right: 0;
+  }
   a {
     color: rgba(0, 0, 0, 0.75);
     font-family: $roboto-condensed-font;
@@ -234,6 +249,7 @@ button {
     line-height: 160%;
     padding-left: 24px;
     position: relative;
+    letter-spacing: -0.02em;
     &:before {
       content: '\e800';
       font-family: 'fontello';

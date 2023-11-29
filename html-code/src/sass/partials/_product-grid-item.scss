@@ -33,7 +33,15 @@
       }
 
       &:hover {
-        color: $color-green-3;
+        color: $color-orange-2;
+      }
+      &.active {
+        color: $color-orange-2;
+        svg {
+          * {
+            fill: $color-orange-2;
+          }
+        }
       }
     }
 
