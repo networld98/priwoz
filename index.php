@@ -10,7 +10,7 @@ $APPLICATION->SetTitle("priwoz.info");
                 <div class="col-xl-8">
                     <div class="search-box">
                         <? $APPLICATION->IncludeComponent(
-                            "bitrix:catalog.smart.filter",
+                            "networld:catalog.smart.filter",
                             "header_filter",
                             array(
                                 "CACHE_GROUPS" => "Y",
@@ -50,8 +50,8 @@ $APPLICATION->SetTitle("priwoz.info");
                 <div class="col-xl-4">
                     <div class="buttons-wrap">
                         <div class="row">
-                            <div class="col-xs-12 col-md-6"><a href="/" class="btn btn-green">Добавить компанию</a></div>
-                            <div class="col-xs-12 col-md-6"><a href="/" class="btn btn-orange">Добавить объявление</a></div>
+                            <div class="col-xs-12 col-md-6"><a href="/personal" class="btn btn-green">Добавить компанию</a></div>
+                            <div class="col-xs-12 col-md-6"><a href="/personal/announcement/" class="btn btn-orange">Добавить объявление</a></div>
                         </div>
                     </div>
                 </div>

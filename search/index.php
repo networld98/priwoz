@@ -8,7 +8,7 @@ $APPLICATION->SetTitle("Обьявление");
     <div class="row">
         <div class="col-md-12">
             <?$APPLICATION->IncludeComponent(
-                "networld:catalog.smart.filter",
+                "bitrix:catalog.smart.filter",
                 "visual_horizontal",
                 array(
                     "CACHE_GROUPS" => "Y",

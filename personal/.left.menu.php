@@ -15,8 +15,15 @@ $aMenuLinks = array(
         ""
     ),
     array(
-        "Добавить обьявление ",
+        "Добавить обьявление",
         "/personal/announcement/",
+        array(),
+        array(),
+        ""
+    ),
+    array(
+        "Добавить компанию",
+        "/personal/company/",
         array(),
         array(),
         ""
