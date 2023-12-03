@@ -73,6 +73,9 @@
           color: $color-green-3;
         }
       }
+      &.active {
+        color: $color-orange-2;
+      }
     }
   }
 
@@ -581,19 +584,19 @@
   }
 
   &.profile-menu {
-    @include media-breakpoint-up(md) {
-      display: none !important;
-    }
 
     .inner {
       position: absolute;
       right: 0;
       top: 0;
-      width: 185px;
+      width: 256px;
       height: 100%;
       background: $color-gray-1;
       overflow: auto;
       scrollbar-color: $color-gray-3 $color-lightgray-2;
+      @include media-breakpoint-down(md) {
+        width: 185px;
+      }
 
       &::-webkit-scrollbar {
         width: 4px;
@@ -728,8 +731,11 @@
             flex: none;
             width: 20px;
             height: 20px;
-            margin-right: 15px;
-            color: $color-lightgray-1;
+            margin-right: 12px;
+            color: #fff;
+            @include media-breakpoint-down(md) {
+              margin-right: 15px;
+            }
           }
 
           &.-green {
@@ -738,6 +744,9 @@
 
           &.-orange {
             background: $color-yellow-2;
+          }
+          &.active {
+            background: $color-gray-3;
           }
         }
 
