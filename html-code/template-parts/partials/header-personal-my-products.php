@@ -641,35 +641,3 @@
             </div>
         </div>
     </div>
-
-    <section class="filter-section d-xs-none d-xl-block">
-        <div class="container">
-            <div class="row align-items-md-center">
-                <div class="col-xl-8">
-                    <div class="search-box">
-                        <label class="form-label">
-                            <input type="text" class="form-control -search" placeholder="Шо найти на Priwoze">
-                        </label>
-                        <label class="form-label">
-                            <input type="text" class="form-control -location" placeholder="Болгария, область">
-                        </label>
-                        <button type="submit" class="btn btn-search">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
-                                <path d="M13.6109 14.4049L10.2686 11.0898" stroke="currentColor" stroke-linecap="round"/>
-                                <path d="M12 6.23269C12 9.39746 9.42695 11.9654 6.25 11.9654C3.07305 11.9654 0.5 9.39746 0.5 6.23269C0.5 3.06792 3.07305 0.5 6.25 0.5C9.42695 0.5 12 3.06792 12 6.23269Z" stroke="currentColor"/>
-                            </svg>
-                            Поиск
-                        </button>
-                    </div>
-                </div>
-                <div class="col-xl-4">
-                    <div class="buttons-wrap">
-                        <div class="row">
-                            <div class="col-xs-12 col-md-6"><a href="/" class="btn btn-green">Добавить компанию</a></div>
-                            <div class="col-xs-12 col-md-6"><a href="/" class="btn btn-orange">Добавить объявление</a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>

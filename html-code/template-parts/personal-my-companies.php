@@ -26,8 +26,8 @@
                                 Избранное
                             </a>
                         </li>
-                        <li><a href="#" class="active">Мои объявления</a></li>
-                        <li><a href="#">Мои компании</a></li>
+                        <li><a href="#">Мои объявления</a></li>
+                        <li><a href="#" class="active">Мои компании</a></li>
                         <li><a href="#">FAq</a></li>
                         <li>
                             <a href="#">
@@ -44,29 +44,29 @@
             </div>
             <div class="main-content">
                 <div class="title-box">
-                    <h1 class="page-title">Мои объявления</h1>
-                    <a href="/" class="btn btn-orange">Добавить объявление</a>
+                    <h1 class="page-title">Мои компании</h1>
+                    <a href="/" class="btn btn-green">Добавить компанию</a>
                 </div>
 
-                <div class="grid products-masonry my-products">
+                <div class="grid companies-masonry my-companies">
                     <div class="grid-sizer"></div>
                     <div class="gutter-sizer"></div>
-                    <div class="grid-item product-grid-item">
+                    <div class="grid-item company-grid-item">
                         <div class="box">
                             <div class="img">
-                                <img class="bg-img" src="/html-code/temporary-images/home/product1.png" alt="Priwoz product">
+                                <img class="bg-img" src="/html-code/temporary-images/home/company2.png" alt="Priwoz company">
+                                <img class="company-logo" src="/html-code/temporary-images/home/company-logo2.png" alt="Priwoz company logo">
                             </div>
                             <div class="text">
-                                <h2 class="product-title">Диски Original Renault Master III (2023) 5/130 R16 7J ET66 dia89.1 Диски Original Renault Master III (2023) 5/130 R16 7J</h2>
-                                <div class="location-date">
-                                    <div class="location">Варна</div>
-                                    <time datetime="2023-10-14" class="date">14 окт 2023</time>
+                                <h2 class="company-title">Pulse Bulgaria</h2>
+                                <div class="category-location">
+                                    <div class="category">Спорт</div>
+                                    <div class="location">София</div>
                                 </div>
-                                <div class="price">6700 BGN</div>
                             </div>
                             <div class="overlay">
                                 <div class="row overlay-inner">
-                                    <div class="col-xs-12 col-md-6">
+                                    <div class="col-xs-6">
                                         <a href="/" class="overlay-link">
                                             <div class="overlay-icon">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
@@ -77,7 +77,7 @@
                                             <div class="overlay-text">редактировать</div>
                                         </a>
                                     </div>
-                                    <div class="col-xs-12 col-md-6">
+                                    <div class="col-xs-6">
                                         <a href="/" class="overlay-link">
                                             <div class="overlay-icon">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
@@ -101,22 +101,22 @@
                             </div>
                         </div>
                     </div>
-                    <div class="grid-item product-grid-item">
+                    <div class="grid-item company-grid-item">
                         <div class="box">
                             <div class="img">
-                                <img class="bg-img" src="/html-code/temporary-images/home/product2.png" alt="Priwoz product">
+                                <img class="bg-img" src="/html-code/temporary-images/home/company5.png" alt="Priwoz company">
+                                <img class="company-logo" src="/html-code/temporary-images/home/company-logo3.png" alt="Priwoz company logo">
                             </div>
                             <div class="text">
-                                <h2 class="product-title">Диски Original Renault Master III (2023) 5/130 R16 7J ET66 dia89.1</h2>
-                                <div class="location-date">
-                                    <div class="location">Варна</div>
-                                    <time datetime="2023-10-14" class="date">14 окт 2023</time>
+                                <h2 class="company-title">BUS PRESTIGE</h2>
+                                <div class="category-location">
+                                    <div class="category">Пассажирские перевозки</div>
+                                    <div class="location">София</div>
                                 </div>
-                                <div class="price">6700 BGN</div>
                             </div>
                             <div class="overlay">
                                 <div class="row overlay-inner">
-                                    <div class="col-xs-12 col-md-6">
+                                    <div class="col-xs-6">
                                         <a href="/" class="overlay-link">
                                             <div class="overlay-icon">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
@@ -127,7 +127,7 @@
                                             <div class="overlay-text">редактировать</div>
                                         </a>
                                     </div>
-                                    <div class="col-xs-12 col-md-6">
+                                    <div class="col-xs-6">
                                         <a href="/" class="overlay-link">
                                             <div class="overlay-icon">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
@@ -151,22 +151,18 @@
                             </div>
                         </div>
                     </div>
-                    <div class="grid-item product-grid-item">
-                        <div class="box">
-                            <div class="img">
-                                <img class="bg-img" src="/html-code/temporary-images/home/product4.png" alt="Priwoz product">
-                            </div>
+                    <div class="grid-item company-grid-item">
+                        <div href="/" class="box">
                             <div class="text">
-                                <h2 class="product-title">Диски Original Renault Master III  </h2>
-                                <div class="location-date">
-                                    <div class="location">Варна</div>
-                                    <time datetime="2023-10-14" class="date">14 окт 2023</time>
+                                <h2 class="company-title">Сhartershop</h2>
+                                <div class="category-location">
+                                    <div class="category">Грузовые перевозки</div>
+                                    <div class="location">Варна + 10</div>
                                 </div>
-                                <div class="price">Договорная</div>
                             </div>
                             <div class="overlay">
                                 <div class="row overlay-inner">
-                                    <div class="col-xs-12 col-md-6">
+                                    <div class="col-xs-6">
                                         <a href="/" class="overlay-link">
                                             <div class="overlay-icon">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
@@ -177,54 +173,7 @@
                                             <div class="overlay-text">редактировать</div>
                                         </a>
                                     </div>
-                                    <div class="col-xs-12 col-md-6">
-                                        <a href="/" class="overlay-link">
-                                            <div class="overlay-icon">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
-                                                    <path d="M11 22L11 14" stroke="currentColor" stroke-linecap="round"/>
-                                                    <path d="M19 22L19 14" stroke="currentColor" stroke-linecap="round"/>
-                                                    <path d="M15 22L15 14" stroke="currentColor" stroke-linecap="round"/>
-                                                    <path d="M0.794189 7.5H29.206H27.6814C25.7958 7.5 24.853 7.5 24.2672 8.08579C23.6814 8.67157 23.6814 9.61438 23.6814 11.5V25.1667C23.6814 27.0523 23.6814 27.9951 23.0957 28.5809C22.5099 29.1667 21.5671 29.1667 19.6814 29.1667H10.3187C8.43308 29.1667 7.49027 29.1667 6.90449 28.5809C6.3187 27.9951 6.3187 27.0523 6.3187 25.1667V11.5C6.3187 9.61438 6.3187 8.67157 5.73291 8.08579C5.14713 7.5 4.20432 7.5 2.3187 7.5H0.794189Z" stroke="currentColor" stroke-linecap="round"/>
-                                                    <path d="M11.0551 2.50105C11.0551 2.50105 11.8443 0.833984 15.0012 0.833984C18.1581 0.833984 19 3.50098 19 3.50098" stroke="currentColor" stroke-linecap="round"/>
-                                                    <path d="M6 2L24.0586 4.50391" stroke="currentColor" stroke-linecap="round"/>
-                                                </svg>
-                                            </div>
-                                            <div class="overlay-text">удалить</div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="add-to-favourite">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-                                    <path d="M7.22704 3.7542C7.89956 2.0143 8.23581 1.14435 8.78212 1.02378C8.92577 0.992074 9.07423 0.992074 9.21788 1.02378C9.76419 1.14435 10.1004 2.0143 10.773 3.7542C11.1554 4.74364 11.3466 5.23837 11.7044 5.57486C11.8048 5.66924 11.9137 5.7533 12.0297 5.82585C12.4433 6.08452 12.9596 6.13251 13.9921 6.22847C15.74 6.39092 16.6139 6.47214 16.8808 6.98926C16.936 7.09636 16.9736 7.21232 16.9919 7.33231C17.0804 7.9117 16.438 8.51829 15.153 9.73148L14.7962 10.0684C14.1954 10.6356 13.8951 10.9192 13.7213 11.2731C13.6171 11.4854 13.5472 11.714 13.5145 11.9499C13.4599 12.343 13.5479 12.7544 13.7238 13.5772L13.7866 13.8712C14.1021 15.3468 14.2599 16.0846 14.0629 16.4473C13.8861 16.773 13.5603 16.9816 13.2004 16.9994C12.7997 17.0193 12.2352 16.5419 11.1061 15.5871C10.3622 14.958 9.99029 14.6435 9.5774 14.5206C9.20007 14.4084 8.79993 14.4084 8.4226 14.5206C8.00971 14.6435 7.63777 14.958 6.89389 15.5871C5.7648 16.5419 5.20026 17.0193 4.79961 16.9994C4.43972 16.9816 4.11393 16.773 3.93705 16.4473C3.74015 16.0846 3.89789 15.3468 4.21336 13.8712L4.27621 13.5772C4.45213 12.7544 4.54009 12.343 4.4855 11.9499C4.45276 11.714 4.38288 11.4854 4.27866 11.2731C4.10493 10.9192 3.80456 10.6356 3.20382 10.0684L2.847 9.73149C1.56205 8.5183 0.919574 7.9117 1.00805 7.33231C1.02638 7.21232 1.06396 7.09636 1.11923 6.98926C1.38611 6.47214 2.26005 6.39092 4.00792 6.22847C5.04044 6.13251 5.55671 6.08452 5.97026 5.82585C6.08626 5.7533 6.19521 5.66924 6.29557 5.57486C6.65337 5.23837 6.8446 4.74364 7.22704 3.7542Z" stroke="currentColor"/>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="grid-item product-grid-item">
-                        <div class="box">
-                            <div class="text">
-                                <h2 class="product-title">Срочно требуется грузчик, оплата ежедневная</h2>
-                                <div class="location-date">
-                                    <div class="location">Варна</div>
-                                    <time datetime="2023-10-14" class="date">14 окт 2023</time>
-                                </div>
-                                <div class="price">Договорная</div>
-                            </div>
-                            <div class="overlay">
-                                <div class="row overlay-inner">
-                                    <div class="col-xs-12 col-md-6">
-                                        <a href="/" class="overlay-link">
-                                            <div class="overlay-icon">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
-                                                    <path d="M3.91682 26.0832L3.49255 26.5075C3.73384 26.7487 4.03307 26.7502 4.1982 26.7341C4.34647 26.7196 4.52075 26.6759 4.67483 26.6373C4.68463 26.6348 4.69435 26.6324 4.70397 26.63L4.55845 26.0479L4.70397 26.63L10.8581 25.0914C10.8743 25.0874 10.8904 25.0834 10.9065 25.0794C11.1253 25.025 11.3356 24.9728 11.5271 24.8644C11.7185 24.756 11.8715 24.6025 12.0307 24.4429C12.0424 24.4311 12.0542 24.4194 12.066 24.4076L27.1351 9.33848L27.1619 9.31164C27.4722 9.00136 27.7465 8.72715 27.9378 8.47639C28.1452 8.20457 28.3108 7.89104 28.3108 7.5C28.3108 7.10896 28.1452 6.79543 27.9378 6.52361C27.7465 6.27285 27.4722 5.99864 27.1619 5.68835L27.1351 5.66152L24.3385 2.86495L24.3116 2.8381C24.0014 2.52778 23.7271 2.25352 23.4764 2.0622C23.2046 1.85481 22.891 1.68921 22.5 1.68921C22.109 1.68921 21.7954 1.85481 21.5236 2.0622C21.2729 2.25352 20.9986 2.52777 20.6884 2.8381L20.6615 2.86495L5.59887 17.9276L5.59245 17.934L5.59244 17.934C5.58063 17.9458 5.56885 17.9576 5.5571 17.9693C5.39748 18.1285 5.24404 18.2815 5.13564 18.4729C5.02725 18.6644 4.97499 18.8747 4.92062 19.0935C4.91662 19.1096 4.91261 19.1257 4.90856 19.1419L3.37003 25.296C3.36762 25.3057 3.36518 25.3154 3.36272 25.3252C3.32411 25.4793 3.28044 25.6535 3.26593 25.8018C3.24978 25.9669 3.25127 26.2662 3.49255 26.5074L3.91682 26.0832Z" stroke="currentColor" stroke-width="1.2"/>
-                                                    <path d="M19.6875 4.6875L27.1875 12.1875" stroke="currentColor" stroke-width="1.2"/>
-                                                </svg>
-                                            </div>
-                                            <div class="overlay-text">редактировать</div>
-                                        </a>
-                                    </div>
-                                    <div class="col-xs-12 col-md-6">
+                                    <div class="col-xs-6">
                                         <a href="/" class="overlay-link">
                                             <div class="overlay-icon">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">

@@ -5,7 +5,7 @@
             <div class="grid companies-masonry">
                 <div class="grid-sizer"></div>
                 <div class="gutter-sizer"></div>
-                <div class="grid-item">
+                <div class="grid-item company-grid-item">
                     <a href="/" class="box">
                         <div class="img">
                             <img class="bg-img" src="/html-code/temporary-images/home/company1.png" alt="Priwoz company">
@@ -26,7 +26,7 @@
                         </svg>
                     </a>
                 </div>
-                <div class="grid-item">
+                <div class="grid-item company-grid-item">
                     <a href="/" class="box">
                         <div class="img">
                             <img class="bg-img" src="/html-code/temporary-images/home/company2.png" alt="Priwoz company">
@@ -48,7 +48,7 @@
                     </a>
                 </div>
 
-                <div class="grid-item">
+                <div class="grid-item company-grid-item">
                     <a href="/" class="box -adv">
                         <div class="img">
                             <img class="bg-img" src="/html-code/temporary-images/home/advertisement-company.png" alt="Priwoz company advertisement">
@@ -61,7 +61,7 @@
                     </a>
                 </div>
 
-                <div class="grid-item">
+                <div class="grid-item company-grid-item">
                     <a href="/" class="box">
                         <div class="img">
                             <img class="bg-img" src="/html-code/temporary-images/home/company3.png" alt="Priwoz company">
@@ -82,7 +82,7 @@
                         </svg>
                     </a>
                 </div>
-                <div class="grid-item">
+                <div class="grid-item company-grid-item">
                     <a href="/" class="box">
                         <div class="text">
                             <h2 class="company-title">Сhartershop</h2>
@@ -99,7 +99,7 @@
                         </svg>
                     </a>
                 </div>
-                <div class="grid-item">
+                <div class="grid-item company-grid-item">
                     <a href="/" class="box">
                         <div class="img">
                             <img class="bg-img" src="/html-code/temporary-images/home/company3.png" alt="Priwoz company">
@@ -120,7 +120,7 @@
                         </svg>
                     </a>
                 </div>
-                <div class="grid-item">
+                <div class="grid-item company-grid-item">
                     <a href="/" class="box">
                         <div class="text">
                             <h2 class="company-title">Сhartershop</h2>
@@ -137,7 +137,7 @@
                         </svg>
                     </a>
                 </div>
-                <div class="grid-item">
+                <div class="grid-item company-grid-item">
                     <div class="box -video video-open-trigger" data-video="/html-code/temporary-images/home/video_example.mp4">
                         <div class="img">
                             <img class="bg-img" src="/html-code/temporary-images/home/company9.png" alt="Priwoz company">
@@ -149,7 +149,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="grid-item">
+                <div class="grid-item company-grid-item">
                     <a href="/" class="box">
                         <div class="img">
                             <img class="bg-img" src="/html-code/temporary-images/home/company5.png" alt="Priwoz company">
@@ -169,7 +169,7 @@
                         </svg>
                     </a>
                 </div>
-                <div class="grid-item">
+                <div class="grid-item company-grid-item">
                     <a href="/" class="box">
                         <div class="img">
                             <img class="bg-img" src="/html-code/temporary-images/home/company6.png" alt="Priwoz company">
@@ -190,7 +190,7 @@
                         </svg>
                     </a>
                 </div>
-                <div class="grid-item">
+                <div class="grid-item company-grid-item">
                     <a href="/" class="box">
                         <div class="img">
                             <img class="bg-img" src="/html-code/temporary-images/home/company8.png" alt="Priwoz company">
@@ -211,7 +211,7 @@
                         </svg>
                     </a>
                 </div>
-                <div class="grid-item">
+                <div class="grid-item company-grid-item">
                     <a href="/" class="box">
                         <div class="img">
                             <img class="bg-img" src="/html-code/temporary-images/home/company7.png" alt="Priwoz company">
@@ -233,7 +233,7 @@
                     </a>
                 </div>
 
-                <div class="grid-item">
+                <div class="grid-item company-grid-item">
                     <a href="/" class="box">
                         <div class="img">
                             <img class="bg-img" src="/html-code/temporary-images/home/company6.png" alt="Priwoz company">
@@ -254,7 +254,7 @@
                         </svg>
                     </a>
                 </div>
-                <div class="grid-item">
+                <div class="grid-item company-grid-item">
                     <a href="/" class="box">
                         <div class="img">
                             <img class="bg-img" src="/html-code/temporary-images/home/company7.png" alt="Priwoz company">
@@ -275,7 +275,7 @@
                         </svg>
                     </a>
                 </div>
-                <div class="grid-item">
+                <div class="grid-item company-grid-item">
                     <a href="/" class="box">
                         <div class="text">
                             <h2 class="company-title">Сhartershop</h2>
@@ -292,7 +292,7 @@
                         </svg>
                     </a>
                 </div>
-                <div class="grid-item">
+                <div class="grid-item company-grid-item">
                     <a href="/" class="box">
                         <div class="text">
                             <h2 class="company-title">Сhartershop</h2>
