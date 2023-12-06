@@ -1,0 +1,46 @@
+<?
+$aMenuLinks = Array(
+	Array(
+		"Доска объявлений", 
+		"/ads/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Сообщества", 
+		"/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"О проекте", 
+		"/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Сотрудничество", 
+		"/partnership/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Новости", 
+		"/news/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Блог", 
+		"/blog/", 
+		Array(), 
+		Array(), 
+		"" 
+	)
+);
+?>
