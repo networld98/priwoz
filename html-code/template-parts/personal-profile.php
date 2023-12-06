@@ -114,7 +114,7 @@
                                         <span class="input-icon -password"></span>
                                         <input type="password" class="form-control" id="passwordInput"
                                                placeholder="Введите пароль">
-                                        <span class="toggle-password-button"><i class="icon icon-eye" id="toggleConfirmPassword"></i></span>
+                                        <span class="toggle-password-button"><i class="icon icon-eye"></i></span>
                                     </label>
                                 </div>
                             </div>
@@ -124,7 +124,7 @@
                                         <span class="input-icon -password"></span>
                                         <input type="password" class="form-control" id="confirmPasswordInput"
                                                placeholder="Повторите пароль">
-                                        <span class="toggle-password-button"><i class="icon icon-eye" id="toggleConfirmPassword"></i></span>
+                                        <span class="toggle-password-button"><i class="icon icon-eye"></i></span>
                                     </label>
                                 </div>
                             </div>
