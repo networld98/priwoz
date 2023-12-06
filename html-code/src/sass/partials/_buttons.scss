@@ -13,6 +13,8 @@
   border-radius: 20px;
   text-transform: uppercase;
   font-family: $roboto-condensed-font;
+  box-shadow: none;
+
   @include media-breakpoint-down(xxl) {
     padding: 6px 31px;
   }
@@ -38,24 +40,30 @@
   &.btn-green {
     background: $color-green-2;
     color: #fff;
+    border: 1px solid $color-green-2;
     &:hover {
       background: $color-green-1;
+      border-color: $color-green-1;
     }
   }
 
   &.btn-orange {
     background: $color-yellow-2;
     color: #fff;
+    border: 1px solid $color-yellow-2;
     &:hover {
       background: $color-yellow-1;
+      border-color: $color-yellow-1;
     }
   }
 
   &.btn-gray {
     background: $color-gray-2;
     color: #fff;
+    border: 1px solid $color-gray-2;
     &:hover {
       background: $color-gray-1;
+      border-color: $color-gray-1;
     }
   }
 

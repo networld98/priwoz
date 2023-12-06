@@ -561,5 +561,11 @@
     }
   }
 
-
+  .profile-form {
+    padding-top: 15px;
+    padding-left: 100px;
+    @include media-breakpoint-down(xl) {
+      padding-left: 0;
+    }
+  }
 }

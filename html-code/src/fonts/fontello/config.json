@@ -9,7 +9,7 @@
     {
       "uid": "02743ee10c8dbb67082272f3b366a77f",
       "css": "complaint",
-      "code": 59392,
+      "code": 59801,
       "src": "custom_icons",
       "selected": true,
       "svg": {
@@ -19,6 +19,18 @@
       "search": [
         "complaint"
       ]
+    },
+    {
+      "uid": "c5fd349cbd3d23e4ade333789c29c729",
+      "css": "eye",
+      "code": 59392,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "7fd683b2c518ceb9e5fa6757f2276faa",
+      "css": "eye-off",
+      "code": 59393,
+      "src": "fontawesome"
     }
   ]
 }
