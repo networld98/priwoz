@@ -1,7 +1,8 @@
 <?
 $aMenuLinks = array(
+
     array(
-        "Профиль",
+        if $GLOBALS['USER']->IsAuthorized() ? "Профиль": "Войти",
         "/personal/",
         array(),
         array(),
@@ -19,28 +20,28 @@ $aMenuLinks = array(
         "/personal/announcement/",
         array(),
         array(),
-        ""
+        "\$GLOBALS['USER']->IsAuthorized()"
     ),
     array(
         "Добавить компанию",
         "/personal/company/",
         array(),
         array(),
-        ""
+        "\$GLOBALS['USER']->IsAuthorized()"
     ),
     array(
         "Мои обьявления",
         "/personal/ads-list/",
         array(),
         array(),
-        ""
+        "\$GLOBALS['USER']->IsAuthorized()"
     ),
     array(
         "Выход",
         "/?logout=yes",
         array(),
         array(),
-        ""
+        "\$GLOBALS['USER']->IsAuthorized()"
     )
 );
 ?>

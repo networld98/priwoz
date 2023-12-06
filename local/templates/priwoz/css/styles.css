@@ -1,10 +1,33 @@
 .fa-star-custom-o:before {
-    content: url('../images/icons/star.svg');
-    font-size: 21px;
+    display: flex;
+    background: url(../images/icons/star.svg);
+    content: "";
+    width: 21px;
+    height: 21px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.fa-star-custom-o:hover:before {
+    background: url(../images/icons/star-hover.svg);
+    background-position: center;
+    background-repeat: no-repeat;
 }
 .fa-star-custom:before {
-    content: url('../images/icons/star-selected.svg');
-    font-size: 21px;
+    display: flex;
+    background: url(../images/icons/star-selected.svg);
+    content: "";
+    width: 21px;
+    height: 21px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.product-info .fa-star-custom-o:before, .product-info .fa-star-custom:before  {
+    width: 32px;
+    height: 32px;
+    background-size: contain;
+}
+.site-header .link-icon a.selected {
+    color: #FB7437;
 }
 .inputfile {
     width: 0.1px;

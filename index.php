@@ -4,61 +4,6 @@ $APPLICATION->SetPageProperty("keywords", "priwoz.info");
 $APPLICATION->SetPageProperty("description", "priwoz.info");
 $APPLICATION->SetTitle("priwoz.info");
 ?>
-    <section class="filter-section d-xs-none d-xl-block">
-        <div class="container">
-            <div class="row align-items-md-center">
-                <div class="col-xl-8">
-                    <div class="search-box">
-                        <? $APPLICATION->IncludeComponent(
-                            "networld:catalog.smart.filter",
-                            "header_filter",
-                            array(
-                                "CACHE_GROUPS" => "Y",
-                                "CACHE_TIME" => "36000000",
-                                "CACHE_TYPE" => "N",
-                                "COMPONENT_TEMPLATE" => "header_filter",
-                                "CONVERT_CURRENCY" => "N",
-                                "DISPLAY_ELEMENT_COUNT" => "N",
-                                "FILTER_NAME" => "smartPreFilter",
-                                "FILTER_VIEW_MODE" => "vertical",
-                                "HIDE_NOT_AVAILABLE" => "N",
-                                "IBLOCK_TYPE" => "ads",
-                                "IBLOCK_ID" => "19",
-                                "PAGER_PARAMS_NAME" => "arrPager",
-                                "SAVE_IN_SESSION" => "N",
-                                "SECTION_CODE" => "search",
-                                "SECTION_DESCRIPTION" => "-",
-                                "SECTION_ID" => "",
-                                "SECTION_TITLE" => "-",
-                                "SEF_MODE" => "N",
-                                "TEMPLATE_THEME" => "blue",
-                                "XML_EXPORT" => "N",
-                                "POPUP_POSITION" => "left",
-                                "NOT_FILTER" => "N",
-                                "SEF_RULE" => "#SMART_FILTER_PATH#",
-                                "SECTION_CODE_PATH" => "",
-                                "SMART_FILTER_PATH" => $_REQUEST["SMART_FILTER_PATH"],
-                                "PRICE_CODE" => array(
-                                ),
-                            ),
-                            false
-                        );
-                        ?>
-                       
-                    </div>
-                </div>
-                <div class="col-xl-4">
-                    <div class="buttons-wrap">
-                        <div class="row">
-                            <div class="col-xs-12 col-md-6"><a href="/personal" class="btn btn-green">Добавить компанию</a></div>
-                            <div class="col-xs-12 col-md-6"><a href="/personal/announcement/" class="btn btn-orange">Добавить объявление</a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section class="products-section">
         <div class="container">
             <div class="advertisement advertisement-type-1">

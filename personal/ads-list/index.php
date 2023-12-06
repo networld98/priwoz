@@ -2,7 +2,7 @@
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetTitle("Настройки пользователя");
 ?>
-    <div class="container">
+<div class="container">
     <div class="row">
         <div class="col-md-3">
             <? $APPLICATION->IncludeComponent(
@@ -30,8 +30,7 @@ $APPLICATION->SetTitle("Настройки пользователя");
                         <div class="gutter-sizer"></div>
                         <?
                         global $arrFilter;
-                        $arrFilter = array("PROPERTY_AUTHOR" => $USER->GetID());
-                        echo $USER->GetID();?>
+                        $arrFilter = array("PROPERTY_AUTHOR" => $USER->GetID()); ?>
                         <? $APPLICATION->IncludeComponent(
                             "bitrix:news.list",
                             "favorite",
@@ -195,4 +194,5 @@ $APPLICATION->SetTitle("Настройки пользователя");
             </section>
         </div>
     </div>
+</div>
 <? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>

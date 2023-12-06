@@ -8,8 +8,11 @@ CJSCore::Init(array('jquery3'));
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <?
     $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH . "/css/reset.css");
+    $APPLICATION->SetAdditionalCSS("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Roboto+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
     $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH . "/css/main.css");
     $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH . "/css/styles.css");
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH . '/js/bundle.js');
@@ -95,18 +98,8 @@ CJSCore::Init(array('jquery3'));
                 </div>
                 <div class="d-xs-none d-md-block col-md-1">
                     <?php \Bitrix\Main\UI\Extension::load('neti_favorite.neti_lib'); ?>
-                    <?/*$APPLICATION->IncludeComponent(
-                        "neti:favorite.icon",
-                        ".default",
-                        array(
-                            "COMPONENT_TEMPLATE" => ".default",
-                            "LINK" => "/persona/favorite/",
-                        ),
-                        false
-                    );*/?>
-
                     <div class="link-icon">
-                        <a href="/personal/favorite/">
+                        <a <?if($_COOKIE['BITRIX_SM_Favorites']){?>class="selected"<?}?> href="/personal/favorite/">
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22"
                                  fill="none">
                                 <path d="M8.7838 4.44275C9.62445 2.26787 10.0448 1.18044 10.7277 1.02972C10.9072 0.990093 11.0928 0.990093 11.2723 1.02972C11.9552 1.18044 12.3756 2.26787 13.2162 4.44275C13.6943 5.67955 13.9333 6.29796 14.3805 6.71857C14.506 6.83655 14.6422 6.94162 14.7872 7.03231C15.3041 7.35566 15.9494 7.41563 17.2401 7.53559C19.4249 7.73865 20.5174 7.84018 20.851 8.48658C20.9201 8.62045 20.967 8.7654 20.9899 8.91539C21.1005 9.63962 20.2974 10.3979 18.6913 11.9144L18.2452 12.3355C17.4943 13.0445 17.1188 13.399 16.9017 13.8414C16.7714 14.1067 16.684 14.3925 16.6431 14.6873C16.5749 15.1788 16.6848 15.693 16.9047 16.7215L16.9833 17.089C17.3776 18.9335 17.5748 19.8558 17.3287 20.3091C17.1076 20.7163 16.7004 20.977 16.2505 20.9993C15.7497 21.0241 15.044 20.4273 13.6326 19.2339C12.7028 18.4475 12.2379 18.0544 11.7217 17.9008C11.2501 17.7605 10.7499 17.7605 10.2783 17.9008C9.76213 18.0544 9.29721 18.4475 8.36736 19.2339C6.95601 20.4273 6.25033 21.0241 5.74951 20.9993C5.29965 20.977 4.89241 20.7163 4.67132 20.3091C4.42519 19.8558 4.62236 18.9335 5.0167 17.089L5.09527 16.7215C5.31516 15.693 5.42511 15.1788 5.35688 14.6873C5.31595 14.3925 5.2286 14.1067 5.09833 13.8414C4.88116 13.399 4.5057 13.0445 3.75478 12.3355L3.30875 11.9144C1.70256 10.3979 0.899467 9.63962 1.01007 8.91539C1.03297 8.7654 1.07995 8.62045 1.14904 8.48658C1.48264 7.84018 2.57506 7.73865 4.75991 7.53559C6.05056 7.41563 6.69588 7.35566 7.21283 7.03231C7.35783 6.94162 7.49401 6.83655 7.61946 6.71857C8.06672 6.29796 8.30575 5.67955 8.7838 4.44275Z"
@@ -270,15 +263,59 @@ CJSCore::Init(array('jquery3'));
             </div>
         </div>
     </div>
+    <section class="filter-section d-xs-none d-xl-block">
+        <div class="container">
+            <div class="row align-items-md-center">
+                <div class="col-xl-8">
+                    <div class="search-box">
+                        <? $APPLICATION->IncludeComponent(
+	"networld:catalog.smart.filter", 
+	"header_filter", 
+	array(
+        "INSTANT_RELOAD" => "Y",
+        "IBLOCK_TYPE" => "ads",
+        "IBLOCK_ID" => "19",
+        "FILTER_NAME" => "smartPreFilter",
+        "PROPERTY_CODE" => array(
+            1 => "CATEGORY",
+            2 => "SUBCATEGORY",
+            3 => "PRICE",
+            4 => "CONDITION",
+
+        ),
+        "CACHE_TIME" => "36000000",
+        "CACHE_TYPE" => "N",
+        "CACHE_GROUPS" => "Y",
+	),
+	false
+);
+                        ?>
+
+                    </div>
+                </div>
+                <div class="col-xl-4">
+                    <div class="buttons-wrap">
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6"><a href="/personal" class="btn btn-green">Добавить компанию</a></div>
+                            <div class="col-xs-12 col-md-6"><a href="/personal/announcement/" class="btn btn-orange">Добавить объявление</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 <?if($APPLICATION->GetCurPage() != "/"):?>
-    <div class="container">
-        <?$APPLICATION->IncludeComponent("bitrix:breadcrumb","",Array(
-                "START_FROM" => "0",
-                "PATH" => "",
-                "SITE_ID" => "s1"
-            )
-        );?>
-    </div>
+    <section class="breadcrumbs-section">
+        <div class="container">
+            <?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "custom", Array(
+                "START_FROM" => "0",	// Номер пункта, начиная с которого будет построена навигационная цепочка
+                "PATH" => "",	// Путь, для которого будет построена навигационная цепочка (по умолчанию, текущий путь)
+                "SITE_ID" => "s1",	// Cайт (устанавливается в случае многосайтовой версии, когда DOCUMENT_ROOT у сайтов разный)
+            ),
+                false
+            );?>
+        </div>
+    </section>
 <?endif;?>
 
 

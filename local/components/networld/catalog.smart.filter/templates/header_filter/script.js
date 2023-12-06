@@ -1,6 +1,14 @@
 function JCSmartFilter(ajaxURL, viewMode)
 {
 	this.ajaxURL = ajaxURL;
+	let SearchParam = $('#title-search-input').val();
+	let searchData = $('#modef').find('a').attr('href');
+	urlPath = searchData.split('?');
+	urlPath2 = urlPath[1].split('&');
+	urlPath2[0] = "q="+SearchParam;
+	urlPathNew = urlPath2.join('&');
+	finalUrl = "/search/?"+ urlPathNew;
+	$('#modef').find('a').attr('href',finalUrl);
 	this.form = null;
 	this.timer = null;
 	this.cacheKey = '';
@@ -110,6 +118,7 @@ JCSmartFilter.prototype.updateItem = function (PID, arItem)
 					var label = document.querySelector('[data-role="label_'+value.CONTROL_ID+'"]');
 					if (value.DISABLED)
 					{
+						$('.bx_filter_parameters_box.active.delay').removeClass('delay');
 						if (label)
 							BX.addClass(label, 'disabled');
 						else
@@ -117,6 +126,7 @@ JCSmartFilter.prototype.updateItem = function (PID, arItem)
 					}
 					else
 					{
+						$('.bx_filter_parameters_box.active.delay').removeClass('delay');
 						if (label)
 							BX.removeClass(label, 'disabled');
 						else
@@ -137,8 +147,16 @@ JCSmartFilter.prototype.updateItem = function (PID, arItem)
 
 JCSmartFilter.prototype.postHandler = function (result, fromCache)
 {
+
+	if (/\/\/[^\/]+\/search\//.test(window.location.href)) {
+		UrlPath = '';
+	}else{
+		UrlPath = '/search';
+	}
+
 	var hrefFILTER, url, curProp;
 	var modef = BX('modef');
+	var modez = BX('modez');
 	var modef_num = BX('modef_num');
 
 	if (!!result && !!result.ITEMS)
@@ -154,14 +172,62 @@ JCSmartFilter.prototype.postHandler = function (result, fromCache)
 		if (!!modef && !!modef_num)
 		{
 			modef_num.innerHTML = result.ELEMENT_COUNT;
+			hrefFILTER = UrlPath+BX.findChildren(modef, {tag: 'A'}, true);
+
+			if (result.FILTER_URL && hrefFILTER)
+			{
+				hrefFILTER[0].href = UrlPath+BX.util.htmlspecialcharsback(result.FILTER_URL);
+			}
+			console.log('ad222');
+			if (result.FILTER_AJAX_URL && result.COMPONENT_CONTAINER_ID)
+			{
+				BX.bind(hrefFILTER[0], 'click', function(e)
+				{
+					сonsole.log(BX.util.htmlspecialcharsback(result.FILTER_URL));
+					// url = BX.util.htmlspecialcharsback(result.FILTER_AJAX_URL);
+					// BX.ajax.insertToNode(url, result.COMPONENT_CONTAINER_ID);
+					// return BX.PreventDefault(e);
+				});
+				console.log('ad6');
+			}
+
+			if (result.INSTANT_RELOAD && result.COMPONENT_CONTAINER_ID)
+			{
+				url = UrlPath+BX.util.htmlspecialcharsback(result.FILTER_AJAX_URL);
+				BX.ajax.insertToNode(url, result.COMPONENT_CONTAINER_ID);
+				console.log('ad8');
+			}
+			else
+			{
+				if (modef.style.display === 'none')
+				{
+					modef.style.display = 'inline-block';
+				}
+				if (this.viewMode == "vertical")
+				{
+					curProp = BX.findChild(BX.findParent(this.curFilterinput, {'class':'bx_filter_parameters_box'}), {'class':'bx_filter_container_modef'}, true, false);
+					curProp.appendChild(modef);
+				}
+				console.log('ad7');
+			}
+		}
+		if (!!modez)
+		{
 			hrefFILTER = BX.findChildren(modef, {tag: 'A'}, true);
 
 			if (result.FILTER_URL && hrefFILTER)
 			{
-				hrefFILTER[0].href = BX.util.htmlspecialcharsback(result.FILTER_URL);
-				window.location.replace(hrefFILTER[0].href);
+				hrefFILTER[0].href = UrlPath+BX.util.htmlspecialcharsback(result.FILTER_URL);
+				let SearchParam = $('#title-search-input').val();
+				let searchData = $('#modef').find('a').attr('href');
+				urlPath = searchData.split('?');
+				urlPath2 = urlPath[1].split('&');
+				urlPath2[0] = "q="+SearchParam;
+				urlPathNew = urlPath2.join('&');
+				finalUrl = "/search/?"+ urlPathNew + '&set_filter=y';
+				$('#modef').find('a').attr('href',finalUrl);
+
 			}
-			window.location.replace(hrefFILTER[0].href);
 
 			if (result.FILTER_AJAX_URL && result.COMPONENT_CONTAINER_ID)
 			{
@@ -171,12 +237,14 @@ JCSmartFilter.prototype.postHandler = function (result, fromCache)
 					BX.ajax.insertToNode(url, result.COMPONENT_CONTAINER_ID);
 					return BX.PreventDefault(e);
 				});
+				console.log('ad4');
 			}
 
 			if (result.INSTANT_RELOAD && result.COMPONENT_CONTAINER_ID)
 			{
 				url = BX.util.htmlspecialcharsback(result.FILTER_AJAX_URL);
 				BX.ajax.insertToNode(url, result.COMPONENT_CONTAINER_ID);
+				console.log('ads3');
 			}
 			else
 			{
@@ -187,24 +255,31 @@ JCSmartFilter.prototype.postHandler = function (result, fromCache)
 				$.get(
 					BX.util.htmlspecialcharsback(result.FILTER_AJAX_URL),
 					function (data) {
-						$('.bx-newslist').html($(data).find('.bx-newslist').html());
+						$('.products-wrap').html($(data).find('.products-wrap').html());
 					}
 				);
 				if (this.viewMode == "vertical")
 				{
 					curProp = BX.findChild(BX.findParent(this.curFilterinput, {'class':'bx_filter_parameters_box'}), {'class':'bx_filter_container_modef'}, true, false);
-					curProp.appendChild(modef);
+					curProp.appendChild(modez);
 				}
 			}
 		}
-
 	}
 
 	if (!fromCache && this.cacheKey !== '')
 	{
 		this.cache[this.cacheKey] = result;
 	}
-	this.cacheKey = '';
+	this.cacheKey = ''
+
+	console.log(result.FILTER_AJAX_URL.data());
+	$.get(
+		BX.util.htmlspecialcharsback(result.FILTER_AJAX_URL),
+		function (data) {
+			$('.products-wrap').html($('data').find('.products-wrap').html());
+		}
+	);
 };
 
 JCSmartFilter.prototype.gatherInputsValues = function (values, elements)
@@ -222,7 +297,6 @@ JCSmartFilter.prototype.gatherInputsValues = function (values, elements)
 				case 'text':
 				case 'textarea':
 				case 'password':
-				case 'number':
 				case 'hidden':
 				case 'select-one':
 					if(el.value.length)
@@ -573,7 +647,7 @@ BX.Iblock.SmartFilter = (function()
 			this.maxInput.value = newMaxPrice;
 		else
 			this.maxInput.value = "";
-		smartFilter.keyup(this.maxInput);
+		т.keyup(this.maxInput);
 	};
 
 	SmartFilter.prototype.onInputChange = function ()

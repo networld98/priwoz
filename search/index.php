@@ -8,13 +8,13 @@ $APPLICATION->SetTitle("Обьявление");
     <div class="row">
         <div class="col-md-12">
             <?$APPLICATION->IncludeComponent(
-                "bitrix:catalog.smart.filter",
-                "visual_horizontal",
+                "networld:catalog.smart.filter",
+                "ads_filter",
                 array(
                     "CACHE_GROUPS" => "Y",
                     "CACHE_TIME" => "36000000",
                     "CACHE_TYPE" => "A",
-                    "COMPONENT_TEMPLATE" => "visual_horizontal",
+                    "COMPONENT_TEMPLATE" => "ads_filter",
                     "CONVERT_CURRENCY" => "N",
                     "DISPLAY_ELEMENT_COUNT" => "N",
                     "FILTER_NAME" => "arrFilter",
