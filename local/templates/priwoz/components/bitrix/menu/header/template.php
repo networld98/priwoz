@@ -12,5 +12,4 @@ foreach($arResult as $arItem):
 	<?endif?>
 
 <?endforeach?>
-</ul>
 <?endif?>

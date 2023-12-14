@@ -32,7 +32,7 @@ $this->addExternalCss($this->GetFolder() . '/themes/' . $arParams['TEMPLATE_THEM
             $i++;
             if ($i == 3 || $i == 12 || $i == 18) {
                 ?>
-                <div class="grid-item">
+                <div class="grid-item company-grid-item">
                     <? $APPLICATION->IncludeComponent(
                         "bitrix:advertising.banner",
                         "",
@@ -68,7 +68,7 @@ $this->addExternalCss($this->GetFolder() . '/themes/' . $arParams['TEMPLATE_THEM
                         $picture = CFile::ResizeImageGet($arFields["PREVIEW_PICTURE"], array('width' => 400), BX_RESIZE_IMAGE_PROPORTIONAL, true);
                         $videoArray[] = $arFields["PROPERTY_YOUTUBE_IN_MAIN_VALUE"];
                         ?>
-                    <div class="grid-item">
+                    <div class="grid-item company-grid-item">
                         <div class="box -video video-open-trigger" data-video="/images/home/video_example.mp4">
                             <div class="img">
                                 <img class="bg-img" src="<?=$picture['src']?>" alt="<?=$arFields["NAME"]?>">
@@ -91,7 +91,7 @@ $this->addExternalCss($this->GetFolder() . '/themes/' . $arParams['TEMPLATE_THEM
             $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
             ?>
 
-            <div class="grid-item" id="<?= $this->GetEditAreaId($arItem['ID']); ?>">
+            <div class="grid-item company-grid-item" id="<?= $this->GetEditAreaId($arItem['ID']); ?>">
                 <a href="<?= $arItem["DETAIL_PAGE_URL"] ?>"" class="box">
                 <div class="img">
                     <?

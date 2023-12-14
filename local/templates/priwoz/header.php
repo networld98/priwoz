@@ -1,6 +1,8 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 IncludeTemplateLangFile(__FILE__);
 CJSCore::Init(array('jquery3'));
+$curPagePath = $APPLICATION->GetCurDir();
+$curPagePath = explode("/", $curPagePath);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -263,32 +265,33 @@ CJSCore::Init(array('jquery3'));
             </div>
         </div>
     </div>
+<? if($curPagePath[1] !== "personal"):?>
     <section class="filter-section d-xs-none d-xl-block">
         <div class="container">
             <div class="row align-items-md-center">
                 <div class="col-xl-8">
                     <div class="search-box">
                         <? $APPLICATION->IncludeComponent(
-	"networld:catalog.smart.filter", 
-	"header_filter", 
-	array(
-        "INSTANT_RELOAD" => "Y",
-        "IBLOCK_TYPE" => "ads",
-        "IBLOCK_ID" => "19",
-        "FILTER_NAME" => "smartPreFilter",
-        "PROPERTY_CODE" => array(
-            1 => "CATEGORY",
-            2 => "SUBCATEGORY",
-            3 => "PRICE",
-            4 => "CONDITION",
+                            "networld:catalog.smart.filter",
+                            "header_filter",
+                            array(
+                                "INSTANT_RELOAD" => "Y",
+                                "IBLOCK_TYPE" => "ads",
+                                "IBLOCK_ID" => "19",
+                                "FILTER_NAME" => "smartPreFilter",
+                                "PROPERTY_CODE" => array(
+                                    1 => "CATEGORY",
+                                    2 => "SUBCATEGORY",
+                                    3 => "PRICE",
+                                    4 => "CONDITION",
 
-        ),
-        "CACHE_TIME" => "36000000",
-        "CACHE_TYPE" => "N",
-        "CACHE_GROUPS" => "Y",
-	),
-	false
-);
+                                ),
+                                "CACHE_TIME" => "36000000",
+                                "CACHE_TYPE" => "N",
+                                "CACHE_GROUPS" => "Y",
+                            ),
+                            false
+                        );
                         ?>
 
                     </div>
@@ -304,7 +307,8 @@ CJSCore::Init(array('jquery3'));
             </div>
         </div>
     </section>
-<?if($APPLICATION->GetCurPage() != "/"):?>
+<?endif;?>
+<? if($APPLICATION->GetCurPage() != "/" && $curPagePath[1] !== "personal"):?>
     <section class="breadcrumbs-section">
         <div class="container">
             <?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "custom", Array(
