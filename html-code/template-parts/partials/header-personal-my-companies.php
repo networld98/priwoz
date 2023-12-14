@@ -601,12 +601,12 @@
                     <div class="row align-items-xs-center">
                         <div class="col-xs-12 col-md-6">
                             <label class="form-label">
-                                <input type="text" class="form-control -search" placeholder="Шо найти на Priwoze">
+                                <input type="text" class="form-control form-control-filter -search" placeholder="Шо найти на Priwoze">
                             </label>
                         </div>
                         <div class="col-xs-12 col-md-4">
                             <label class="form-label">
-                                <input type="text" class="form-control -location" placeholder="Болгария, область">
+                                <input type="text" class="form-control form-control-filter -location" placeholder="Болгария, область">
                             </label>
                         </div>
                         <div class="col-xs-12 col-md-2 btn-box">
