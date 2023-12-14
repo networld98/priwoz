@@ -207,6 +207,7 @@ textarea.form-control {
             filter: grayscale(0) opacity(100%);
           }
         }
+
         &:after {
           opacity: 1;
         }
@@ -238,14 +239,17 @@ textarea.form-control {
     padding-top: 8px;
     column-gap: 9px;
   }
+
   .upload-item-box {
     display: inline-flex;
   }
+
   .upload-file-custom {
     margin-bottom: 0;
     @include media-breakpoint-down(xl) {
       margin-bottom: 2px;
     }
+
     .upload-image {
       margin: 0;
     }
@@ -281,6 +285,7 @@ form {
 
   .form-label {
     margin-bottom: 0;
+
     &.-with-icon {
       position: relative;
 
@@ -415,9 +420,36 @@ form {
   }
 }
 
+.form-select.-with-icon.-name {
+  & + .select2 {
+    &.select2-container {
+      .select2-selection--single {
+        .select2-selection__rendered {
+          padding-left: 72px;
+          position: relative;
+          &:before {
+            content: '';
+            position: absolute;
+            width: 52px;
+            border-radius: 5px;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            background: $color-lightgray-3 url('../../../images/icons/profile-form/name.svg') no-repeat 50% 50%/ auto 30px;
+            @include media-breakpoint-down(xl) {
+              width: 45px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 .select2 {
   &.select2-container {
     width: 100% !important;
+
     .select2-selection--single {
       box-shadow: none !important;
       outline: none;
@@ -436,6 +468,7 @@ form {
         line-height: 120%;
         height: 44px;
       }
+
       .select2-selection__rendered {
         padding: 7px 50px 7px 16px;
         height: 100%;
@@ -447,6 +480,7 @@ form {
           padding: 7px 42px 7px 14px;
         }
       }
+
       .select2-selection__arrow {
         width: 50px;
         height: 100%;
@@ -455,9 +489,11 @@ form {
         @include media-breakpoint-down(xl) {
           width: 42px;
         }
+
         b {
           display: none;
         }
+
         &:before {
           content: '';
           position: absolute;
@@ -471,6 +507,7 @@ form {
         }
       }
     }
+
     &.select2-container--open {
       .select2-selection--single {
         .select2-selection__arrow {
@@ -491,23 +528,30 @@ form {
     background: #FFF;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
     padding-bottom: 13px;
+    @include media-breakpoint-down(xl) {
+      padding-bottom: 5px;
+    }
+
     &.select2-dropdown--above {
       border-bottom: none;
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
       box-shadow: 0 -4px 4px 0 rgba(0, 0, 0, 0.25);
     }
+
     &.select2-dropdown--below {
       border-top: none;
       border-top-left-radius: 0;
       border-top-right-radius: 0;
     }
   }
+
   .select2-search--dropdown {
     .select2-search__field {
       outline: none !important;
     }
   }
+
   .select2-results__option {
     color: #000;
     font-family: $roboto-condensed-font;
@@ -516,11 +560,18 @@ form {
     font-weight: 300;
     line-height: 150%;
     padding: 7px 16px;
+    @include media-breakpoint-down(xl) {
+      font-size: 16px;
+      line-height: 120%;
+      padding: 7px 14px;
+    }
   }
+
   .select2-results__option--selected {
     background: #5DBE28;
     color: #000;
   }
+
   .select2-results__option--highlighted.select2-results__option--selectable {
     background: #5DBE28;
     color: #000;
@@ -546,11 +597,13 @@ form {
     line-height: 160%;
     margin-top: 18px;
   }
+
   a {
     color: rgba(0, 0, 0, 0.75);
     text-decoration: underline;
     text-decoration-thickness: 1px;
     text-underline-offset: 2px;
+
     &:hover {
       text-decoration: none;
     }

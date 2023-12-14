@@ -1,3 +1,6 @@
 $(document).ready(function() {
-    $('.form-select').select2();
+    $('.form-select:not(.-with-icon)').select2();
+    $('.form-select.-with-icon').select2({
+        minimumResultsForSearch: -1
+    });
 });

@@ -49,8 +49,10 @@
       & + .hint {
         padding-left: 34px;
         padding-top: 16px;
-        @include media-breakpoint-down(xl) {
+        @include media-breakpoint-down(xxl) {
           padding-left: 0;
+        }
+        @include media-breakpoint-down(xl) {
           padding-top: 6px;
         }
       }
