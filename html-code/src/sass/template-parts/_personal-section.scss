@@ -567,5 +567,9 @@
     @include media-breakpoint-down(xl) {
       padding-left: 0;
     }
+
+    .btn {
+      margin-top: 20px;
+    }
   }
 }

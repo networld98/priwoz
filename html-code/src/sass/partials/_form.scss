@@ -4,52 +4,125 @@
   outline: none;
 }
 
-.form-control {
+.form-group {
+  &.row {
+    h2 {
+      padding-top: 13px;
+      margin-bottom: 0;
+      @include media-breakpoint-down(xl) {
+        padding-top: 0;
+        margin-bottom: 14px;
+      }
+    }
+  }
+}
+
+.form-select-box {
+  & + & {
+    margin-top: 20px;
+    @include media-breakpoint-down(xl) {
+      margin-top: 10px;
+    }
+  }
+}
+
+.form-select {
   box-shadow: none !important;
   outline: none;
-  border: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.50);
-  border-radius: 0;
   width: 100%;
-  color: rgba(0, 0, 0, 0.75);
-  font-family: $roboto-condensed-font;
   font-size: 20px;
   font-style: normal;
   font-weight: 300;
   line-height: 140%;
-  padding: 0;
-  background: none;
-  letter-spacing: -0.01em;
+  height: 50px;
+  border-radius: 5px;
+  border: 1px solid $color-lightgray-1;
+  background: #FFF;
+  padding: 5px 20px;
+  color: rgba(0, 0, 0, 0.50);
   @include media-breakpoint-down(xl) {
     font-size: 16px;
+    line-height: 120%;
+    height: 44px;
+    padding: 5px 14px;
+  }
+}
+
+.form-control {
+  box-shadow: none !important;
+  outline: none;
+  width: 100%;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 140%;
+  height: 50px;
+  border-radius: 5px;
+  border: 1px solid $color-lightgray-1;
+  background: #FFF;
+  padding: 5px 20px;
+  color: #000;
+  letter-spacing: -0.012em;
+  @include media-breakpoint-down(xl) {
+    font-size: 16px;
+    line-height: 120%;
+    height: 44px;
+    padding: 5px 14px;
   }
 
   &::placeholder {
-    color: rgba(0, 0, 0, 0.50);
+    color: rgba(0, 0, 0, 0.35);
   }
 
-  &:focus {
-    background-color: transparent;
-    border-bottom-color: rgba(0, 0, 0, 0.50);
-  }
-
-  &.-search {
-    padding-left: 30px;
-    background: url('../../../images/icons/search.svg') no-repeat 0 50% / auto 19px;
+  &.form-control-filter {
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.50);
+    border-radius: 0;
+    color: rgba(0, 0, 0, 0.75);
+    font-family: $roboto-condensed-font;
+    padding: 0;
+    height: auto;
+    background: none;
+    letter-spacing: -0.01em;
     @include media-breakpoint-down(xl) {
-      padding-left: 22px;
-      background-size: auto 15px;
+      font-size: 16px;
+    }
+
+    &::placeholder {
+      color: rgba(0, 0, 0, 0.50);
+    }
+
+    &:focus {
+      background-color: transparent;
+      border-bottom-color: rgba(0, 0, 0, 0.50);
+    }
+
+    &.-search {
+      padding-left: 30px;
+      background: url('../../../images/icons/search.svg') no-repeat 0 50% / auto 19px;
+      @include media-breakpoint-down(xl) {
+        padding-left: 22px;
+        background-size: auto 15px;
+      }
+    }
+
+    &.-location {
+      padding-left: 25px;
+      background: url('../../../images/icons/location.svg') no-repeat 0 50% / auto 21px;
+      @include media-breakpoint-down(xl) {
+        padding-left: 17px;
+        background-size: auto 15px;
+      }
     }
   }
+}
 
-  &.-location {
-    padding-left: 25px;
-    background: url('../../../images/icons/location.svg') no-repeat 0 50% / auto 21px;
-    @include media-breakpoint-down(xl) {
-      padding-left: 17px;
-      background-size: auto 15px;
-    }
-  }
+textarea.form-control {
+  height: auto;
+  min-height: 224px;
+  min-width: 100%;
+  max-width: 100%;
+  padding-top: 11px;
 }
 
 .upload-file-custom {
@@ -95,11 +168,22 @@
     overflow: hidden;
     position: relative;
     cursor: pointer;
+    @include media-breakpoint-down(xl) {
+      width: 103px;
+      height: 103px;
+    }
 
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+    }
+
+    &.-default {
+      img {
+        transition: .3s;
+        filter: grayscale(1) opacity(55%);
+      }
     }
 
     &:not(.-default) {
@@ -118,6 +202,11 @@
 
     @media (hover: hover) {
       &:hover {
+        &.-default {
+          img {
+            filter: grayscale(0) opacity(100%);
+          }
+        }
         &:after {
           opacity: 1;
         }
@@ -138,6 +227,31 @@
   }
 }
 
+.upload-group {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-top: 16px;
+  @include media-breakpoint-down(xl) {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding-top: 8px;
+    column-gap: 9px;
+  }
+  .upload-item-box {
+    display: inline-flex;
+  }
+  .upload-file-custom {
+    margin-bottom: 0;
+    @include media-breakpoint-down(xl) {
+      margin-bottom: 2px;
+    }
+    .upload-image {
+      margin: 0;
+    }
+  }
+}
+
 form {
   h2, h3, h4, h5 {
     color: rgba(0, 0, 0, 0.75);
@@ -147,7 +261,13 @@ form {
     font-weight: 300;
     line-height: 120%;
     margin-bottom: 20px;
+    letter-spacing: -0.012em;
+    @include media-breakpoint-down(xl) {
+      font-size: 16px;
+      line-height: 120%;
+    }
   }
+
   * + {
     h2, h3, h4, h5 {
       margin-top: 20px;
@@ -156,107 +276,283 @@ form {
 }
 
 
-.profile-form {
-  .form-control {
-    padding-left: 72px;
-    height: 50px;
+.form-group {
+  margin-bottom: 20px;
+
+  .form-label {
+    margin-bottom: 0;
+    &.-with-icon {
+      position: relative;
+
+
+      .form-control {
+        padding-left: 72px;
+        height: 50px;
+        border-radius: 5px;
+        border: 1px solid $color-lightgray-1;
+        background: #FFF;
+        color: rgba(0, 0, 0, 1);
+        font-family: $roboto-condensed-font;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 160%;
+        @include media-breakpoint-down(xl) {
+          font-size: 18px;
+          height: 44px;
+        }
+        @include media-breakpoint-down(md) {
+          font-size: 16px;
+        }
+
+        &:focus {
+          border-color: darken($color-lightgray-1, 12%);
+          background: #FFF;
+        }
+
+        &::placeholder {
+          color: rgba(0, 0, 0, 0.35);
+        }
+      }
+
+      .input-icon {
+        position: absolute;
+        width: 52px;
+        border-radius: 5px;
+        background: $color-lightgray-3;
+        left: 1px;
+        top: 1px;
+        bottom: 1px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @include media-breakpoint-down(xl) {
+          width: 45px;
+        }
+
+        &:before {
+          content: '';
+          width: 30px;
+          height: 30px;
+        }
+
+        &.-password {
+          &:before {
+            background: url('../../../images/icons/profile-form/password.svg') no-repeat 50% 50%/ contain;
+          }
+        }
+
+        &.-phone {
+          &:before {
+            background: url('../../../images/icons/profile-form/phone.svg') no-repeat 50% 50%/ contain;
+          }
+        }
+
+        &.-viber {
+          &:before {
+            background: url('../../../images/icons/profile-form/viber.svg') no-repeat 50% 50%/ contain;
+          }
+        }
+
+        &.-telegram {
+          &:before {
+            background: url('../../../images/icons/profile-form/telegram.svg') no-repeat 50% 50%/ contain;
+          }
+        }
+
+        &.-whatsapp {
+          &:before {
+            background: url('../../../images/icons/profile-form/whatsapp.svg') no-repeat 50% 50%/ contain;
+          }
+        }
+
+        &.-name {
+          &:before {
+            background: url('../../../images/icons/profile-form/name.svg') no-repeat 50% 50%/ contain;
+          }
+        }
+      }
+
+      &.password-label {
+        input {
+          padding-right: 56px;
+        }
+
+        .toggle-password-button {
+          position: absolute;
+          z-index: 3;
+          right: 0;
+          top: 0;
+          height: 100%;
+          width: 56px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          .icon {
+            font-size: 20px;
+            color: $color-lightgray-1;
+          }
+        }
+      }
+    }
+  }
+}
+
+.required-text {
+  color: rgba(0, 0, 0, 0.75);
+  font-family: $roboto-condensed-font;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 120%;
+  margin-top: 18px;
+  margin-bottom: 30px;
+  letter-spacing: -0.012em;
+  @include media-breakpoint-down(md) {
+    margin-top: 2px;
+    margin-bottom: 20px;
+  }
+}
+
+.select2 {
+  &.select2-container {
+    width: 100% !important;
+    .select2-selection--single {
+      box-shadow: none !important;
+      outline: none;
+      width: 100%;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: 140%;
+      border-radius: 5px;
+      border: 1px solid $color-lightgray-1;
+      background: #FFF;
+      height: 50px;
+      color: #000;
+      @include media-breakpoint-down(xl) {
+        font-size: 16px;
+        line-height: 120%;
+        height: 44px;
+      }
+      .select2-selection__rendered {
+        padding: 7px 50px 7px 16px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        color: rgba(0, 0, 0, 0.75);
+        @include media-breakpoint-down(xl) {
+          padding: 7px 42px 7px 14px;
+        }
+      }
+      .select2-selection__arrow {
+        width: 50px;
+        height: 100%;
+        top: 0;
+        right: 0;
+        @include media-breakpoint-down(xl) {
+          width: 42px;
+        }
+        b {
+          display: none;
+        }
+        &:before {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 15px;
+          height: 7px;
+          background: url('../../../images/icons/arrow-select.svg') no-repeat 50% 50%/contain;
+          transition: .4s;
+        }
+      }
+    }
+    &.select2-container--open {
+      .select2-selection--single {
+        .select2-selection__arrow {
+          &:before {
+            transform: translate(-50%, -50%) rotate(180deg);
+          }
+        }
+      }
+    }
+  }
+}
+
+.select2-container--default {
+
+  .select2-dropdown {
     border-radius: 5px;
-    border: 1px solid $color-lightgray-1;
+    border: 1px solid rgba(82, 97, 114, 0.10);
     background: #FFF;
-    color: rgba(0, 0, 0, 1);
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    padding-bottom: 13px;
+    &.select2-dropdown--above {
+      border-bottom: none;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      box-shadow: 0 -4px 4px 0 rgba(0, 0, 0, 0.25);
+    }
+    &.select2-dropdown--below {
+      border-top: none;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+  }
+  .select2-search--dropdown {
+    .select2-search__field {
+      outline: none !important;
+    }
+  }
+  .select2-results__option {
+    color: #000;
     font-family: $roboto-condensed-font;
     font-size: 20px;
     font-style: normal;
     font-weight: 300;
+    line-height: 150%;
+    padding: 7px 16px;
+  }
+  .select2-results__option--selected {
+    background: #5DBE28;
+    color: #000;
+  }
+  .select2-results__option--highlighted.select2-results__option--selectable {
+    background: #5DBE28;
+    color: #000;
+  }
+}
+
+.privacy-policy-text {
+  margin-top: 16px;
+  margin-left: 302px;
+  color: rgba(0, 0, 0, 0.75);
+  font-family: $roboto-condensed-font;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 120%;
+  width: 348px;
+  max-width: 100%;
+  letter-spacing: -0.016em;
+  @include media-breakpoint-down(xl) {
+    margin-left: 0;
+    width: 100%;
+    font-size: 12px;
     line-height: 160%;
-    @include media-breakpoint-down(xl) {
-      font-size: 18px;
-    }
-    @include media-breakpoint-down(md) {
-      font-size: 16px;
-    }
-    &:focus {
-      border-color: darken($color-lightgray-1, 12%);
-      background: #FFF;
-    }
-    &::placeholder {
-      color: rgba(0, 0, 0, 0.35);
-    }
+    margin-top: 18px;
   }
-  .form-group {
-    margin-bottom: 20px;
-  }
-  .form-label {
-    position: relative;
-    .input-icon {
-      position: absolute;
-      width: 52px;
-      border-radius: 5px;
-      background: $color-lightgray-3;
-      left: 1px;
-      top: 1px;
-      bottom: 1px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      &:before {
-        content: '';
-        width: 30px;
-        height: 30px;
-      }
-      &.-password {
-        &:before {
-          background: url('../../../images/icons/profile-form/password.svg') no-repeat 50% 50%/ contain;
-        }
-      }
-      &.-phone {
-        &:before {
-          background: url('../../../images/icons/profile-form/phone.svg') no-repeat 50% 50%/ contain;
-        }
-      }
-      &.-viber {
-        &:before {
-          background: url('../../../images/icons/profile-form/viber.svg') no-repeat 50% 50%/ contain;
-        }
-      }
-      &.-telegram {
-        &:before {
-          background: url('../../../images/icons/profile-form/telegram.svg') no-repeat 50% 50%/ contain;
-        }
-      }
-      &.-whatsapp {
-        &:before {
-          background: url('../../../images/icons/profile-form/whatsapp.svg') no-repeat 50% 50%/ contain;
-        }
-      }
-      &.-name {
-        &:before {
-          background: url('../../../images/icons/profile-form/name.svg') no-repeat 50% 50%/ contain;
-        }
-      }
+  a {
+    color: rgba(0, 0, 0, 0.75);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+    &:hover {
+      text-decoration: none;
     }
-  }
-  .password-label {
-    input {
-      padding-right: 56px;
-    }
-    .toggle-password-button {
-      position: absolute;
-      z-index: 3;
-      right: 0;
-      top: 0;
-      height: 100%;
-      width: 56px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      .icon {
-        font-size: 20px;
-        color: $color-lightgray-1;
-      }
-    }
-  }
-  .btn {
-    margin-top: 20px;
   }
 }

@@ -601,12 +601,12 @@
                     <div class="row align-items-xs-center">
                         <div class="col-xs-12 col-md-6">
                             <label class="form-label">
-                                <input type="text" class="form-control -search" placeholder="Шо найти на Priwoze">
+                                <input type="text" class="form-control form-control-filter -search" placeholder="Шо найти на Priwoze">
                             </label>
                         </div>
                         <div class="col-xs-12 col-md-4">
                             <label class="form-label">
-                                <input type="text" class="form-control -location" placeholder="Болгария, область">
+                                <input type="text" class="form-control form-control-filter -location" placeholder="Болгария, область">
                             </label>
                         </div>
                         <div class="col-xs-12 col-md-2 btn-box">
@@ -648,10 +648,10 @@
                 <div class="col-xl-8">
                     <div class="search-box">
                         <label class="form-label">
-                            <input type="text" class="form-control -search" placeholder="Шо найти на Priwoze">
+                            <input type="text" class="form-control form-control-filter -search" placeholder="Шо найти на Priwoze">
                         </label>
                         <label class="form-label">
-                            <input type="text" class="form-control -location" placeholder="Болгария, область">
+                            <input type="text" class="form-control form-control-filter -location" placeholder="Болгария, область">
                         </label>
                         <button type="submit" class="btn btn-search">
                             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">

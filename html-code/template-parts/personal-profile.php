@@ -69,37 +69,37 @@
                         <h2>Контактные данные *</h2>
                         <div class="row">
                             <div class="form-group col-xs-12 col-md-6">
-                                <label class="form-label">
+                                <label class="form-label -with-icon">
                                     <span class="input-icon -name"></span>
                                     <input type="text" class="form-control" placeholder="Имя">
                                 </label>
                             </div>
                             <div class="form-group col-xs-12 col-md-6">
-                                <label class="form-label">
+                                <label class="form-label -with-icon">
                                     <span class="input-icon -telegram"></span>
                                     <input type="text" class="form-control" placeholder="Telegram">
                                 </label>
                             </div>
                             <div class="form-group col-xs-12 col-md-6">
-                                <label class="form-label">
+                                <label class="form-label -with-icon">
                                     <span class="input-icon -phone"></span>
                                     <input type="text" class="form-control" placeholder="Телефон">
                                 </label>
                             </div>
                             <div class="form-group col-xs-12 col-md-6">
-                                <label class="form-label">
+                                <label class="form-label -with-icon">
                                     <span class="input-icon -viber"></span>
                                     <input type="text" class="form-control" placeholder="Viber">
                                 </label>
                             </div>
                             <div class="form-group col-xs-12 col-md-6">
-                                <label class="form-label">
+                                <label class="form-label -with-icon">
                                     <span class="input-icon -phone"></span>
                                     <input type="text" class="form-control" placeholder="Дополнительный номер телефона">
                                 </label>
                             </div>
                             <div class="form-group col-xs-12 col-md-6">
-                                <label class="form-label">
+                                <label class="form-label -with-icon">
                                     <span class="input-icon -whatsapp"></span>
                                     <input type="text" class="form-control" placeholder="Whatsapp">
                                 </label>
@@ -110,7 +110,7 @@
                         <div class="row">
                             <div class="form-group col-xs-12 col-md-6">
                                 <div class="input-group">
-                                    <label class="form-label password-label">
+                                    <label class="form-label password-label -with-icon">
                                         <span class="input-icon -password"></span>
                                         <input type="password" class="form-control" id="passwordInput"
                                                placeholder="Введите пароль">
@@ -120,7 +120,7 @@
                             </div>
                             <div class="form-group col-xs-12 col-md-6">
                                 <div class="input-group">
-                                    <label class="form-label password-label">
+                                    <label class="form-label password-label -with-icon">
                                         <span class="input-icon -password"></span>
                                         <input type="password" class="form-control" id="confirmPasswordInput"
                                                placeholder="Повторите пароль">

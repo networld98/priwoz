@@ -1,0 +1,75 @@
+.add-product-section {
+  padding-bottom: 80px;
+  @include media-breakpoint-down(xl) {
+    padding-bottom: 35px;
+  }
+
+  .title-box {
+    margin-bottom: 35px;
+    @include media-breakpoint-down(xl) {
+      margin-bottom: 30px;
+    }
+    .section-title {
+      margin-bottom: 0;
+      @include media-breakpoint-down(xl) {
+        margin-bottom: 20px;
+      }
+    }
+    .text-1 {
+      margin-bottom: 0;
+    }
+  }
+  .product-form {
+    width: 770px;
+    max-width: 100%;
+    margin-left: 17%;
+    @include media-breakpoint-down(xl) {
+      margin-left: 0;
+    }
+    .btn {
+      padding: 6px 15px;
+    }
+    .hint {
+      color: rgba(0, 0, 0, 0.75);
+      font-family: $roboto-condensed-font;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: 120%;
+      padding-top: 9px;
+      letter-spacing: -0.012em;
+      @include media-breakpoint-down(xl) {
+        padding-top: 0;
+        font-size: 12px;
+        font-weight: 300;
+        line-height: 160%;
+      }
+    }
+    .upload-group {
+      & + .hint {
+        padding-left: 34px;
+        padding-top: 16px;
+        @include media-breakpoint-down(xl) {
+          padding-left: 0;
+          padding-top: 6px;
+        }
+      }
+    }
+    .form-group.row {
+      margin-bottom: 30px;
+      @include media-breakpoint-down(xl) {
+        margin-bottom: 20px;
+      }
+    }
+    form {
+      * + {
+        h2, h3, h4, h5 {
+          margin-top: 40px;
+          @include media-breakpoint-down(xl) {
+            margin-top: 20px;
+          }
+        }
+      }
+    }
+  }
+}
