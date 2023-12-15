@@ -263,3 +263,21 @@ button {
     }
   }
 }
+
+.hint {
+  color: rgba(0, 0, 0, 0.75);
+  font-family: $roboto-condensed-font;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 160%;
+  margin-top: 16px;
+  letter-spacing: -0.016em;
+  a {
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.35);
+    &:hover {
+      border-bottom: 1px solid rgba(0, 0, 0, 0);
+    }
+  }
+}

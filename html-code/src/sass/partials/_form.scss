@@ -283,121 +283,122 @@ form {
 .form-group {
   margin-bottom: 20px;
 
-  .form-label {
-    margin-bottom: 0;
+}
 
-    &.-with-icon {
-      position: relative;
+.form-label {
+  margin-bottom: 0;
+
+  &.-with-icon {
+    position: relative;
 
 
-      .form-control {
-        padding-left: 72px;
-        height: 50px;
-        border-radius: 5px;
-        border: 1px solid $color-lightgray-1;
+    .form-control {
+      padding-left: 72px;
+      height: 50px;
+      border-radius: 5px;
+      border: 1px solid $color-lightgray-1;
+      background: #FFF;
+      color: rgba(0, 0, 0, 1);
+      font-family: $roboto-condensed-font;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: 160%;
+      @include media-breakpoint-down(xl) {
+        font-size: 18px;
+        height: 44px;
+      }
+      @include media-breakpoint-down(md) {
+        font-size: 16px;
+      }
+
+      &:focus {
+        border-color: darken($color-lightgray-1, 12%);
         background: #FFF;
-        color: rgba(0, 0, 0, 1);
-        font-family: $roboto-condensed-font;
-        font-size: 20px;
-        font-style: normal;
-        font-weight: 300;
-        line-height: 160%;
-        @include media-breakpoint-down(xl) {
-          font-size: 18px;
-          height: 44px;
-        }
-        @include media-breakpoint-down(md) {
-          font-size: 16px;
-        }
+      }
 
-        &:focus {
-          border-color: darken($color-lightgray-1, 12%);
-          background: #FFF;
-        }
+      &::placeholder {
+        color: rgba(0, 0, 0, 0.35);
+      }
+    }
 
-        &::placeholder {
-          color: rgba(0, 0, 0, 0.35);
+    .input-icon {
+      position: absolute;
+      width: 52px;
+      border-radius: 5px;
+      background: $color-lightgray-3;
+      left: 1px;
+      top: 1px;
+      bottom: 1px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      @include media-breakpoint-down(xl) {
+        width: 45px;
+      }
+
+      &:before {
+        content: '';
+        width: 30px;
+        height: 30px;
+      }
+
+      &.-password {
+        &:before {
+          background: url('../../../images/icons/profile-form/password.svg') no-repeat 50% 50%/ contain;
         }
       }
 
-      .input-icon {
+      &.-phone {
+        &:before {
+          background: url('../../../images/icons/profile-form/phone.svg') no-repeat 50% 50%/ contain;
+        }
+      }
+
+      &.-viber {
+        &:before {
+          background: url('../../../images/icons/profile-form/viber.svg') no-repeat 50% 50%/ contain;
+        }
+      }
+
+      &.-telegram {
+        &:before {
+          background: url('../../../images/icons/profile-form/telegram.svg') no-repeat 50% 50%/ contain;
+        }
+      }
+
+      &.-whatsapp {
+        &:before {
+          background: url('../../../images/icons/profile-form/whatsapp.svg') no-repeat 50% 50%/ contain;
+        }
+      }
+
+      &.-name {
+        &:before {
+          background: url('../../../images/icons/profile-form/name.svg') no-repeat 50% 50%/ contain;
+        }
+      }
+    }
+
+    &.password-label {
+      input {
+        padding-right: 56px;
+      }
+
+      .toggle-password-button {
         position: absolute;
-        width: 52px;
-        border-radius: 5px;
-        background: $color-lightgray-3;
-        left: 1px;
-        top: 1px;
-        bottom: 1px;
+        z-index: 3;
+        right: 0;
+        top: 0;
+        height: 100%;
+        width: 56px;
         display: flex;
         align-items: center;
         justify-content: center;
-        @include media-breakpoint-down(xl) {
-          width: 45px;
-        }
 
-        &:before {
-          content: '';
-          width: 30px;
-          height: 30px;
-        }
-
-        &.-password {
-          &:before {
-            background: url('../../../images/icons/profile-form/password.svg') no-repeat 50% 50%/ contain;
-          }
-        }
-
-        &.-phone {
-          &:before {
-            background: url('../../../images/icons/profile-form/phone.svg') no-repeat 50% 50%/ contain;
-          }
-        }
-
-        &.-viber {
-          &:before {
-            background: url('../../../images/icons/profile-form/viber.svg') no-repeat 50% 50%/ contain;
-          }
-        }
-
-        &.-telegram {
-          &:before {
-            background: url('../../../images/icons/profile-form/telegram.svg') no-repeat 50% 50%/ contain;
-          }
-        }
-
-        &.-whatsapp {
-          &:before {
-            background: url('../../../images/icons/profile-form/whatsapp.svg') no-repeat 50% 50%/ contain;
-          }
-        }
-
-        &.-name {
-          &:before {
-            background: url('../../../images/icons/profile-form/name.svg') no-repeat 50% 50%/ contain;
-          }
-        }
-      }
-
-      &.password-label {
-        input {
-          padding-right: 56px;
-        }
-
-        .toggle-password-button {
-          position: absolute;
-          z-index: 3;
-          right: 0;
-          top: 0;
-          height: 100%;
-          width: 56px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-
-          .icon {
-            font-size: 20px;
-            color: $color-lightgray-1;
-          }
+        .icon {
+          font-size: 20px;
+          color: $color-lightgray-1;
         }
       }
     }

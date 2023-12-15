@@ -1,0 +1,222 @@
+.sign-in-section {
+  .sign-in-wrap {
+    padding: 90px 0 68px 30px;
+    position: relative;
+    z-index: 0;
+    @include media-breakpoint-down(xxl) {
+      padding-left: 100px;
+      padding-bottom: 80px;
+    }
+    @include media-breakpoint-down(xl) {
+      padding-left: 0;
+      padding-top: 30px;
+      padding-bottom: 50px;
+    }
+    @include media-breakpoint-down(md) {
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+    .map-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: url('../../../images/map-sign-in.svg') no-repeat 0 0 / 100% auto;
+      @include media-breakpoint-down(md) {
+        display: none;
+      }
+      .text-box {
+        padding-top: 56px;
+        max-width: 420px;
+        @include media-breakpoint-down(xl) {
+          max-width: 180px;
+          padding-top: 36px;
+        }
+        .title {
+          color: rgba(0, 0, 0, 0.20);
+          font-family: $roboto-font;
+          font-size: 100px;
+          font-style: normal;
+          font-weight: 800;
+          line-height: 1;
+          @include media-breakpoint-down(xl) {
+            font-size: 64px;
+            font-weight: 700;
+            font-family: $roboto-condensed-font;
+            margin-left: -5px;
+          }
+        }
+        .subtitle {
+          color: rgba(0, 0, 0, 0.50);
+          font-family: $barista-font;
+          font-size: 48px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 1;
+          padding-left: 76px;
+          margin-top: -12px;
+          @include media-breakpoint-down(xl) {
+            font-size: 40px;
+            padding-left: 30px;
+            margin-top: -6px;
+            padding-right: 15px;
+          }
+        }
+      }
+    }
+    .sign-in-box {
+      margin: 0 auto;
+      padding: 60px 131px 55px;
+      border-radius: 10px;
+      border: 1px solid $color-gray-3;
+      background: #FFF;
+      max-width: 533px;
+      @include media-breakpoint-down(xxl) {
+        max-width: 470px;
+        padding-left: 100px;
+        padding-right: 100px;
+      }
+      @include media-breakpoint-down(xl) {
+        padding: 30px 41px 25px;
+        max-width: 353px;
+      }
+      @include media-breakpoint-down(md) {
+        padding: 30px 30px 25px;
+      }
+    }
+  }
+}
+.bx-authform {
+  .bx-authform-social {
+    margin-bottom: 20px;
+    ul {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      li {
+        &:not(:last-child) {
+          margin-bottom: 12px;
+        }
+      }
+    }
+  }
+  .bx-title {
+    color: #000;
+    font-family: $roboto-condensed-font;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 160%;
+    margin-bottom: 7px;
+    letter-spacing: -0.016em;
+    margin-right: -15px;
+  }
+  .bx-authform-link-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-top: 16px;
+    padding-right: 20px;
+    & + .bx-authform-formgroup-container {
+      margin-top: 20px;
+    }
+    a {
+      color: $color-blue-1;
+      font-family: $roboto-condensed-font;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: 120%;
+      letter-spacing: -0.016em;
+      &:hover {
+        color: $color-green-1;
+      }
+    }
+  }
+  .bx-authform-formgroup-container {
+    & + .bx-authform-formgroup-container {
+      margin-top: 20px;
+    }
+    .form-label {
+      &.-with-icon {
+        .form-control {
+          padding-left: 39px;
+          height: 44px;
+          border-radius: 10px;
+          border: 1px solid $color-lightgray-1;
+          background: $color-lightgray-4;
+          color: rgba(0, 0, 0, 1);
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 300;
+          line-height: 120%;
+          @include media-breakpoint-down(xl) {
+            padding-left: 37px;
+          }
+
+          &:focus {
+            border-color: darken($color-lightgray-1, 12%);
+            background: $color-lightgray-4;
+          }
+
+          &::placeholder {
+            color: rgba(0, 0, 0, 0.50);
+          }
+        }
+
+        .input-icon {
+          position: absolute;
+          width: 39px;
+          background: transparent;
+          left: 0;
+          top: 0;
+          bottom: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          &:before {
+            content: '';
+            width: 20px;
+            height: 20px;
+          }
+
+          &.-name {
+            &:before {
+              background: url('../../../images/icons/profile-form/name.svg') no-repeat 50% 50%/ contain;
+            }
+          }
+        }
+
+        &.password-label {
+          input {
+            padding-right: 46px;
+          }
+
+          .toggle-password-button {
+            position: absolute;
+            z-index: 3;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .icon {
+              font-size: 20px;
+              color: $color-lightgray-1;
+            }
+          }
+        }
+      }
+    }
+  }
+  .btn {
+    width: 100%;
+    height: 44px;
+  }
+}

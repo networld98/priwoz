@@ -113,3 +113,58 @@
     }
   }
 }
+
+.bx-authform-social-icon {
+  width: 100%;
+  border-radius: 20px;
+  border: 2px solid transparent;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  font-family: $roboto-condensed-font;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 160%;
+  text-transform: uppercase;
+  padding-left: 60px;
+  padding-right: 10px;
+
+  &:before {
+    content: '';
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+  }
+
+  &.facebook {
+    background: #3D589B;
+    border-color: #3D589B;
+    color: #FFF;
+    &:before {
+      background: url('../../../images/icons/social/facebook-login.svg') no-repeat 50% 50%/ contain;
+    }
+  }
+  &.google {
+    border-radius: 20px;
+    border-color: $color-gray-2;
+    background: #FFF;
+    color: $color-gray-2;
+    &:before {
+      background: url('../../../images/icons/social/google-login.svg') no-repeat 50% 50%/ contain;
+    }
+  }
+  &.apple {
+    background: $color-gray-1;
+    border-color: $color-gray-1;
+    color: #FFF;
+    &:before {
+      background: url('../../../images/icons/social/apple-login.svg') no-repeat 50% 50%/ contain;
+    }
+  }
+}
