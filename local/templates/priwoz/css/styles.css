@@ -126,3 +126,38 @@
     height: 100%;
     fill: #f1e5e6;
 }
+.select2.select2-container .select2-selection--single .select2-selection__arrow:before {
+    z-index: 1;
+}
+.form-group .form-label.-with-icon .input-icon.-dopphone:before {
+    background: url(../images/icons/af69bec00e1ac44fd7ce.svg) no-repeat 50% 50%/contain;
+}
+.delete-img {
+    display:none;
+}
+.upload-group .upload-file-custom {
+    position: relative;
+}
+
+.upload-group .upload-file-custom label.delete{
+    position: absolute;
+    top: calc((100% - 30px)/2);
+    left: calc((100% - 30px)/2);
+    z-index: 1;
+    opacity:0;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    cursor: pointer;
+}
+.upload-group .upload-file-custom label.active{
+    opacity:1;
+}
+.upload-group .upload-file-custom label.active svg path{
+    fill:red;
+}
+.upload-group .upload-file-custom label.delete:hover  {
+    opacity:1;
+}
+.delete-item-user:hover {
+    cursor: pointer;
+}

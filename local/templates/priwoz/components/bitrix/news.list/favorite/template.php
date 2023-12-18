@@ -69,7 +69,7 @@ foreach ($arResult["ITEMS"] as $arItem):?>
                 <? } ?>
             </div>
 
-            <? if ($APPLICATION->GetCurPage() == "/personal/ads-list/") { ?>
+            <? if ($APPLICATION->GetCurPage() == "/personal/ads-list/" || $_POST['id']) { ?>
                 <div class="overlay">
                     <div class="row overlay-inner">
                         <div class="col-xs-12 col-md-6">
@@ -87,7 +87,7 @@ foreach ($arResult["ITEMS"] as $arItem):?>
                             </a>
                         </div>
                         <div class="col-xs-12 col-md-6">
-                            <a href="/personal/ads-list/?delete=Y&CODE=<?= $arItem['ID'] ?>" class="overlay-link">
+                            <a data-id="<?= $arItem['ID']?>" class="overlay-link delete-item-user">
                                 <div class="overlay-icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30"
                                          fill="none">

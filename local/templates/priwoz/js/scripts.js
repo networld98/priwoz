@@ -52,5 +52,32 @@ $( document ).ready(function() {
             input.addEventListener( 'blur', function(){ input.classList.remove( 'has-focus' ); });
         });
     }( document, window, 0 ));
+
+    $('.item-phone').mask('+359 99 99 99 99 99');
+    $('.item-dopphone').mask('+359 99 99 99 99 99');
+
+    $('.delete-img').change(function() {
+        if ($(this).is(':checked')) {
+            $(this).parent('.upload-file-custom').find('label.delete').addClass('active');
+        }else{
+            $(this).parent('.upload-file-custom').find('label.delete').removeClass('active');
+        }
+    });
+    $(".delete-item-user").click(function () {
+        let id = $(this).data('id');
+        let block = $('.grid.products-masonry.my-products');
+        $.ajax({
+            type: "POST",
+            url: '/ajax/delete-announcement.php',
+            data: {'id':id},
+            success: function (data) {
+                // Вывод текста результата отправки
+                $(block).html(data);
+                var $grid = $('.grid').masonry({});
+                $grid.masonry('reloadItems');
+            }
+        });
+        return false;
+    });
 });
 

@@ -1,15 +1,15 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_before.php");
 global $arrFilter, $USER;
-if (!empty($_POST['CODE'])) {
-    $author = CIBlockElement::GetByID($_POST['CODE'])->GetNextElement()->GetProperties()['AUTHOR'];
+if (!empty($_POST['id'])) {
+    $author = CIBlockElement::GetByID($_POST['id'])->GetNextElement()->GetProperties()['AUTHOR'];
     if ($author['VALUE'] == $USER->GetID()) {
-        CIBlockElement::Delete($_POST['CODE']);
+        CIBlockElement::Delete($_POST['id']);
     }
 }
-
-
 $arrFilter = array("PROPERTY_AUTHOR" => $USER->GetID()); ?>
+<div class="grid-sizer"></div>
+<div class="gutter-sizer"></div>
 <? $APPLICATION->IncludeComponent(
     "bitrix:news.list",
     "favorite",
