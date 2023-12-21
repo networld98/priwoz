@@ -374,10 +374,11 @@
       }
       .btn-search {
         @include media-breakpoint-down(md) {
-          background: $color-gray-3;
+          background-color: $color-gray-3;
           border-color: $color-gray-3;
           color: #fff;
           padding: 5px 38px 5px 71px;
+          background-image: url('../../../images/icons/search-white.svg');
           svg {
             top: 10px;
             left: 52px;

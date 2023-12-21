@@ -281,3 +281,15 @@ button {
     }
   }
 }
+
+.page-title {
+  color: $color-green-1;
+  font-family: $barista-font;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%;
+  @include media-breakpoint-down(xl) {
+    font-size: 48px;
+  }
+}

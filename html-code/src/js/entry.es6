@@ -20,6 +20,7 @@ import 'swiper/css/bundle';
     $(".other-products-section").length > 0 && require("./template-parts/other-products-section.es6");
     $(".single-product-section").length > 0 && require("./template-parts/single-product-section.es6");
     $(".add-product-section").length > 0 && require("./template-parts/add-product-section.es6");
+    $(".products-overview-section").length > 0 && require("./template-parts/products-overview-section.es6");
 
 
 })(jQuery);

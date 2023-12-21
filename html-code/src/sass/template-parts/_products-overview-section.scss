@@ -1,0 +1,515 @@
+.products-overview-section {
+
+  .title-box {
+    width: 100%;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 15px;
+    column-gap: 15px;
+    @include media-breakpoint-down(xxl) {
+      margin-bottom: 38px;
+    }
+    @include media-breakpoint-down(xl) {
+      margin-bottom: 28px;
+    }
+    @include media-breakpoint-down(md) {
+      margin-bottom: 22px;
+    }
+
+    .page-title {
+      margin-bottom: 0;
+    }
+
+    .btn {
+      margin-top: 12px;
+      padding: 6px 17px;
+      @include media-breakpoint-down(xxl) {
+        margin-top: 4px;
+      }
+    }
+  }
+
+  .search-box {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 17px 30px;
+    border-radius: 5px;
+    border: 1px solid $color-lightgray-3;
+    background: #FFF;
+    margin-bottom: 41px;
+    @include media-breakpoint-down(xxl) {
+      padding: 16px 30px;
+    }
+    @include media-breakpoint-down(xl) {
+      margin-bottom: 31px;
+      padding: 16px 8px 16px 16px;
+    }
+    @include media-breakpoint-down(md) {
+      display: block;
+      border: none;
+      background: transparent;
+      padding: 35px 0 0 0;
+      margin-bottom: 0;
+    }
+
+    .form-label {
+      margin: 0;
+      width: 100%;
+      @include media-breakpoint-down(md) {
+        margin-bottom: 40px;
+      }
+
+      &:nth-child(1) {
+        width: 740px;
+        max-width: 100%;
+        margin-right: 30px;
+        @include media-breakpoint-down(xxl) {
+          width: 540px;
+        }
+        @include media-breakpoint-down(xl) {
+          width: 335px;
+          margin-right: 20px;
+        }
+        @include media-breakpoint-down(md) {
+          width: 100%;
+          max-width: 100%;
+        }
+      }
+
+      &:nth-child(2) {
+        width: 530px;
+        max-width: 100%;
+        margin-right: 30px;
+        @include media-breakpoint-down(xxl) {
+          width: 400px;
+        }
+        @include media-breakpoint-down(xl) {
+          width: 247px;
+          margin-right: 8px;
+        }
+        @include media-breakpoint-down(md) {
+          width: 100%;
+          max-width: 100%;
+        }
+      }
+
+      .form-control {
+        @include media-breakpoint-down(xxl) {
+          line-height: 120%;
+        }
+        @include media-breakpoint-down(xl) {
+          padding-top: 5px;
+        }
+
+        &.form-control.form-control-filter.-search {
+          @include media-breakpoint-down(xl) {
+            padding-left: 29px;
+            background-size: auto 20px;
+          }
+          @include media-breakpoint-down(md) {
+            padding-left: 21px;
+            background-size: auto 15px;
+          }
+        }
+
+        &.form-control.form-control-filter.-location {
+          @include media-breakpoint-down(xl) {
+            padding-left: 28px;
+            background-size: auto 20px;
+          }
+          @include media-breakpoint-down(md) {
+            padding-left: 21px;
+            background-size: auto 15px;
+          }
+        }
+      }
+    }
+
+    .btn-box {
+      flex: none;
+      margin-left: auto;
+      @include media-breakpoint-down(md) {
+        text-align: right;
+      }
+
+      .btn {
+        background-position: 11px 50%;
+        padding: 5px 11px 5px 38px;
+        background-size: auto 19px;
+        background-color: $color-gray-3;
+        color: #fff;
+        background-image: url('../../../images/icons/search-white.svg');
+        border-color: $color-gray-3;
+        @include media-breakpoint-down(xxl) {
+          background-position: 11px 40%;
+          padding: 5px 11px 5px 38px;
+          background-size: auto 19px;
+        }
+        @include media-breakpoint-down(xl) {
+          background-position: 8px 42%;
+          padding: 5px 12px 5px 33px;
+          background-size: auto 19px;
+        }
+        @include media-breakpoint-down(md) {
+          padding: 5px 46px 5px 71px;
+          background-position: 52px 42%;
+          background-size: auto 15px;
+          background-color: $color-gray-3;
+        }
+
+        &:hover {
+          background-color: $color-gray-2;
+          border-color: $color-gray-2;
+        }
+      }
+    }
+  }
+
+  .smartfilter {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-left: -15px;
+    margin-right: -15px;
+    margin-bottom: 40px;
+    @include media-breakpoint-down(xl) {
+      margin-left: -10px;
+      margin-right: -10px;
+      margin-bottom: 31px;
+    }
+    @include media-breakpoint-down(md) {
+      display: block;
+      margin-left: 0;
+      margin-right: 0;
+      margin-bottom: 0;
+    }
+
+    .bx_filter_parameters_box {
+      width: 25%;
+      padding-left: 15px;
+      padding-right: 15px;
+      @include media-breakpoint-down(xl) {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+      @include media-breakpoint-down(md) {
+        padding-left: 0;
+        padding-right: 0;
+        width: 100%;
+        padding-top: 21px;
+      }
+    }
+
+    .bx_filter_parameters_box_title {
+      padding-left: 16px;
+      margin-bottom: 4px;
+      color: rgba(0, 0, 0, 0.75);
+      font-family: $roboto-condensed-font;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: 160%;
+      letter-spacing: -0.02em;
+      @include media-breakpoint-down(xl) {
+        padding-left: 8px;
+        font-size: 12px;
+        margin-bottom: 7px;
+      }
+    }
+
+    .bx_filter_select_block {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      box-sizing: border-box;
+      width: 100%;
+      height: 50px;
+      margin: 0;
+      padding: 0 50px 0 16px;
+      border: none;
+      background: #fff;
+      box-shadow: none;
+      color: rgba(0, 0, 0, 0.50);
+      font-family: $roboto-condensed-font;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: 160%;
+      @include media-breakpoint-down(xxl) {
+        padding-right: 42px;
+      }
+      @include media-breakpoint-down(xl) {
+        font-size: 14px;
+        padding-left: 8px;
+        padding-right: 25px;
+      }
+      @include media-breakpoint-down(md) {
+        height: 44px;
+        padding-left: 7px;
+      }
+    }
+
+    .bx_filter_select_arrow {
+      width: 50px;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      cursor: pointer;
+      background: url('../../../images/icons/arrow-select.svg') no-repeat 50% 50%/ 12px auto;
+      @include media-breakpoint-down(xxl) {
+        width: 42px;
+      }
+      @include media-breakpoint-down(xl) {
+        width: 25px;
+      }
+    }
+
+    .bx_filter_select_container {
+      display: inline-block;
+      box-sizing: border-box;
+      width: 100%;
+      height: 50px;
+      border: 1px solid rgba(82, 97, 114, 0.10);
+      padding: 0;
+      border-radius: 5px;
+      background: #FFF;
+      box-shadow: none;
+      filter: none;
+      overflow: hidden;
+      @include media-breakpoint-down(md) {
+        height: 44px;
+      }
+    }
+
+    .bx_filter_parameters_box_container {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+
+      .bx_filter_parameters_box_container_block {
+        width: 50%;
+        padding-right: 4px;
+
+        input[type="text"] {
+          height: 50px;
+          width: 100%;
+          padding: 0 16px;
+          border-radius: 5px;
+          border: 1px solid rgba(82, 97, 114, 0.10);
+          background: #FFF;
+          color: rgba(0, 0, 0, 0.75);
+          font-family: $roboto-condensed-font;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 300;
+          line-height: 120%;
+          box-shadow: none;
+          outline: none;
+
+          &::placeholder {
+            color: rgba(0, 0, 0, 0.50);
+          }
+
+          @include media-breakpoint-down(xl) {
+            padding: 0 8px;
+          }
+          @include media-breakpoint-down(md) {
+            height: 44px;
+            font-size: 14px;
+          }
+        }
+
+        & + .bx_filter_parameters_box_container_block {
+          padding-right: 0;
+          padding-left: 4px;
+        }
+      }
+    }
+  }
+
+  .bg-overlay {
+    position: relative;
+    z-index: 0;
+    @include media-breakpoint-down(md) {
+      margin-top: 20px;
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      z-index: -1;
+      background: url('../../../images/background-products.png') no-repeat 50% 50%/ cover;
+    }
+  }
+
+  .products-wrap {
+    padding-bottom: 50px;
+    margin-left: -15px;
+    margin-right: -15px;
+    @include media-breakpoint-down(xl) {
+      margin-left: -10px;
+      margin-right: -10px;
+      padding-bottom: 20px;
+    }
+    @include media-breakpoint-down(md) {
+      margin-left: -5px;
+      margin-right: -5px;
+      padding-bottom: 30px;
+    }
+  }
+
+  .products-masonry {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    transition: .4s;
+    opacity: 0;
+
+    @include media-breakpoint-down(xl) {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+    @include media-breakpoint-down(md) {
+      padding-top: 5px;
+      padding-bottom: 5px;
+    }
+  }
+
+  .gutter-sizer {
+    width: 0;
+  }
+
+  .grid-sizer, .grid-item {
+    width: 20%;
+    @include media-breakpoint-down(xxl) {
+      width: 25%;
+    }
+    @include media-breakpoint-down(xl) {
+      width: calc(100% / 3);
+    }
+    @include media-breakpoint-down(md) {
+      width: 50%;
+    }
+  }
+
+  .collapse-head {
+    color: $color-gray-2;
+    font-family: $roboto-condensed-font;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 100%;
+    padding: 13px 33px;
+    letter-spacing: -0.016em;
+    border-radius: 5px;
+    border: 1px solid $color-lightgray-3;
+    background: #FFF;
+    position: relative;
+    @include media-breakpoint-up(md) {
+      display: none;
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 15px;
+      height: 15px;
+      opacity: 1;
+      transition: .3s;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 15px;
+      height: 15px;
+      opacity: 0;
+      transition: .3s;
+    }
+
+    .arrow {
+      width: 33px;
+      height: 100%;
+      top: 0;
+      right: 0;
+      position: absolute;
+
+      &:before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 22px;
+        height: 13px;
+        background: url('../../../images/icons/arrow-select.svg') no-repeat 50% 50%/contain;
+        transition: .4s;
+      }
+    }
+
+    &.search-box-opener {
+      &:before {
+        background: url('../../../images/icons/search-gray.svg') no-repeat 50% 50%/ contain;
+      }
+
+      &:after {
+        background: url('../../../images/icons/search-black.svg') no-repeat 50% 50%/ contain;
+      }
+    }
+
+    &.filter-box-opener {
+      margin-top: 20px;
+
+      &:before {
+        background: url('../../../images/icons/filter-gray.svg') no-repeat 50% 50%/ contain;
+      }
+
+      &:after {
+        background: url('../../../images/icons/filter-black.svg') no-repeat 50% 50%/ contain;
+      }
+    }
+
+    &.active {
+      background: $color-green-3;
+
+      &:before {
+        opacity: 0;
+      }
+
+      &:after {
+        opacity: 1;
+      }
+
+      .arrow {
+        &:before {
+          transform: translate(-50%, -50%) rotate(180deg);
+        }
+      }
+    }
+  }
+
+  .collapsed-content {
+    @include media-breakpoint-down(md) {
+      display: none;
+    }
+  }
+}
