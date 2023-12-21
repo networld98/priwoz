@@ -461,8 +461,21 @@
         transform: translate(-50%, -50%);
         width: 22px;
         height: 13px;
-        background: url('../../../images/icons/arrow-select.svg') no-repeat 50% 50%/contain;
-        transition: .4s;
+        background: url('../../../images/icons/arrow-filter.svg') no-repeat 50% 50%/contain;
+        opacity: 1;
+        transition: .3s;
+      }
+      &:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 22px;
+        height: 13px;
+        background: url('../../../images/icons/arrow-filter-black.svg') no-repeat 50% 50%/contain;
+        opacity: 0;
+        transition: .3s;
       }
     }
 
@@ -500,8 +513,15 @@
       }
 
       .arrow {
+
         &:before {
           transform: translate(-50%, -50%) rotate(180deg);
+          opacity: 0;
+        }
+
+        &:after {
+          transform: translate(-50%, -50%) rotate(180deg);
+          opacity: 1;
         }
       }
     }
