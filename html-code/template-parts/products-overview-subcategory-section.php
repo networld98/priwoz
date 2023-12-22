@@ -210,6 +210,8 @@
                             <div class="img">
                                 <img class="bg-img" src="/html-code/temporary-images/home/product1.png"
                                      alt="Priwoz product">
+
+                                <div class="photo-count">3</div>
                             </div>
                             <div class="text">
                                 <h2 class="product-title">Диски Original Renault Master III (2023) 5/130 R16 7J ET66
@@ -235,6 +237,8 @@
                             <div class="img">
                                 <img class="bg-img" src="/html-code/temporary-images/home/product2.png"
                                      alt="Priwoz product">
+
+                                <div class="photo-count">3</div>
                             </div>
                             <div class="text">
                                 <h2 class="product-title">Диски Original Renault Master III (2023) 5/130 R16 7J ET66
@@ -278,6 +282,8 @@
                             <div class="img">
                                 <img class="bg-img" src="/html-code/temporary-images/home/product4.png"
                                      alt="Priwoz product">
+
+                                <div class="photo-count">3</div>
                             </div>
                             <div class="text">
                                 <h2 class="product-title">Диски Original Renault Master III </h2>
@@ -301,6 +307,8 @@
                             <div class="img">
                                 <img class="bg-img" src="/html-code/temporary-images/home/product5.png"
                                      alt="Priwoz product">
+
+                                <div class="photo-count">3</div>
                             </div>
                             <div class="text">
                                 <h2 class="product-title">Диски Original Renault Master III (2023) 5/130 R16 7J ET66
