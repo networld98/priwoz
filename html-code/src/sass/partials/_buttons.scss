@@ -41,6 +41,7 @@
     background: $color-green-2;
     color: #fff;
     border: 1px solid $color-green-2;
+
     &:hover {
       background: $color-green-1;
       border-color: $color-green-1;
@@ -51,6 +52,7 @@
     background: $color-yellow-2;
     color: #fff;
     border: 1px solid $color-yellow-2;
+
     &:hover {
       background: $color-yellow-1;
       border-color: $color-yellow-1;
@@ -61,6 +63,7 @@
     background: $color-gray-2;
     color: #fff;
     border: 1px solid $color-gray-2;
+
     &:hover {
       background: $color-gray-1;
       border-color: $color-gray-1;
@@ -102,6 +105,25 @@
       background-image: url('../../../images/icons/search-white.svg');
     }
   }
+
+  &.btn-refresh {
+    color: $color-gray-3;
+    font-family: $roboto-condensed-font;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 1;
+    padding: 5px 14px;
+    height: 36px;
+    border-radius: 20px;
+    border: 1px solid $color-green-3;
+    background: #FFF;
+    text-transform: none;
+    &:hover {
+      background: $color-green-3;
+      color: #000;
+    }
+  }
 }
 
 .bx-authform-social-icon {
@@ -136,23 +158,28 @@
     background: #3D589B;
     border-color: #3D589B;
     color: #FFF;
+
     &:before {
       background: url('../../../images/icons/social/facebook-login.svg') no-repeat 50% 50%/ contain;
     }
   }
+
   &.google {
     border-radius: 20px;
     border-color: $color-gray-2;
     background: #FFF;
     color: $color-gray-2;
+
     &:before {
       background: url('../../../images/icons/social/google-login.svg') no-repeat 50% 50%/ contain;
     }
   }
+
   &.apple {
     background: $color-gray-1;
     border-color: $color-gray-1;
     color: #FFF;
+
     &:before {
       background: url('../../../images/icons/social/apple-login.svg') no-repeat 50% 50%/ contain;
     }
