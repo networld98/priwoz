@@ -50,6 +50,9 @@
       border-radius: 10px;
       overflow: hidden;
       display: block;
+      @include media-breakpoint-down(xl) {
+        border-radius: 7px;
+      }
 
       .img {
         padding-bottom: 74.1%;

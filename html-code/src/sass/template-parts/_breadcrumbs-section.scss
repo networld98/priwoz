@@ -18,6 +18,9 @@
       font-size: 12px;
       letter-spacing: 0.002em;
     }
+    @include media-breakpoint-down(md) {
+      letter-spacing: -0.012em;
+    }
 
     a {
       color: rgba(0, 0, 0, 0.75);
