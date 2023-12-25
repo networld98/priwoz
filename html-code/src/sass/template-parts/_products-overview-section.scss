@@ -547,6 +547,20 @@
       margin-bottom: 20px;
     }
 
+    & + .title-box {
+      column-gap: 0;
+      align-items: baseline;
+      @include media-breakpoint-down(xxl) {
+        margin-bottom: 30px;
+      }
+      .section-title {
+        font-size: 48px;
+        @include media-breakpoint-down(xl) {
+          font-size: 40px;
+        }
+      }
+    }
+
     .author-box {
       position: relative;
       display: inline-flex;
@@ -685,19 +699,19 @@
 
     .menu.-social {
       max-width: 330px;
-      column-gap: 82px;
+      column-gap: 80px;
       width: 22%;
       padding-left: 15px;
-      padding-right: 6px;
-      justify-content: flex-end;
+      justify-content: flex-start;
       @include media-breakpoint-down(xxl) {
-        column-gap: 49px;
-        padding-right: 0;
+        column-gap: 30px;
         width: 23.5%;
       }
       @include media-breakpoint-down(xl) {
+        padding-right: 0;
         column-gap: 32px;
         padding-left: 10px;
+        justify-content: flex-end;
         li a {
           width: 30px;
           height: 30px;
@@ -705,10 +719,9 @@
       }
       @include media-breakpoint-down(md) {
         width: 50%;
-        padding-left: 5px;
         padding-right: 0;
-        column-gap: 0;
-        justify-content: space-between;
+        column-gap: 27px;
+        justify-content: flex-end;
         padding-left: 10px;
       }
     }
