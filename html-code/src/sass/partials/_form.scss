@@ -74,7 +74,7 @@
     color: rgba(0, 0, 0, 0.35);
   }
 
-  &.form-control-filter {
+  &.-search {
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.50);
     border-radius: 0;
@@ -82,11 +82,9 @@
     font-family: $roboto-condensed-font;
     padding: 0;
     height: auto;
-    background: none;
     letter-spacing: -0.01em;
-    @include media-breakpoint-down(xl) {
-      font-size: 16px;
-    }
+    padding-left: 30px;
+    background: url('../../../images/icons/search.svg') no-repeat 0 50% / auto 19px;
 
     &::placeholder {
       color: rgba(0, 0, 0, 0.50);
@@ -96,23 +94,52 @@
       background-color: transparent;
       border-bottom-color: rgba(0, 0, 0, 0.50);
     }
+    @include media-breakpoint-down(xl) {
+      font-size: 16px;
+      padding-left: 22px;
+      background-size: auto 15px;
+    }
+  }
 
-    &.-search {
-      padding-left: 30px;
-      background: url('../../../images/icons/search.svg') no-repeat 0 50% / auto 19px;
-      @include media-breakpoint-down(xl) {
-        padding-left: 22px;
-        background-size: auto 15px;
-      }
+  &.-location {
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.50);
+    border-radius: 0;
+    color: rgba(0, 0, 0, 0.75);
+    font-family: $roboto-condensed-font;
+    padding: 0;
+    height: auto;
+    letter-spacing: -0.01em;
+    padding-left: 35px;
+    background: url('../../../images/icons/location-2.svg') no-repeat 0 50% / auto 21px;
+
+    &::placeholder {
+      color: rgba(0, 0, 0, 0.50);
     }
 
-    &.-location {
-      padding-left: 25px;
-      background: url('../../../images/icons/location-2.svg') no-repeat 0 50% / auto 21px;
-      @include media-breakpoint-down(xl) {
-        padding-left: 17px;
-        background-size: auto 15px;
-      }
+    &:focus {
+      background-color: transparent;
+      border-bottom-color: rgba(0, 0, 0, 0.50);
+    }
+    @include media-breakpoint-down(xl) {
+      padding-left: 17px;
+      background-size: auto 15px;
+      font-size: 16px;
+    }
+    &.bx_filter_select_container {
+      display: block !important;
+    }
+    .bx_filter_select_block {
+      padding: 0;
+      height: auto;
+      color: rgba(0, 0, 0, 0.75);
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: 140%;
+    }
+    .bx_filter_select_arrow {
+      display: none;
     }
   }
 }

@@ -99,6 +99,10 @@
       background-position: 52px 42%;
     }
 
+    svg {
+      display: none !important;
+    }
+
     &:hover {
       background-color: $color-gray-1;
       color: #fff;

@@ -5,16 +5,14 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ESLintPlugin = require("eslint-webpack-plugin");
 
 module.exports = {
-
     watch: true,
 
     entry: ["babel-polyfill", "./src/js/entry.es6"],
 
     output: {
-        path: __dirname + "/build",
+        path: __dirname + "/build/js",
         filename: "bundle.js"
     },
-
 
     plugins: [
         new webpack.DefinePlugin({
@@ -23,14 +21,15 @@ module.exports = {
         new webpack.ProvidePlugin({
             Promise: "es6-promise-promise"
         }),
-        new MiniCssExtractPlugin(),
+        new MiniCssExtractPlugin({
+            filename: "../css/main.css"
+        }),
         new ESLintPlugin({
             extensions: "es6",
         }),
     ],
 
     module: {
-
         rules: [
             {
                 test: /\.es6$/,
@@ -82,16 +81,17 @@ module.exports = {
             {
                 test: /\.(png|svg|gif)$/,
                 type: 'asset/resource',
-
+                generator: {
+                    filename: '../images/[name][ext]'
+                },
             },
             {
                 test: /\.(woff(2)?|ttf|eot|otf)$/,
                 type: 'asset/resource',
                 generator: {
-                    filename: './fonts/[name][ext]',
+                    filename: '../fonts/[name][ext]',
                 },
             }
-
         ]
     },
 
@@ -101,7 +101,6 @@ module.exports = {
     externals: {
         "jquery": "jQuery"
     }
-
 };
 
 

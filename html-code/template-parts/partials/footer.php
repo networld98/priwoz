@@ -231,6 +231,6 @@
 </footer>
 </div>
 <script src="./src/js/vendor/jquery-3.2.1.min.js"></script>
-<script src="./build/bundle.js"></script>
+<script src="./build/js/bundle.js"></script>
 </body>
 </html>

@@ -585,6 +585,7 @@
         height: 100px;
         overflow: hidden;
         position: relative;
+        border-radius: 50%;
         flex: none;
         @include media-breakpoint-down(xl) {
           width: 50px;
