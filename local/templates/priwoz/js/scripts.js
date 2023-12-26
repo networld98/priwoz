@@ -79,5 +79,21 @@ $( document ).ready(function() {
         });
         return false;
     });
+    $(".delete-company-user").click(function () {
+        let id = $(this).data('id');
+        let block = $('.grid.products-masonry.my-products');
+        $.ajax({
+            type: "POST",
+            url: '/ajax/delete-announcement.php',
+            data: {'id':id},
+            success: function (data) {
+                // Вывод текста результата отправки
+                $(block).html(data);
+                var $grid = $('.grid').masonry({});
+                $grid.masonry('reloadItems');
+            }
+        });
+        return false;
+    });
 });
 

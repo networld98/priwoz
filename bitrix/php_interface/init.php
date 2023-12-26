@@ -173,4 +173,12 @@ class CUtilEx extends \CUtil{
 
 }
 /*КОНЕЦ КОСТЫЛЯ */
+
+AddEventHandler("main", "OnBeforeUserRegister", "OnBeforeUserUpdateHandler");
+AddEventHandler("main", "OnBeforeUserUpdate", "OnBeforeUserUpdateHandler");
+function OnBeforeUserUpdateHandler(&$arFields)
+{
+    $arFields["LOGIN"] = $arFields["EMAIL"];
+    return $arFields;
+}
 ?>

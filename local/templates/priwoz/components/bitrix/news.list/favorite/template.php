@@ -29,7 +29,7 @@ foreach ($arResult["ITEMS"] as $arItem):?>
     $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
     ?>
     <div class="grid-item product-grid-item" id="<?= $this->GetEditAreaId($arItem['ID']); ?>">
-        <div class="box">
+        <div class="box <?if($arItem["DISPLAY_PROPERTIES"]['CATEGORY']['LINK_SECTION_VALUE']){?>company<?}?>">
 
             <? if ($arItem['PROPERTIES']['PHOTOS']['VALUE']):
                 $file = CFile::ResizeImageGet($arItem['PROPERTIES']['PHOTOS']['VALUE'][0], array('width' => 450, 'height' => 450), BX_RESIZE_IMAGE_PROPORTIONAL, true);
@@ -51,14 +51,22 @@ foreach ($arResult["ITEMS"] as $arItem):?>
 
             <div class="text">
                 <h2 class="product-title"><?= $arItem["NAME"] ?></h2>
-                <div class="location-date">
-                    <div class="location"><?= $arItem["DISPLAY_PROPERTIES"]['CITY']['LINK_ELEMENT_VALUE'][$arItem["DISPLAY_PROPERTIES"]['CITY']['VALUE']]['NAME'] ?></div>
-                    <? if (!empty($arItem['DISPLAY_PROPERTIES']['PRICE'])) {
-                        ?>
-                        <time datetime="<?= strtolower(FormatDate("d m Y", MakeTimeStamp($arItem['TIMESTAMP_X']))) ?>"
-                              class="date"><?= strtolower(FormatDate("d M Y", MakeTimeStamp($arItem['TIMESTAMP_X']))) ?></time>
-                    <? } ?>
-                </div>
+                <?
+                if($arItem["DISPLAY_PROPERTIES"]['CATEGORY']['LINK_SECTION_VALUE']){?>
+                     <div class="category-location">
+                        <div class="category"><?= $arItem["DISPLAY_PROPERTIES"]['CATEGORY']['LINK_SECTION_VALUE'][$arItem["DISPLAY_PROPERTIES"]['CATEGORY']['VALUE']]['NAME'] ?></div>
+                        <div class="location"><?= $arItem["DISPLAY_PROPERTIES"]['CITY']['LINK_ELEMENT_VALUE'][$arItem["DISPLAY_PROPERTIES"]['CITY']['VALUE']]['NAME'] ?></div>
+                    </div>
+                <?}else{?>
+                    <div class="location-date">
+                        <div class="location"><?= $arItem["DISPLAY_PROPERTIES"]['CITY']['LINK_ELEMENT_VALUE'][$arItem["DISPLAY_PROPERTIES"]['CITY']['VALUE']]['NAME'] ?></div>
+                        <? if (!empty($arItem['DISPLAY_PROPERTIES']['PRICE'])) {
+                            ?>
+                            <time datetime="<?= strtolower(FormatDate("d m Y", MakeTimeStamp($arItem['TIMESTAMP_X']))) ?>"
+                                  class="date"><?= strtolower(FormatDate("d M Y", MakeTimeStamp($arItem['TIMESTAMP_X']))) ?></time>
+                        <? } ?>
+                    </div>
+                <? } ?>
                 <? if (!empty($arItem['DISPLAY_PROPERTIES']['PRICE'])) {
                     ?>
                     <div class="price"><? if ($arItem['DISPLAY_PROPERTIES']['PRICE']['VALUE'] != 0 && $arItem['DISPLAY_PROPERTIES']['PRICE']['VALUE'] != NULL) {
@@ -69,11 +77,11 @@ foreach ($arResult["ITEMS"] as $arItem):?>
                 <? } ?>
             </div>
 
-            <? if ($APPLICATION->GetCurPage() == "/personal/ads-list/" || $_POST['id']) { ?>
+            <? if ($APPLICATION->GetCurPage() == "/personal/ads-list/" || $APPLICATION->GetCurPage() == "/personal/company-list/" || $_POST['id']) { ?>
                 <div class="overlay">
                     <div class="row overlay-inner">
                         <div class="col-xs-12 col-md-6">
-                            <a href="/personal/announcement/?edit=Y&CODE=<?= $arItem['ID'] ?>" class="overlay-link">
+                            <a href="/personal/<?if($arItem["DISPLAY_PROPERTIES"]['CATEGORY']['LINK_SECTION_VALUE']){?>company<?}else{?>announcement<?}?>/?edit=Y&CODE=<?= $arItem['ID'] ?>" class="overlay-link">
                                 <div class="overlay-icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30"
                                          fill="none">
@@ -87,7 +95,7 @@ foreach ($arResult["ITEMS"] as $arItem):?>
                             </a>
                         </div>
                         <div class="col-xs-12 col-md-6">
-                            <a data-id="<?= $arItem['ID']?>" class="overlay-link delete-item-user">
+                            <a data-id="<?= $arItem['ID']?>" class="overlay-link ">
                                 <div class="overlay-icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30"
                                          fill="none">

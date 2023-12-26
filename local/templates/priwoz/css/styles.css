@@ -158,6 +158,40 @@
 .upload-group .upload-file-custom label.delete:hover  {
     opacity:1;
 }
-.delete-item-user:hover {
+.delete-item-user:hover, .delete-company-user:hover {
     cursor: pointer;
+}
+.personal-section .product-grid-item .box .company-logo {
+    margin: 10px;
+}
+.personal-section .product-grid-item .box .text .category-location {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-top: 14px;
+}
+.personal-section .product-grid-item .box .text .category-location .location {
+    color: rgba(0,0,0,0.75);
+    font-family: "Roboto Condensed",sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 160%;
+    position: relative;
+    padding-left: 17px;
+    margin-right: 12px;
+}
+.personal-section .product-grid-item .box .text .category-location .category {
+    color: #409313;
+    font-family: "Roboto Condensed",sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 160%;
+    text-transform: uppercase;
+    margin-right: 22px;
+}
+.personal-section .products-masonry.my-products .product-grid-item .box .text {
+    min-height: auto;
 }

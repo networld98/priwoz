@@ -56,6 +56,13 @@ $aMenuLinks = array(
         "\$GLOBALS['USER']->IsAuthorized()"
     ),
     array(
+        "Мои компании",
+        "/personal/company-list/",
+        array(),
+        array(),
+        "\$GLOBALS['USER']->IsAuthorized()"
+    ),
+    array(
         "FAq",
         "/personal/faq/",
         array(),

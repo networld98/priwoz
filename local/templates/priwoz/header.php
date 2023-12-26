@@ -265,7 +265,7 @@ $curPagePath = explode("/", $curPagePath);
             </div>
         </div>
     </div>
-<? if($curPagePath[1] !== "personal"):?>
+<? if($APPLICATION->GetCurPage() == "/"):?>
     <section class="filter-section d-xs-none d-xl-block">
         <div class="container">
             <div class="row align-items-md-center">
@@ -308,7 +308,7 @@ $curPagePath = explode("/", $curPagePath);
         </div>
     </section>
 <?endif;?>
-<? if($APPLICATION->GetCurPage() != "/" && $curPagePath[1] !== "personal"):?>
+<? if($APPLICATION->GetCurPage() != "/" && $curPagePath[1] !== "personal" && $curPagePath[1] !== "auth"):?>
     <section class="breadcrumbs-section">
         <div class="container">
             <?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "custom", Array(

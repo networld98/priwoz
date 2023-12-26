@@ -181,6 +181,7 @@ $APPLICATION->SetTitle("Избранное");
                                                 5 => "DOPPHONE",
                                                 6 => "PHONE",
                                                 7 => "CITY",
+                                                8 => "CATEGORY"
                                             ),
                                             "TEMPLATE_THEME" => "blue",
                                             "DETAIL_URL" => "",

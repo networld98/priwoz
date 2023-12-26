@@ -15,7 +15,7 @@ $APPLICATION->SetTitle("Обьявление");
 </section>
 <section class="add-product-section">
     <div class="container">
-        <? $APPLICATION->IncludeComponent("bitrix:iblock.element.add.form", "custom", array(
+        <? $APPLICATION->IncludeComponent("bitrix:iblock.element.add.form", "announcement", array(
             "SEF_MODE" => "Y",    // Включить поддержку ЧПУ
             "IBLOCK_TYPE" => "ads",    // Тип инфоблока
             "IBLOCK_ID" => "19",    // Инфоблок
