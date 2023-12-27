@@ -23,9 +23,9 @@ if(strlen($CONTAINER_ID) <= 0)
 $CONTAINER_ID = CUtil::JSEscape($CONTAINER_ID);
 
 if($arParams["SHOW_INPUT"] !== "N"):?>
-	<div id="<?echo $CONTAINER_ID?>">
+	<label id="<?echo $CONTAINER_ID?>" class="form-label">
 		<input id="<?echo $INPUT_ID?>" class="form-control -search" type="text" name="q" value="<?=$_GET['q']?>" placeholder="Шо найти на Priwoze" size="40" maxlength="50" autocomplete="off" onkeyup="smartFilter.keyup(this)"/>
-	</div>
+	</label>
 <?endif?>
 <script>
 	BX.ready(function(){

@@ -256,9 +256,9 @@ $curPagePath = explode("/", $curPagePath);
             <div class="container">
                 <div class="buttons-wrap">
                     <div class="row">
-                        <div class="col-xs-12 col-md-6"><a href="/" class="btn btn-large btn-green">Добавить
+                        <div class="col-xs-12 col-md-6"><a href="/personal/company/" class="btn btn-large btn-green">Добавить
                                 компанию</a></div>
-                        <div class="col-xs-12 col-md-6"><a href="/" class="btn btn-large btn-orange">Добавить
+                        <div class="col-xs-12 col-md-6"><a href="/personal/announcement/" class="btn btn-large btn-orange">Добавить
                                 компанию</a></div>
                     </div>
                 </div>
@@ -270,36 +270,33 @@ $curPagePath = explode("/", $curPagePath);
         <div class="container">
             <div class="row align-items-md-center">
                 <div class="col-xl-8">
-                    <div class="search-box">
-                        <? $APPLICATION->IncludeComponent(
-                            "networld:catalog.smart.filter",
-                            "header_filter",
-                            array(
-                                "INSTANT_RELOAD" => "Y",
-                                "IBLOCK_TYPE" => "ads",
-                                "IBLOCK_ID" => "19",
-                                "FILTER_NAME" => "smartPreFilter",
-                                "PROPERTY_CODE" => array(
-                                    1 => "CATEGORY",
-                                    2 => "SUBCATEGORY",
-                                    3 => "PRICE",
-                                    4 => "CONDITION",
+                    <? $APPLICATION->IncludeComponent(
+                        "networld:catalog.smart.filter",
+                        "header_filter",
+                        array(
+                            "INSTANT_RELOAD" => "N",
+                            "IBLOCK_TYPE" => "ads",
+                            "IBLOCK_ID" => "19",
+                            "FILTER_NAME" => "smartPreFilter",
+                            "PROPERTY_CODE" => array(
+                                1 => "CATEGORY",
+                                2 => "SUBCATEGORY",
+                                3 => "PRICE",
+                                4 => "CONDITION",
 
-                                ),
-                                "CACHE_TIME" => "36000000",
-                                "CACHE_TYPE" => "N",
-                                "CACHE_GROUPS" => "Y",
                             ),
-                            false
-                        );
-                        ?>
-
-                    </div>
+                            "CACHE_TIME" => "36000000",
+                            "CACHE_TYPE" => "N",
+                            "CACHE_GROUPS" => "Y",
+                        ),
+                        false
+                    );
+                    ?>
                 </div>
                 <div class="col-xl-4">
                     <div class="buttons-wrap">
                         <div class="row">
-                            <div class="col-xs-12 col-md-6"><a href="/personal" class="btn btn-green">Добавить компанию</a></div>
+                            <div class="col-xs-12 col-md-6"><a href="/personal/company/" class="btn btn-green">Добавить компанию</a></div>
                             <div class="col-xs-12 col-md-6"><a href="/personal/announcement/" class="btn btn-orange">Добавить объявление</a></div>
                         </div>
                     </div>

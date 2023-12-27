@@ -195,3 +195,14 @@
 .personal-section .products-masonry.my-products .product-grid-item .box .text {
     min-height: auto;
 }
+.products-overview-section .author-wrap .author-box .avatar {
+    border-radius: 50%;
+}
+.bx_filter_select_container.form-control.-location {
+    border: 1px solid #BDC9C9;
+    display: flex;
+}
+.bx_filter_select_container.form-control.-location .bx_filter_select_block {
+    font-size:20px;
+    color: #000;
+}

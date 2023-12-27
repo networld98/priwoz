@@ -62,7 +62,7 @@ if ($_GET['edit'] != 'Y') {
                     </div>
                     <div class="col-xs-12 col-xl-8">
                         <label class="form-label <?= $arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] ?>-block">
-                            <? if ($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == 'SUBCATEGORY' && empty($arResult["PROPERTY_LIST_FULL"]["SUBCATEGORY"]) && $arResult["ELEMENT_PROPERTIES"][$propertyID][0]["VALUE"] && empty($arResult["ELEMENT_PROPERTIES"][$propertyID][0]["VALUE"])) { ?>
+                            <? if ($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == 'SUBCATEGORY' && empty($arResult["ELEMENT_PROPERTIES"][$propertyID][0]["VALUE"])) { ?>
                                 <input type="text" class="form-control" readonly
                                        placeholder="<?= 'Выберите категорию' ?>">
                             <? } ?>
@@ -267,6 +267,9 @@ if ($_GET['edit'] != 'Y') {
                                         <input type="text" class="form-control"
                                                name="PROPERTY[<?= $propertyID ?>][<?= $i ?>]"
                                                size="<?= $arResult["PROPERTY_LIST_FULL"][$propertyID]["COL_COUNT"]; ?>"
+                                               <?if($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == 'PRICE'){?>
+                                                   placeholder="BGN"
+                                               <?}?>
                                                value="<?= $value ?>"/><?
                                         if ($arResult["PROPERTY_LIST_FULL"][$propertyID]["USER_TYPE"] == "DateTime"):?><?
                                             $APPLICATION->IncludeComponent(
@@ -534,7 +537,7 @@ if ($_GET['edit'] != 'Y') {
             let subcategory = $('.SUBCATEGORY-block');
             $.ajax({
                 type: "POST",
-                url: '<?=SITE_TEMPLATE_PATH ?>/components/bitrix/iblock.element.add.form/custom/ajaxCategory.php',
+                url: '<?=SITE_TEMPLATE_PATH ?>/components/bitrix/iblock.element.add.form/announcement/ajaxCategory.php',
                 data: {CATEGORY: id},
                 success: function (data) {
                     // Вывод текста результата отправки

@@ -31,7 +31,7 @@ $APPLICATION->SetTitle("Настройки пользователя");
                         <div class="grid-sizer"></div>
                         <div class="gutter-sizer"></div>
                         <?
-                        global $arrFilter;
+                        global $arrFilter, $USER;
                         $arrFilter = array("PROPERTY_AUTHOR" => $USER->GetID()); ?>
                         <? $APPLICATION->IncludeComponent(
                             "bitrix:news.list",

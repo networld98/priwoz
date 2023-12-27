@@ -53,8 +53,8 @@ $( document ).ready(function() {
         });
     }( document, window, 0 ));
 
-    $('.item-phone').mask('+359 99 99 99 99 99');
-    $('.item-dopphone').mask('+359 99 99 99 99 99');
+    $('.item-phone').mask('+399 99 999 99 99');
+    $('.item-dopphone').mask('+399 99 999 99 99');
 
     $('.delete-img').change(function() {
         if ($(this).is(':checked')) {

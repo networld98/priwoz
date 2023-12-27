@@ -36,6 +36,12 @@ if ($arParams["SEARCH_PAGE"])
 	}
 	unset($arItem);
 }
+foreach ($arResult["ITEMS"] as $key => &$arItem)
+{
+    if(!empty($_GET['userAds']) && $_GET['userAds'] != $arItem['PROPERTIES']['NAME']['VALUE'] && is_numeric($arItem['PROPERTIES']['NAME']['VALUE'])){
+        unset($arResult["ITEMS"][$key]);
+    }
+}
 
 /*VIDEO & AUDIO*/
 $mediaProperty = trim($arParams["MEDIA_PROPERTY"]);

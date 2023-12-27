@@ -36,6 +36,13 @@ foreach ($arResult["ITEMS"] as $arItem):?>
                 ?>
                 <div class="img">
                     <img class="bg-img" src="<?= $file['src'] ?>" alt="<?= $arItem['NAME'] ?>">
+                    <? if ($arItem["PROPERTIES"]['AUTHOR']['VALUE'] != $arItem["PROPERTIES"]['NAME']['VALUE'] && is_numeric($arItem["PROPERTIES"]['NAME']['VALUE'])) {
+                        $companyData = CIBlockElement::GetByID($arItem["PROPERTIES"]['NAME']['VALUE'])->GetNextElement()->GetProperties();
+                        if (!empty($companyData)) {
+                            $logo = CFile::ResizeImageGet($companyData['LOGO']['VALUE'], array('width' => 150), BX_RESIZE_IMAGE_PROPORTIONAL, true); ?>
+                            <img class="company-logo" src="<?= $logo["src"] ?>" alt="<?= $arItem['NAME'] ?>">
+                        <? }
+                    } ?>
                 </div>
             <? endif; ?>
             <? if (!empty($arItem["PROPERTIES"]['LOGO'])):?>

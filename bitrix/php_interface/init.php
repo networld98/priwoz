@@ -6,7 +6,7 @@ class CustomFields
     function OnBeforeIBlockElementAddHandler(&$arFields)
     {
         $transName = CUtil::translit(trim($arFields["NAME"]), "ru", $arTransParams);//функция генерации сим. кода из имени
-        $arFields["CODE"] = transName."_".date('dmY');
+        $arFields["CODE"] = $transName."_".date('dmYHS');
         $arFields["ACTIVE"] = "Y"; 
         return;
     }

@@ -12,9 +12,9 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 $this->addExternalCss("/bitrix/css/main/font-awesome.css");
-$this->addExternalCss($this->GetFolder().'/themes/'.$arParams['TEMPLATE_THEME'].'/style.css');
-?>
-
+$this->SetViewTarget("countElements");
+echo count((array)$arResult["ITEMS"]);
+$this->EndViewTarget();?>
 <div class="products-wrap">
     <div class="grid products-masonry">
         <div class="grid-sizer"></div>
@@ -81,10 +81,10 @@ foreach($arResult["ITEMS"] as $arItem):?>
     </div>
 <?endforeach;?>
 </div>
-<?if($arParams["DISPLAY_BOTTOM_PAGER"]):?>
+<?/*if($arParams["DISPLAY_BOTTOM_PAGER"]):?>
     <div class="load-more-box">
         <a href="/" class="blue-link">Все объявления</a>
     </div>
 	<br /><?=$arResult["NAV_STRING"]?>
-<?endif;?>
+<?endif;*/?>
 </div>

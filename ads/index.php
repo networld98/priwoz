@@ -2,7 +2,7 @@
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetPageProperty("keywords", "");
 $APPLICATION->SetPageProperty("description", "");
-$APPLICATION->SetTitle("Обьявление");
+$APPLICATION->SetTitle("Доска объявлений");
 ?>
 <? $APPLICATION->IncludeComponent(
 	"bitrix:news", 
