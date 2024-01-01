@@ -49,6 +49,7 @@ popupMenu.on('click', function (e) {
 
 
 $(window).on('resize', function(){
+    $('.form-select').select2('close');
     submenuOpener.removeClass('active');
     popupMenu.removeClass('active');
     $('body').removeClass('-overflow-hidden');

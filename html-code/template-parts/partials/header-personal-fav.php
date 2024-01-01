@@ -597,7 +597,7 @@
     <div class="popup-menu general-menu d-xs-block d-xl-none" id="search-menu">
         <div class="inner">
             <div class="container">
-                <div class="search-box">
+                <form class="search-box">
                     <div class="row align-items-xs-center">
                         <div class="col-xs-12 col-md-6">
                             <label class="form-label">
@@ -606,23 +606,47 @@
                         </div>
                         <div class="col-xs-12 col-md-4">
                             <label class="form-label">
-                                <input type="text" class="form-control form-control-filter -location" placeholder="Болгария, область">
+                                <select class="form-select -location">
+                                    <option value="All" selected>Все объявления</option>
+                                    <option value="12">София</option>
+                                    <option value="123">Пловдив</option>
+                                    <option value="1234">Варна</option>
+                                    <option value="12345">Бургас</option>
+                                    <option value="123456">Благоевградская область</option>
+                                    <option value="1234457">Бургасская область</option>
+                                    <option value="12345436">Добричская область</option>
+                                    <option value="123874">Габровская область</option>
+                                    <option value="1238765">Хасковская область</option>
+                                    <option value="123876">Кырджалийская область</option>
+                                    <option value="12387">Кюстендилская область</option>
+                                    <option value="1238">Ловечская область</option>
+                                    <option value="1235674">Монтанская область</option>
+                                    <option value="12345">Пазарджикская область</option>
+                                    <option value="12453">Перникская область</option>
+                                    <option value="123453">Плевенская область</option>
+                                    <option value="123523">Пловдивская область</option>
+                                    <option value="123243">Разградская область</option>
+                                    <option value="12365">Русенская область</option>
+                                    <option value="12398">Шуменская область</option>
+                                    <option value="123456">Силистренская область</option>
+                                    <option value="123234">Сливенская область</option>
+                                    <option value="12324">Смолянская область</option>
+                                    <option value="123214">Софийская область</option>
+                                    <option value="123225">Старозагорская область</option>
+                                    <option value="12354">Тырговиштская область</option>
+                                    <option value="12364">Варненская область</option>
+                                    <option value="12376">Великотырновская область</option>
+                                    <option value="12385">Видинская область</option>
+                                    <option value="12348">Врацкая область</option>
+                                    <option value="1233788">Ямбольская область</option>
+                                </select>
                             </label>
                         </div>
                         <div class="col-xs-12 col-md-2 btn-box">
-                            <button type="submit" class="btn btn-search">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15"
-                                     fill="none">
-                                    <path d="M13.6109 14.4049L10.2686 11.0898" stroke="currentColor"
-                                          stroke-linecap="round"/>
-                                    <path d="M12 6.23269C12 9.39746 9.42695 11.9654 6.25 11.9654C3.07305 11.9654 0.5 9.39746 0.5 6.23269C0.5 3.06792 3.07305 0.5 6.25 0.5C9.42695 0.5 12 3.06792 12 6.23269Z"
-                                          stroke="currentColor"/>
-                                </svg>
-                                Поиск
-                            </button>
+                            <input type="submit" class="btn btn-search" value="Поиск">
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>

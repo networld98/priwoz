@@ -2,6 +2,55 @@
   width: 100%;
   box-shadow: none;
   outline: none;
+  &.-min-max-label {
+    border-radius: 5px;
+    border: 1px solid var(--10-black, rgba(82, 97, 114, 0.10));
+    background: #FFF;
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-start;
+    height: 50px;
+    color: rgba(0, 0, 0, 0.50);
+    font-family: $roboto-condensed-font;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 120%;
+    padding: 10px 5px 10px 16px;
+    @include media-breakpoint-down(xl) {
+      font-size: 16px;
+      line-height: 120%;
+      height: 44px;
+      padding: 10px 5px 10px 8px;
+    }
+    @include media-breakpoint-down(md) {
+      font-size: 14px;
+      padding: 7px 5px 7px 8px;
+    }
+
+    input[type='text'], .form-control {
+      width: 100%;
+      color: #000;
+      font-family: $roboto-condensed-font;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: 145%;
+      border: none;
+      height: auto;
+      box-shadow: none;
+      background: transparent;
+      padding: 0 0 0 4px;
+      @include media-breakpoint-down(xl) {
+        font-size: 16px;
+        line-height: 24px;
+      }
+      @include media-breakpoint-down(md) {
+        font-size: 14px;
+        line-height: 30px;
+      }
+    }
+  }
 }
 
 .form-group {
@@ -81,7 +130,7 @@
     color: rgba(0, 0, 0, 0.75);
     font-family: $roboto-condensed-font;
     padding: 0;
-    height: auto;
+    height: 30px;
     letter-spacing: -0.01em;
     padding-left: 30px;
     background: url('../../../images/icons/search.svg') no-repeat 0 50% / auto 19px;
@@ -94,6 +143,7 @@
       background-color: transparent;
       border-bottom-color: rgba(0, 0, 0, 0.50);
     }
+
     @include media-breakpoint-down(xl) {
       font-size: 16px;
       padding-left: 22px;
@@ -101,14 +151,14 @@
     }
   }
 
-  &.-location {
+  &.-location, &.-simple-location {
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.50);
     border-radius: 0;
     color: rgba(0, 0, 0, 0.75);
     font-family: $roboto-condensed-font;
     padding: 0;
-    height: auto;
+    height: 30px;
     letter-spacing: -0.01em;
     padding-left: 35px;
     background: url('../../../images/icons/location-2.svg') no-repeat 0 50% / auto 21px;
@@ -121,14 +171,17 @@
       background-color: transparent;
       border-bottom-color: rgba(0, 0, 0, 0.50);
     }
+
     @include media-breakpoint-down(xl) {
       padding-left: 17px;
       background-size: auto 15px;
       font-size: 16px;
     }
+
     &.bx_filter_select_container {
       display: block !important;
     }
+
     .bx_filter_select_block {
       padding: 0;
       height: auto;
@@ -138,11 +191,13 @@
       font-weight: 300;
       line-height: 140%;
     }
+
     .bx_filter_select_arrow {
       display: none;
     }
   }
 }
+
 
 textarea.form-control {
   height: auto;
@@ -475,12 +530,92 @@ form {
   }
 }
 
+
+.form-select.-location, .form-select.-simple-location {
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.50);
+  border-radius: 0;
+  color: rgba(0, 0, 0, 0.50);
+  font-family: $roboto-condensed-font;
+  padding: 0;
+  height: 30px;
+  letter-spacing: -0.01em;
+  padding-left: 35px;
+  background: url('../../../images/icons/location-2.svg') no-repeat 0 50% / auto 21px;
+
+  &:focus {
+    background-color: transparent;
+    border-bottom-color: rgba(0, 0, 0, 0.50);
+  }
+
+  @include media-breakpoint-down(xl) {
+    padding-left: 17px;
+    background-size: auto 15px;
+    font-size: 16px;
+  }
+
+  & + .select2 {
+    &.select2-container {
+      .select2-selection--single {
+        box-shadow: none;
+        outline: none;
+        border-radius: 0;
+        border: none;
+        background: transparent;
+        height: auto;
+
+        .select2-selection__arrow {
+          display: none;
+        }
+
+        .select2-selection__rendered {
+          border: none;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.50);
+          border-radius: 0;
+          color: rgba(0, 0, 0, 0.50);
+          font-family: $roboto-condensed-font;
+          padding: 0;
+          height: 30px;
+          letter-spacing: -0.01em;
+          padding-left: 35px;
+          background: url('../../../images/icons/location-2.svg') no-repeat 0 50% / auto 21px;
+
+          &:focus {
+            background-color: transparent;
+            border-bottom-color: rgba(0, 0, 0, 0.50);
+          }
+
+          @include media-breakpoint-down(xl) {
+            padding-left: 17px;
+            background-size: auto 15px;
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+
+}
+
 .select2 {
   &.select2-container {
     width: 100% !important;
 
+    &.select2-container--open {
+      .select2-selection--single {
+        box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+      }
+
+      &.select2-container--above {
+        .select2-selection--single {
+          box-shadow: 0 -4px 4px 0 rgba(0, 0, 0, 0.25);
+        }
+      }
+    }
+
+
     .select2-selection--single {
-      box-shadow: none !important;
+      box-shadow: none;
       outline: none;
       width: 100%;
       font-size: 20px;
@@ -497,6 +632,10 @@ form {
         line-height: 120%;
         height: 44px;
       }
+      @include media-breakpoint-down(md) {
+        font-size: 14px;
+      }
+
 
       .select2-selection__rendered {
         padding: 7px 50px 7px 16px;
@@ -552,13 +691,37 @@ form {
 .select2-container--default {
 
   .select2-dropdown {
+    z-index: 989 !important;
     border-radius: 5px;
-    border: 1px solid rgba(82, 97, 114, 0.10);
+    border: none;
     background: #FFF;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
-    padding-bottom: 13px;
-    @include media-breakpoint-down(xl) {
-      padding-bottom: 5px;
+    overflow: hidden;
+
+    .select2-results ul {
+      padding-bottom: 13px;
+      @include media-breakpoint-down(xl) {
+        padding-bottom: 5px;
+      }
+
+      &::-webkit-scrollbar {
+        width: 5px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: $color-lightgray-4;
+        opacity: 1;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: $color-lightgray-1;
+        opacity: 1;
+      }
+
+      &::-webkit-scrollbar-thumb:hover {
+        background: $color-gray-3;
+        opacity: 1;
+      }
     }
 
     &.select2-dropdown--above {
@@ -572,6 +735,195 @@ form {
       border-top: none;
       border-top-left-radius: 0;
       border-top-right-radius: 0;
+    }
+
+    &.-location {
+      box-shadow: none;
+      border-radius: 0;
+      margin-top: -30px;
+
+      .select2-search {
+        padding: 0;
+
+        input {
+          border: none;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.50);
+          border-radius: 0;
+          color: rgba(0, 0, 0, 0.75);
+          font-family: $roboto-condensed-font;
+          padding: 0;
+          height: 30px;
+          letter-spacing: -0.01em;
+          padding-left: 35px;
+          background: url('../../../images/icons/location-2.svg') no-repeat 0 50% / auto 21px;
+
+          &::placeholder {
+            color: rgba(0, 0, 0, 0.50);
+          }
+
+          &:focus {
+            background-color: transparent;
+            border-bottom-color: rgba(0, 0, 0, 0.50);
+          }
+
+          @include media-breakpoint-down(xl) {
+            padding-left: 17px;
+            background-size: auto 15px;
+            font-size: 16px;
+          }
+        }
+      }
+
+      @include media-breakpoint-down(xl) {
+        .select2-results {
+          border: 1px solid rgba(82, 97, 114, 0.10);
+
+          > .select2-results__options {
+            max-height: 200px;
+          }
+        }
+      }
+      @include media-breakpoint-up(xl) {
+        .select2-results {
+          position: fixed;
+          left: 50%;
+          width: 100%;
+          height: auto;
+          max-height: 100%;
+          bottom: 0;
+          transform: translateX(-50%);
+          background: rgba(255, 255, 255, 0.90);
+          overflow-y: auto;
+          overflow-x: hidden;
+
+          &::-webkit-scrollbar {
+            width: 5px;
+          }
+
+          &::-webkit-scrollbar-track {
+            background: $color-lightgray-4;
+            opacity: 1;
+          }
+
+          &::-webkit-scrollbar-thumb {
+            background: $color-lightgray-1;
+            opacity: 1;
+          }
+
+          &::-webkit-scrollbar-thumb:hover {
+            background: $color-gray-3;
+            opacity: 1;
+          }
+
+          > .select2-results__options {
+            max-height: unset;
+            columns: 3;
+            column-gap: 30px;
+            padding-bottom: 30px;
+            position: relative;
+            width: 100%;
+            max-width: 1594px;
+            padding-left: 15px;
+            padding-right: 15px;
+            margin: 0 auto;
+            z-index: 0;
+            overflow: visible;
+            @include media-breakpoint-down(xxl) {
+              max-width: 1196px;
+            }
+
+            &:before {
+              content: '';
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              width: 100vw;
+              background: $color-lightgray-4;
+              z-index: -1;
+              left: 50%;
+              transform: translateX(-50%);
+            }
+
+            li {
+              border-bottom: none;
+              height: auto;
+              padding: 0;
+              color: rgba(0, 0, 0, 0.75);
+              font-family: $roboto-condensed-font;
+              font-size: 20px;
+              font-style: normal;
+              font-weight: 300;
+              line-height: 220%;
+              border-top: 1px solid $color-lightgray-2;
+              border-bottom: 1px solid $color-lightgray-2;
+              margin-bottom: -1px;
+
+              &:hover {
+                background: transparent;
+                color: rgba(0, 0, 0, 0.55);
+              }
+
+              &.select2-results__option--selected, &.select2-results__option--highlighted {
+                background: transparent;
+              }
+
+              //&.select2-results__message {
+              //  display: none;
+              //}
+            }
+
+          }
+        }
+      }
+
+    }
+
+    &.-simple-location {
+      box-shadow: none;
+      border-radius: 0;
+      margin-top: -30px;
+
+      .select2-search {
+        padding: 0;
+
+        input {
+          border: none;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.50);
+          border-radius: 0;
+          color: rgba(0, 0, 0, 0.75);
+          font-family: $roboto-condensed-font;
+          padding: 0;
+          height: 30px;
+          letter-spacing: -0.01em;
+          padding-left: 35px;
+          background: url('../../../images/icons/location-2.svg') no-repeat 0 50% / auto 21px;
+
+          &::placeholder {
+            color: rgba(0, 0, 0, 0.50);
+          }
+
+          &:focus {
+            background-color: transparent;
+            border-bottom-color: rgba(0, 0, 0, 0.50);
+          }
+
+          @include media-breakpoint-down(xl) {
+            padding-left: 17px;
+            background-size: auto 15px;
+            font-size: 16px;
+          }
+        }
+      }
+
+      .select2-results {
+        border: 1px solid rgba(82, 97, 114, 0.10);
+
+        @include media-breakpoint-down(xl) {
+          > .select2-results__options {
+            max-height: 200px;
+          }
+        }
+      }
     }
   }
 
@@ -589,10 +941,29 @@ form {
     font-weight: 300;
     line-height: 150%;
     padding: 7px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     @include media-breakpoint-down(xl) {
       font-size: 16px;
       line-height: 120%;
       padding: 7px 14px;
+    }
+
+    .count {
+      padding: 3px 8px;
+      margin-right: -6px;
+      flex: none;
+      color: $color-gray-3;
+      text-align: center;
+      font-family: $roboto-condensed-font;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: 100%;
+      margin-left: 5px;
+      border-radius: 9px;
+      background: $color-lightgray-3;
     }
   }
 
@@ -797,6 +1168,61 @@ form {
         @include media-breakpoint-down(md) {
           height: 44px;
           font-size: 14px;
+        }
+      }
+
+      .form-label {
+        width: 100%;
+        box-shadow: none;
+        outline: none;
+        &.-min-max-label {
+          border-radius: 5px;
+          border: 1px solid var(--10-black, rgba(82, 97, 114, 0.10));
+          background: #FFF;
+          display: flex;
+          align-items: baseline;
+          justify-content: flex-start;
+          height: 50px;
+          color: rgba(0, 0, 0, 0.50);
+          font-family: $roboto-condensed-font;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 300;
+          line-height: 120%;
+          padding: 10px 5px 10px 16px;
+          @include media-breakpoint-down(xl) {
+            font-size: 16px;
+            line-height: 120%;
+            height: 44px;
+            padding: 10px 5px 10px 8px;
+          }
+          @include media-breakpoint-down(md) {
+            font-size: 14px;
+            padding: 7px 5px 7px 8px;
+          }
+
+          input[type='text'], .form-control {
+            width: 100%;
+            color: #000;
+            font-family: $roboto-condensed-font;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 300;
+            line-height: 145%;
+            border: none;
+            height: auto;
+            box-shadow: none;
+            background: transparent;
+            padding: 0 0 0 4px;
+            @include media-breakpoint-down(xl) {
+              font-size: 16px;
+              line-height: 24px;
+            }
+            @include media-breakpoint-down(md) {
+              font-size: 14px;
+              line-height: 30px;
+            }
+          }
         }
       }
 

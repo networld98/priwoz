@@ -12,22 +12,21 @@
                         <div class="bx_filter_parameters_box_title">Категория</div>
                         <div class="bx_filter_block">
                             <div class="bx_filter_parameters_box_container">
-                                <div class="bx_filter_select_container">
-                                    <div class="bx_filter_select_block"
-                                         onclick="smartFilter.showDropDownPopup(this, '527')">
-                                        <div class="bx_filter_select_text" data-role="currentOption">
-                                            Все
-                                        </div>
-                                        <div class="bx_filter_select_arrow"></div>
-                                        <input style="display: none" type="radio" name="arrFilter_527"
-                                               id="all_arrFilter_527_2157551989" value="">
-                                        <input style="display: none" type="radio" name="arrFilter_527"
-                                               id="arrFilter_527_2157551989" value="avto">
-                                        <input style="display: none" type="radio" name="arrFilter_527"
-                                               id="arrFilter_527_4264091080" value="eda">
-
-                                    </div>
-                                </div>
+                                <select class="form-select -without-search">
+                                    <option data-count="36643" value="All" selected>Все объявления</option>
+                                    <option data-count="126" value="avto">Авто</option>
+                                    <option data-count="3644" value="det_mir">Детский мир</option>
+                                    <option data-count="14826" value="dom_i_sad">Дом и сад</option>
+                                    <option data-count="10433" value="zyvotnye">Животные</option>
+                                    <option data-count="456" value="krasota">Красота</option>
+                                    <option data-count="8210" value="nedv">Недвижимость</option>
+                                    <option data-count="11325" value="odeg">Одежда</option>
+                                    <option data-count="15247" value="darom">Отдам даром</option>
+                                    <option data-count="456" value="rabota">Работа</option>
+                                    <option data-count="8210" value="hobbi">Хобби и спорт</option>
+                                    <option data-count="11325" value="uslugi">Услуги</option>
+                                    <option data-count="15247" value="electr">Электроника</option>
+                                </select>
                             </div>
                             <div class="clb"></div>
                         </div>
@@ -37,46 +36,13 @@
                         <div class="bx_filter_parameters_box_title">Подкатегория</div>
                         <div class="bx_filter_block">
                             <div class="bx_filter_parameters_box_container">
-                                <div class="bx_filter_select_container">
-                                    <div class="bx_filter_select_block"
-                                         onclick="smartFilter.showDropDownPopup(this, '528')">
-                                        <div class="bx_filter_select_text" data-role="currentOption">
-                                            Все
-                                        </div>
-                                        <div class="bx_filter_select_arrow"></div>
-                                        <input style="display: none" type="radio" name="arrFilter_528"
-                                               id="all_arrFilter_528_1600042024" value="">
-                                        <input style="display: none" type="radio" name="arrFilter_528"
-                                               id="arrFilter_528_1600042024" value="prodazha-avto">
-                                        <input style="display: none" type="radio" name="arrFilter_528"
-                                               id="arrFilter_528_3505443437" value="test">
-                                        <div class="bx_filter_select_popup" data-role="dropdownContent"
-                                             style="display: none;">
-                                            <ul>
-                                                <li>
-                                                    <label for="all_arrFilter_528_1600042024"
-                                                           class="bx_filter_param_label"
-                                                           data-role="label_all_arrFilter_528_1600042024"
-                                                           onclick="smartFilter.selectDropDownItem(this, 'all_arrFilter_528_1600042024')">
-                                                        Все </label>
-                                                </li>
-                                                <li>
-                                                    <label for="arrFilter_528_1600042024"
-                                                           class="bx_filter_param_label"
-                                                           data-role="label_arrFilter_528_1600042024"
-                                                           onclick="smartFilter.selectDropDownItem(this, 'arrFilter_528_1600042024')">Продажа
-                                                        авто</label>
-                                                </li>
-                                                <li>
-                                                    <label for="arrFilter_528_3505443437"
-                                                           class="bx_filter_param_label"
-                                                           data-role="label_arrFilter_528_3505443437"
-                                                           onclick="smartFilter.selectDropDownItem(this, 'arrFilter_528_3505443437')">Тест</label>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
+                                <select class="form-select -without-search">
+                                    <option data-count="3008" value="All" selected>Все объявления</option>
+                                    <option data-count="126" value="prod_avto">Продажа авто</option>
+                                    <option data-count="3644" value="arenda_avto">Аренда авто</option>
+                                    <option data-count="14826" value="zapas_avto">Запасные части</option>
+                                    <option data-count="10433" value="sto">СТО</option>
+                                </select>
                             </div>
                             <div class="clb"></div>
                         </div>
@@ -109,45 +75,11 @@
                         <div class="bx_filter_parameters_box_title">Состояние</div>
                         <div class="bx_filter_block">
                             <div class="bx_filter_parameters_box_container">
-                                <div class="bx_filter_select_container">
-                                    <div class="bx_filter_select_block"
-                                         onclick="smartFilter.showDropDownPopup(this, '526')">
-                                        <div class="bx_filter_select_text" data-role="currentOption">
-                                            Все
-                                        </div>
-                                        <div class="bx_filter_select_arrow"></div>
-                                        <input style="display: none" type="radio" name="arrFilter_526"
-                                               id="all_arrFilter_526_3057455389" value="">
-                                        <input style="display: none" type="radio" name="arrFilter_526"
-                                               id="arrFilter_526_3057455389" value="bu">
-                                        <input style="display: none" type="radio" name="arrFilter_526"
-                                               id="arrFilter_526_791953575" value="novoe">
-                                        <div class="bx_filter_select_popup" data-role="dropdownContent"
-                                             style="display: none;">
-                                            <ul>
-                                                <li>
-                                                    <label for="all_arrFilter_526_3057455389"
-                                                           class="bx_filter_param_label"
-                                                           data-role="label_all_arrFilter_526_3057455389"
-                                                           onclick="smartFilter.selectDropDownItem(this, 'all_arrFilter_526_3057455389')">
-                                                        Все </label>
-                                                </li>
-                                                <li>
-                                                    <label for="arrFilter_526_3057455389"
-                                                           class="bx_filter_param_label"
-                                                           data-role="label_arrFilter_526_3057455389"
-                                                           onclick="smartFilter.selectDropDownItem(this, 'arrFilter_526_3057455389')">Б/у</label>
-                                                </li>
-                                                <li>
-                                                    <label for="arrFilter_526_791953575"
-                                                           class="bx_filter_param_label"
-                                                           data-role="label_arrFilter_526_791953575"
-                                                           onclick="smartFilter.selectDropDownItem(this, 'arrFilter_526_791953575')">Новое</label>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
+                                <select class="form-select -without-search">
+                                    <option value="all" selected>все объявления</option>
+                                    <option value="bu">б/у</option>
+                                    <option value="new">новое</option>
+                                </select>
                             </div>
                             <div class="clb"></div>
                         </div>
@@ -168,15 +100,11 @@
                     <div class="bx_filter_parameters_box_title">Сортировать по</div>
                     <div class="bx_filter_block">
                         <div class="bx_filter_parameters_box_container">
-                            <div class="bx_filter_select_container">
-                                <div class="bx_filter_select_block"
-                                     onclick="smartFilter.showDropDownPopup(this, '528')">
-                                    <div class="bx_filter_select_text" data-role="currentOption">
-                                        выберите сортировку
-                                    </div>
-                                    <div class="bx_filter_select_arrow"></div>
-                                </div>
-                            </div>
+                            <select class="form-select -without-search">
+                                <option value="new" selected>сначала новые</option>
+                                <option value="low">сначала дешевле</option>
+                                <option value="high">сначала дороже</option>
+                            </select>
                         </div>
                         <div class="clb"></div>
                     </div>
