@@ -277,6 +277,25 @@
     }
   }
 
+  .companies-wrap {
+    padding-bottom: 50px;
+    margin-left: -15px;
+    margin-right: -15px;
+    margin-top: -15px;
+    @include media-breakpoint-down(xl) {
+      margin-left: -10px;
+      margin-right: -10px;
+      margin-top: -10px;
+      padding-bottom: 20px;
+    }
+    @include media-breakpoint-down(md) {
+      margin-left: -5px;
+      margin-right: -5px;
+      margin-top: -5px;
+      padding-bottom: 30px;
+    }
+  }
+
   .products-masonry {
     padding-top: 15px;
     padding-bottom: 15px;
@@ -295,24 +314,58 @@
       padding-top: 5px;
       padding-bottom: 5px;
     }
-  }
-
-  .gutter-sizer {
-    width: 0;
-  }
-
-  .grid-sizer, .grid-item {
-    width: 20%;
-    @include media-breakpoint-down(xxl) {
-      width: 25%;
+    .gutter-sizer {
+      width: 0;
     }
+
+    .grid-sizer, .grid-item {
+      width: 20%;
+      @include media-breakpoint-down(xxl) {
+        width: 25%;
+      }
+      @include media-breakpoint-down(xl) {
+        width: calc(100% / 3);
+      }
+      @include media-breakpoint-down(md) {
+        width: 50%;
+      }
+    }
+  }
+
+  .companies-masonry {
+    padding-top: 0;
+    padding-bottom: 15px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    transition: .4s;
+    opacity: 0;
+
     @include media-breakpoint-down(xl) {
-      width: calc(100% / 3);
+      padding-bottom: 10px;
     }
     @include media-breakpoint-down(md) {
-      width: 50%;
+      padding-bottom: 5px;
+    }
+    .gutter-sizer {
+      width: 0;
+    }
+
+    .grid-sizer, .grid-item {
+      width: 25%;
+      @include media-breakpoint-down(xxl) {
+        width: calc(100% / 3);
+      }
+      @include media-breakpoint-down(xl) {
+        width: 50%;
+      }
+      @include media-breakpoint-down(md) {
+        width: 100%;
+      }
     }
   }
+
 
   .collapse-head {
     color: $color-gray-2;
