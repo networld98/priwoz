@@ -1,0 +1,56 @@
+/*!
+ * @overview es6-promise - a tiny implementation of Promises/A+.
+ * @copyright Copyright (c) 2014 Yehuda Katz, Tom Dale, Stefan Penner and contributors (Conversion to ES6 API by Jake Archibald)
+ * @license   Licensed under MIT license
+ *            See https://raw.githubusercontent.com/stefanpenner/es6-promise/master/LICENSE
+ * @version   3.3.1
+ */
+
+/*!
+ * Masonry PACKAGED v4.2.2
+ * Cascading grid layout library
+ * https://masonry.desandro.com
+ * MIT License
+ * by David DeSandro
+ */
+
+/*!
+ * Outlayer v2.1.1
+ * the brains and guts of a layout library
+ * MIT license
+ */
+
+/*!
+ * Programatically add the following
+ */
+
+/*!
+ * Select2 4.1.0-rc.0
+ * https://select2.github.io
+ *
+ * Released under the MIT license
+ * https://github.com/select2/select2/blob/master/LICENSE.md
+ */
+
+/*!
+ * jquery.dad.js v2 (http://konsolestudio.com/dad)
+ * Author William Lima
+ */
+
+/*! @name @videojs/http-streaming @version 3.7.0 @license Apache-2.0 */
+
+/*! @name aes-decrypter @version 4.0.1 @license Apache-2.0 */
+
+/*! @name m3u8-parser @version 6.2.0 @license Apache-2.0 */
+
+/*! @name pkcs7 @version 1.0.4 @license Apache-2.0 */
+
+/*! @name videojs-contrib-quality-levels @version 4.0.0 @license Apache-2.0 */
+
+/**
+ * @license
+ * slighly modified parse-headers 2.0.2 <https://github.com/kesla/parse-headers/>
+ * Copyright (c) 2014 David Björklund
+ * Available under the MIT license
+ * <https://github.com/kesla/parse-headers/blob/master/LICENCE>
+ */

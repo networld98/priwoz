@@ -15,8 +15,8 @@ $this->addExternalCss("/bitrix/css/main/font-awesome.css");
 $this->SetViewTarget("countElements");
 echo count((array)$arResult["ITEMS"]);
 $this->EndViewTarget();?>
-<div class="products-wrap">
-    <div class="grid products-masonry">
+<div class="products-wrap" id="products-wrap">
+    <div class="grid products-masonry" id="products-masonry">
         <div class="grid-sizer"></div>
         <div class="gutter-sizer"></div>
 <?php
@@ -56,7 +56,7 @@ foreach($arResult["ITEMS"] as $arItem):?>
 	$this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
 	$this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
 	?>
-    <div class="grid-item product-grid-item" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
+    <div class="grid-item product-grid-item ads-item" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
         <a href="<?= $arItem["DETAIL_PAGE_URL"]?>" class="box">
             <?if($arItem['PROPERTIES']['PHOTOS']['VALUE']):
                 $file = CFile::ResizeImageGet($arItem['PROPERTIES']['PHOTOS']['VALUE'][0], array('width'=>450, 'height'=>450), BX_RESIZE_IMAGE_PROPORTIONAL, true);

@@ -11,100 +11,63 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
-
-$templateData = array(
-    'TEMPLATE_THEME' => $this->GetFolder() . '/themes/' . $arParams['TEMPLATE_THEME'] . '/colors.css',
-    'TEMPLATE_CLASS' => 'bx_' . $arParams['TEMPLATE_THEME']
-);
 ?>
-<form name="<? echo $arResult["FILTER_NAME"] . "_form" ?>" action="<? echo $arResult["FORM_ACTION"] ?>" method="get" <? if($APPLICATION->GetCurPage() != "/"):?>id="search-box" class="collapsed-content search-box"<?endif;?>>
-        <? foreach ($arResult["HIDDEN"] as $arItem): ?>
-            <input type="hidden" name="<? echo $arItem["CONTROL_NAME"] ?>" id="<? echo $arItem["CONTROL_ID"] ?>"
-                   value="<? echo $arItem["HTML_VALUE"] ?>"/>
-        <?endforeach;?>
+<form <? if ($APPLICATION->GetCurPage() != "/"): ?>id="search-box"<? endif; ?>
+      name="<? echo $arResult["FILTER_NAME"] . "_form" ?>" action="<? echo $arResult["FORM_ACTION"] ?>" method="get"
+      <? if ($APPLICATION->GetCurPage() != "/"): ?>id="search-box" class="collapsed-content search-box"<? endif; ?>>
+    <? foreach ($arResult["HIDDEN"] as $arItem): ?>
+        <input type="hidden" name="<? echo $arItem["CONTROL_NAME"] ?>" id="<? echo $arItem["CONTROL_ID"] ?>"
+               value="<? echo $arItem["HTML_VALUE"] ?>"/>
+    <? endforeach; ?>
+    <? if ($APPLICATION->GetCurPage() == "/"): ?>
     <div class="search-box">
-        <?$APPLICATION->IncludeComponent(
-            "networld:search.title",
-            "custom",
-            array(
-                "SHOW_INPUT" => "Y",
-                "INPUT_ID" => "title-search-input",
-                "CONTAINER_ID" => "title-search",
-                "PRICE_CODE" => array(
-                    0 => "BASE",
-                    1 => "RETAIL",
-                ),
-                "PRICE_VAT_INCLUDE" => "Y",
-                "PREVIEW_TRUNCATE_LEN" => "150",
-                "SHOW_PREVIEW" => "Y",
-                "PREVIEW_WIDTH" => "75",
-                "PREVIEW_HEIGHT" => "75",
-                "CONVERT_CURRENCY" => "Y",
-                "CURRENCY_ID" => "RUB",
-                "PAGE" => "#SITE_DIR#ads/index.php",
-                "NUM_CATEGORIES" => "1",
-                "TOP_COUNT" => "1",
-                "ORDER" => "date",
-                "USE_LANGUAGE_GUESS" => "N",
-                "CHECK_DATES" => "N",
-                "SHOW_OTHERS" => "N",
-                "CATEGORY_0_TITLE" => "Обьявления",
-                "CATEGORY_0" => array(
-                    0 => "no",
-                ),
-                "CATEGORY_0_iblock_news" => array(
-                    0 => "all",
-                ),
-                "CATEGORY_1_TITLE" => "Врачи",
-                "CATEGORY_1" => array(
-                    0 => "iblock_content",
-                ),
-                "CATEGORY_1_forum" => array(
-                    0 => "all",
-                ),
-                "CATEGORY_2_TITLE" => "Услуги",
-                "CATEGORY_2" => array(
-                    0 => "iblock_content",
-                ),
-                "CATEGORY_2_iblock_books" => "all",
-                "CATEGORY_3_TITLE" => "Болезни",
-                "CATEGORY_3" => array(
-                    0 => "iblock_content",
-                ),
-                "CATEGORY_3_iblock_illness" => "all",
-                "CATEGORY_4_TITLE" => "Симптомы",
-                "CATEGORY_4" => array(
-                    0 => "iblock_content",
-                ),
-                "CATEGORY_4_iblock_symptoms" => "all",
-                "CATEGORY_5_TITLE" => "Статьи",
-                "CATEGORY_5" => array(
-                    0 => "iblock_content",
-                ),
-                "CATEGORY_5_iblock_articles" => "all",
-                "CATEGORY_0_iblock_content" => array(
-                    0 => "9",
-                ),
-                "CATEGORY_1_iblock_content" => array(
-                    0 => "10",
-                ),
-                "CATEGORY_2_iblock_content" => array(
-                    0 => "18",
-                    1 => "19",
-                ),
-                "CATEGORY_3_iblock_content" => array(
-                    0 => "21",
-                ),
-                "CATEGORY_4_iblock_content" => array(
-                    0 => "22",
-                ),
-                "CATEGORY_5_iblock_content" => array(
-                    0 => "20",
-                ),
-                "COMPONENT_TEMPLATE" => "custom"
-            ),
-            false
-        ); ?>
+        <? endif; ?>
+        <? $APPLICATION->IncludeComponent(
+	"networld:search.title", 
+	"custom", 
+	array(
+		"SHOW_INPUT" => "Y",
+		"INPUT_ID" => "title-search-input",
+		"CONTAINER_ID" => "title-search",
+		"PRICE_CODE" => array(
+			0 => "BASE",
+			1 => "RETAIL",
+		),
+		"PRICE_VAT_INCLUDE" => "Y",
+		"PREVIEW_TRUNCATE_LEN" => "150",
+		"SHOW_PREVIEW" => "Y",
+		"PREVIEW_WIDTH" => "75",
+		"PREVIEW_HEIGHT" => "75",
+		"CONVERT_CURRENCY" => "Y",
+		"CURRENCY_ID" => "RUB",
+		"PAGE" => "#SITE_DIR#ads/index.php",
+		"NUM_CATEGORIES" => "1",
+		"TOP_COUNT" => "10",
+		"ORDER" => "date",
+		"USE_LANGUAGE_GUESS" => "N",
+		"CHECK_DATES" => "N",
+		"SHOW_OTHERS" => "N",
+		"CATEGORY_0_TITLE" => "Обьявления",
+		"CATEGORY_0" => array(
+			0 => "iblock_ads",
+			1 => "iblock_companies",
+		),
+		"CATEGORY_0_iblock_news" => array(
+			0 => "all",
+		),
+		"CATEGORY_0_iblock_content" => array(
+			0 => "all",
+		),
+		"COMPONENT_TEMPLATE" => "custom",
+		"CATEGORY_0_iblock_ads" => array(
+			0 => "all",
+		),
+		"CATEGORY_0_iblock_companies" => array(
+			0 => "all",
+		)
+	),
+	false
+); ?>
         <?
         //prices
         foreach ($arResult["ITEMS"] as $key => $arItem) {
@@ -326,7 +289,8 @@ $templateData = array(
                             case "P"://DROPDOWN
                             $checkedItemExist = false;
                             ?>
-                                <div class="bx_filter_select_container form-control -location" onclick="smartFilter.showDropDownPopup(this, '<?= CUtil::JSEscape($key) ?>')">
+                                <div class="bx_filter_select_container form-control -location"
+                                     onclick="smartFilter.showDropDownPopup(this, '<?= CUtil::JSEscape($key) ?>')">
                                     <div class="bx_filter_select_block">
                                         <div class="bx_filter_select_text" data-role="currentOption">
                                             <?
@@ -391,6 +355,27 @@ $templateData = array(
                                 </div>
                             <?
                             break;
+                            case "K"://RADIO_BUTTONS
+                            ?>
+                                <select class="form-select <? if ($APPLICATION->GetCurPage() == "/"): ?>-location<? else: ?>-simple-location<?endif; ?> "
+                                        name="<? echo $arCur["CONTROL_NAME_ALT"] ?>"
+                                        onChange="smartFilter.click(this)"
+                                        id="<? echo "all_" . $arCur["CONTROL_ID"] ?>">
+                                    <option value=""
+                                            name="<? echo $arCur["CONTROL_NAME_ALT"] ?>"
+                                            id="<? echo "all_" . $arCur["CONTROL_ID"] ?>">
+                                        <span class="bx_filter_param_text"><? echo GetMessage("CT_BCSF_FILTER_ALL"); ?></span>
+                                    </option>
+                                    <? foreach ($arItem["VALUES"] as $val => $ar): ?>
+                                        <option value="<? echo $ar["HTML_VALUE_ALT"] ?>"
+                                                id="<? echo $ar["CONTROL_ID"] ?>"
+                                            <?if($ar["HTML_VALUE_ALT"] == $_GET['city_529']) {echo 'selected';}?>>
+                                            <?= str_replace(".", "", $ar["VALUE"]); ?>
+                                        </option>
+                                    <? endforeach; ?>
+                                </select>
+                            <?
+                            break;
                             default://CHECKBOXES
                             ?>
                             <? foreach ($arItem["VALUES"] as $val => $ar): ?>
@@ -426,14 +411,17 @@ $templateData = array(
             }
         }
         ?>
-        <div class="bx_filter_button_box">
+        <div class="<? if ($APPLICATION->GetCurPage() != "/"): ?>btn-box<? else: ?>bx_filter_button_box<? endif; ?>">
             <div class="bx_filter_block">
                 <div class="bx_filter_parameters_box_container">
-                    <a class="btn btn-search" id="modef" href="<? echo $arResult["FILTER_URL"] ?>"><?= GetMessage("CT_BCSF_SET_FILTER") ?></a>
+                    <a class="btn btn-search" id="modef"
+                       href="<? echo $arResult["FILTER_URL"] ?>"><?= GetMessage("CT_BCSF_SET_FILTER") ?></a>
                 </div>
             </div>
         </div>
+        <? if ($APPLICATION->GetCurPage() == "/"): ?>
     </div>
+<? endif; ?>
 </form>
 <script>
     var smartFilter = new JCSmartFilter('<?echo CUtil::JSEscape($arResult["FORM_ACTION"])?>', 'horizontal');

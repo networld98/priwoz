@@ -52,6 +52,20 @@ $( document ).ready(function() {
             input.addEventListener( 'blur', function(){ input.classList.remove( 'has-focus' ); });
         });
     }( document, window, 0 ));
+    $(".filter-sort").change(function () {
+        let url = $(this).val();
+        $("#products-wrap").load(url +" #products-masonry");
+    })
+    $(".btn-refresh").click(function () {
+        let currentUrl = $(location).attr('href'), searchParams = new URLSearchParams(window.location.search);
+        if(searchParams.has('arrFilter_527') == true){
+            $("#products-wrap").load(location.protocol + '//' + location.host + location.pathname +"?del_filter=Сбросить #products-masonry");
+            $("#smartFilterAds").load(location.protocol + '//' + location.host + location.pathname +"?del_filter=Сбросить #smartFilterAds-block");
+        }else{
+            $("#products-wrap").load(currentUrl +"?del_filter=Сбросить #products-masonry");
+            $("#smartFilterAds").load(currentUrl +"?del_filter=Сбросить #smartFilterAds-block");
+        }
+    });
 
     $('.item-phone').mask('+399 99 999 99 99');
     $('.item-dopphone').mask('+399 99 999 99 99');

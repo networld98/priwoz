@@ -45,19 +45,6 @@ global $arUser;
                 false
             );
             ?>
-            <form id="search-box" class="collapsed-content search-box">
-                <label class="form-label">
-                    <input type="text" class="form-control form-control-filter -search"
-                           placeholder="Шо найти на Priwoze">
-                </label>
-                <label class="form-label">
-                    <input type="text" class="form-control form-control-filter -location"
-                           placeholder="Болгария, область">
-                </label>
-                <div class="btn-box">
-                    <input type="submit" class="btn btn-search" value="Поиск">
-                </div>
-            </form>
             <? if ($arParams["USE_FILTER"] == "Y"): ?>
                 <? $APPLICATION->IncludeComponent(
                     "networld:catalog.smart.filter",
@@ -79,6 +66,30 @@ global $arUser;
                 );
                 ?>
             <? endif ?>
+            <div class="filter-output-box" style="display:none;">
+                <div class="filter-output">
+                    <div class="links"></div>
+                    <div class="count">Выбрано <span><?= $APPLICATION->ShowViewContent('countElements'); ?></span></div>
+                    <span class="btn btn-refresh">Сбросить</span>
+                </div>
+
+                <div class="sort-by-box">
+                    <div class="bx_filter_parameters_box active">
+                        <div class="bx_filter_parameters_box_title">Сортировать по</div>
+                        <div class="bx_filter_block">
+                            <div class="bx_filter_parameters_box_container">
+                                <div class="bx_filter_select_container">
+                                    <select class="form-select filter-sort">
+                                        <option id="price_desc">От дорогих до дешевых</option>
+                                        <option id="price_asc">От дешевых до дорогих</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="clb"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         <? } else {
             $rsUser = CUser::GetByID($_GET['userAds'] . $_GET['companisAds']);
             $arUser = $rsUser->Fetch();
@@ -128,7 +139,7 @@ global $arUser;
                 <ul class="menu -social">
                     <? if ($userTelega) { ?>
                         <li>
-                            <a href="https://telegram.me/<?= $userTelega ?>">
+                            <a href="https://telegram.me/<?= $userTelega ?>" target="_blank">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"
                                      fill="none">
                                     <path d="M19.8946 87.513C15.6076 85.2522 11.248 82.9392 7.8142 79.5558C1.3996 73.233 -0.9446 63.7404 0.3376 55.1298C1.6204 46.5204 6.1588 38.7258 11.8162 32.1036C16.8784 26.1768 23.0158 20.9514 30.3688 17.988C37.7206 15.0246 46.3972 14.5122 53.8438 17.7114C58.8982 19.8828 63.2092 23.637 68.4382 25.3374C76.8772 28.0806 85.9606 25.0008 94.7464 26.0082C103.895 27.057 112.466 32.874 116.708 40.9122C121.333 49.6782 120.73 60.267 117.096 69.2178C113.463 78.1698 107.093 85.7406 100.369 92.742C92.3572 101.086 82.5664 109.315 70.648 109.482C62.0206 109.603 53.8834 105.435 46.195 101.381C37.4284 96.7584 28.6612 92.1354 19.8946 87.513Z"
@@ -207,7 +218,6 @@ global $arUser;
     </div>
     <div class="bg-overlay">
         <div class="container">
-
             <div class="advertisement advertisement-type-3">
                 <? $APPLICATION->IncludeComponent(
                     "bitrix:advertising.banner",
@@ -227,7 +237,7 @@ global $arUser;
                         "COMPONENT_TEMPLATE" => "",
                         "NOINDEX" => "Y",
                         "QUANTITY" => "5",
-                        "TYPE" => "asdpage"
+                        "TYPE" => "adspage"
                     )
                 ); ?>
             </div>
@@ -252,12 +262,10 @@ global $arUser;
                     "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
                     "IBLOCK_ID" => $arParams["IBLOCK_ID"],
                     "NEWS_COUNT" => $arParams["NEWS_COUNT"],
-
-                    "SORT_BY1" => $arParams["SORT_BY1"],
-                    "SORT_ORDER1" => $arParams["SORT_ORDER1"],
-                    "SORT_BY2" => $arParams["SORT_BY2"],
-                    "SORT_ORDER2" => $arParams["SORT_ORDER2"],
-
+                    "SORT_BY2" => $_GET['sort'],
+                    "SORT_ORDER2" => $_GET['ads'],
+                    "SORT_BY1" => 'PROPERTY_PRICE',
+                    "SORT_ORDER1" => 'desc',
                     "FILTER_NAME" => $arParams["FILTER_NAME"],
                     "FIELD_CODE" => $arParams["LIST_FIELD_CODE"],
                     "PROPERTY_CODE" => $arParams["LIST_PROPERTY_CODE"],

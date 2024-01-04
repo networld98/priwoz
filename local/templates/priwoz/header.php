@@ -265,7 +265,7 @@ $curPagePath = explode("/", $curPagePath);
             </div>
         </div>
     </div>
-<? if($APPLICATION->GetCurPage() == "/"):?>
+<? if($APPLICATION->GetCurPage() == "/" || $APPLICATION->GetCurPage() == "/search/"):?>
     <section class="filter-section d-xs-none d-xl-block">
         <div class="container">
             <div class="row align-items-md-center">
@@ -277,7 +277,7 @@ $curPagePath = explode("/", $curPagePath);
                             "INSTANT_RELOAD" => "N",
                             "IBLOCK_TYPE" => "ads",
                             "IBLOCK_ID" => "19",
-                            "FILTER_NAME" => "smartPreFilter",
+                            "FILTER_NAME" => "city",
                             "PROPERTY_CODE" => array(
                                 1 => "CATEGORY",
                                 2 => "SUBCATEGORY",
@@ -288,6 +288,7 @@ $curPagePath = explode("/", $curPagePath);
                             "CACHE_TIME" => "36000000",
                             "CACHE_TYPE" => "N",
                             "CACHE_GROUPS" => "Y",
+                            "SEARCH_PAGE" => "/search/",
                         ),
                         false
                     );

@@ -19,7 +19,7 @@ JCSmartFilter.prototype.keyup = function(input)
 	}, this), 500);
 };
 
-JCSmartFilter.prototype.click = function(checkbox)
+JCSmartFilter.prototype.click = function(select)
 {
 	if(!!this.timer)
 	{
@@ -27,7 +27,7 @@ JCSmartFilter.prototype.click = function(checkbox)
 	}
 
 	this.timer = setTimeout(BX.delegate(function(){
-		this.reload(checkbox);
+		this.reload(select);
 	}, this), 500);
 };
 
@@ -277,7 +277,7 @@ JCSmartFilter.prototype.values2post = function (values)
 			var paramQ = values[i].value;
 			console.log(paramQ);
 		}
-		if(values[i].name=='smartPreFilter_529'){
+		if(values[i].name=='city_529'){
 			var paramCity = values[i].value;
 			console.log(paramCity);
 		}
@@ -317,9 +317,9 @@ JCSmartFilter.prototype.values2post = function (values)
 		}
 	}
 	if(paramQ!=undefined && paramCity!=undefined){
-		finalUrl = "/search/?q="+paramQ+"&smartPreFilter_529="+paramCity;
+		finalUrl = "/search/?q="+paramQ+"&city_529="+paramCity;
 	}else if(paramQ==undefined && paramCity!=undefined){
-		finalUrl = "/search/?smartPreFilter_529="+paramCity;
+		finalUrl = "/search/?city_529="+paramCity;
 	}else if(paramQ!=undefined && paramCity==undefined){
 		finalUrl = "/search/?q="+paramQ;
 	}
