@@ -14,7 +14,6 @@ $this->setFrameMode(true);
 $this->addExternalCss("/bitrix/css/main/font-awesome.css");
 $this->addExternalCss($this->GetFolder() . '/themes/' . $arParams['TEMPLATE_THEME'] . '/style.css');
 ?>
-<div class="section-title">Компании наших в Болгарии</div>
 <div class="companies-wrap">
     <div class="grid companies-masonry">
         <div class="grid-sizer"></div>

@@ -216,6 +216,7 @@ $APPLICATION->SetTitle("priwoz.info");
 
     <section class="companies-section">
         <div class="container">
+            <div class="section-title">Компании наших в Болгарии</div>
             <?$APPLICATION->IncludeComponent(
                 "bitrix:news.list",
                 "companies",

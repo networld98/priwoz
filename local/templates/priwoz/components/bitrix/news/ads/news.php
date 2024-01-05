@@ -79,9 +79,10 @@ global $arUser;
                         <div class="bx_filter_block">
                             <div class="bx_filter_parameters_box_container">
                                 <div class="bx_filter_select_container">
-                                    <select class="form-select filter-sort">
-                                        <option id="price_desc">От дорогих до дешевых</option>
-                                        <option id="price_asc">От дешевых до дорогих</option>
+                                    <select class="form-select filter-sort -without-search">
+                                        <option id="time_desc">Сначала новые</option>
+                                        <option id="price_desc">Сначала дорогие</option>
+                                        <option id="price_asc">Сначала дешевые</option>
                                     </select>
                                 </div>
                             </div>
@@ -262,10 +263,10 @@ global $arUser;
                     "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
                     "IBLOCK_ID" => $arParams["IBLOCK_ID"],
                     "NEWS_COUNT" => $arParams["NEWS_COUNT"],
-                    "SORT_BY2" => $_GET['sort'],
-                    "SORT_ORDER2" => $_GET['ads'],
-                    "SORT_BY1" => 'PROPERTY_PRICE',
-                    "SORT_ORDER1" => 'desc',
+                    "SORT_BY1" => $arParams["SORT_BY1"],
+                    "SORT_ORDER1" => $arParams["SORT_ORDER1"],
+                    "SORT_BY2" => $arParams["SORT_BY2"],
+                    "SORT_ORDER2" => $arParams["SORT_ORDER2"],
                     "FILTER_NAME" => $arParams["FILTER_NAME"],
                     "FIELD_CODE" => $arParams["LIST_FIELD_CODE"],
                     "PROPERTY_CODE" => $arParams["LIST_PROPERTY_CODE"],

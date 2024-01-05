@@ -24,7 +24,11 @@ $CONTAINER_ID = CUtil::JSEscape($CONTAINER_ID);
 
 if($arParams["SHOW_INPUT"] !== "N"):?>
 	<label id="<?echo $CONTAINER_ID?>" class="form-label">
-		<input id="<?echo $INPUT_ID?>" class="form-control -search" type="text" name="q" value="<?=$_GET['q']?>" placeholder="Шо найти на Priwoze" size="40" maxlength="50" autocomplete="off" onkeyup="smartFilter.keyup(this)"/>
+        <? foreach ($arResult["HIDDEN"] as $arItem): ?>
+            <input type="hidden" name="<? echo $arItem["CONTROL_NAME"] ?>" id="<? echo $arItem["CONTROL_ID"] ?>"
+                   value="<? echo $arItem["HTML_VALUE"] ?>"/>
+        <? endforeach; ?>
+		<input id="<?echo $INPUT_ID?>" class="form-control form-control-filter -search" type="text" name="q" value="<?=$_GET['q']?>" placeholder="Шо найти на Priwoze" size="40" maxlength="50" autocomplete="off" onkeyup="smartFilter.keyup(this)"/>
 	</label>
 <?endif?>
 <script>

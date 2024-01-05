@@ -15,10 +15,6 @@ $this->setFrameMode(true);
 <form <? if ($APPLICATION->GetCurPage() != "/"): ?>id="search-box"<? endif; ?>
       name="<? echo $arResult["FILTER_NAME"] . "_form" ?>" action="<? echo $arResult["FORM_ACTION"] ?>" method="get"
       <? if ($APPLICATION->GetCurPage() != "/"): ?>id="search-box" class="collapsed-content search-box"<? endif; ?>>
-    <? foreach ($arResult["HIDDEN"] as $arItem): ?>
-        <input type="hidden" name="<? echo $arItem["CONTROL_NAME"] ?>" id="<? echo $arItem["CONTROL_ID"] ?>"
-               value="<? echo $arItem["HTML_VALUE"] ?>"/>
-    <? endforeach; ?>
     <? if ($APPLICATION->GetCurPage() == "/"): ?>
     <div class="search-box">
         <? endif; ?>
@@ -40,7 +36,7 @@ $this->setFrameMode(true);
 		"PREVIEW_HEIGHT" => "75",
 		"CONVERT_CURRENCY" => "Y",
 		"CURRENCY_ID" => "RUB",
-		"PAGE" => "#SITE_DIR#ads/index.php",
+		"PAGE" => "#SITE_DIR#search/",
 		"NUM_CATEGORIES" => "1",
 		"TOP_COUNT" => "10",
 		"ORDER" => "date",
