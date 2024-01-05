@@ -21,6 +21,7 @@ import 'swiper/css/bundle';
     $(".single-product-section").length > 0 && require("./template-parts/single-product-section.es6");
     $(".add-product-section").length > 0 && require("./template-parts/add-product-section.es6");
     $(".products-overview-section").length > 0 && require("./template-parts/products-overview-section.es6");
+    $(".blog-overview-section").length > 0 && require("./template-parts/blog-overview-section.es6");
 
 
 })(jQuery);
