@@ -17,3 +17,38 @@ body {
     line-height: 120%;
   }
 }
+
+.content {
+  color: rgba(0, 0, 0, 0.75);
+  font-family: $roboto-condensed-font;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 160%;
+  letter-spacing: -0.014em;
+  @include media-breakpoint-down(xl) {
+    font-size: 16px;
+    line-height: 120%;
+  }
+
+  img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+  }
+
+  p, img, ul, ol, table, h1, h2, h3, h4, h5 {
+    & + {
+      p, img, ul, ol, table, h1, h2, h3, h4, h5 {
+        margin-top: 39px;
+        @include media-breakpoint-down(xl) {
+          margin-top: 20px;
+        }
+      }
+    }
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+}
