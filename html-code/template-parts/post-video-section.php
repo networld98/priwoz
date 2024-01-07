@@ -18,7 +18,7 @@
                 <div class="post-wrap">
                     <time datetime="2023-10-30" class="date">30 окт 2023</time>
                     <h1 class="section-title">Как мне почистили диван в ChistoClean</h1>
-                    <div class="video-box video-open-trigger" data-video="/html-code/temporary-images/home/video_example.mp4">
+                    <div class="video-box youtube-open-trigger" data-youtube="4Kvd-uquuhI">
                         <img class="bg-img" src="/html-code/temporary-images/post/post2.png" alt="Priwoz company">
                     </div>
                 </div>
