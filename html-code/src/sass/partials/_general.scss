@@ -49,6 +49,7 @@ button {
 
   &.-lg-link {
     letter-spacing: -0.014em;
+
     li {
       margin-bottom: 15px;
     }
@@ -57,6 +58,7 @@ button {
   &.-md-link {
     li {
       margin-bottom: 15px;
+
       a {
         display: inline-block;
         max-width: 111px;
@@ -83,6 +85,7 @@ button {
     @include media-breakpoint-down(md) {
       column-gap: 22px;
     }
+
     li {
       a {
         width: 50px;
@@ -92,15 +95,18 @@ button {
           width: 36px;
           height: 36px;
         }
+
         svg {
           width: 100%;
           height: 100%;
           object-fit: contain;
+
           .hover-path {
             opacity: 0;
             transition: .4s;
           }
         }
+
         &:hover {
           svg {
             .hover-path {
@@ -111,6 +117,7 @@ button {
       }
     }
   }
+
   &.lang-menu {
     display: flex;
     align-items: flex-start;
@@ -157,12 +164,14 @@ button {
   align-items: center;
   justify-content: center;
   transition: .4s;
+
   a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     width: 40px;
     height: 40px;
+
     svg {
       width: 22px;
       height: 22px;
@@ -217,6 +226,7 @@ button {
   @include media-breakpoint-down(xl) {
     font-size: 16px;
   }
+
   &:hover {
     color: $color-green-1;
   }
@@ -240,6 +250,7 @@ button {
     padding-left: 0;
     padding-right: 0;
   }
+
   a {
     color: rgba(0, 0, 0, 0.75);
     font-family: $roboto-condensed-font;
@@ -250,6 +261,7 @@ button {
     padding-left: 24px;
     position: relative;
     letter-spacing: -0.02em;
+
     &:before {
       content: '\e999';
       font-family: 'fontello';
@@ -258,6 +270,7 @@ button {
       top: 50%;
       transform: translateY(-50%);
     }
+
     &:hover {
       color: $color-orange-1;
     }
@@ -273,9 +286,11 @@ button {
   line-height: 160%;
   margin-top: 16px;
   letter-spacing: -0.016em;
+
   a {
     text-decoration: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.35);
+
     &:hover {
       border-bottom: 1px solid rgba(0, 0, 0, 0);
     }
@@ -291,5 +306,62 @@ button {
   line-height: 100%;
   @include media-breakpoint-down(xl) {
     font-size: 48px;
+  }
+}
+
+.social-tabs {
+  margin-bottom: 23px;
+
+  @include media-breakpoint-down(xl) {
+    margin-bottom: 10px;
+  }
+  @include media-breakpoint-down(md) {
+    margin-bottom: 15px;
+  }
+
+  .social-tab {
+    border-radius: 5px;
+    border: 1px solid rgba(82, 97, 114, 0.10);
+    background: #FFF;
+    padding: 3px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: rgba(0, 0, 0, 0.75);
+    font-family: $roboto-condensed-font;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 100%;
+    text-transform: uppercase;
+    letter-spacing: -0.022em;
+    transition: .3s;
+    @include media-breakpoint-down(xl) {
+      padding: 7px 5px 7px 8px;
+      font-size: 12px;
+    }
+
+    svg {
+      width: 30px;
+      height: 30px;
+      margin-right: 16px;
+      color: $color-gray-3;
+      transition: .3s;
+      flex: none;
+      @include media-breakpoint-down(xl) {
+        width: 20px;
+        height: 20px;
+        margin-right: 8px;
+      }
+    }
+
+    &.active, &:hover {
+      color: #000;
+      background: $color-green-3;
+
+      svg {
+        color: #000;
+      }
+    }
   }
 }

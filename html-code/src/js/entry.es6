@@ -17,6 +17,7 @@ import 'swiper/css/bundle';
     $(".video-open-trigger, .youtube-open-trigger").length > 0 && require("./custom/video.es6");
     $(".products-masonry").length > 0 && require("./template-parts/products-section.es6");
     $(".companies-masonry").length > 0 && require("./template-parts/companies-section.es6");
+    $(".communities-masonry").length > 0 && require("./template-parts/community-overview-section.es6");
     $(".other-products-section").length > 0 && require("./template-parts/other-products-section.es6");
     $(".single-product-section").length > 0 && require("./template-parts/single-product-section.es6");
     $(".add-product-section").length > 0 && require("./template-parts/add-product-section.es6");
