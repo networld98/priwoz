@@ -1,16 +1,15 @@
 <?if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
+
 <?if (!empty($arResult)):?>
-<ul>
+
 <?
-foreach($arResult as $arItem):
-	if($arParams["MAX_LEVEL"] == 1 && $arItem["DEPTH_LEVEL"] > 1) 
-		continue;
-?>
-	<?if($arItem["SELECTED"]):?>
-         <li <?if($arItem['PARAMS']['data-open']){?>class="item-has-child"<?}?>><a href="<?=$arItem["LINK"]?> class="selected"><?=$arItem["TEXT"]?></a></li>
-	<?else:?>
-        <li <?if($arItem['PARAMS']['data-open']){?>class="item-has-child"<?}?>><a href="<?=$arItem["LINK"]?>><?=$arItem["TEXT"]?></a></li>
+$previousLevel = 0;
+foreach($arResult as $arItem):?>
+
+	<?if ($previousLevel && $arItem["DEPTH_LEVEL"] < $previousLevel):?>
+		<?=str_repeat("</ul></li>", ($previousLevel - $arItem["DEPTH_LEVEL"]));?>
 	<?endif?>
+    <li <?if($arItem['PARAMS']['data-open']){?>class="item-has-child"<?}?>><a href="<?=$arItem["LINK"]?>" <?if ($arItem["SELECTED"]):?> class="selected"<?endif?>><?=$arItem["TEXT"]?> <?if($arItem['PARAMS']['data-open']){?><span class="arrow"></span><?}?></a>
     <?if($arItem['PARAMS']['data-open']){?>
         <ul class="menu sub-menu">
             <?
@@ -20,7 +19,7 @@ foreach($arResult as $arItem):
             while($ar_result = $obSections->GetNext())
             {if($ar_result['UF_ICON']){?>
                 <li>
-                    <a href="/">
+                    <a href="/companies/?category=<?=$ar_result['CODE']?>">
                         <?=htmlspecialchars_decode($ar_result['UF_ICON'])?>
                         <?=$ar_result['NAME']?>
                     </a>
@@ -28,7 +27,15 @@ foreach($arResult as $arItem):
             <?}
             }?>
         </ul>
+    </li>
+    <?}else{?>
+        </li>
     <?}?>
+	<?$previousLevel = $arItem["DEPTH_LEVEL"];?>
+
 <?endforeach?>
-</ul>
+<?if ($previousLevel > 1)://close last item tags?>
+	<?=str_repeat("</ul></li>", ($previousLevel-1) );?>
+<?endif?>
+
 <?endif?>

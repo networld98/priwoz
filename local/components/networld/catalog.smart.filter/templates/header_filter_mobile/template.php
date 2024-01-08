@@ -22,6 +22,7 @@ $templateData = array(
         <input type="hidden" name="<? echo $arItem["CONTROL_NAME"] ?>" id="<? echo $arItem["CONTROL_ID"] ?>"
                value="<? echo $arItem["HTML_VALUE"] ?>"/>
     <? endforeach; ?>
+    <div class="container">
     <div class="search-box">
         <div class="row align-items-xs-center">
             <div class="col-xs-12 col-md-6">
@@ -30,8 +31,8 @@ $templateData = array(
                     "custom",
                     array(
                         "SHOW_INPUT" => "Y",
-                        "INPUT_ID" => "title-search-input",
-                        "CONTAINER_ID" => "title-search",
+                        "INPUT_ID" => "title-search-input-mobile",
+                        "CONTAINER_ID" => "title-search-mobile",
                         "PRICE_CODE" => array(
                             0 => "BASE",
                             1 => "RETAIL",
@@ -400,6 +401,27 @@ $templateData = array(
                                         </div>
                                     <?
                                     break;
+                                    case "K"://RADIO_BUTTONS
+                                    ?>
+                                        <select class="form-select <? if ($APPLICATION->GetCurPage() == "/"): ?>-location<? else: ?>-simple-location<?endif; ?> "
+                                                name="<? echo $arCur["CONTROL_NAME_ALT"] ?>"
+                                                onChange="smartFilter.click(this)"
+                                                id="<? echo "all_" . $arCur["CONTROL_ID"] ?>">
+                                            <option value=""
+                                                    name="<? echo $arCur["CONTROL_NAME_ALT"] ?>"
+                                                    id="<? echo "all_" . $arCur["CONTROL_ID"] ?>">
+                                                <span class="bx_filter_param_text"><? echo GetMessage("CT_BCSF_FILTER_ALL"); ?></span>
+                                            </option>
+                                            <? foreach ($arItem["VALUES"] as $val => $ar): ?>
+                                                <option value="<? echo $ar["HTML_VALUE_ALT"] ?>"
+                                                        id="<? echo $ar["CONTROL_ID"] ?>"
+                                                    <?if($ar["HTML_VALUE_ALT"] == $_GET['city_529']) {echo 'selected';}?>>
+                                                    <?= str_replace(".", "", $ar["VALUE"]); ?>
+                                                </option>
+                                            <? endforeach; ?>
+                                        </select>
+                                    <?
+                                    break;
                                     default://CHECKBOXES
                                     ?>
                                     <? foreach ($arItem["VALUES"] as $val => $ar): ?>
@@ -441,12 +463,13 @@ $templateData = array(
                     <div class="bx_filter_block">
                         <div class="bx_filter_parameters_box_container">
                             <a class="btn btn-search" id="modef"
-                               href="<? echo $arResult["FILTER_URL"] ?>"><?= GetMessage("CT_BCSF_SET_FILTER") ?></a>
+                               href="<? echo $arResult["FILTER_URL"] ?>"><?= GetMessage("CT_BST_SEARCH_BUTTON") ?></a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </form>
 <script>
