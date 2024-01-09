@@ -26,7 +26,7 @@ $this->setFrameMode(true);
             <?}?>
                 <div class="img">
                     <img src="<?= $picture["src"]?>" class="bg-img" alt="<?=$arItem['NAME']?>">
-                    <div class="date"><?=strtolower(FormatDate("d M Y", MakeTimeStamp($arItem['TIMESTAMP_X']))) ?></div>
+                    <div class="date"><?=strtolower(FormatDate("d.M.Y", MakeTimeStamp($arItem['TIMESTAMP_X']))) ?></div>
                 </div>
                 <div class="text">
                     <h3><?=$arItem['NAME']?></h3>

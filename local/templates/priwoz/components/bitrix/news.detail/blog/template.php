@@ -36,10 +36,10 @@ $picture = CFile::ResizeImageGet($pictureID, array('width'=>1000), BX_RESIZE_IMA
             </div>
             <div class="col-xs-12 col-md-9">
                 <div class="post-wrap">
-                    <time datetime="<?=strtolower(FormatDate("d m Y", MakeTimeStamp($arItem['TIMESTAMP_X']))) ?>" class="date"><?=strtolower(FormatDate("d M Y", MakeTimeStamp($arResult['TIMESTAMP_X']))) ?></time>
+                    <time datetime="<?=strtolower(FormatDate("d.m.Y", MakeTimeStamp($arResult['TIMESTAMP_X']))) ?>" class="date"><?=strtolower(FormatDate("d M Y", MakeTimeStamp($arResult['TIMESTAMP_X']))) ?></time>
                     <h1 class="section-title"><?=$arResult["NAME"]?></h1>
-                    <?if($arItem['PROPERTIES']['YOUTUBE']['VALUE']!='') {?>
-                    <div class="video-box youtube-open-trigger" data-youtube=" <?=$arResult['PROPERTIES']['YOUTUBE']['VALUE']?>">
+                    <?if($arResult['PROPERTIES']['YOUTUBE']['VALUE']!='') {?>
+                    <div class="video-box youtube-open-trigger" data-youtube="<?=$arResult['PROPERTIES']['YOUTUBE']['VALUE']?>">
                         <img class="bg-img" src="<?= $picture["src"]?>" alt="<?=$arResult["NAME"]?>-video">
                     </div>
                     <?}?>
