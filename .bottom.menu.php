@@ -9,7 +9,7 @@ $aMenuLinks = Array(
 	),
 	Array(
 		"Сообщества", 
-		"/", 
+		"/community/", 
 		Array(), 
 		Array(), 
 		"" 

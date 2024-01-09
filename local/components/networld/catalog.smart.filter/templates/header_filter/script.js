@@ -323,7 +323,7 @@ JCSmartFilter.prototype.values2post = function (values)
 	}else if(paramQ!=undefined && paramCity==undefined){
 		finalUrl = "/search/?q="+paramQ;
 	}
-
+	$('#modef-mobile').attr('href',finalUrl);
 	$('#modef').attr('href',finalUrl);
 	return post;
 };

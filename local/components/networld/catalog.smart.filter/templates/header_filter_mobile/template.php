@@ -17,7 +17,7 @@ $templateData = array(
     'TEMPLATE_CLASS' => 'bx_' . $arParams['TEMPLATE_THEME']
 );
 ?>
-<form name="<? echo $arResult["FILTER_NAME"] . "_form" ?>" action="<? echo $arResult["FORM_ACTION"] ?>" method="get">
+<form name="<? echo $arResult["FILTER_NAME"] . "_form-mobile" ?>" action="<? echo $arResult["FORM_ACTION"] ?>" method="get">
     <? foreach ($arResult["HIDDEN"] as $arItem): ?>
         <input type="hidden" name="<? echo $arItem["CONTROL_NAME"] ?>" id="<? echo $arItem["CONTROL_ID"] ?>"
                value="<? echo $arItem["HTML_VALUE"] ?>"/>
@@ -462,7 +462,7 @@ $templateData = array(
                 <div class="bx_filter_button_box active">
                     <div class="bx_filter_block">
                         <div class="bx_filter_parameters_box_container">
-                            <a class="btn btn-search" id="modef"
+                            <a class="btn btn-search" id="modef-mobile"
                                href="<? echo $arResult["FILTER_URL"] ?>"><?= GetMessage("CT_BST_SEARCH_BUTTON") ?></a>
                         </div>
                     </div>

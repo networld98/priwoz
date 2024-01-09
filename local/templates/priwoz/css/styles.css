@@ -218,3 +218,6 @@
 .products-overview-section .search-title-box .search-output span:first-child:not(.current){
     margin-right: 23px;
 }
+.communities-wrap .social-icon img {
+    max-width: 100%;
+}

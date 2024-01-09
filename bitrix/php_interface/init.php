@@ -5,10 +5,13 @@ class CustomFields
 // создаем обработчик события "OnBeforeIBlockElementAdd" 
     function OnBeforeIBlockElementAddHandler(&$arFields)
     {
-        $transName = CUtil::translit(trim($arFields["NAME"]), "ru", $arTransParams);//функция генерации сим. кода из имени
-        $arFields["CODE"] = $transName."_".date('dmYHis');
-        $arFields["ACTIVE"] = "Y"; 
-        return;
+        //не добавлять дату если создаем в админке
+        if ($_SERVER['REQUEST_METHOD']=='GET' && $GLOBALS['APPLICATION']->GetCurPage()!='/bitrix/admin/iblock_element_edit.php') {
+            $transName = CUtil::translit(trim($arFields["NAME"]), "ru", $arTransParams);//функция генерации сим. кода из имени
+            $arFields["CODE"] = $transName . "_" . date('dmYHis');
+            $arFields["ACTIVE"] = "Y";
+            return;
+        }
     }
 }
     /*КОСТЫЛЬ ТРНАСЛИТА */

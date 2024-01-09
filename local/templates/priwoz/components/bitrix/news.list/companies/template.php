@@ -68,7 +68,7 @@ $this->addExternalCss($this->GetFolder() . '/themes/' . $arParams['TEMPLATE_THEM
                         $videoArray[] = $arFields["PROPERTY_YOUTUBE_IN_MAIN_VALUE"];
                         ?>
                     <div class="grid-item company-grid-item">
-                        <div class="box -video video-open-trigger" data-video="/images/home/video_example.mp4">
+                        <div class="box -video youtube-open-trigger" data-youtube="<?=$arFields["PROPERTY_YOUTUBE_VALUE"]?>">
                             <div class="img">
                                 <img class="bg-img" src="<?=$picture['src']?>" alt="<?=$arFields["NAME"]?>">
                                 <img class="company-logo" src="<?=$logo['src']?>" alt="<?=$arFields["NAME"]?>">
