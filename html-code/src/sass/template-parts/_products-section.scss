@@ -76,19 +76,6 @@
     }
   }
 
-  .grid-item {
-    @include media-breakpoint-down(xxl) {
-      &:nth-child(1n+11) {
-        display: none;
-      }
-    }
-    @include media-breakpoint-down(md) {
-      &:nth-child(1n+7) {
-        display: none;
-      }
-    }
-  }
-
   .load-more-box {
     text-align: center;
     padding-top: 9px;
