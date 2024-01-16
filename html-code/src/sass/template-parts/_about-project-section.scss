@@ -5,6 +5,7 @@
       margin-bottom: 18px;
     }
   }
+
   .top-part {
     display: flex;
     align-items: flex-start;
@@ -36,6 +37,7 @@
         width: 100%;
         max-width: 330px;
       }
+
       img {
         width: 100%;
         height: 100%;
@@ -72,6 +74,7 @@
       }
     }
   }
+
   .middle-part {
     display: flex;
     align-items: stretch;
@@ -79,6 +82,17 @@
     @include media-breakpoint-down(md) {
       flex-wrap: wrap;
     }
+
+    &:last-child {
+      margin-bottom: 80px;
+      @include media-breakpoint-down(xl) {
+        margin-bottom: 50px;
+      }
+      @include media-breakpoint-down(md) {
+        margin-bottom: 40px;
+      }
+    }
+
     .img {
       width: 40.5%;
       overflow: hidden;
@@ -94,6 +108,7 @@
         padding-bottom: 56.3%;
         margin-bottom: 30px;
       }
+
       img {
         position: absolute;
         left: 0;
@@ -101,9 +116,9 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        object-position: left top;
       }
     }
+
     .text {
       width: 59.5%;
       padding-left: 165px;
@@ -121,6 +136,7 @@
       }
     }
   }
+
   .bottom-part {
     display: flex;
     align-items: flex-start;
@@ -130,6 +146,7 @@
       display: block;
       padding-bottom: 40px;
     }
+
     .img {
       width: 40.5%;
       @include media-breakpoint-down(xxl) {
@@ -142,6 +159,7 @@
         width: 35%;
         float: left;
       }
+
       img {
         display: block;
         max-width: 79%;
@@ -150,6 +168,7 @@
         }
       }
     }
+
     .text {
       width: 59.5%;
       padding-top: 80px;
@@ -193,18 +212,21 @@
         font-size: 20px;
       }
     }
+
     h3 {
       font-size: 24px;
       @include media-breakpoint-down(xl) {
         font-size: 18px;
       }
     }
+
     h4 {
       font-size: 22px;
       @include media-breakpoint-down(xl) {
         font-size: 16px;
       }
     }
+
     h5 {
       font-size: 20px;
       @include media-breakpoint-down(xl) {
@@ -227,6 +249,42 @@
     b, strong {
       color: $color-green-1;
       text-transform: uppercase;
+    }
+  }
+
+  &.-partnership {
+    .top-part {
+      @include media-breakpoint-up(xl) {
+        padding-bottom: 50px;
+      }
+    }
+
+    .middle-part {
+      .img {
+        @include media-breakpoint-up(xl) {
+          width: 40%;
+        }
+        @include media-breakpoint-down(xl) {
+          padding-bottom: 0;
+        }
+
+        img {
+          position: static;
+          display: block;
+          max-width: 100%;
+          width: auto;
+          height: auto;
+          @include media-breakpoint-down(xl) {
+            margin: 0 auto;
+          }
+        }
+      }
+
+      .text {
+        @include media-breakpoint-up(xl) {
+          width: 60%;
+        }
+      }
     }
   }
 }
