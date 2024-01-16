@@ -198,7 +198,7 @@
 .products-overview-section .author-wrap .author-box .avatar {
     border-radius: 50%;
 }
-.btn.btn-refresh {
+.btn.btn-refresh, .social-tabs .social-tab, .disabled-item-user, .delete-item-user, .delete-company-user, .disabled-company-user {
     cursor:pointer;
 }
 .products-overview-section .filter-output-box .filter-output .links span.category-page, .products-overview-section .filter-output-box .filter-output .links span.current-page{
@@ -220,4 +220,27 @@
 }
 .communities-wrap .social-icon img {
     max-width: 100%;
+}
+.form-label.-with-icon .input-icon.-email:before {
+    background: url(../js/../images/email.svg) no-repeat 50% 50%/contain;
+}
+.personal-section .products-masonry.my-products .product-grid-item .box .overlay-disabled {
+    visibility: visible;
+    opacity: 1;
+    padding: 10px 15px;
+    color: #fff;
+    align-items: flex-end;
+    font-family: "Barista",sans-serif;
+    font-size: 32px;
+}
+.products-overview-section .load-more-box {
+    text-align: center;
+    padding-top: 9px;
+}
+.not-found-section .back-text {
+    position: relative;
+    z-index: 2;
+}
+span.blue-link, .personal-section .products-masonry.my-products .product-grid-item .box a.overlay-link {
+    cursor:pointer;
 }

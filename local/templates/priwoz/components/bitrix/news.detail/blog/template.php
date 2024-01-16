@@ -26,7 +26,7 @@ $picture = CFile::ResizeImageGet($pictureID, array('width'=>1000), BX_RESIZE_IMA
                     <div class="author-box">
                         <div class="avatar-box">
                             <div class="avatar">
-                                <img src="/html-code/temporary-images/home/ava.png" class="bg-img" alt="ava">
+                                <img src="<?=SITE_DIR?>images/home/ava.png" class="bg-img" alt="ava">
                             </div>
                         </div>
                         <div class="name">Галанчановски</div>

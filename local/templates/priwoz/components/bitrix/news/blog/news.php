@@ -30,7 +30,7 @@ $this->setFrameMode(true);
 					<div class="author-box">
 						<div class="avatar-box">
 							<div class="avatar">
-								<img src="/html-code/temporary-images/home/ava.png" class="bg-img" alt="ava">
+								<img src="<?=SITE_DIR?>images/home/ava.png" class="bg-img" alt="ava">
 							</div>
 						</div>
 						<div class="name">Галанчановски</div>

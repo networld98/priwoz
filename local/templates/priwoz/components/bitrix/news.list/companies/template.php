@@ -115,8 +115,6 @@ $this->addExternalCss($this->GetFolder() . '/themes/' . $arParams['TEMPLATE_THEM
             </div>
         <? endforeach; ?>
     </div>
-    <? if ($arParams["DISPLAY_BOTTOM_PAGER"]): ?>
-        <div class="load-more-box">
-            <a href="/" class="blue-link">Все компании</a>
-        </div>
-    <? endif; ?>
+    <?if($arParams["DISPLAY_BOTTOM_PAGER"]):?>
+        <?=$arResult["NAV_STRING"]?>
+    <?endif;?>

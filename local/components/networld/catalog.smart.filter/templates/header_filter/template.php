@@ -419,6 +419,8 @@ $this->setFrameMode(true);
     </div>
 <? endif; ?>
 </form>
+<? if ($APPLICATION->GetCurPage() == "/" || $APPLICATION->GetCurPage() == "/search/"): ?>
 <script>
     var smartFilter = new JCSmartFilter('<?echo CUtil::JSEscape($arResult["FORM_ACTION"])?>', 'horizontal');
 </script>
+<? endif; ?>

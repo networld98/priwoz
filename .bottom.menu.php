@@ -16,7 +16,7 @@ $aMenuLinks = Array(
 	),
 	Array(
 		"О проекте", 
-		"/", 
+		"/about/",
 		Array(), 
 		Array(), 
 		"" 
@@ -24,13 +24,6 @@ $aMenuLinks = Array(
 	Array(
 		"Сотрудничество", 
 		"/partnership/", 
-		Array(), 
-		Array(), 
-		"" 
-	),
-	Array(
-		"Новости", 
-		"/news/", 
 		Array(), 
 		Array(), 
 		"" 

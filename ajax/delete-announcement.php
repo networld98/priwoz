@@ -7,7 +7,7 @@ if (!empty($_POST['id'])) {
         CIBlockElement::Delete($_POST['id']);
     }
 }
-$arrFilter = array("PROPERTY_AUTHOR" => $USER->GetID()); ?>
+$arrFilter = array("PROPERTY_AUTHOR" => $USER->GetID(),"ACTIVE" => array("Y", "N")); ?>
 <div class="grid-sizer"></div>
 <div class="gutter-sizer"></div>
 <? $APPLICATION->IncludeComponent(
@@ -125,7 +125,7 @@ $arrFilter = array("PROPERTY_AUTHOR" => $USER->GetID()); ?>
             4 => "",
             5 => "",
         ),
-        "IBLOCK_ID" => "19",
+        "IBLOCK_ID" => $_POST['iblock'],
         "FILE_404" => "",
         "SHARE_HIDE" => "N",
         "SHARE_TEMPLATE" => "",
@@ -168,3 +168,9 @@ $arrFilter = array("PROPERTY_AUTHOR" => $USER->GetID()); ?>
     ),
     false
 ); ?>
+<script>
+    $(document).ajaxComplete(function() {
+        let grid = $('.grid').masonry({}).css('opacity', '1');
+        grid.masonry('reloadItems');
+    })
+</script>

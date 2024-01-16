@@ -472,6 +472,3 @@ $templateData = array(
     </div>
     </div>
 </form>
-<script>
-    var smartFilter = new JCSmartFilter('<?echo CUtil::JSEscape($arResult["FORM_ACTION"])?>', 'horizontal');
-</script>
