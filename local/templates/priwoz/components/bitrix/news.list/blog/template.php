@@ -18,7 +18,7 @@ $this->setFrameMode(true);
 	$this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
     $picture = CFile::ResizeImageGet($arItem["PREVIEW_PICTURE"]["ID"], array('width'=>400), BX_RESIZE_IMAGE_PROPORTIONAL, true);
     ?>
-        <div class="<? if($APPLICATION->GetCurPage() != "/blog/"){?>item<?}else{?>grid-item blog-grid-item<?}?>" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
+        <div class="<? if($APPLICATION->GetCurPage() != SITE_DIR."blog/"){?>item<?}else{?>grid-item blog-grid-item<?}?>" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
             <?if($arItem['PROPERTIES']['YOUTUBE']['VALUE']!='' && $arItem['PROPERTIES']['YOUTUBE_IN_MAIN']['VALUE'] == 'Y' && $APPLICATION->GetCurPage() == "/") {?>
                 <div class="box -video youtube-open-trigger" data-youtube="<?=$arItem['PROPERTIES']['YOUTUBE']['VALUE']?>">
             <?}else{?>
@@ -26,7 +26,7 @@ $this->setFrameMode(true);
             <?}?>
                 <div class="img">
                     <img src="<?= $picture["src"]?>" class="bg-img" alt="<?=$arItem['NAME']?>">
-                    <div class="date"><?=strtolower(FormatDate("d.M.Y", MakeTimeStamp($arItem['TIMESTAMP_X']))) ?></div>
+                    <div class="date"><?= strtolower(strftime('%d %b %Y', MakeTimeStamp($arItem['TIMESTAMP_X']))) ?></div>
                 </div>
                 <div class="text">
                     <h3><?=$arItem['NAME']?></h3>

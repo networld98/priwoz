@@ -67,8 +67,8 @@ $this->EndViewTarget(); ?>
                             <h2 class="product-title"><?= $arItem["NAME"] ?></h2>
                             <div class="location-date">
                                 <div class="location"><?= $arItem["DISPLAY_PROPERTIES"]['CITY']['LINK_ELEMENT_VALUE'][$arItem["DISPLAY_PROPERTIES"]['CITY']['VALUE']]['NAME'] ?></div>
-                                <time datetime="<?= strtolower(FormatDate("d m Y", MakeTimeStamp($arItem['TIMESTAMP_X']))) ?>"
-                                      class="date"><?= strtolower(FormatDate("d M Y", MakeTimeStamp($arItem['TIMESTAMP_X']))) ?></time>
+                                <time datetime="<?= strtolower(strftime('%d %b %Y', MakeTimeStamp($arItem['TIMESTAMP_X']))) ?>"
+                                      class="date"><?= strtolower(strftime('%d %b %Y', MakeTimeStamp($arItem['TIMESTAMP_X']))) ?></time>
                             </div>
                             <div class="price"><? if ($arItem['DISPLAY_PROPERTIES']['PRICE']['VALUE'] != 0 && $arItem['DISPLAY_PROPERTIES']['PRICE']['VALUE'] != NULL) {
                                     echo $arItem['DISPLAY_PROPERTIES']['PRICE']['VALUE'] . " BGN";

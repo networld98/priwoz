@@ -7,7 +7,8 @@ define("HIDE_SIDEBAR", true);
 
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 
-$APPLICATION->SetTitle("Страница не найдена");?>
+$APPLICATION->SetTitle("
+Сторінка не знайдена");?>
     <section class="not-found-section">
         <div class="container">
             <div class="bg-box">
@@ -15,8 +16,8 @@ $APPLICATION->SetTitle("Страница не найдена");?>
                     <div class="col-xs-12 col-md-6 col-xl-4">
                         <h1 class="title">404</h1>
                         <div class="back-text">
-                            Что-то пошло не так. Можно воспользоваться меню сайта или вернуться на
-                            <a href="/">главную</a>
+                            Щось пішло не так. Можна скористатися меню сайту або повернутися на
+                            <a href="/">головну</a>
                         </div>
                     </div>
                     <div class="col-xs-12 col-md-6 col-xl-5">
@@ -25,7 +26,6 @@ $APPLICATION->SetTitle("Страница не найдена");?>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>

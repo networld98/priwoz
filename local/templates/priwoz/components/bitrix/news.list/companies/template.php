@@ -72,7 +72,7 @@ $this->addExternalCss($this->GetFolder() . '/themes/' . $arParams['TEMPLATE_THEM
                             <div class="img">
                                 <img class="bg-img" src="<?=$picture['src']?>" alt="<?=$arFields["NAME"]?>">
                                 <img class="company-logo" src="<?=$logo['src']?>" alt="<?=$arFields["NAME"]?>">
-                                <div class="date"><?=strtolower(FormatDate("d M Y", MakeTimeStamp($arFields['TIMESTAMP_X']))) ?></div>
+                                <div class="date"><?= strtolower(strftime('%d %b %Y', MakeTimeStamp($arFields['TIMESTAMP_X']))) ?></div>
                             </div>
                             <div class="text">
                                 <h2 class="company-title"><?=$arFields["NAME"]?></h2>

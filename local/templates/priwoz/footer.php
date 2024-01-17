@@ -4,7 +4,6 @@
     <div class="modal-box">
         <div class="close-button"></div>
         <div class="video-box">
-
         </div>
     </div>
 </div>
@@ -54,7 +53,7 @@
                     </ul>
                 </div>
                 <div class="col-xs-12 col-md-8 col-xl-2">
-                    <div class="menu-title -md-link">Priwoz-поддержка</div>
+                    <div class="menu-title -md-link"><?=GetMessage('DEF_HELP')?></div>
                     <ul class="menu -social">
                         <li>
                             <a href="#">
@@ -217,7 +216,7 @@
                         </li>
                     </ul>
                     <div class="link d-xs-none d-md-block d-xl-none -md-link">
-                        <a href="/">Политика конфендициальности</a>
+                        <a href="/"><?=GetMessage('DEF_POLICY')?></a>
                     </div>
                 </div>
                 <div class="col-xs-12 col-md-4 col-xl-3">
@@ -225,7 +224,7 @@
                         <div id="SinoptikInformer" style="width:270px;" class="SinoptikInformer type1c1"><div class="siHeader"><div class="siLh"><div class="siMh"><a onmousedown="siClickCount();" class="siLogo" href="https://sinoptik.ua/" target="_blank" rel="nofollow" title="Погода"> </a>Погода <span id="siHeader"></span></div></div></div><div class="siBody"><a onmousedown="siClickCount();" href="https://sinoptik.ua/погода-киев" title="Погода в Киеве" target="_blank"><div class="siCity"><div class="siCityName"><span>Киев</span></div><div id="siCont0" class="siBodyContent"><div class="siLeft"><div class="siTerm"></div><div class="siT" id="siT0"></div><div id="weatherIco0"></div></div><div class="siInf"><p>влажность: <span id="vl0"></span></p><p>давление: <span id="dav0"></span></p><p>ветер: <span id="wind0"></span></p></div></div></div></a><div class="siLinks">Погода на 10 дней от <a href="https://sinoptik.ua/погода-киев/10-дней" title="Погода на 10 дней" target="_blank" onmousedown="siClickCount();">sinoptik.ua</a></div></div><div class="siFooter"><div class="siLf"><div class="siMf"></div></div></div></div><script type="text/javascript" charset="UTF-8" src="//sinoptik.ua/informers_js.php?title=4&amp;wind=3&amp;cities=303010783&amp;lang=ru"></script>
                     </div>
                     <div class="link d-xs-block d-md-none d-xl-block -md-link">
-                        <a href="/">Политика конфендициальности</a>
+                        <a href="/"><?=GetMessage('DEF_POLICY')?></a>
                     </div>
                 </div>
             </div>
@@ -233,48 +232,10 @@
     </div>
     <div class="bottom-part">
         <div class="container">
-            <div class="copyright">© Priwoz. Все права защищены</div>
+            <div class="copyright"><?=GetMessage('DEF_COPYRIGHT')?></div>
         </div>
     </div>
 </footer>
 </div>
-<!--<footer class="mt-4 py-3 bg-dark text-light">-->
-<!--    <div class="container">-->
-<!--        <div class="row">-->
-<!--            <footer class="mt-4 py-3 bg-dark text-light">-->
-<!--                <div class="container">-->
-<!--                    <div class="row">-->
-<!--                        <div class="col-md-4">-->
-<!--                            <h4>Следите за нами</h4>-->
-<!--                            <ul class="list-unstyled">-->
-<!--                                <li><a href="#">Facebook</a></li>-->
-<!--                                <li><a href="#">Twitter</a></li>-->
-<!--                                <li><a href="#">Instagram</a></li>-->
-<!--                            </ul>-->
-<!--                        </div>-->
-<!--                        <div class="col-md-4">-->
-<!--                            <h4>Меню</h4>-->
-<!--                            <ul class="list-unstyled">-->
-<!--                                <li><a href="#">Главная</a></li>-->
-<!--                                <li><a href="#">Объявления</a></li>-->
-<!--                                <li><a href="#">О проекте</a></li>-->
-<!--                                <li><a href="#">Контакты</a></li>-->
-<!--                            </ul>-->
-<!--                        </div>-->
-<!--                        <div class="col-md-4">-->
-<!--                            <h4>Присоединяйтесь к нам</h4>-->
-<!--                            <ul class="list-unstyled">-->
-<!--                                <li><a href="#">LinkedIn</a></li>-->
-<!--                                <li><a href="#">Pinterest</a></li>-->
-<!--                                <li><a href="#">YouTube</a></li>-->
-<!--                            </ul>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </footer>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</footer>-->
-
 </body>
 </html>

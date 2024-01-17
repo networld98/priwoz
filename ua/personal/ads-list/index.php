@@ -1,6 +1,6 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
-$APPLICATION->SetTitle("Настройки пользователя");
+$APPLICATION->SetTitle("Мої оголошення");
 ?>
     <section class="personal-section">
         <div class="container">
@@ -23,8 +23,8 @@ $APPLICATION->SetTitle("Настройки пользователя");
                 ); ?>
                 <div class="main-content">
                     <div class="title-box">
-                        <h1 class="page-title">Мои объявления</h1>
-                        <a href="/personal/announcement/" class="btn btn-orange">Добавить объявление</a>
+                        <h1 class="page-title">Мої оголошення</h1>
+                        <a href="/personal/announcement/" class="btn btn-orange">Додати оголошення</a>
                     </div>
 
                     <div class="grid products-masonry my-products">

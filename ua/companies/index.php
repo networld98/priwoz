@@ -2,7 +2,7 @@
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetPageProperty("keywords", "");
 $APPLICATION->SetPageProperty("description", "");
-$APPLICATION->SetTitle("Компании");
+$APPLICATION->SetTitle("Компанії");
 ?>
 
 <? $APPLICATION->IncludeComponent(
@@ -73,7 +73,7 @@ $APPLICATION->SetTitle("Компании");
         "PAGER_TEMPLATE" => "arrows",
         "PAGER_TITLE" => "Новости",
         "PREVIEW_TRUNCATE_LEN" => "",
-        "SEF_FOLDER" => "/companies/",
+        "SEF_FOLDER" => "/ua/companies/",
         "SEF_MODE" => "Y",
         "SET_LAST_MODIFIED" => "Y",
         "SET_STATUS_404" => "Y",

@@ -1,5 +1,5 @@
 <?
-$sSectionName = "Создание компании";
+$sSectionName = "Створення/зміна команії";
 $arDirProperties = array(
 
 );

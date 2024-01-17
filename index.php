@@ -1,8 +1,8 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetPageProperty("keywords", "priwoz.info");
-$APPLICATION->SetPageProperty("description", "priwoz.info");
-$APPLICATION->SetTitle("priwoz.info");
+$APPLICATION->SetPageProperty("keywords", "");
+$APPLICATION->SetPageProperty("description", "");
+$APPLICATION->SetTitle("Priwoz.info");
 ?>
     <section class="products-section">
         <div class="container">

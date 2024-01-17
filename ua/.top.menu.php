@@ -1,28 +1,28 @@
 <?
 $aMenuLinks = Array(
     Array(
-        "Доска объявлений",
+        "Дошка оголошень",
         "/ua/ads/",
         Array(),
         Array(),
         ""
     ),
     Array(
-        "Компании",
+        "Компанії",
         "/ua/companies/",
         Array(),
         Array("data-open"=>"company-menu"),
         ""
     ),
     Array(
-        "О проекте",
+        "Про проект",
         "/ua/about/",
         Array(),
         Array(),
         ""
     ),
     Array(
-        "Сотрудничество",
+        "Співпраця",
         "/ua/partnership/",
         Array(),
         Array(),

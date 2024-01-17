@@ -1,5 +1,6 @@
 <?
-$sSectionName = "Доска объявлений";
+$sSectionName = "Дошка оголошень
+";
 $arDirProperties = array(
 );
 ?>

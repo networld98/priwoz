@@ -1,5 +1,5 @@
 <?
-$sSectionName = "Добавление/измение объявления";
+$sSectionName = "Додавання/зміна оголошення";
 $arDirProperties = array(
 
 );

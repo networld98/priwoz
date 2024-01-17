@@ -2,7 +2,7 @@
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetPageProperty("keywords", "");
 $APPLICATION->SetPageProperty("description", "");
-$APPLICATION->SetTitle("Доска объявлений");
+$APPLICATION->SetTitle("Дошка оголошень");
 ?>
 <? $APPLICATION->IncludeComponent(
 	"bitrix:news", 
@@ -89,7 +89,7 @@ $APPLICATION->SetTitle("Доска объявлений");
 		"PAGER_TEMPLATE" => "show_more",
 		"PAGER_TITLE" => "Новости",
 		"PREVIEW_TRUNCATE_LEN" => "",
-		"SEF_FOLDER" => "/ads/",
+		"SEF_FOLDER" => "/ua/ads/",
 		"SEF_MODE" => "Y",
 		"SET_LAST_MODIFIED" => "Y",
 		"SET_STATUS_404" => "Y",

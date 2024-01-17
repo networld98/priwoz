@@ -2,7 +2,7 @@
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetPageProperty("keywords", "");
 $APPLICATION->SetPageProperty("description", "");
-$APPLICATION->SetTitle("Избранное");
+$APPLICATION->SetTitle("Вибране");
 ?>
     <section class="personal-section">
         <div class="container">
@@ -24,7 +24,7 @@ $APPLICATION->SetTitle("Избранное");
                     )
                 ); ?>
                 <div class="main-content">
-                    <h1 class="page-title">Избранное</h1>
+                    <h1 class="page-title">Вибране</h1>
                             <div class="grid products-masonry my-products">
                                 <div class="grid-sizer"></div>
                                 <div class="gutter-sizer"></div>

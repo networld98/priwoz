@@ -2,7 +2,7 @@
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetPageProperty("keywords", "");
 $APPLICATION->SetPageProperty("description", "");
-$APPLICATION->SetTitle("Сообщества наших в социальных сетях");
+$APPLICATION->SetTitle("Спільноти наших у соціальних мережах");
 ?>
 <? $APPLICATION->IncludeComponent(
 	"bitrix:news.list", 
@@ -115,7 +115,7 @@ $APPLICATION->SetTitle("Сообщества наших в социальных 
 		"PARENT_SECTION" => "",
 		"PARENT_SECTION_CODE" => "",
 		"INCLUDE_SUBSECTIONS" => "Y",
-		"SEARCH_PAGE" => "/search/",
+		"SEARCH_PAGE" => "/ua/search/",
 		"SHARE_TEMPLATE" => "",
 		"SHARE_HANDLERS" => array(
 			0 => "twitter",

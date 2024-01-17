@@ -1,6 +1,6 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
-$APPLICATION->SetTitle("Обьявление");
+$APPLICATION->SetTitle("Додавання/зміна оголошення");
 ?>
 <section class="breadcrumbs-section">
     <div class="container">

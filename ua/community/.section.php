@@ -1,5 +1,5 @@
 <?
-$sSectionName = "Сообщества наших в социальных сетях";
+$sSectionName = "Спільноти наших у соціальних мережах";
 $arDirProperties = array(
 );
 ?>

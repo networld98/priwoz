@@ -2,10 +2,9 @@
     <div class="container">
         <div class="social-inner">
             <img src="/images/home/social-bg.png" class="bg-img" alt="social">
-
             <div class="text-box">
-                <h2 class="title">Сообщества</h2>
-                <div class="subtitle">наших в социальных сетях</div>
+                <h2 class="title">Спільноти</h2>
+                <div class="subtitle">наших у соціальних мережах</div>
             </div>
             <div class="social-box">
                 <ul class="menu -social">

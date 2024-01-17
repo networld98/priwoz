@@ -1,6 +1,6 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
-$APPLICATION->SetTitle("Создание компании");
+$APPLICATION->SetTitle("Створення/зміна команії");
 ?>
     <section class="breadcrumbs-section">
         <div class="container">

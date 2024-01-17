@@ -68,8 +68,8 @@ foreach ($arResult["ITEMS"] as $arItem):?>
                         <div class="location"><?= $arItem["DISPLAY_PROPERTIES"]['CITY']['LINK_ELEMENT_VALUE'][$arItem["DISPLAY_PROPERTIES"]['CITY']['VALUE']]['NAME'] ?></div>
                         <? if (!empty($arItem['DISPLAY_PROPERTIES']['PRICE'])) {
                             ?>
-                            <time datetime="<?= strtolower(FormatDate("d m Y", MakeTimeStamp($arItem['TIMESTAMP_X']))) ?>"
-                                  class="date"><?= strtolower(FormatDate("d M Y", MakeTimeStamp($arItem['TIMESTAMP_X']))) ?></time>
+                            <time datetime="<?= strtolower(strftime('%d %b %Y', MakeTimeStamp($arItem['TIMESTAMP_X']))) ?>"
+                                  class="date"><?= strtolower(strftime('%d %b %Y', MakeTimeStamp($arItem['TIMESTAMP_X']))) ?></time>
                         <? } ?>
                     </div>
                 <? } ?>
@@ -82,7 +82,7 @@ foreach ($arResult["ITEMS"] as $arItem):?>
                         } ?></div>
                 <? } ?>
             </div>
-            <? if ($APPLICATION->GetCurPage() == "/personal/ads-list/" || $APPLICATION->GetCurPage() == "/personal/company-list/" || $_POST['id']) { ?>
+            <? if ($APPLICATION->GetCurPage() == SITE_DIR."personal/ads-list/" || $APPLICATION->GetCurPage() == SITE_DIR."personal/company-list/" || $_POST['id']) { ?>
                 <?if($active=='N'){?>
                 <div class="overlay overlay-disabled">
                     <p>Деактивировано</p>
@@ -174,7 +174,7 @@ foreach ($arResult["ITEMS"] as $arItem):?>
                     </div>
                 </div>
             <? } ?>
-            <? if ($APPLICATION->GetCurPage() != "/personal/ads-list/" && $APPLICATION->GetCurPage() != "/personal/company-list/") { ?>
+            <? if ($APPLICATION->GetCurPage() != SITE_DIR."personal/ads-list/" && $APPLICATION->GetCurPage() != SITE_DIR."personal/company-list/") { ?>
                 <a href="#" class="js-favorite add-to-favourite" aria-hidden="true"
                    data-favorite-entity="<?= $arItem['ID'] ?>"
                    data-iblock-id="<?= $arItem['IBLOCK_ID'] ?>">
@@ -184,9 +184,9 @@ foreach ($arResult["ITEMS"] as $arItem):?>
     </div>
 <? endforeach;
 if(count((array)$arResult["ITEMS"])==0){
-    if($APPLICATION->GetCurPage() == "/personal/ads-list/"){?>
+    if($APPLICATION->GetCurPage() == SITE_DIR."personal/ads-list/"){?>
         У вас нет объявлений
-    <?}elseif($APPLICATION->GetCurPage() == "/personal/company-list/") { ?>
+    <?}elseif($APPLICATION->GetCurPage() == SITE_DIR."personal/company-list/") { ?>
         Список компаний пуст
     <?}else{?>
         Список избранного пуст

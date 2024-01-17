@@ -1,5 +1,5 @@
 <?
-$sSectionName = "О проекте";
+$sSectionName = "Про проєкт";
 $arDirProperties = array(
 
 );

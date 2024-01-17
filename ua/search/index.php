@@ -2,14 +2,14 @@
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetPageProperty("keywords", "");
 $APPLICATION->SetPageProperty("description", "");
-$APPLICATION->SetTitle("Поиск");
+$APPLICATION->SetTitle("Пошук");
 ?>
 
 <?$APPLICATION->IncludeComponent("bitrix:search.page","custom",Array(
         "TAGS_SORT" => "NAME",
         "TAGS_PAGE_ELEMENTS" => "150",
         "TAGS_PERIOD" => "30",
-        "TAGS_URL_SEARCH" => "/search/index.php",
+        "TAGS_URL_SEARCH" => "/ua/search/index.php",
         "TAGS_INHERIT" => "Y",
         "FONT_MAX" => "50",
         "FONT_MIN" => "10",
@@ -39,7 +39,7 @@ $APPLICATION->SetTitle("Поиск");
         "CACHE_TIME" => "3600",
         "DISPLAY_TOP_PAGER" => "Y",
         "DISPLAY_BOTTOM_PAGER" => "Y",
-        "PAGER_TITLE" => "Результаты поиска",
+        "PAGER_TITLE" => "Результати пошуку",
         "PAGER_SHOW_ALWAYS" => "Y",
         "PAGER_TEMPLATE" => "",
         "AJAX_OPTION_SHADOW" => "Y",

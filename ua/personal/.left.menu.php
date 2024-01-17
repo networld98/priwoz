@@ -2,8 +2,8 @@
 $aMenuLinks = array(
 
     array(
-        "Профиль",
-        "/personal/",
+        "Профіль",
+        "/ua/personal/",
         array(),
         array("icon" => '<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="5.5mm" height="5.5mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
             viewBox="0 0 550 550"
@@ -24,8 +24,8 @@ $aMenuLinks = array(
         ""
     ),
     array(
-        "Избранное",
-        "/personal/favorite/",
+        "Вибране",
+        "/ua/personal/favorite/",
         array(),
         array("icon" => '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22"
                                      fill="none">
@@ -35,42 +35,42 @@ $aMenuLinks = array(
         ""
     ),
     array(
-        "Добавить обьявление",
-        "/personal/announcement/",
+        "Додати оголошення",
+        "/ua/personal/announcement/",
         array(),
         array(),
         "\$GLOBALS['USER']->IsAuthorized()"
     ),
     array(
-        "Добавить компанию",
-        "/personal/company/",
+        "Додати компанію",
+        "/ua/personal/company/",
         array(),
         array(),
         "\$GLOBALS['USER']->IsAuthorized()"
     ),
     array(
-        "Мои обьявления",
-        "/personal/ads-list/",
+        "Мої оголошення",
+        "/ua/personal/ads-list/",
         array(),
         array(),
         "\$GLOBALS['USER']->IsAuthorized()"
     ),
     array(
-        "Мои компании",
-        "/personal/company-list/",
+        "Мої компанії",
+        "/ua/personal/company-list/",
         array(),
         array(),
         "\$GLOBALS['USER']->IsAuthorized()"
     ),
     array(
         "FAq",
-        "/personal/faq/",
+        "/ua/personal/faq/",
         array(),
         array(),
         ""
     ),
     array(
-        "Выход",
+        "Вихід",
         "/?logout=yes",
         array(),
         array("icon" => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
