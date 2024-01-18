@@ -253,7 +253,7 @@
                             символов)</p>
                     </div>
                     <div class="complaint-box">
-                        <a href="/">
+                        <a href="/" class="report-popup-opener">
                             Пожаловаться
                         </a>
                     </div>

@@ -1,5 +1,34 @@
 import Swiper from 'swiper/bundle';
 
+let reportOpener = $('.report-popup-opener');
+let reportPopup = $('.report-popup');
+let reportPopupOverlay = $('.report-popup .modal-overlay');
+
+reportOpener.on('click', function (e) {
+    e.preventDefault();
+
+    if (reportPopup.length > 0) {
+        reportPopup.addClass('-open');
+        $('body').addClass('-overflow-hidden');
+    }
+});
+
+reportPopupOverlay.on('click', function (e) {
+    if (e.target !== this) return;
+
+    reportPopup.removeClass('-open');
+    $('body').removeClass('-overflow-hidden');
+});
+
+$('[name="reportReason"]').change(function(){
+
+    if ($(this).val() === 'other') {
+        $('.other-reason-textarea').slideDown();
+    } else {
+        $('.other-reason-textarea').slideUp();
+    }
+});
+
 let thumbnails_slider = new Swiper(".thumbnails-slider", {
     slidesPerView: 5,
     loop: false,
@@ -52,10 +81,3 @@ let main_slider = new Swiper(".big-image-slider", {
     },
 });
 
-// main_slider.on('slideChangeTransitionStart', function() {
-//     thumbnails_slider.slideTo(main_slider.activeIndex);
-// });
-//
-// thumbnails_slider.on('transitionStart', function(){
-//     thumbnails_slider.slideTo(thumbnails_slider.activeIndex);
-// });

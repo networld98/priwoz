@@ -6,4 +6,6 @@
 
 <?php include './template-parts/other-products-section.php'; ?>
 
+<?php include './template-parts/partials/report-popup.php'; ?>
+
 <?php include './template-parts/partials/footer.php'; ?>

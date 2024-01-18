@@ -1,5 +1,6 @@
 const submenuOpener = $('[data-open]');
 const popupMenu = $('.popup-menu');
+const reportPopup = $('.report-popup');
 const itemHasChildMobileMenu = $('.main-menu .item-has-child a[href="#"], .main-menu .item-has-child a[href=""], .main-menu .item-has-child .arrow');
 
 submenuOpener.on('click', function (e) {
@@ -52,5 +53,9 @@ $(window).on('resize', function(){
     $('.form-select').select2('close');
     submenuOpener.removeClass('active');
     popupMenu.removeClass('active');
+    if(reportPopup.length > 0) {
+        reportPopup.removeClass('-open');
+    }
+
     $('body').removeClass('-overflow-hidden');
 });

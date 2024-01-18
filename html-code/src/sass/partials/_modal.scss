@@ -66,6 +66,7 @@
     @include media-breakpoint-down(md) {
       right: 16px;
     }
+
     &:hover {
       transform: scale(1.05);
     }
@@ -78,6 +79,160 @@
 
     .modal-overlay {
       opacity: 0.5;
+    }
+
+    .modal-box {
+      opacity: 1;
+    }
+  }
+}
+
+.report-popup {
+  z-index: -100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  visibility: hidden;
+  opacity: 0;
+
+
+  .modal-overlay {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    opacity: 0;
+    transition: all .3s ease;
+  }
+
+  .modal-box {
+    width: 570px;
+    max-width: 90%;
+    max-height: 90%;
+    position: relative;
+    border-radius: 20px;
+    background: $color-yellow-3;
+    overflow: hidden;
+    padding: 10px 0;
+
+    .scroll-box {
+      overflow: auto;
+      padding: 70px 100px 70px;
+      scrollbar-color: $color-yellow-1 $color-yellow-2;
+      max-height: 100%;
+      max-width: 100%;
+      @include media-breakpoint-down(xl) {
+        padding: 40px 64px;
+      }
+      @include media-breakpoint-down(md) {
+        padding: 30px 20px;
+      }
+
+      &::-webkit-scrollbar {
+        width: 4px;
+        height: 4px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: $color-yellow-1;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: $color-yellow-2;
+      }
+    }
+
+    .title {
+      position: relative;
+      padding-left: 42px;
+      color: #000;
+      font-family: $roboto-condensed-font;
+      font-size: 26px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: 120%;
+      margin-bottom: 23px;
+      letter-spacing: -0.012em;
+
+      &:before {
+        content: '\e999';
+        font-family: 'fontello';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        font-size: 30px;
+        color: rgba(0, 0, 0, 0.75);
+        transform: translateY(-50%);
+      }
+    }
+
+    .subtitle {
+      color: #000;
+      font-family: $roboto-condensed-font;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: 120%;
+      margin-bottom: 22px;
+      letter-spacing: -0.012em;
+    }
+
+    .other-reason-textarea {
+      padding-top: 5px;
+    }
+
+    .btn-box {
+      margin-top: 48px;
+      text-align: center;
+      @include media-breakpoint-down(md) {
+        margin-top: 30px;
+      }
+
+      .btn {
+        padding: 6px 50px;
+        @include media-breakpoint-down(md) {
+          padding: 6px 26px;
+        }
+      }
+    }
+
+    .success-box {
+      color: #000;
+      font-family: $roboto-condensed-font;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: 160%;
+      letter-spacing: -0.014em;
+      @include media-breakpoint-down(xl) {
+        font-size: 16px;
+        line-height: 120%;
+      }
+      p {
+        margin-bottom: 0;
+      }
+      p + p {
+        margin-top: 15px;
+      }
+    }
+  }
+
+  &.-open {
+    z-index: 998;
+    visibility: visible;
+    opacity: 1;
+
+    .modal-overlay {
+      opacity: 0.8;
     }
 
     .modal-box {

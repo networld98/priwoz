@@ -2,6 +2,7 @@
   width: 100%;
   box-shadow: none;
   outline: none;
+
   &.-min-max-label {
     border-radius: 5px;
     border: 1px solid var(--10-black, rgba(82, 97, 114, 0.10));
@@ -1175,6 +1176,7 @@ form {
         width: 100%;
         box-shadow: none;
         outline: none;
+
         &.-min-max-label {
           border-radius: 5px;
           border: 1px solid rgba(82, 97, 114, 0.10);
@@ -1230,6 +1232,92 @@ form {
         padding-right: 0;
         padding-left: 4px;
       }
+    }
+  }
+}
+
+.form-text {
+  color: rgba(0, 0, 0, 0.70);
+  font-family: $roboto-condensed-font;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 160%;
+  letter-spacing: -0.008em;
+  margin-top: 20px;
+  @include media-breakpoint-down(md) {
+    margin-top: 15px;
+    font-size: 14px;
+  }
+}
+
+.form-check {
+  padding-left: 0;
+  margin-bottom: 15px;
+  @include media-breakpoint-down(md) {
+    margin-bottom: 10px;
+  }
+
+  .form-check-input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+
+    &:checked + {
+      .form-check-label {
+        &:before {
+          border: 2px solid $color-blue-1;
+        }
+        &:after {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  .form-check-label {
+    padding-left: 30px;
+    position: relative;
+    color: rgba(0, 0, 0, 0.75);
+    font-family: $roboto-condensed-font;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 160%;
+    letter-spacing: -0.012em;
+    @include media-breakpoint-down(md) {
+      font-size: 16px;
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 18px;
+      height: 18px;
+      border: 2px solid rgba(0, 0, 0, 0.35);
+      border-radius: 50%;
+      display: block;
+      transition: .3s;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 8px;
+      height: 8px;
+      background: $color-blue-1;
+      border-radius: 50%;
+      display: block;
+      opacity: 0;
+      transition: .3s;
     }
   }
 }
