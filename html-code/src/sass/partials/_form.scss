@@ -1143,6 +1143,12 @@ form {
       width: 50%;
       padding-right: 4px;
 
+      .bx_filter_input_container {
+        background: none !important;
+        padding: 0;
+        box-shadow: none;
+      }
+
       input[type="text"] {
         height: 50px;
         width: 100%;
