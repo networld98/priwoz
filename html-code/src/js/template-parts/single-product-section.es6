@@ -3,6 +3,7 @@ import Swiper from 'swiper/bundle';
 let reportOpener = $('.report-popup-opener');
 let reportPopup = $('.report-popup');
 let reportPopupOverlay = $('.report-popup .modal-overlay');
+let reportRadioPopup = $('.report-popup .form-check-input');
 
 reportOpener.on('click', function (e) {
     e.preventDefault();
@@ -20,9 +21,9 @@ reportPopupOverlay.on('click', function (e) {
     $('body').removeClass('-overflow-hidden');
 });
 
-$('[name="reportReason"]').change(function(){
+reportRadioPopup.change(function(){
 
-    if ($(this).val() === 'other') {
+    if ($(this).data('value') === 'other') {
         $('.other-reason-textarea').slideDown();
     } else {
         $('.other-reason-textarea').slideUp();
