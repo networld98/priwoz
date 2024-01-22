@@ -125,3 +125,33 @@ $this->setFrameMode(true);
     </div>
 </section>
 
+<div class="form-box">
+    <?$APPLICATION->IncludeComponent(
+        "networld:form.result.new",
+        "community",
+        array(
+            "AJAX_MODE" => "Y",
+            "AJAX_OPTION_SHADOW" => "N",
+            "AJAX_OPTION_JUMP" => "Y",
+            "AJAX_OPTION_STYLE" => "Y",
+            "AJAX_OPTION_HISTORY" => "N",
+            "CACHE_TIME" => "3600",
+            "CACHE_TYPE" => "N",
+            "CHAIN_ITEM_LINK" => "",
+            "CHAIN_ITEM_TEXT" => "",
+            "EDIT_URL" => "",
+            "IGNORE_CUSTOM_TEMPLATE" => "N",
+            "LIST_URL" => "",
+            "SEF_MODE" => "N",
+            "SUCCESS_URL" => "",
+            "USE_EXTENDED_ERRORS" => "Y",
+            "WEB_FORM_ID" => "2",
+            "COMPONENT_TEMPLATE" => "community",
+            "VARIABLE_ALIASES" => array(
+                "WEB_FORM_ID" => "WEB_FORM_ID",
+                "RESULT_ID" => "RESULT_ID",
+            )
+        ),
+        false
+    );?>
+</div>

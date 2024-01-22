@@ -73,7 +73,6 @@ new BX.PhoneAuth({
 <?else:?>
 
 <script type="text/javascript">
-<!--
 var opened_sections = [<?
 $arResult["opened"] = $_COOKIE[$arResult["COOKIE_PREFIX"]."_user_profile_open"];
 $arResult["opened"] = preg_replace("/[^a-z0-9_,]/i", "", $arResult["opened"]);
@@ -87,8 +86,6 @@ else
 	echo "'reg'";
 }
 ?>];
-//-->
-
 var cookie_prefix = '<?=$arResult["COOKIE_PREFIX"]?>';
 </script>
 <form method="post" name="form1" action="<?=$arResult["FORM_TARGET"]?>" enctype="multipart/form-data">
@@ -105,8 +102,8 @@ var cookie_prefix = '<?=$arResult["COOKIE_PREFIX"]?>';
             } ?>
             <input name="PERSONAL_PHOTO" id="PERSONAL_PHOTO" class="typefile" size="20" type="file" accept=".png, .jpg, .jpeg, .pdf">
             <label for="PERSONAL_PHOTO" for="customFileInput" id="customFileInputLabel" class="upload-image -default"
-                   data-default="/html-code/images/icons/upload-file.svg"
-                   data-pdf="/html-code/images/icons/PDF_Logo.svg">
+                   data-default="<?=SITE_TEMPLATE_PATH?>/images/icons/upload-file.svg"
+                   data-pdf="<?=SITE_TEMPLATE_PATH?>/images/icons/PDF_Logo.svg">
                 <img id="previewImage" class="preview-image"
                      src="<?=$imgFile?>" alt="Preview">
             </label>

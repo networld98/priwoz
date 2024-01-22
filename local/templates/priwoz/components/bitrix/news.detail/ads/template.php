@@ -147,6 +147,11 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
                         </div>
                     </div>
                     <?
+                    global $userIdItem,$userIdAd,$iblokId;
+                    $userIdItem = $arResult['PROPERTIES']['AUTHOR']['VALUE'];
+                    $userIdAd = $arResult['ID'];
+                    $iblokId = $arResult['IBLOCK_ID'];
+
                     $userPhoto = SITE_TEMPLATE_PATH."/images/icons/user.svg";
                     $allTitle = 'автора';
                     $allUrl = 'userAds='.$arResult['PROPERTIES']['AUTHOR']['VALUE'];
@@ -224,7 +229,7 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
                         <?=$arResult['PREVIEW_TEXT']?>
                     </div>
                     <div class="complaint-box">
-                        <a href="/">
+                        <a href="/" class="report-popup-opener">
                             Пожаловаться
                         </a>
                     </div>
@@ -240,6 +245,43 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
         </div>
     </div>
 </section>
+<div class="report-popup">
+    <div class="modal-overlay"></div>
+    <div class="modal-box">
+        <div class="scroll-box">
+            <div class="form-box">
+                <?$APPLICATION->IncludeComponent(
+                    "networld:form.result.new",
+                    "custom",
+                    array(
+                        "AJAX_MODE" => "Y",
+                        "AJAX_OPTION_SHADOW" => "N",
+                        "AJAX_OPTION_JUMP" => "Y",
+                        "AJAX_OPTION_STYLE" => "Y",
+                        "AJAX_OPTION_HISTORY" => "N",
+                        "CACHE_TIME" => "3600",
+                        "CACHE_TYPE" => "N",
+                        "CHAIN_ITEM_LINK" => "",
+                        "CHAIN_ITEM_TEXT" => "",
+                        "EDIT_URL" => "",
+                        "IGNORE_CUSTOM_TEMPLATE" => "N",
+                        "LIST_URL" => "",
+                        "SEF_MODE" => "N",
+                        "SUCCESS_URL" => "",
+                        "USE_EXTENDED_ERRORS" => "Y",
+                        "WEB_FORM_ID" => "1",
+                        "COMPONENT_TEMPLATE" => "custom",
+                        "VARIABLE_ALIASES" => array(
+                            "WEB_FORM_ID" => "WEB_FORM_ID",
+                            "RESULT_ID" => "RESULT_ID",
+                        )
+                    ),
+                    false
+                );?>
+            </div>
+        </div>
+    </div>
+</div>
 <?
 global $arrFilter;
 $arrFilter = array("PROPERTY_AUTHOR" => $arResult['PROPERTIES']['AUTHOR']['VALUE']);

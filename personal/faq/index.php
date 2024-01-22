@@ -21,28 +21,23 @@ $APPLICATION->SetTitle("Настройки пользователя");
                         "USE_EXT" => "N"
                     )
                 ); ?>
-                <div class="main-content">
+                <div class="main-content faq-content">
                     <div class="title-box">
                         <h1 class="page-title">FAq</h1>
                         <a href="/personal/announcement/" class="btn btn-orange">Добавить объявление</a>
                     </div>
-                    <?$APPLICATION->IncludeComponent("bitrix:support.faq.element.list","",Array(
-                            "IBLOCK_TYPE" => "services",
-                            "IBLOCK_ID" => "19",
-                            "SHOW_RATING" => "Y",
-                            "RATING_TYPE" => "like",
-                            "PATH_TO_USER" => "",
-                            "CACHE_TYPE" => "A",
-                            "CACHE_TIME" => "3600",
-                            "CACHE_GROUPS" => "Y",
-                            "AJAX_MODE" => "N",
-                            "SECTION_ID" => $_REQUEST["SECTION_ID"],
-                            "AJAX_OPTION_JUMP" => "N",
-                            "AJAX_OPTION_STYLE" => "Y",
-                            "AJAX_OPTION_HISTORY" => "N"
-                        )
-                    );?>
-
+                    <div class="bg-box">
+                        <?
+                        $arSelect = array("NAME", "DETAIL_TEXT");
+                        $arFilter = array("IBLOCK_ID"=>27, "ACTIVE" => "Y");
+                        $res = CIBlockElement::GetList(Array("sort" => "asc"), $arFilter, false, Array(), $arSelect);
+                        while($ob = $res->GetNextElement())
+                        {
+                            $arFields = $ob->GetFields();?>
+                          <h2 class="faq-question"><?=$arFields['NAME']?></h2>
+                            <p><?=$arFields['DETAIL_TEXT']?></p>
+                        <?}?>
+                    </div>
                 </div>
             </div>
         </div>
