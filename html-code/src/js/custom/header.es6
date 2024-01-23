@@ -2,6 +2,8 @@ const submenuOpener = $('[data-open]');
 const popupMenu = $('.popup-menu');
 const reportPopup = $('.report-popup');
 const itemHasChildMobileMenu = $('.main-menu .item-has-child a[href="#"], .main-menu .item-has-child a[href=""], .main-menu .item-has-child .arrow');
+const popupOpener = $('[data-popup]');
+const popupGeneral = $('.popup-general');
 
 submenuOpener.on('click', function (e) {
     e.preventDefault();
@@ -22,6 +24,17 @@ submenuOpener.on('click', function (e) {
     }
 });
 
+popupOpener.on('click', function (e) {
+    e.preventDefault();
+    const currentPopup = $(this).data('popup');
+
+    if ($('#' + currentPopup).length > 0) {
+        $(this).addClass('active');
+        $('#' + currentPopup).addClass('active');
+        $('body').addClass('-overflow-hidden');
+    }
+});
+
 itemHasChildMobileMenu.on('click', function (e) {
     if (e.target !== this) return;
     e.preventDefault();
@@ -29,7 +42,7 @@ itemHasChildMobileMenu.on('click', function (e) {
     const parentItem = $(this).closest('.item-has-child');
     const thisSubMenu = parentItem.find('> .sub-menu');
 
-    if(thisSubMenu.length > 0) {
+    if (thisSubMenu.length > 0) {
         if (parentItem.hasClass('active')) {
             parentItem.removeClass('active');
             thisSubMenu.slideUp();
@@ -48,12 +61,21 @@ popupMenu.on('click', function (e) {
     $('body').removeClass('-overflow-hidden');
 });
 
+popupGeneral.on('click', function (e) {
+    if (e.target !== this) return;
 
-$(window).on('resize', function(){
+    popupGeneral.removeClass('active');
+    $('body').removeClass('-overflow-hidden');
+});
+
+$(window).on('resize', function () {
     $('.form-select').select2('close');
     submenuOpener.removeClass('active');
     popupMenu.removeClass('active');
-    if(reportPopup.length > 0) {
+    if (popupGeneral.length > 0) {
+        popupGeneral.removeClass('active');
+    }
+    if (reportPopup.length > 0) {
         reportPopup.removeClass('-open');
     }
 

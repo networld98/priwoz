@@ -6,7 +6,7 @@
                     <h1 class="section-title">Сообщества наших в социальных сетях</h1>
                 </div>
                 <div class="col-xs-12 col-md-3">
-                    <a href="/" class="blue-link">Добавить сообщество</a>
+                    <a href="#" class="blue-link" data-popup="addCommunityPopup">Добавить сообщество</a>
                 </div>
             </div>
         </div>

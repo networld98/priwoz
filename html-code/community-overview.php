@@ -4,4 +4,6 @@
 
 <?php include './template-parts/community-overview-section.php'; ?>
 
+<?php include './template-parts/partials/popup-form.php'; ?>
+
 <?php include './template-parts/partials/footer.php'; ?>
