@@ -31,10 +31,10 @@
     max-width: 90%;
     max-height: 90%;
     position: relative;
-    border-radius: 20px;
+    border-radius: 10px;
     background: #fff;
     overflow: hidden;
-    padding: 10px 0;
+    padding: 0;
 
     .scroll-box {
       overflow: auto;
@@ -49,6 +49,7 @@
         padding: 30px 20px;
       }
 
+      scrollbar-width: thin;
       &::-webkit-scrollbar {
         width: 4px;
         height: 4px;

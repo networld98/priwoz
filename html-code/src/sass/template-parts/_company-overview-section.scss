@@ -1,0 +1,496 @@
+.company-overview-section {
+
+  .title-box {
+    width: 100%;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 15px;
+    column-gap: 15px;
+    @include media-breakpoint-down(xxl) {
+      margin-bottom: 39px;
+    }
+    @include media-breakpoint-down(xl) {
+      margin-bottom: 28px;
+    }
+    @include media-breakpoint-down(md) {
+      margin-bottom: 32px;
+    }
+
+    .page-title {
+      margin-bottom: 0;
+      @include media-breakpoint-down(md) {
+        font-size: 40px;
+      }
+    }
+
+    .btn {
+      margin-top: 12px;
+      padding: 6px 52px;
+      @include media-breakpoint-down(xxl) {
+        margin-top: 10px;
+        padding: 6px 20px;
+      }
+    }
+  }
+
+  .search-title-box {
+    padding: 30px 0;
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    row-gap: 10px;
+    @include media-breakpoint-down(xl) {
+      padding: 20px 0 15px;
+      row-gap: 5px;
+    }
+
+    h1 {
+      color: #000;
+      font-family: $roboto-condensed-font;
+      font-size: 26px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: 120%;
+      margin-right: 28px;
+      letter-spacing: -0.012em;
+      margin-bottom: 0;
+      @include media-breakpoint-down(xl) {
+        font-size: 22px;
+        margin-right: 20px;
+      }
+      @include media-breakpoint-down(md) {
+        font-size: 20px;
+      }
+      .highlight {
+        color: $color-green-1;
+        font-weight: 500;
+      }
+    }
+    .search-output {
+      .current {
+        color: #000;
+        font-family: $roboto-condensed-font;
+        font-size: 26px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 120%;
+        margin-right: 23px;
+        letter-spacing: -0.012em;
+        @include media-breakpoint-down(xl) {
+          font-size: 22px;
+          margin-right: 18px;
+        }
+        @include media-breakpoint-down(md) {
+          font-size: 20px;
+        }
+      }
+      a {
+        color: $color-blue-1;
+        font-family: $roboto-condensed-font;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 160%;
+        letter-spacing: -0.012em;
+        @include media-breakpoint-down(xl) {
+          font-size: 18px;
+        }
+        @include media-breakpoint-down(md) {
+          font-size: 16px;
+        }
+        &:hover {
+          color: $color-blue-2;
+        }
+      }
+    }
+  }
+
+  .search-box {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 17px 30px;
+    border-radius: 5px;
+    border: 1px solid $color-lightgray-3;
+    background: #FFF;
+    margin-bottom: 39px;
+    @include media-breakpoint-down(xxl) {
+      padding: 16px 30px;
+      margin-bottom: 40px;
+    }
+    @include media-breakpoint-down(xl) {
+      margin-bottom: 31px;
+      padding: 16px 8px 16px 16px;
+    }
+    @include media-breakpoint-down(md) {
+      display: block;
+      border: none;
+      background: transparent;
+      padding: 8px 0 28px 0;
+      margin-bottom: 0;
+    }
+
+    .form-label {
+      margin: 0;
+      width: 100%;
+      @include media-breakpoint-down(md) {
+        margin-bottom: 40px;
+      }
+
+      &:nth-child(1) {
+        width: 740px;
+        max-width: 100%;
+        margin-right: 30px;
+        @include media-breakpoint-down(xxl) {
+          width: 540px;
+        }
+        @include media-breakpoint-down(xl) {
+          width: 335px;
+          margin-right: 20px;
+        }
+        @include media-breakpoint-down(md) {
+          width: 100%;
+          max-width: 100%;
+        }
+      }
+
+      &:nth-child(2) {
+        width: 530px;
+        max-width: 100%;
+        margin-right: 30px;
+        @include media-breakpoint-down(xxl) {
+          width: 400px;
+        }
+        @include media-breakpoint-down(xl) {
+          width: 247px;
+          margin-right: 8px;
+        }
+        @include media-breakpoint-down(md) {
+          width: 100%;
+          max-width: 100%;
+        }
+      }
+
+      .form-control {
+        @include media-breakpoint-down(xxl) {
+          line-height: 120%;
+        }
+        @include media-breakpoint-down(xl) {
+          padding-top: 5px;
+        }
+
+        &.form-control.form-control-filter.-search {
+          @include media-breakpoint-down(xl) {
+            padding-left: 29px;
+            background-size: auto 20px;
+          }
+          @include media-breakpoint-down(md) {
+            padding-left: 21px;
+            background-size: auto 15px;
+          }
+        }
+
+        &.form-control.form-control-filter.-location {
+          @include media-breakpoint-down(xl) {
+            padding-left: 28px;
+            background-size: auto 20px;
+          }
+          @include media-breakpoint-down(md) {
+            padding-left: 21px;
+            background-size: auto 15px;
+          }
+        }
+      }
+    }
+
+    .btn-box {
+      flex: none;
+      margin-left: auto;
+      @include media-breakpoint-down(md) {
+        text-align: right;
+      }
+
+      .btn {
+        background-position: 11px 50%;
+        padding: 5px 11px 5px 38px;
+        background-size: auto 19px;
+        background-color: $color-gray-3;
+        color: #fff;
+        background-image: url('../../../images/icons/search-white.svg');
+        border-color: $color-gray-3;
+        @include media-breakpoint-down(xxl) {
+          background-position: 11px 40%;
+          padding: 5px 11px 5px 38px;
+          background-size: auto 19px;
+        }
+        @include media-breakpoint-down(xl) {
+          background-position: 8px 42%;
+          padding: 5px 12px 5px 33px;
+          background-size: auto 19px;
+        }
+        @include media-breakpoint-down(md) {
+          padding: 5px 46px 5px 71px;
+          background-position: 52px 42%;
+          background-size: auto 15px;
+          background-color: $color-gray-3;
+        }
+
+        &:hover {
+          background-color: $color-gray-2;
+          border-color: $color-gray-2;
+        }
+      }
+    }
+  }
+
+  .companies-wrap {
+    padding-bottom: 50px;
+    margin-left: -15px;
+    margin-right: -15px;
+    margin-top: -15px;
+    @include media-breakpoint-down(xl) {
+      margin-left: -10px;
+      margin-right: -10px;
+      margin-top: -10px;
+      padding-bottom: 20px;
+    }
+    @include media-breakpoint-down(md) {
+      margin-left: -5px;
+      margin-right: -5px;
+      margin-top: -5px;
+      padding-bottom: 30px;
+    }
+  }
+
+  .companies-masonry {
+    padding-top: 0;
+    padding-bottom: 15px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    transition: .4s;
+    opacity: 0;
+
+    @include media-breakpoint-down(xl) {
+      padding-bottom: 10px;
+    }
+    @include media-breakpoint-down(md) {
+      padding-bottom: 5px;
+    }
+    .gutter-sizer {
+      width: 0;
+    }
+
+    .grid-sizer, .grid-item {
+      width: 25%;
+      @include media-breakpoint-down(xxl) {
+        width: calc(100% / 3);
+      }
+      @include media-breakpoint-down(xl) {
+        width: 50%;
+      }
+      @include media-breakpoint-down(md) {
+        width: 100%;
+      }
+    }
+  }
+
+  .collapse-head-box {
+    @include media-breakpoint-only(md) {
+      padding-bottom: 20px;
+    }
+  }
+
+  .collapse-content-box {
+    padding-bottom: 10px;
+  }
+
+  .filter-box {
+    @include media-breakpoint-only(md) {
+      padding-bottom: 20px;
+      padding-left: 10px;
+      max-width: 50%;
+      margin-left: auto;
+    }
+
+    .form-label {
+      color: rgba(0, 0, 0, 0.75);
+      font-family: $roboto-condensed-font;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: 160%;
+      margin-bottom: 8px;
+      padding-left: 8px;
+    }
+    .select2.select2-container {
+      @include media-breakpoint-down(md) {
+        margin-bottom: 20px;
+      }
+      .select2-selection--single {
+        font-size: 14px;
+        height: 50px;
+        @include media-breakpoint-down(md) {
+          height: 44px;
+        }
+        .select2-selection__rendered {
+          padding: 7px 28px 7px 7px;
+        }
+        .select2-selection__arrow {
+          width: 27px;
+        }
+      }
+    }
+  }
+
+
+  .collapse-head {
+    color: $color-gray-2;
+    font-family: $roboto-condensed-font;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 100%;
+    padding: 13px 33px;
+    letter-spacing: -0.016em;
+    border-radius: 5px;
+    border: 1px solid $color-lightgray-3;
+    background: #FFF;
+    position: relative;
+    @include media-breakpoint-up(xl) {
+      display: none;
+    }
+    @include media-breakpoint-down(md) {
+      margin-bottom: 20px;
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 15px;
+      height: 15px;
+      opacity: 1;
+      transition: .3s;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 15px;
+      height: 15px;
+      opacity: 0;
+      transition: .3s;
+    }
+
+    .arrow {
+      width: 33px;
+      height: 100%;
+      top: 0;
+      right: 5px;
+      position: absolute;
+      @include media-breakpoint-down(md) {
+        right: 0;
+      }
+
+      &:before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 22px;
+        height: 13px;
+        background: url('../../../images/icons/arrow-filter.svg') no-repeat 50% 50%/contain;
+        opacity: 1;
+        transition: .3s;
+      }
+
+      &:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 22px;
+        height: 13px;
+        background: url('../../../images/icons/arrow-filter-black.svg') no-repeat 50% 50%/contain;
+        opacity: 0;
+        transition: .3s;
+      }
+    }
+
+    &.search-box-opener {
+      &:before {
+        background: url('../../../images/icons/search-gray.svg') no-repeat 50% 50%/ contain;
+      }
+
+      &:after {
+        background: url('../../../images/icons/search-black.svg') no-repeat 50% 50%/ contain;
+      }
+    }
+
+    &.filter-box-opener {
+
+      &:before {
+        background: url('../../../images/icons/filter-gray.svg') no-repeat 50% 50%/ contain;
+      }
+
+      &:after {
+        background: url('../../../images/icons/filter-black.svg') no-repeat 50% 50%/ contain;
+      }
+    }
+
+    &.active {
+      background: $color-green-3;
+
+      &:before {
+        opacity: 0;
+      }
+
+      &:after {
+        opacity: 1;
+      }
+
+      .arrow {
+
+        &:before {
+          transform: translate(-50%, -50%) rotate(180deg);
+          opacity: 0;
+        }
+
+        &:after {
+          transform: translate(-50%, -50%) rotate(180deg);
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  .collapsed-content {
+    @include media-breakpoint-down(xl) {
+      display: none;
+    }
+  }
+
+  select {
+    border-color: rgba(82, 97, 114, 0.10);
+  }
+  .select2 {
+    &.select2-container {
+      .select2-selection--single {
+        border-color: rgba(82, 97, 114, 0.10);
+      }
+    }
+  }
+}

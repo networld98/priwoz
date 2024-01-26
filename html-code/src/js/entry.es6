@@ -12,6 +12,7 @@ import 'swiper/css/bundle';
 
     require("./custom/header.es6");
     require("./custom/forms.es6");
+    require("./custom/collapsed-content.es6");
 
     $(".upload-file-custom").length > 0 && require("./custom/upload-file-custom.es6");
     $(".video-open-trigger, .youtube-open-trigger").length > 0 && require("./custom/video.es6");
@@ -21,7 +22,6 @@ import 'swiper/css/bundle';
     $(".other-products-section").length > 0 && require("./template-parts/other-products-section.es6");
     $(".single-product-section").length > 0 && require("./template-parts/single-product-section.es6");
     $(".add-product-section").length > 0 && require("./template-parts/add-product-section.es6");
-    $(".products-overview-section").length > 0 && require("./template-parts/products-overview-section.es6");
     $(".blog-overview-section").length > 0 && require("./template-parts/blog-overview-section.es6");
 
 

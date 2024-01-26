@@ -400,6 +400,7 @@ button {
       padding-right: 0;
     }
   }
+
   .menu.-social {
     max-width: 300px;
     column-gap: 50px;
@@ -410,8 +411,68 @@ button {
       row-gap: 20px;
       padding-left: 0;
     }
+
     li {
       display: flex;
+    }
+  }
+}
+
+.category-list {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin: 0 -4px;
+  padding-bottom: 40px;
+  row-gap: 8px;
+
+  .item {
+    padding: 0 4px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    .category-link {
+      border-radius: 5px;
+      border: 1px solid rgba(82, 97, 114, 0.10);
+      background: #FFF;
+      padding: 5px 16px 5px 15px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-start;
+      color: rgba(0, 0, 0, 0.75);
+      font-family: $roboto-condensed-font;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: 100%;
+      text-transform: uppercase;
+      letter-spacing: -0.022em;
+      transition: .3s;
+      white-space: nowrap;
+      @include media-breakpoint-down(xl) {
+        padding: 7px 5px 7px 8px;
+        font-size: 12px;
+      }
+
+      svg {
+        width: 24px;
+        height: 24px;
+        margin-right: 8px;
+        color: $color-gray-3;
+        transition: .3s;
+        flex: none;
+      }
+
+      &.active, &:hover {
+        color: #000;
+        background: $color-green-3;
+
+        svg {
+          color: #000;
+        }
+      }
     }
   }
 }
