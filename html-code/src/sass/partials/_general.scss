@@ -475,4 +475,14 @@ button {
       }
     }
   }
+
+  &.-simple {
+    padding-bottom: 30px;
+    .item {
+      .category-link {
+        font-size: 14px;
+        padding: 10px 16px;
+      }
+    }
+  }
 }

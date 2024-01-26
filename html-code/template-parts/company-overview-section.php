@@ -8,7 +8,7 @@
         <div class="collapse-head-box d-xl-none">
             <div class="row">
                 <div class="col-xs-12 col-md-6">
-                    <div class="collapse-head search-box-opener" data-collapsed="#search-box">Поиск компаниц на Priwoze <span class="arrow"></span></div>
+                    <div class="collapse-head search-box-opener" data-collapsed="#search-box">Поиск компаний на Priwoze <span class="arrow"></span></div>
                 </div>
                 <div class="col-xs-12 col-md-6 d-xs-none d-md-block">
                     <div class="collapse-head filter-box-opener" data-collapsed="#filter-box">Фильтры поиска <span class="arrow"></span></div>

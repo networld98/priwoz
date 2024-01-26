@@ -926,6 +926,11 @@ form {
           }
         }
       }
+      &.-simple-location-gray {
+        .select2-search {
+          background: $color-lightgray-4;
+        }
+      }
     }
   }
 

@@ -1,6 +1,6 @@
 <?php include './template-parts/partials/header-sign-in.php'; ?>
 
-<?php include './template-parts/partials/breadcrumbs-add-company.php'; ?>
+<?php include './template-parts/partials/breadcrumbs-companies-overview.php'; ?>
 
 <?php include './template-parts/company-overview-section.php'; ?>
 
