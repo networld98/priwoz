@@ -1,0 +1,143 @@
+.add-company-section {
+  padding-bottom: 80px;
+  @include media-breakpoint-down(xl) {
+    padding-bottom: 35px;
+  }
+
+  .title-box {
+    margin-bottom: 35px;
+    @include media-breakpoint-down(xl) {
+      margin-bottom: 30px;
+    }
+    @include media-breakpoint-down(md) {
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      margin-bottom: 0;
+      @include media-breakpoint-down(xl) {
+        margin-bottom: 20px;
+      }
+    }
+
+    .text-1 {
+      margin-bottom: 0;
+    }
+  }
+
+  .product-form {
+    width: 770px;
+    max-width: 100%;
+    margin-left: 17%;
+    @include media-breakpoint-down(xl) {
+      margin-left: 0;
+    }
+
+    .btn {
+      padding: 6px 15px;
+    }
+
+    .hint {
+      color: rgba(0, 0, 0, 0.75);
+      font-family: $roboto-condensed-font;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: 120%;
+      letter-spacing: -0.012em;
+      margin-top: 8px;
+      @include media-breakpoint-down(xl) {
+        padding-top: 0;
+        font-size: 12px;
+        font-weight: 300;
+        line-height: 160%;
+      }
+      @include media-breakpoint-down(md) {
+        margin-top: 0;
+      }
+    }
+
+    .upload-group {
+      max-width: 474px;
+
+      & + .hint {
+        margin-top: 0;
+        padding-top: 16px;
+        @include media-breakpoint-down(xl) {
+          padding-top: 6px;
+        }
+      }
+    }
+
+    .form-group.row {
+      margin-bottom: 40px;
+      @include media-breakpoint-down(xl) {
+        margin-bottom: 20px;
+      }
+    }
+
+    form {
+      * + {
+        h2, h3, h4, h5 {
+          margin-top: 20px;
+          @include media-breakpoint-down(md) {
+            margin-top: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .required-text {
+    margin-top: 26px;
+    @include media-breakpoint-down(md) {
+      margin-top: 0;
+    }
+  }
+
+  textarea.form-control {
+    @include media-breakpoint-down(md) {
+      min-height: 125px;
+    }
+  }
+
+  .upload-file-custom {
+    @include media-breakpoint-down(md) {
+      margin-bottom: 20px;
+    }
+    .upload-image-box {
+      @include media-breakpoint-down(md) {
+        display: flex;
+      }
+    }
+
+    .upload-image {
+      @include media-breakpoint-down(md) {
+        width: 70px;
+        height: 70px;
+        margin-right: 17px;
+      }
+    }
+  }
+
+  .upload-group {
+    .upload-file-custom {
+      @include media-breakpoint-down(md) {
+        margin-bottom: 0;
+      }
+      .upload-image-box {
+        @include media-breakpoint-down(md) {
+          display: block;
+        }
+      }
+
+      .upload-image {
+        @include media-breakpoint-down(md) {
+          width: 103px;
+          height: 103px;
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}

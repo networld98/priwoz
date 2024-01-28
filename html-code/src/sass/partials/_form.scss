@@ -461,6 +461,31 @@ form {
           background: url('../../../images/icons/profile-form/name.svg') no-repeat 50% 50%/ contain;
         }
       }
+      &.-site {
+        &:before {
+          background: url('../../../images/icons/profile-form/world-light.svg') no-repeat 50% 50%/ contain;
+        }
+      }
+      &.-facebook {
+        &:before {
+          background: url('../../../images/icons/profile-form/facebook.svg') no-repeat 50% 50%/ contain;
+        }
+      }
+      &.-instagram {
+        &:before {
+          background: url('../../../images/icons/profile-form/instagram.svg') no-repeat 50% 50%/ contain;
+        }
+      }
+      &.-youtube {
+        &:before {
+          background: url('../../../images/icons/profile-form/youtube.svg') no-repeat 50% 50%/ contain;
+        }
+      }
+      &.-email {
+        &:before {
+          background: url('../../../images/icons/profile-form/mail.svg') no-repeat 50% 50%/ contain;
+        }
+      }
     }
 
     &.password-label {

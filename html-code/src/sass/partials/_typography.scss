@@ -16,6 +16,26 @@ body {
   @include media-breakpoint-down(md) {
     line-height: 120%;
   }
+  a {
+    color: $color-blue-2;
+    text-decoration: none;
+    text-decoration-thickness: 1px;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+
+  p, img, ul, ol, table, h1, h2, h3, h4, h5 {
+    & + {
+      p, img, ul, ol, table, h1, h2, h3, h4, h5 {
+        margin-top: 16px;
+      }
+    }
+  }
 }
 
 .content {
