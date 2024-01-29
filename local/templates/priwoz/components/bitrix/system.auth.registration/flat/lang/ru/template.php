@@ -1,4 +1,7 @@
 <?
+$MESS["AUTH_REGISTER_TITLE"] = "Priwoz";
+$MESS["AUTH_REGISTER_SUBTITLE"] = "от наших для наших";
+$MESS["AUTH_REGISTER_EMAIL"] = "Регистрация по email";
 $MESS["AUTH_REGISTER"] = "Регистрация";
 $MESS["AUTH_NAME"] = "Имя";
 $MESS["AUTH_LAST_NAME"] = "Фамилия";

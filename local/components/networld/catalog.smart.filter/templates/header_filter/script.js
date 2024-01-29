@@ -316,12 +316,22 @@ JCSmartFilter.prototype.values2post = function (values)
 			}
 		}
 	}
-	if(paramQ!=undefined && paramCity!=undefined){
-		finalUrl = "/search/?q="+paramQ+"&city_529="+paramCity;
-	}else if(paramQ==undefined && paramCity!=undefined){
-		finalUrl = "/search/?city_529="+paramCity;
-	}else if(paramQ!=undefined && paramCity==undefined){
-		finalUrl = "/search/?q="+paramQ;
+	if (window.location.href.indexOf("ua") > -1) {
+		if (paramQ != undefined && paramCity != undefined) {
+			finalUrl = "/ua/search/?q=" + paramQ + "&smartPreFilter_529=" + paramCity;
+		} else if (paramQ == undefined && paramCity != undefined) {
+			finalUrl = "/ua/search/?smartPreFilter_529=" + paramCity;
+		} else if (paramQ != undefined && paramCity == undefined) {
+			finalUrl = "/ua/search/?q=" + paramQ;
+		}
+	} else {
+		if (paramQ != undefined && paramCity != undefined) {
+			finalUrl = "/search/?q=" + paramQ + "&smartPreFilter_529=" + paramCity;
+		} else if (paramQ == undefined && paramCity != undefined) {
+			finalUrl = "/search/?smartPreFilter_529=" + paramCity;
+		} else if (paramQ != undefined && paramCity == undefined) {
+			finalUrl = "/search/?q=" + paramQ;
+		}
 	}
 	$('#modef-mobile').attr('href',finalUrl);
 	$('#modef').attr('href',finalUrl);

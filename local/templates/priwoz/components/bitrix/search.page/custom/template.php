@@ -89,36 +89,36 @@ $smartPreFilter = array("ID" => $filterItems);
     <div id="products-overview-section-ajax">
         <div class="container">
             <div class="search-title-box">
-                <h1>Результаты поиска <span class="highlight"><? if ($arResult['REQUEST']['QUERY']) {
+                <h1><?=GetMessage('SEARCH_TITLE')?> <span class="highlight"><? if ($arResult['REQUEST']['QUERY']) {
                             echo $arResult['REQUEST']['QUERY'];
-                        } else { ?> по городу<? } ?>:</span></h1>
+                        } else { ?> <?=GetMessage('SEARCH_CITY')?><? } ?>:</span></h1>
                 <div class="search-output"><span class="<? if ($_GET['companies'] != 'Y'){ ?>current" <? }else{ ?>link"
                     data-url="/search/?q=<?=$_GET['q']?>&city_529=<?=$_GET['city_529']?>&companies=N"<?}?>
-                    >объявлений <?= count((array)$ads) ?></span><span
+                    ><?=GetMessage('SEARCH_ADS')?> <?= count((array)$ads) ?></span><span
                             class="<? if ($_GET['companies'] == 'Y'){ ?>current" <? }else{ ?>link"
                     data-url="/search/?q=<?=$_GET['q']?>&city_529=<?=$_GET['city_529']?>&companies=Y"<?}?>
-                    >компаний <?= count((array)$companies) ?></span>
+                    ><?=GetMessage('SEARCH_COMPANY')?> <?= count((array)$companies) ?></span>
                 </div>
             </div>
             <div class="filter-output-box">
                 <div class="filter-output">
                     <div class="links">
-                        <a href="/">Priwoz</a>
+                        <a href="<?=SITE_DIR?>">Priwoz</a>
                         <? if ($arResult['REQUEST']['QUERY']) { ?> <span class="sep">-</span> <a
-                            href="/search/?q=<?= $arResult['REQUEST']['QUERY'] ?>"><?= $arResult['REQUEST']['QUERY'] ?></a><? } ?>
+                            href="/<?=SITE_DIR?>search/?q=<?= $arResult['REQUEST']['QUERY'] ?>"><?= $arResult['REQUEST']['QUERY'] ?></a><? } ?>
                         <? if ($_GET['city_529']) { ?><span class="sep">/</span><span
                                 class="current-page"><?= $cityName ?></span><? } ?>
                     </div>
                 </div>
                 <div class="sort-by-box">
                     <div class="bx_filter_parameters_box active">
-                        <div class="bx_filter_parameters_box_title">Сортировать по</div>
+                        <div class="bx_filter_parameters_box_title"><?=GetMessage('SEARCH_SORT')?></div>
                         <div class="bx_filter_block">
                             <div class="bx_filter_parameters_box_container">
                                 <div class="bx_filter_select_container">
                                     <select class="form-select filter-sort-search -without-search">
-                                        <option <?if($_GET['sort']=='ACTIVE_FROM' && $_GET['ads']=='desc'){?>selected<?}?> value="/search/?q=<?=$_GET['q']?>&city_529=<?=$_GET['city_529']?>&companies=<?=$_GET['companies']?>&sort=ACTIVE_FROM&ads=desc">Сначала новые</option>
-                                        <option <?if($_GET['sort']=='ACTIVE_FROM' && $_GET['ads']=='asc'){?>selected<?}?> value="/search/?q=<?=$_GET['q']?>&city_529=<?=$_GET['city_529']?>&companies=<?=$_GET['companies']?>&sort=ACTIVE_FROM&ads=asc">Сначала старые</option>
+                                        <option <?if($_GET['sort']=='ACTIVE_FROM' && $_GET['ads']=='desc'){?>selected<?}?> value="/search/?q=<?=$_GET['q']?>&city_529=<?=$_GET['city_529']?>&companies=<?=$_GET['companies']?>&sort=ACTIVE_FROM&ads=desc"><?=GetMessage('SEARCH_SORTED_BY_DATE')?></option>
+                                        <option <?if($_GET['sort']=='ACTIVE_FROM' && $_GET['ads']=='asc'){?>selected<?}?> value="/search/?q=<?=$_GET['q']?>&city_529=<?=$_GET['city_529']?>&companies=<?=$_GET['companies']?>&sort=ACTIVE_FROM&ads=asc"><?=GetMessage('SEARCH_SORT_BY_DATE')?></option>
 
 <!--                                        <option --><?//if($_GET['sort']=='PROPERTY_PRICE' && $_GET['ads']=='desc'){?><!--selected--><?//}?><!-- value="/search/?q=--><?//=$_GET['q']?><!--&city_529=--><?//=$_GET['city_529']?><!--&companies=--><?//=$_GET['companies']?><!--&sort=PROPERTY_PRICE&ads=desc">Сначала дешевые</option>-->
 <!--                                        <option --><?//if($_GET['sort']=='PROPERTY_PRICE' && $_GET['ads']=='asc'){?><!--selected--><?//}?><!-- value="/search/?q=--><?//=$_GET['q']?><!--&city_529=--><?//=$_GET['city_529']?><!--&companies=--><?//=$_GET['companies']?><!--&sort=PROPERTY_PRICE&ads=asc">Сначала дорогие</option>-->

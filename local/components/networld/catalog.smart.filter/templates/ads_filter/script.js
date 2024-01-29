@@ -382,19 +382,38 @@ JCSmartFilter.prototype.values2post = function (values)
 		$(".filter-output-box").hide('fast');
 		$("#price_asc").val(fullUrl +"&sort=PROPERTY_PRICE&ads=asc&set_filter=Найти");
 		$("#price_desc").val(fullUrl +"&sort=PROPERTY_PRICE&ads=desc&set_filter=Найти");
-		if(categoryBread=='Y' && subCategoryBread != 'Y'){
-			var link = '<a href="/">Priwoz</a><span class="sep">-</span><span class="category-page"></span>';
-		}else if(categoryBread=='Y' && subCategoryBread == 'Y'){
-			var link = '<a href="/">Priwoz</a><span class="sep">-</span><a class="category-page" href="'+currentUrl+'?arrFilter_527='+categoryUrl+'&set_filter=Найти"></a><span class="sep">-</span><span class="current-page"></span>'
+		if (window.location.href.indexOf("ua") > -1) {
+			if(categoryBread=='Y' && subCategoryBread != 'Y'){
+				var link = '<a href="/ua/">Priwoz</a><span class="sep">-</span><span class="category-page"></span>';
+			}else if(categoryBread=='Y' && subCategoryBread == 'Y'){
+				var link = '<a href="/ua/">Priwoz</a><span class="sep">-</span><a class="category-page" href="'+currentUrl+'?arrFilter_527='+categoryUrl+'&set_filter=Найти"></a><span class="sep">-</span><span class="current-page"></span>'
+			}
+		}else{
+			if(categoryBread=='Y' && subCategoryBread != 'Y'){
+				var link = '<a href="/">Priwoz</a><span class="sep">-</span><span class="category-page"></span>';
+			}else if(categoryBread=='Y' && subCategoryBread == 'Y'){
+				var link = '<a href="/">Priwoz</a><span class="sep">-</span><a class="category-page" href="'+currentUrl+'?arrFilter_527='+categoryUrl+'&set_filter=Найти"></a><span class="sep">-</span><span class="current-page"></span>'
+			}
 		}
+
 		$(".filter-output .links").html(link);
 	}
-	if(paramQ!=undefined && paramCity!=undefined){
-		finalUrl = "/search/?q="+paramQ+"&smartPreFilter_529="+paramCity;
-	}else if(paramQ==undefined && paramCity!=undefined){
-		finalUrl = "/search/?smartPreFilter_529="+paramCity;
-	}else if(paramQ!=undefined && paramCity==undefined){
-		finalUrl = "/search/?q="+paramQ;
+	if (window.location.href.indexOf("ua") > -1) {
+		if (paramQ != undefined && paramCity != undefined) {
+			finalUrl = "/ua/search/?q=" + paramQ + "&smartPreFilter_529=" + paramCity;
+		} else if (paramQ == undefined && paramCity != undefined) {
+			finalUrl = "/ua/search/?smartPreFilter_529=" + paramCity;
+		} else if (paramQ != undefined && paramCity == undefined) {
+			finalUrl = "/ua/search/?q=" + paramQ;
+		}
+	} else {
+		if (paramQ != undefined && paramCity != undefined) {
+			finalUrl = "/search/?q=" + paramQ + "&smartPreFilter_529=" + paramCity;
+		} else if (paramQ == undefined && paramCity != undefined) {
+			finalUrl = "/search/?smartPreFilter_529=" + paramCity;
+		} else if (paramQ != undefined && paramCity == undefined) {
+			finalUrl = "/search/?q=" + paramQ;
+		}
 	}
 	$('#modef').attr('href',finalUrl);
 	return post;

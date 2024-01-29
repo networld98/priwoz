@@ -1,6 +1,6 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
-$APPLICATION->SetTitle("Настройки пользователя");
+$APPLICATION->SetTitle("FAq");
 ?>
     <section class="personal-section">
         <div class="container">
@@ -21,28 +21,23 @@ $APPLICATION->SetTitle("Настройки пользователя");
                         "USE_EXT" => "N"
                     )
                 ); ?>
-                <div class="main-content">
+                <div class="main-content faq-content">
                     <div class="title-box">
                         <h1 class="page-title">FAq</h1>
-                        <a href="/personal/announcement/" class="btn btn-orange">Добавить объявление</a>
+                        <a href="<?=SITE_DIR?>personal/announcement/" class="btn btn-orange"><?=GetMessage("DEF_ADD_ADS")?></a>
                     </div>
-                    <?$APPLICATION->IncludeComponent("bitrix:support.faq.element.list","",Array(
-                            "IBLOCK_TYPE" => "services",
-                            "IBLOCK_ID" => "19",
-                            "SHOW_RATING" => "Y",
-                            "RATING_TYPE" => "like",
-                            "PATH_TO_USER" => "",
-                            "CACHE_TYPE" => "A",
-                            "CACHE_TIME" => "3600",
-                            "CACHE_GROUPS" => "Y",
-                            "AJAX_MODE" => "N",
-                            "SECTION_ID" => $_REQUEST["SECTION_ID"],
-                            "AJAX_OPTION_JUMP" => "N",
-                            "AJAX_OPTION_STYLE" => "Y",
-                            "AJAX_OPTION_HISTORY" => "N"
-                        )
-                    );?>
-
+                    <div class="bg-box">
+                        <?
+                        $arSelect = array("PROPERTY_NAME_UA", "PREVIEW_TEXT");
+                        $arFilter = array("IBLOCK_ID"=>27, "ACTIVE" => "Y");
+                        $res = CIBlockElement::GetList(Array("sort" => "asc"), $arFilter, false, Array(), $arSelect);
+                        while($ob = $res->GetNextElement())
+                        {
+                            $arFields = $ob->GetFields();?>
+                            <h2 class="faq-question"><?=$arFields['PROPERTY_NAME_UA_VALUE']?></h2>
+                            <p><?=$arFields['PREVIEW_TEXT']?></p>
+                        <?}?>
+                    </div>
                 </div>
             </div>
         </div>

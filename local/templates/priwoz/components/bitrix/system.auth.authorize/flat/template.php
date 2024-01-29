@@ -15,8 +15,8 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
         <div class="sign-in-wrap">
             <div class="map-overlay">
                 <div class="text-box">
-                    <div class="title">Priwoz</div>
-                    <div class="subtitle">от наших для наших</div>
+                    <div class="title"><?=GetMessage("AUTH_REGISTER_TITLE")?></div>
+                    <div class="subtitle"><?=GetMessage("AUTH_REGISTER_SUBTITLE")?></div>
                 </div>
             </div>
             <div class="sign-in-box">

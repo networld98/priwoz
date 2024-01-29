@@ -32,7 +32,7 @@
                     </ul>
                 </div>
                 <div class="d-xs-none d-xl-block col-xl-4">
-                    <div class="menu-title -lg-link">Компании</div>
+                    <div class="menu-title -lg-link"><?=GetMessage('DEF_FOTTER_MENU')?></div>
                     <ul class="menu -cols -md-link">
                         <?$APPLICATION->IncludeComponent(
                             "bitrix:menu",
@@ -216,7 +216,7 @@
                         </li>
                     </ul>
                     <div class="link d-xs-none d-md-block d-xl-none -md-link">
-                        <a href="/"><?=GetMessage('DEF_POLICY')?></a>
+                        <a href="<?=SITE_DIR?>privacy-policy/"><?=GetMessage('DEF_POLICY')?></a>
                     </div>
                 </div>
                 <div class="col-xs-12 col-md-4 col-xl-3">
@@ -224,7 +224,7 @@
                         <div id="SinoptikInformer" style="width:270px;" class="SinoptikInformer type1c1"><div class="siHeader"><div class="siLh"><div class="siMh"><a onmousedown="siClickCount();" class="siLogo" href="https://sinoptik.ua/" target="_blank" rel="nofollow" title="Погода"> </a>Погода <span id="siHeader"></span></div></div></div><div class="siBody"><a onmousedown="siClickCount();" href="https://sinoptik.ua/погода-киев" title="Погода в Киеве" target="_blank"><div class="siCity"><div class="siCityName"><span>Киев</span></div><div id="siCont0" class="siBodyContent"><div class="siLeft"><div class="siTerm"></div><div class="siT" id="siT0"></div><div id="weatherIco0"></div></div><div class="siInf"><p>влажность: <span id="vl0"></span></p><p>давление: <span id="dav0"></span></p><p>ветер: <span id="wind0"></span></p></div></div></div></a><div class="siLinks">Погода на 10 дней от <a href="https://sinoptik.ua/погода-киев/10-дней" title="Погода на 10 дней" target="_blank" onmousedown="siClickCount();">sinoptik.ua</a></div></div><div class="siFooter"><div class="siLf"><div class="siMf"></div></div></div></div><script type="text/javascript" charset="UTF-8" src="//sinoptik.ua/informers_js.php?title=4&amp;wind=3&amp;cities=303010783&amp;lang=ru"></script>
                     </div>
                     <div class="link d-xs-block d-md-none d-xl-block -md-link">
-                        <a href="/"><?=GetMessage('DEF_POLICY')?></a>
+                        <a href="<?=SITE_DIR?>privacy-policy/"><?=GetMessage('DEF_POLICY')?></a>
                     </div>
                 </div>
             </div>

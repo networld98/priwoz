@@ -24,8 +24,8 @@ $this->setFrameMode(true);
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12 col-md-4 col-xl-3">
-				<h2 class="title">Блог</h2>
-				<div class="subtitle">о наших в Болгарии</div>
+				<h2 class="title"><?=GetMessage("T_NEWS_TITLE")?></h2>
+				<div class="subtitle"><?=GetMessage("T_NEWS_SUBTITLE")?></div>
 				<div class="sticky-block">
 					<div class="author-box">
 						<div class="avatar-box">
@@ -33,9 +33,9 @@ $this->setFrameMode(true);
 								<img src="<?=SITE_DIR?>images/home/ava.png" class="bg-img" alt="ava">
 							</div>
 						</div>
-						<div class="name">Галанчановски</div>
+						<div class="name"><?=GetMessage("T_NEWS_NAME_AUTHOR")?></div>
 					</div>
-					<div class="description">делимся историями, опытом и событиями о жизни и деятельности наших в Болгарии </div>
+					<div class="description"><?=GetMessage("T_NEWS_DESCRIPTION")?></div>
 				</div>
 			</div>
 			<div class="col-xs-12 col-md-8 col-xl-9">

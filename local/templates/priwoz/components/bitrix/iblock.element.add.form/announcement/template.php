@@ -23,9 +23,9 @@ $annoBlock = array_slice($arResult["PROPERTY_LIST"], 0, -6);
 $contactBlock = array_slice($arResult["PROPERTY_LIST"], 8);
 //костыль закончился
 if ($_GET['edit'] != 'Y') {
-    $title = 'Добавить объявление';
+    $title = GetMessage("IBLOCK_FORM_SUBMIT");
 } else {
-    $title = 'Изменить объявление';
+    $title = GetMessage("IBLOCK_FORM_CHANGE");
 }
 ?>
 <div class="title-box row align-items-xl-baseline">
@@ -34,7 +34,7 @@ if ($_GET['edit'] != 'Y') {
     </div>
     <? if ($_GET['edit'] != 'Y') { ?>
         <div class="col-xs-12 col-xl-8 col-xxl-9">
-            <p class="text-1">Все заполненные данные вы сможете изменить в личном кабинете</p>
+            <p class="text-1"><?=GetMessage("IBLOCK_DATA_CABINET")?></p>
         </div>
     <? } ?>
 </div>
@@ -56,15 +56,14 @@ if ($_GET['edit'] != 'Y') {
                 <div class="row form-group" <?= $INPUT_TYPE ?>>
                     <div class="col-xs-12 col-xl-4">
                         <h2>
-                            <? if (intval($propertyID) > 0): ?><?= $arResult["PROPERTY_LIST_FULL"][$propertyID]["NAME"] ?><? else: ?><?= !empty($arParams["CUSTOM_TITLE_" . $propertyID]) ? $arParams["CUSTOM_TITLE_" . $propertyID] : GetMessage("IBLOCK_FIELD_" . $propertyID) ?><? endif ?><? if (in_array($propertyID, $arResult["PROPERTY_REQUIRED"])): ?>
-                                <span class="starrequired"> *</span><? endif ?>
+                            <?=GetMessage("IBLOCK_CABINET_".$propertyID)?>
                         </h2>
                     </div>
                     <div class="col-xs-12 col-xl-8">
                         <label class="form-label <?= $arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] ?>-block">
                             <? if ($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == 'SUBCATEGORY' && empty($arResult["ELEMENT_PROPERTIES"][$propertyID][0]["VALUE"])) { ?>
                                 <input type="text" class="form-control" readonly
-                                       placeholder="<?= 'Выберите категорию' ?>">
+                                       placeholder="<?=GetMessage("IBLOCK_CABINET_SELECT_CATEGORY")?>">
                             <? } ?>
                             <? if ($arResult["ELEMENT_PROPERTIES"][$propertyID][0]["VALUE"]) {
                                 if ($arResult["PROPERTY_LIST_FULL"][$propertyID]["PROPERTY_TYPE"] == "E" && $arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == "SUBCATEGORY") {
@@ -292,9 +291,7 @@ if ($_GET['edit'] != 'Y') {
 
                                 case "F":
                                     ?>
-                                    <div class="hint">Первое фото будет на обложке объявления. Перетащите, чтобы
-                                        изменить порядок.
-                                    </div>
+                                    <div class="hint"><?=GetMessage("FORM_FILE_SIZE")?></div>
                                     <div class="upload-group">
                                         <? for ($i = 0; $i < $inputNum; $i++) {
                                             if($i<5){
@@ -341,7 +338,7 @@ if ($_GET['edit'] != 'Y') {
                                             <?}
                                         } ?>
                                     </div>
-                                    <div class="hint">Допустимые форматы: png, jpg, pdf до 1 mb</div>
+                                    <div class="hint"><?=GetMessage("FORM_FILE_SIZE")?></div>
                                     <? break;
                                 case "T":
                                     for ($i = 0; $i < $inputNum; $i++) {
@@ -439,7 +436,7 @@ if ($_GET['edit'] != 'Y') {
                     </div>
                 </div>
             <? endforeach; ?>
-            <h2>Контактные данные *</h2>
+            <h2><?=GetMessage("IBLOCK_DATA_CONTACT")?></h2>
             <div class="row">
                 <?
                 $res = CIBlockElement::GetList(Array("name" => "asc"), array("IBLOCK_ID"=>24, "PROPERTY_AUTHOR" => $USER->GetID() ), false, Array(), Array('NAME','ID'));
@@ -508,7 +505,7 @@ if ($_GET['edit'] != 'Y') {
 
         <? endif ?>
 
-        <div class="required-text">* Обязательно для заполнения</div>
+        <div class="required-text"><?=GetMessage("IBLOCK_FORM_NEED")?></div>
 
         <div class="text-xs-center">
             <? if ($_GET['edit'] != 'Y') { ?>
@@ -524,8 +521,7 @@ if ($_GET['edit'] != 'Y') {
 
 
         </div>
-        <div class="privacy-policy-text">Нажимая на кнопку “Добавить объявление”, вы соглашаетесь с условиями нашей
-            <a href="/">Политики конфиденциальности</a></div>
+        <div class="privacy-policy-text"><?=GetMessage("IBLOCK_FORM_BTN")?></div>
 
         </table>
     </form>

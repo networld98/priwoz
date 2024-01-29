@@ -1,5 +1,5 @@
 <?
-$sSectionName = "Настройки пользователя";
+$sSectionName = "FAq";
 $arDirProperties = array(
 
 );

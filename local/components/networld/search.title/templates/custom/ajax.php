@@ -2,7 +2,7 @@
 <?
 if(!empty($arResult["CATEGORIES"]) && $arResult['CATEGORIES_ITEMS_EXISTS']):?>
     <table class="title-search-result">
-        <span>Первые <?=$arParams['TOP_COUNT']?> результатов</span>
+        <span><?=GetMessage('CT_BST_FIRST')?> <?=$arParams['TOP_COUNT']?> <?=GetMessage('CT_BST_RESULT')?></span>
         <?foreach($arResult["CATEGORIES"] as $category_id => $arCategory):?>
             <?foreach($arCategory["ITEMS"] as $i => $arItem):?>
                 <tr>

@@ -10,11 +10,12 @@
 /** @var string $templateFolder */
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
-$this->setFrameMode(true); ?>
+$this->setFrameMode(true);
+global $allUrl;?>
 <section class="other-products-section">
     <div class="container">
         <div class="title-wrap">
-            <div class="section-title">Другие объявления автора</div>
+            <div class="section-title"><?=GetMessage("CT_SHOW_MORE")?></div>
             <div class="swiper-navigation">
                 <div class="swiper-button-prev other-products-swiper-button-prev"></div>
                 <div class="swiper-button-next other-products-swiper-button-next"></div>
@@ -61,7 +62,14 @@ $this->setFrameMode(true); ?>
                                     <div class="text">
                                         <h2 class="product-title"><?= $arItem["NAME"] ?></h2>
                                         <div class="location-date">
-                                            <div class="location"><?= $arItem["DISPLAY_PROPERTIES"]['CITY']['LINK_ELEMENT_VALUE'][$arItem["DISPLAY_PROPERTIES"]['CITY']['VALUE']]['NAME'] ?></div>
+                                            <?  if (SITE_ID == 's1') {
+                                                $locationName = $arItem["DISPLAY_PROPERTIES"]['CITY']['LINK_ELEMENT_VALUE'][$arItem["DISPLAY_PROPERTIES"]['CITY']['VALUE']]['NAME'];
+                                            }
+                                            if (SITE_ID == 'ua') {
+                                                $locationId = $arItem["DISPLAY_PROPERTIES"]['CITY']['LINK_ELEMENT_VALUE'][$arItem["DISPLAY_PROPERTIES"]['CITY']['VALUE']]['ID'];
+                                                $locationName = CIBlockElement::GetByID($locationId)->GetNextElement()->GetProperties()['NAME_UA']['VALUE'];
+                                            }?>
+                                            <div class="location"><?= $locationName ?></div>
                                             <? if (!empty($arItem['DISPLAY_PROPERTIES']['PRICE'])) {
                                                 ?>
                                                 <time datetime="<?= strtolower(FormatDate("d m Y", MakeTimeStamp($arItem['TIMESTAMP_X']))) ?>"
@@ -73,13 +81,13 @@ $this->setFrameMode(true); ?>
                                             <div class="price"><? if ($arItem['DISPLAY_PROPERTIES']['PRICE']['VALUE'] != 0 && $arItem['DISPLAY_PROPERTIES']['PRICE']['VALUE'] != NULL) {
                                                     echo $arItem['DISPLAY_PROPERTIES']['PRICE']['VALUE'] . " BGN";
                                                 } else {
-                                                    echo "Договорная";
+                                                    echo GetMessage("CT_DOGOVIRNAYA");
                                                 } ?></div>
                                         <? } ?>
                                     </div>
                                 </a>
-                                <? if ($APPLICATION->GetCurPage() == "/personal/ads-list/") { ?>
-                                    <a href="/personal/announcement/?edit=Y&CODE=<?= $arItem['ID'] ?>" class="box">Редактировать</a>
+                                <? if ($APPLICATION->GetCurPage() == SITE_DIR."personal/ads-list/") { ?>
+                                    <a href="<?=SITE_DIR?>personal/announcement/?edit=Y&CODE=<?= $arItem['ID'] ?>" class="box"><?=GetMessage("CT_EDIT")?></a>
                                 <? } ?>
                                 <a href="#" class="js-favorite add-to-favourite" aria-hidden="true"
                                    data-favorite-entity="<?= $arItem['ID'] ?>"
@@ -93,7 +101,7 @@ $this->setFrameMode(true); ?>
         </div>
 
         <div class="load-more-box">
-            <a href="/" class="blue-link">Все объявления автора</a>
+            <a href="<?=SITE_DIR?>ads/?<?=$allUrl ?>" class="blue-link"><?=GetMessage("CT_SHOW_ALL")?></a>
         </div>
     </div>
 </section>

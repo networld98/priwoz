@@ -66,14 +66,22 @@ $this->EndViewTarget(); ?>
                         <div class="text">
                             <h2 class="product-title"><?= $arItem["NAME"] ?></h2>
                             <div class="location-date">
-                                <div class="location"><?= $arItem["DISPLAY_PROPERTIES"]['CITY']['LINK_ELEMENT_VALUE'][$arItem["DISPLAY_PROPERTIES"]['CITY']['VALUE']]['NAME'] ?></div>
+                                <? if (SITE_ID == 's1') {
+                                    $locationName = $arItem["DISPLAY_PROPERTIES"]['CITY']['LINK_ELEMENT_VALUE'][$arItem["DISPLAY_PROPERTIES"]['CITY']['VALUE']]['NAME'];
+                                }
+                                if (SITE_ID == 'ua') {
+                                    $locationId = $arItem["DISPLAY_PROPERTIES"]['CITY']['LINK_ELEMENT_VALUE'][$arItem["DISPLAY_PROPERTIES"]['CITY']['VALUE']]['ID'];
+
+                                    $locationName = CIBlockElement::GetByID($locationId)->GetNextElement()->GetProperties()['NAME_UA']['VALUE'];
+                                }?>
+                                <div class="location"><?= $locationName ?></div>
                                 <time datetime="<?= strtolower(strftime('%d %b %Y', MakeTimeStamp($arItem['TIMESTAMP_X']))) ?>"
                                       class="date"><?= strtolower(strftime('%d %b %Y', MakeTimeStamp($arItem['TIMESTAMP_X']))) ?></time>
                             </div>
                             <div class="price"><? if ($arItem['DISPLAY_PROPERTIES']['PRICE']['VALUE'] != 0 && $arItem['DISPLAY_PROPERTIES']['PRICE']['VALUE'] != NULL) {
                                     echo $arItem['DISPLAY_PROPERTIES']['PRICE']['VALUE'] . " BGN";
                                 } else {
-                                    echo "Договорная";
+                                    echo GetMessage("CT_DOGOVORNAYA");
                                 } ?></div>
                         </div>
                     </a>

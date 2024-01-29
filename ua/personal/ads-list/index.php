@@ -23,8 +23,8 @@ $APPLICATION->SetTitle("Мої оголошення");
                 ); ?>
                 <div class="main-content">
                     <div class="title-box">
-                        <h1 class="page-title">Мої оголошення</h1>
-                        <a href="/personal/announcement/" class="btn btn-orange">Додати оголошення</a>
+                        <h1 class="page-title"><?=GetMessage('DEF_MY_ADS')?></h1>
+                        <a href="<?=SITE_DIR?>personal/announcement/" class="btn btn-orange"><?=GetMessage('DEF_ADD_ADS')?></a>
                     </div>
 
                     <div class="grid products-masonry my-products">

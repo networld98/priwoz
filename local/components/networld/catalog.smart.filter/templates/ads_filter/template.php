@@ -260,7 +260,7 @@ while ($arElement = $dbAllElements->Fetch()) {
                                     <div class="bx_filter_parameters_box_container_block">
                                         <div class="bx_filter_input_container">
                                             <label class="form-label -min-max-label">
-                                                от:
+                                                <?=GetMessage('CT_BCSF_FILTER_FROM')?>:
                                                 <input
                                                     class="min-price"
                                                     type="text"
@@ -276,7 +276,7 @@ while ($arElement = $dbAllElements->Fetch()) {
                                     <div class="bx_filter_parameters_box_container_block">
                                         <div class="bx_filter_input_container">
                                             <label class="form-label -min-max-label">
-                                                до:
+                                                <?=GetMessage('CT_BCSF_FILTER_TO')?>:
                                             <input
                                                     class="max-price"
                                                     type="text"

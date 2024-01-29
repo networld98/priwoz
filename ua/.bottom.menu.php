@@ -15,7 +15,7 @@ $aMenuLinks = Array(
         ""
     ),
     Array(
-        "Про проект",
+        "Про проєкт",
         "/ua/about/",
         Array(),
         Array(),

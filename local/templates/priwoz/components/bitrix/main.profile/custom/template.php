@@ -13,7 +13,7 @@ if($arResult["SHOW_SMS_FIELD"] == true)
 }
 $imgFile = SITE_TEMPLATE_PATH . '/images/icons/upload-file.svg';
 ?>
-<h1 class="page-title">Профиль</h1>
+<h1 class="page-title"><?=GetMessage("INFO")?></h1>
 <div class="bx-auth-profile profile-form">
 
 <?ShowError($arResult["strProfileError"]);?>
@@ -109,13 +109,13 @@ var cookie_prefix = '<?=$arResult["COOKIE_PREFIX"]?>';
             </label>
             <span class="bx-input-file-desc">
                   <input type="checkbox" name="PERSONAL_PHOTO_del" value="Y" id="PERSONAL_PHOTO_del">
-                  <label for="PERSONAL_PHOTO_del">Удалить файл</label>
+                  <label for="PERSONAL_PHOTO_del"><?=GetMessage("INFO_FILE_DELETE")?></label>
             </span>
-            <div class="hint">Допустимые форматы: png, jpg, pdf до 1 mb</div>
+            <div class="hint"><?=GetMessage('INFO_FILE_SIZE')?></div>
         </div>
     </div>
 
-    <h2>Контактные данные *</h2>
+    <h2><?=GetMessage("INFO_DATA")?></h2>
     <div class="row">
         <div class="form-group col-xs-12 col-md-6">
             <label class="form-label -with-icon">
@@ -158,7 +158,7 @@ var cookie_prefix = '<?=$arResult["COOKIE_PREFIX"]?>';
     </div>
 
     <?if($arResult['CAN_EDIT_PASSWORD']):?>
-        <h2>Ваш пароль</h2>
+        <h2><?=GetMessage("INFO_PASS")?></h2>
         <div class="row">
             <div class="form-group col-xs-12 col-md-6">
                 <div class="input-group">
@@ -199,7 +199,7 @@ var cookie_prefix = '<?=$arResult["COOKIE_PREFIX"]?>';
         </div>
     <?endif?>
     <div class="text-xs-center">
-        <input type="submit" name="save" class="btn btn-green" value="сохранить">
+        <input type="submit" name="save" class="btn btn-green" value="<?=GetMessage('SAVE')?>">
     </div>
 </form>
 <?/*

@@ -1,4 +1,6 @@
 <?
+$MESS["AUTH_REGISTER_TITLE"] = "Priwoz";
+$MESS["AUTH_REGISTER_SUBTITLE"] = "от наших для наших";
 $MESS["AUTH_AUTH"] = "Авторизація";
 $MESS["AUTH_FORGOT_PASSWORD_2"] = "Виберіть, яку інформацію використовувати для зміни пароля:";
 $MESS["AUTH_GET_CHECK_STRING"] = "Вислати контрольний рядок";

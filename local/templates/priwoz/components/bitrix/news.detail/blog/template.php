@@ -29,9 +29,9 @@ $picture = CFile::ResizeImageGet($pictureID, array('width'=>1000), BX_RESIZE_IMA
                                 <img src="<?=SITE_DIR?>images/home/ava.png" class="bg-img" alt="ava">
                             </div>
                         </div>
-                        <div class="name">Галанчановски</div>
+                        <div class="name"><?=GetMessage("T_NEWS_NAME_AUTHOR")?></div>
                     </div>
-                    <div class="description">делимся историями, опытом и событиями о жизни и деятельности наших в Болгарии </div>
+                    <div class="description"><?=GetMessage("T_NEWS_DESCRIPTION")?></div>
                 </div>
             </div>
             <div class="col-xs-12 col-md-9">

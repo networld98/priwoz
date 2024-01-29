@@ -22,7 +22,7 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
     <div class="container">
         <?if($arResult['PROPERTIES']['AUTHOR']['VALUE']== $USER->GetID() && CUser::IsAuthorized()){?>
         <a href="/personal/announcement/?edit=Y&CODE=<?=$arResult["ID"]?>" class="sidebar-widget edit-link d-xs-block d-xl-none">
-            Редактировать объявление
+            <?=GetMessage("T_EDIT_ADS")?>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                 <path d="M11.325 1.21319L11.3251 1.2131C11.7994 0.738518 12.426 0.5 13.0559 0.5C13.6859 0.5 14.3124 0.738518 14.7868 1.2131L14.7869 1.21318C15.7377 2.16399 15.7377 3.72424 14.7869 4.67505L14.7869 4.67506L5.46506 13.9977C5.46505 13.9977 5.46505 13.9977 5.46504 13.9977C5.34857 14.1141 5.20365 14.199 5.04377 14.245L4.91967 14.2806L4.91918 14.2811L0.667922 15.495C0.667901 15.495 0.667879 15.495 0.667857 15.495C0.645283 15.5014 0.621406 15.5017 0.598696 15.4958C0.575961 15.4899 0.555218 15.478 0.538611 15.4614C0.522005 15.4448 0.510135 15.424 0.504231 15.4013C0.498342 15.3786 0.498605 15.3548 0.504991 15.3322C0.505006 15.3322 0.505021 15.3321 0.505036 15.3321L1.75446 10.9571L1.75461 10.9565C1.79994 10.7972 1.88555 10.6518 2.00233 10.535C2.00234 10.535 2.00234 10.535 2.00235 10.535L11.325 1.21319ZM13.0767 5.30565L13.4302 5.6592L13.7838 5.30565L14.6006 4.4888C15.4595 3.62992 15.4581 2.25766 14.5998 1.39942C14.1727 0.972164 13.6152 0.756122 13.0559 0.756122C12.4969 0.756122 11.9385 0.971985 11.5113 1.39942C11.5112 1.39945 11.5112 1.39948 11.5112 1.39951L10.6944 2.21627L10.3408 2.56983L10.6944 2.92338L13.0767 5.30565ZM10.5082 3.10962L10.1546 2.75609L9.80106 3.10961L2.18862 10.7212L2.18861 10.7212C2.09992 10.8099 2.03993 10.9165 2.00791 11.0287C2.00789 11.0288 2.00788 11.0289 2.00786 11.0289C2.00782 11.029 2.00779 11.0292 2.00775 11.0293L1.07013 14.3118L0.822958 15.1771L1.68826 14.9299L4.97048 13.9921L4.97126 13.9919C5.08855 13.9582 5.19321 13.8956 5.27677 13.8126L5.27799 13.8114L12.8904 6.199L13.244 5.84545L12.8904 5.4919L10.5082 3.10962Z" stroke="currentColor"/>
             </svg>
@@ -33,7 +33,7 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
                 <div class="sidebar-widgets">
                     <?if($arResult['PROPERTIES']['AUTHOR']['VALUE']== $USER->GetID() && CUser::IsAuthorized()){?>
                     <a href="/personal/announcement/?edit=Y&CODE=<?=$arResult["ID"]?>" class="sidebar-widget edit-link d-xs-none d-xl-block">
-                        Редактировать объявление
+                        <?=GetMessage("T_EDIT_ADS")?>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                             <path d="M11.325 1.21319L11.3251 1.2131C11.7994 0.738518 12.426 0.5 13.0559 0.5C13.6859 0.5 14.3124 0.738518 14.7868 1.2131L14.7869 1.21318C15.7377 2.16399 15.7377 3.72424 14.7869 4.67505L14.7869 4.67506L5.46506 13.9977C5.46505 13.9977 5.46505 13.9977 5.46504 13.9977C5.34857 14.1141 5.20365 14.199 5.04377 14.245L4.91967 14.2806L4.91918 14.2811L0.667922 15.495C0.667901 15.495 0.667879 15.495 0.667857 15.495C0.645283 15.5014 0.621406 15.5017 0.598696 15.4958C0.575961 15.4899 0.555218 15.478 0.538611 15.4614C0.522005 15.4448 0.510135 15.424 0.504231 15.4013C0.498342 15.3786 0.498605 15.3548 0.504991 15.3322C0.505006 15.3322 0.505021 15.3321 0.505036 15.3321L1.75446 10.9571L1.75461 10.9565C1.79994 10.7972 1.88555 10.6518 2.00233 10.535C2.00234 10.535 2.00234 10.535 2.00235 10.535L11.325 1.21319ZM13.0767 5.30565L13.4302 5.6592L13.7838 5.30565L14.6006 4.4888C15.4595 3.62992 15.4581 2.25766 14.5998 1.39942C14.1727 0.972164 13.6152 0.756122 13.0559 0.756122C12.4969 0.756122 11.9385 0.971985 11.5113 1.39942C11.5112 1.39945 11.5112 1.39948 11.5112 1.39951L10.6944 2.21627L10.3408 2.56983L10.6944 2.92338L13.0767 5.30565ZM10.5082 3.10962L10.1546 2.75609L9.80106 3.10961L2.18862 10.7212L2.18861 10.7212C2.09992 10.8099 2.03993 10.9165 2.00791 11.0287C2.00789 11.0288 2.00788 11.0289 2.00786 11.0289C2.00782 11.029 2.00779 11.0292 2.00775 11.0293L1.07013 14.3118L0.822958 15.1771L1.68826 14.9299L4.97048 13.9921L4.97126 13.9919C5.08855 13.9582 5.19321 13.8956 5.27677 13.8126L5.27799 13.8114L12.8904 6.199L13.244 5.84545L12.8904 5.4919L10.5082 3.10962Z" stroke="currentColor"></path>
                         </svg>
@@ -43,17 +43,21 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
                         <div class="product-info">
                             <div class="top-part">
                                 <time datetime="<?=strtolower(FormatDate("d m Y", MakeTimeStamp($arResult['TIMESTAMP_X']))) ?>" class="date"><?= strtolower(strftime('%d %b %Y', MakeTimeStamp($arResult['TIMESTAMP_X']))) ?></time>
-
-                                <!-- для того чтобы сделать активной add-to-favourite ссылку просто добавь класс active -->
                                 <a href="#" class="js-favorite add-to-favourite" aria-hidden="true"
                                    data-favorite-entity="<?=$arResult['ID'] ?>"
                                    data-iblock-id="<?=$arResult['IBLOCK_ID'] ?>">
                                 </a>
                             </div>
-<?//echo "<pre>";print_r($arResult['DISPLAY_PROPERTIES']);echo "</pre>";?>
                             <h1 class="product-title"><?=$arResult["NAME"]?></h1>
                             <div class="price"><?=$arResult['PROPERTIES']['PRICE']['VALUE']?> BGN</div>
-                            <div class="location"><?=$arResult["DISPLAY_PROPERTIES"]['CITY']['LINK_ELEMENT_VALUE'][$arResult["DISPLAY_PROPERTIES"]['CITY']['VALUE']]['NAME']?></div>
+                            <? if (SITE_ID == 's1') {
+                                $locationName = $arResult["DISPLAY_PROPERTIES"]['CITY']['LINK_ELEMENT_VALUE'][$arResult["DISPLAY_PROPERTIES"]['CITY']['VALUE']]['NAME'];
+                            }
+                            if (SITE_ID == 'ua') {
+                               $locationId = $arResult["DISPLAY_PROPERTIES"]['CITY']['LINK_ELEMENT_VALUE'][$arResult["DISPLAY_PROPERTIES"]['CITY']['VALUE']]['ID'];
+                               $locationName = CIBlockElement::GetByID($locationId)->GetNextElement()->GetProperties()['NAME_UA']['VALUE'];
+                            }?>
+                            <div class="location"><?= $locationName?></div>
                             <div class="phone-link">
                                 <a href="tel:<?=$arResult['PROPERTIES']['PHONE']['VALUE']?>"><?=$arResult['PROPERTIES']['PHONE']['VALUE']?></a>
                             </div>
@@ -147,13 +151,13 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
                         </div>
                     </div>
                     <?
-                    global $userIdItem,$userIdAd,$iblokId;
+                    global $userIdItem,$userIdAd,$iblokId,$allUrl;
                     $userIdItem = $arResult['PROPERTIES']['AUTHOR']['VALUE'];
                     $userIdAd = $arResult['ID'];
                     $iblokId = $arResult['IBLOCK_ID'];
 
                     $userPhoto = SITE_TEMPLATE_PATH."/images/icons/user.svg";
-                    $allTitle = 'автора';
+                    $allTitle = GetMessage("T_AUTHOR");
                     $allUrl = 'userAds='.$arResult['PROPERTIES']['AUTHOR']['VALUE'];
                     $rsUser = CUser::GetByID($arResult['PROPERTIES']['AUTHOR']['VALUE']);
                     $arUser = $rsUser->Fetch();
@@ -176,18 +180,18 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
                                     $userPhoto = CFile::ResizeImageGet($arFields['PROPERTY_LOGO_VALUE'], array('width' => 200, 'height' => 200), BX_RESIZE_IMAGE_PROPORTIONAL, true)['src'];
                                 }
                                 $userName = $arFields['NAME'];
-                                $allTitle = 'компании';
+                                $allTitle = GetMessage("T_COMPANY");
                                 $allUrl = 'companisAds='.$arFields['ID'];
                             }
                         }
 
                     }?>
-                    <a href="/ads/?<?=$allUrl ?>" class="sidebar-widget d-xs-none d-md-block">
+                    <a href="<?=SITE_DIR?>ads/?<?=$allUrl ?>" class="sidebar-widget d-xs-none d-md-block">
                         <div class="author-box">
                             <div class="ava"><img src="<?= $userPhoto?>" alt="<?= $userName?>"></div>
                             <div class="text"><?= $userName?></div>
                         </div>
-                        <div class="blue-link">Все объявления <?=$allTitle?> >></div>
+                        <div class="blue-link"><?=GetMessage("T_ALL_ADS")?> <?=$allTitle?> >></div>
                     </a>
                 </div>
             </div>
@@ -230,16 +234,16 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
                     </div>
                     <div class="complaint-box">
                         <a href="/" class="report-popup-opener">
-                            Пожаловаться
+                            <?=GetMessage("T_FAK")?>
                         </a>
                     </div>
                 </div>
-                <a href="/ads/?<?=$allUrl ?>" class="sidebar-widget d-xs-block d-md-none">
+                <a href="<?=SITE_DIR?>ads/?<?=$allUrl ?>" class="sidebar-widget d-xs-block d-md-none">
                     <div class="author-box">
                         <div class="ava"><img src="<?= $userPhoto?>" alt="<?= $userName?>"></div>
                         <div class="text"><?= $userName?></div>
                     </div>
-                    <div class="blue-link">Все объявления <?=$allTitle?> >></div>
+                    <div class="blue-link"><?=GetMessage("T_ALL_ADS")?> <?=$allTitle?> >></div>
                 </a>
             </div>
         </div>

@@ -15,4 +15,19 @@ $MESS["CT_BIEAF_PROPERTY_VALUE_NA_CATEGORY"] = "(выберите категор
 $MESS["CT_BIEAF_PROPERTY_VALUE_NA_SUBCATEGORY"] = "(выберите подкатегорию)";
 $MESS["CT_BIEAF_PROPERTY_VALUE_NA_CONDITION"] = "(укажите состояние)";
 $MESS["CT_BIEAF_PROPERTY_VALUE_NA_CITY"] = "(выберите населенный пункт)";
-?>
+$MESS["IBLOCK_FORM_CHANGE"] = 'Изменить объявление';
+$MESS["IBLOCK_DATA_CABINET"] = 'Все заполненные данные вы сможете изменить в личном кабинете';
+$MESS["IBLOCK_FIRST_PHOTO"] = 'Первое фото будет на обложке объявления. Перетащите, чтобы изменить порядок.';
+$MESS["IBLOCK_FILE_SIZE"] = 'Допустимые форматы: png, jpg, pdf до 1 mb';
+$MESS["IBLOCK_DATA_CONTACT"] = 'Контактные данные *';
+$MESS["IBLOCK_FORM_NEED"] = '* Обязательно для заполнения';
+$MESS["IBLOCK_FORM_BTN"] = 'Нажимая на кнопку “Добавить объявление”, вы соглашаетесь с условиями нашей <a href="/">Политики конфиденциальности';
+$MESS["IBLOCK_CABINET_NAME"] = 'Название *';
+$MESS["IBLOCK_CABINET_527"] = 'Рубрика *';
+$MESS["IBLOCK_CABINET_528"] = 'Подрубрику *';
+$MESS["IBLOCK_CABINET_SELECT_CATEGORY"] = 'Выберите категорию';
+$MESS["IBLOCK_CABINET_524"] = 'Загрузите фотографии *';
+$MESS["IBLOCK_CABINET_PREVIEW_TEXT"] = 'Описание для анонса *';
+$MESS["IBLOCK_CABINET_525"] = 'Стоимость *';
+$MESS["IBLOCK_CABINET_526"] = 'Состояние';
+$MESS["IBLOCK_CABINET_529"] = 'Населенный пункт *';

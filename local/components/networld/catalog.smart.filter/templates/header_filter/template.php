@@ -407,7 +407,7 @@ $this->setFrameMode(true);
             }
         }
         ?>
-        <div class="<? if ($APPLICATION->GetCurPage() != "/"): ?>btn-box<? else: ?>bx_filter_button_box<? endif; ?>">
+        <div class="<? if ($APPLICATION->GetCurPage() != SITE_DIR): ?>btn-box<? else: ?>bx_filter_button_box<? endif; ?>">
             <div class="bx_filter_block">
                 <div class="bx_filter_parameters_box_container">
                     <a class="btn btn-search" id="modef"
@@ -419,7 +419,7 @@ $this->setFrameMode(true);
     </div>
 <? endif; ?>
 </form>
-<? if ($APPLICATION->GetCurPage() == "/" || $APPLICATION->GetCurPage() == "/search/"): ?>
+<? if ($APPLICATION->GetCurPage() == SITE_DIR || $APPLICATION->GetCurPage() == SITE_DIR."search/"): ?>
 <script>
     var smartFilter = new JCSmartFilter('<?echo CUtil::JSEscape($arResult["FORM_ACTION"])?>', 'horizontal');
 </script>

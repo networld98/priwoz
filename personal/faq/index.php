@@ -1,6 +1,6 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
-$APPLICATION->SetTitle("Настройки пользователя");
+$APPLICATION->SetTitle("FAq");
 ?>
     <section class="personal-section">
         <div class="container">
@@ -24,7 +24,7 @@ $APPLICATION->SetTitle("Настройки пользователя");
                 <div class="main-content faq-content">
                     <div class="title-box">
                         <h1 class="page-title">FAq</h1>
-                        <a href="/personal/announcement/" class="btn btn-orange">Добавить объявление</a>
+                        <a href="<?=SITE_DIR?>personal/announcement/" class="btn btn-orange"><?=GetMessage("DEF_ADD_ADS")?></a>
                     </div>
                     <div class="bg-box">
                         <?

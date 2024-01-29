@@ -1,4 +1,5 @@
 <?
+$MESS ['CT_BCSF_WHAT_SEARCH'] = "Шо найти на Priwoze";
 $MESS ['CT_BCSF_FILTER_TITLE'] = "Подбор параметров";
 $MESS ['CT_BCSF_FILTER_FROM'] = "От";
 $MESS ['CT_BCSF_FILTER_TO'] = "До";

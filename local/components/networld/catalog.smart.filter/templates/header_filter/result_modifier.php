@@ -33,4 +33,4 @@ else
 	$arParams["TEMPLATE_THEME"] = "blue";
 }
 //костыль чтоб результат был на странице поиска
-$arResult["FORM_ACTION"] = '/search/';
+$arResult["FORM_ACTION"] = SITE_DIR.'search/';

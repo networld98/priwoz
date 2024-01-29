@@ -1197,7 +1197,7 @@ class CBitrixCatalogSmartFilter extends CBitrixComponent
 		if (!$smartParts)
 			$smartParts[] = array("clear");
 
-		return str_replace("#SMART_FILTER_PATH#", implode("/search/", $this->encodeSmartParts($smartParts)), $url);
+		return str_replace("#SMART_FILTER_PATH#", implode(SITE_DIR."search/", $this->encodeSmartParts($smartParts)), $url);
 	}
 
 	public function encodeSmartParts($smartParts)

@@ -17,11 +17,10 @@ global $arUser;
     <div class="container">
         <? if ($_GET['userAds'] == NULL && $_GET['companisAds'] == NULL) { ?>
             <div class="title-box">
-                <h1 class="page-title">Доска объявлений</h1>
-                <a href="/personal/announcement/" class="btn btn-orange d-xs-none d-xl-inline-flex">Добавить
-                    объявление</a>
+                <h1 class="page-title"><?=GetMessage("T_DESK_ADS")?></h1>
+                <a href="<?=SITE_DIR?>personal/announcement/" class="btn btn-orange d-xs-none d-xl-inline-flex"><?=GetMessage("T_ADD_ADS")?></a>
             </div>
-            <div class="collapse-head search-box-opener" data-collapsed="#search-box">Поиск на доске объявлений<span class="arrow">
+            <div class="collapse-head search-box-opener" data-collapsed="#search-box">Поиск на доске объявлений<?=GetMessage("T_ADD_ADS")?><span class="arrow">
                 </span></div>
             <? $APPLICATION->IncludeComponent(
                 "networld:catalog.smart.filter",
@@ -69,20 +68,20 @@ global $arUser;
             <div class="filter-output-box" style="display:none;">
                 <div class="filter-output">
                     <div class="links"></div>
-                    <div class="count">Выбрано <span><?= $APPLICATION->ShowViewContent('countElements'); ?></span></div>
-                    <span class="btn btn-refresh">Сбросить</span>
+                    <div class="count"><?=GetMessage("T_SELECTED")?> <span><?= $APPLICATION->ShowViewContent('countElements'); ?></span></div>
+                    <span class="btn btn-refresh"><?=GetMessage("T_DISABLED")?></span>
                 </div>
 
                 <div class="sort-by-box">
                     <div class="bx_filter_parameters_box active">
-                        <div class="bx_filter_parameters_box_title">Сортировать по</div>
+                        <div class="bx_filter_parameters_box_title"><?=GetMessage("T_SORT")?></div>
                         <div class="bx_filter_block">
                             <div class="bx_filter_parameters_box_container">
                                 <div class="bx_filter_select_container">
                                     <select class="form-select filter-sort -without-search">
-                                        <option id="time_desc">Сначала новые</option>
-                                        <option id="price_desc">Сначала дорогие</option>
-                                        <option id="price_asc">Сначала дешевые</option>
+                                        <option id="time_desc"><?=GetMessage("T_NEW_DESC")?></option>
+                                        <option id="price_desc"><?=GetMessage("T_PRICE_ASC")?></option>
+                                        <option id="price_asc"><?=GetMessage("T_PRICE_DESC")?></option>
                                     </select>
                                 </div>
                             </div>
@@ -105,7 +104,7 @@ global $arUser;
                 $userTelega = $arUser['UF_TELEGRAM'];
                 $userViber = $arUser['UF_VIBER'];
                 $userWhats = $arUser['UF_WHATSAPP'];
-                $userTitle = 'Объявления автора';
+                $userTitle = GetMessage("T_ADS_USER");
 
             } elseif ($_GET['companisAds'] != NULL) {
                 $res = CIBlockElement::GetList(array("name" => "asc"), array("IBLOCK_ID" => 24, "ID" => $_GET['companisAds']), false, array(), array('NAME', 'ID', 'PROPERTY_LOGO','PROPERTY_PHONE','PROPERTY_VIBER', 'PROPERTY_WHATSAPP', 'PROPERTY_TELEGRAM'));
@@ -119,7 +118,7 @@ global $arUser;
                         $userTelega = $arFields['PROPERTY_TELEGRAM_VALUE'];
                         $userViber = $arFields['PROPERTY_VIBER_VALUE'];
                         $userWhats = $arFields['PROPERTY_WHATSAPP_VALUE'];
-                        $userTitle = 'Объявления компании';
+                        $userTitle = GetMessage("T_ADS_COMPANY");
                 }
             }
             $APPLICATION->AddChainItem($userTitle);
@@ -131,7 +130,7 @@ global $arUser;
                     </div>
                     <div class="name"><a href="#"><?= $userName ?></a></div>
                 </div>
-                <div class="count-products"><?= $APPLICATION->ShowViewContent('countElements'); ?> объявлений(ие)</div>
+                <div class="count-products"><?= $APPLICATION->ShowViewContent('countElements'); ?> <?=GetMessage("T_DESK_ADS_ALL")?></div>
                 <div class="phone-link">
                     <? if ($userPhone) { ?>
                     <a href="tel:<?= $userPhone ?>"><?= $userPhone ?></a>

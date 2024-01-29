@@ -58,14 +58,21 @@ foreach ($arResult["ITEMS"] as $arItem):?>
             <div class="text">
                 <h2 class="product-title"><?= $arItem["NAME"] ?></h2>
                 <?
+                if (SITE_ID == 's1') {
+                    $locationName = $arItem["DISPLAY_PROPERTIES"]['CITY']['LINK_ELEMENT_VALUE'][$arItem["DISPLAY_PROPERTIES"]['CITY']['VALUE']]['NAME'];
+                }
+                if (SITE_ID == 'ua') {
+                    $locationId = $arItem["DISPLAY_PROPERTIES"]['CITY']['LINK_ELEMENT_VALUE'][$arItem["DISPLAY_PROPERTIES"]['CITY']['VALUE']]['ID'];
+                    $locationName = CIBlockElement::GetByID($locationId)->GetNextElement()->GetProperties()['NAME_UA']['VALUE'];
+                }
                 if($arItem["DISPLAY_PROPERTIES"]['CATEGORY']['LINK_SECTION_VALUE']){?>
                      <div class="category-location">
                         <div class="category"><?= $arItem["DISPLAY_PROPERTIES"]['CATEGORY']['LINK_SECTION_VALUE'][$arItem["DISPLAY_PROPERTIES"]['CATEGORY']['VALUE']]['NAME'] ?></div>
-                        <div class="location"><?= $arItem["DISPLAY_PROPERTIES"]['CITY']['LINK_ELEMENT_VALUE'][$arItem["DISPLAY_PROPERTIES"]['CITY']['VALUE']]['NAME'] ?></div>
+                        <div class="location"><?= $locationName ?></div>
                     </div>
                 <?}else{?>
                     <div class="location-date">
-                        <div class="location"><?= $arItem["DISPLAY_PROPERTIES"]['CITY']['LINK_ELEMENT_VALUE'][$arItem["DISPLAY_PROPERTIES"]['CITY']['VALUE']]['NAME'] ?></div>
+                        <div class="location"><?= $locationName ?></div>
                         <? if (!empty($arItem['DISPLAY_PROPERTIES']['PRICE'])) {
                             ?>
                             <time datetime="<?= strtolower(strftime('%d %b %Y', MakeTimeStamp($arItem['TIMESTAMP_X']))) ?>"
@@ -78,14 +85,14 @@ foreach ($arResult["ITEMS"] as $arItem):?>
                     <div class="price"><? if ($arItem['DISPLAY_PROPERTIES']['PRICE']['VALUE'] != 0 && $arItem['DISPLAY_PROPERTIES']['PRICE']['VALUE'] != NULL) {
                             echo $arItem['DISPLAY_PROPERTIES']['PRICE']['VALUE'] . " BGN";
                         } else {
-                            echo "Договорная";
+                            echo GetMessage("CT_DOGOVIRNAYA");
                         } ?></div>
                 <? } ?>
             </div>
             <? if ($APPLICATION->GetCurPage() == SITE_DIR."personal/ads-list/" || $APPLICATION->GetCurPage() == SITE_DIR."personal/company-list/" || $_POST['id']) { ?>
                 <?if($active=='N'){?>
                 <div class="overlay overlay-disabled">
-                    <p>Деактивировано</p>
+                    <p><?=GetMessage("CT_DISABLED")?></p>
                 </div>
                 <?}?>
                 <div class="overlay">
@@ -101,7 +108,7 @@ foreach ($arResult["ITEMS"] as $arItem):?>
                                               stroke-width="1.2"/>
                                     </svg>
                                 </div>
-                                <div class="overlay-text">редактировать</div>
+                                <div class="overlay-text"><?=GetMessage("CT_EDIT")?></div>
                             </a>
                         </div>
                      
@@ -113,7 +120,7 @@ foreach ($arResult["ITEMS"] as $arItem):?>
                                             <g><g><path fill="#526172" d="M80.1,147.5c-1.9-5.2-2.9-10.8-2.9-16.7C77.2,136.7,78.3,142.4,80.1,147.5L80.1,147.5z M21.5,130.9L21.5,130.9c0,7.3,10.2,21.4,28.3,33.8l30.4-17.1v0l-30.4,17.1C31.7,152.2,21.5,138.2,21.5,130.9z M208.1,88.4l-8.2,4.6c24,13.2,37.9,30.7,37.9,40.1c0,14.8-42,57.6-107,57.6c-28.8,0-53-8.4-71.1-19l-8.2,4.6c20.3,12.7,47.8,22.6,79.3,22.6c67.7,0,115.3-45.3,115.3-65.8C245.9,121.2,231.8,102.7,208.1,88.4z M136.1,129.7l39-21.9c4.7,7.5,7.4,16.3,7.4,25.9c0,27.6-22.5,49.4-51.2,49.4c-19.6,0-36.3-10.1-45-25.4l18.3-10.3c2.7,1.1,5.8,1.7,9,1.7C125.4,149.1,134.9,140.7,136.1,129.7z M128.5,73.3c23.4,0,43.9,5.4,60.6,13.1C172.4,78.7,151.9,73.3,128.5,73.3c-64.9,0-106.9,42.8-107,57.6c0,0,0,0,0,0C21.5,116,63.5,73.3,128.5,73.3z M245.2,64l-39.3,22.1l-8.2,4.6L172.3,105l-38.9,21.9l-31.5,17.7l-18.3,10.3l-26.1,14.6l-8.2,4.6l-35.3,19.8l-3.9-6.9l31.8-17.8c-17.9-13.1-28.5-28-28.5-38.2c0-22,49-65.8,115.3-65.8c26.8,0,50.4,6.9,69.2,16.5L241.3,57L245.2,64z M132.5,118.1L132.5,118.1c-0.4-1.3-0.9-2.6-1.6-3.9c0-0.1-0.1-0.1-0.1-0.2c0,0,0-0.1,0-0.1c-3.8-6.9-11.3-11.5-20-11.5c-12.7,0-22.7,9.6-22.7,21.9c0,6,2.4,11.3,6.2,15.2h0l0,0l13.7-7.7L132.5,118.1C132.5,118.2,132.5,118.2,132.5,118.1z M189,86.4c-16.7-7.7-37.2-13.1-60.6-13.1c-64.9,0-107,42.8-107,57.6c0,0,0,0,0,0c0,0,0,0,0,0c0,7.3,10.2,21.3,28.3,33.8l30.4-17.1v0l0,0c-1.9-5.2-2.9-10.8-2.9-16.7c0-27.6,22.5-49.4,51.2-49.4c15.8,0,29.6,6.5,39,17L189,86.4z M130.8,114.1c0,0,0-0.1,0-0.1C130.8,114,130.8,114.1,130.8,114.1z M94.3,139.6l13.7-7.7L94.3,139.6C94.3,139.6,94.3,139.6,94.3,139.6z M132.5,118.1L132.5,118.1c-0.4-1.3-0.9-2.6-1.6-3.9C131.6,115.5,132.1,116.8,132.5,118.1z M130.9,114.3c0-0.1-0.1-0.1-0.1-0.2C130.8,114.1,130.9,114.2,130.9,114.3z M88.1,124.4c0,6,2.4,11.2,6.2,15.2h0C90.4,135.7,88,130.4,88.1,124.4c0-12.3,10-21.9,22.7-21.9c8.7,0,16.2,4.6,20,11.4c-3.8-6.8-11.3-11.4-20-11.4C98.1,102.6,88.1,112.2,88.1,124.4z M108,131.9l24.5-13.7v0L108,131.9z"/></g></g>
                                         </svg>
                                     </div>
-                                <div class="overlay-text">деактивировать</div>
+                                <div class="overlay-text"><?=GetMessage("CT_DISABLE")?></div>
                                  <?}elseif($active=='N'){?>
                                 <div class="overlay-icon">
                                     <svg version="1.1" id="Шар_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -148,7 +155,7 @@ foreach ($arResult["ITEMS"] as $arItem):?>
                                         <path fill="#526172" d="M225.5,131.1"/>
                                     </svg>
                                 </div>
-                                <div class="overlay-text">активировать</div>
+                                <div class="overlay-text"><?=GetMessage("CT_ACTIVE")?></div>
                                 <?}?>
                             </a>
                         </div>
@@ -168,7 +175,7 @@ foreach ($arResult["ITEMS"] as $arItem):?>
                                         <path d="M6 2L24.0586 4.50391" stroke="currentColor" stroke-linecap="round"/>
                                     </svg>
                                 </div>
-                                <div class="overlay-text">удалить</div>
+                                <div class="overlay-text"><?=GetMessage("CT_DELETE")?></div>
                             </a>
                         </div>
                     </div>
@@ -185,11 +192,11 @@ foreach ($arResult["ITEMS"] as $arItem):?>
 <? endforeach;
 if(count((array)$arResult["ITEMS"])==0){
     if($APPLICATION->GetCurPage() == SITE_DIR."personal/ads-list/"){?>
-        У вас нет объявлений
+        <?=GetMessage("CT_ADS_NONE")?>
     <?}elseif($APPLICATION->GetCurPage() == SITE_DIR."personal/company-list/") { ?>
-        Список компаний пуст
+        <?=GetMessage("CT_COMPANY_NONE")?>
     <?}else{?>
-        Список избранного пуст
+        <?=GetMessage("CT_FAVORITE_NONE")?>
 <? }
 }?>
 

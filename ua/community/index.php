@@ -44,7 +44,7 @@ $APPLICATION->SetTitle("Спільноти наших у соціальних м
 		"DISPLAY_TOP_PAGER" => "N",
 		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
 		"IBLOCK_TYPE" => "ads",
-		"INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
+		"INCLUDE_IBLOCK_INTO_CHAIN" => "N",
 		"LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",
 		"LIST_FIELD_CODE" => array(
 			0 => "LOGO",
@@ -69,7 +69,7 @@ $APPLICATION->SetTitle("Спільноти наших у соціальних м
 		"SEF_MODE" => "Y",
 		"SET_LAST_MODIFIED" => "Y",
 		"SET_STATUS_404" => "Y",
-		"SET_TITLE" => "Y",
+		"SET_TITLE" => "N",
 		"SHOW_404" => "Y",
 		"SORT_BY1" => $_GET["sort"],
 		"SORT_ORDER1" => $_GET["ads"],

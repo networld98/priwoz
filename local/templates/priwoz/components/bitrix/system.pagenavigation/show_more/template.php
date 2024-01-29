@@ -5,20 +5,20 @@ $this->createFrame()->begin("Загрузка навигации");
 <? if ($arResult["NavPageCount"] > 1):
     $plus = $arResult["NavPageNomer"] + 1;
     $url = $arResult["sUrlPathParams"] . "PAGEN_" . $arResult["NavNum"] . "=" . $plus;
-    if($APPLICATION->GetCurPage() != "/"):?>
+    if($APPLICATION->GetCurPage() != SITE_DIR):?>
         <? if ($arResult["NavPageNomer"] + 1 <= $arResult["nEndPage"]): ?>
             <div class="load-more-box load_page" data-url="<?= $url ?>">
-                <span class="blue-link">Показать ещё</span>
+                <span class="blue-link"><?=GetMessage("PAG_LOAD_ADS")?></span>
             </div>
         <? endif ?>
     <?else:?>
         <?if($plus>3){?>
             <div class="load-more-box load_page">
-                <a href="<?=SITE_DIR?>ads/" class="blue-link">Все объявления</a>
+                <a href="<?=SITE_DIR?>ads/" class="blue-link"><?=GetMessage("PAG_SHOW_MORE")?></a>
             </div>
         <?}else{?>
             <div class="load-more-box load_page" data-url="<?= $url ?>">
-                <span class="blue-link">Показать ещё</span>
+                <span class="blue-link"><?=GetMessage("PAG_LOAD_ADS")?></span>
             </div>
         <?}?>
     <? endif ?>

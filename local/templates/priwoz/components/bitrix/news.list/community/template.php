@@ -17,10 +17,10 @@ $this->setFrameMode(true);
         <div class="title-box">
             <div class="row align-items-md-baseline">
                 <div class="col-xs-12 col-md-9">
-                    <h1 class="section-title">Сообщества наших в социальных сетях</h1>
+                    <h1 class="section-title"><?$APPLICATION->ShowTitle(false)?></h1>
                 </div>
                 <div class="col-xs-12 col-md-3">
-                    <a href="/" class="blue-link">Добавить сообщество</a>
+                    <a href="/" class="blue-link" data-popup="addCommunityPopup"><?=GetMessage("CT_BNL_ADD_COMM")?></a>
                 </div>
             </div>
         </div>
@@ -124,34 +124,39 @@ $this->setFrameMode(true);
         </div>
     </div>
 </section>
-
-<div class="form-box">
-    <?$APPLICATION->IncludeComponent(
-        "networld:form.result.new",
-        "community",
-        array(
-            "AJAX_MODE" => "Y",
-            "AJAX_OPTION_SHADOW" => "N",
-            "AJAX_OPTION_JUMP" => "Y",
-            "AJAX_OPTION_STYLE" => "Y",
-            "AJAX_OPTION_HISTORY" => "N",
-            "CACHE_TIME" => "3600",
-            "CACHE_TYPE" => "N",
-            "CHAIN_ITEM_LINK" => "",
-            "CHAIN_ITEM_TEXT" => "",
-            "EDIT_URL" => "",
-            "IGNORE_CUSTOM_TEMPLATE" => "N",
-            "LIST_URL" => "",
-            "SEF_MODE" => "N",
-            "SUCCESS_URL" => "",
-            "USE_EXTENDED_ERRORS" => "Y",
-            "WEB_FORM_ID" => "2",
-            "COMPONENT_TEMPLATE" => "community",
-            "VARIABLE_ALIASES" => array(
-                "WEB_FORM_ID" => "WEB_FORM_ID",
-                "RESULT_ID" => "RESULT_ID",
-            )
-        ),
-        false
-    );?>
+<div class="popup-general" id="addCommunityPopup">
+    <div class="modal-box">
+        <div class="scroll-box">
+            <div class="form-box">
+                <?$APPLICATION->IncludeComponent(
+                    "networld:form.result.new",
+                    "community",
+                    array(
+                        "AJAX_MODE" => "Y",
+                        "AJAX_OPTION_SHADOW" => "N",
+                        "AJAX_OPTION_JUMP" => "Y",
+                        "AJAX_OPTION_STYLE" => "Y",
+                        "AJAX_OPTION_HISTORY" => "N",
+                        "CACHE_TIME" => "3600",
+                        "CACHE_TYPE" => "N",
+                        "CHAIN_ITEM_LINK" => "",
+                        "CHAIN_ITEM_TEXT" => "",
+                        "EDIT_URL" => "",
+                        "IGNORE_CUSTOM_TEMPLATE" => "N",
+                        "LIST_URL" => "",
+                        "SEF_MODE" => "N",
+                        "SUCCESS_URL" => "",
+                        "USE_EXTENDED_ERRORS" => "Y",
+                        "WEB_FORM_ID" => "2",
+                        "COMPONENT_TEMPLATE" => "community",
+                        "VARIABLE_ALIASES" => array(
+                            "WEB_FORM_ID" => "WEB_FORM_ID",
+                            "RESULT_ID" => "RESULT_ID",
+                        )
+                    ),
+                    false
+                );?>
+            </div>
+        </div>
+    </div>
 </div>

@@ -1,4 +1,6 @@
 <?
+$MESS["AUTH_REGISTER_TITLE"] = "Priwoz";
+$MESS["AUTH_REGISTER_SUBTITLE"] = "от наших для наших";
 $MESS["AUTH_PLEASE_AUTH"] = "Пожалуйста, авторизуйтесь";
 $MESS["AUTH_LOGIN"] = "Логин";
 $MESS["AUTH_PASSWORD"] = "Пароль";

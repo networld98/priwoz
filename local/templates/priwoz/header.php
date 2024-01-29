@@ -168,19 +168,26 @@ if (SITE_ID == 'ua') {
                 </div>
                 <div class="row sub-menu">
                     <?
-                    $arSelect = array("NAME", "CODE", "UF_ICON");
-                    $arFilter = array("IBLOCK_ID"=>22);
+                    $arSelect = array("NAME", "CODE", "UF_ICON", "UF_NAME_UA");
+                    $arFilter = array("IBLOCK_ID" => 22);
                     $obSections = CIBlockSection::GetList(array("name" => "asc"), $arFilter, false, $arSelect);
-                    while($ar_result = $obSections->GetNext())
-                    {if($ar_result['UF_ICON']){?>
-                        <div class="item col-xs-4">
-                            <a href="<?=SITE_DIR?>companies/?category=<?=$ar_result['CODE']?>">
-                                <?=htmlspecialchars_decode($ar_result['UF_ICON'])?>
-                                <?=$ar_result['NAME']?>
-                            </a>
-                        </div>
-                    <?}
-                    }?>
+                    while ($ar_result = $obSections->GetNext()) {
+                        if ($ar_result['UF_ICON']) {
+                            if (SITE_ID == 's1') {
+                                $nameCategory = $ar_result['NAME'];
+                            }
+                            if (SITE_ID == 'ua') {
+                                $nameCategory = $ar_result['UF_NAME_UA'];
+                            } ?>
+                            <div class="item col-xs-4">
+                                <a href="<?= SITE_DIR ?>companies/?category=<?= $ar_result['CODE'] ?>">
+                                    <?= htmlspecialchars_decode($ar_result['UF_ICON']) ?>
+                                    <?= $nameCategory ?>
+                                </a>
+                            </div>
+                        <?
+                        }
+                    } ?>
                 </div>
             </div>
         </div>
