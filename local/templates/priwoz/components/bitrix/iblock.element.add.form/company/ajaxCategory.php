@@ -3,7 +3,7 @@ if ($_POST['CATEGORY']) {
 
     $arAllElements = [];
     $arSelect1 = array("ID", "NAME");
-    $arFilter1 = array("IBLOCK_ID" => 20, "IBLOCK_SECTION_ID" => $_POST['CATEGORY'], "ACTIVE_DATE" => "Y", "ACTIVE" => "Y");
+    $arFilter1 = array("IBLOCK_ID" => 22, "IBLOCK_SECTION_ID" => $_POST['CATEGORY'], "ACTIVE_DATE" => "Y", "ACTIVE" => "Y");
     $dbAllElements = CIBlockElement::GetList(array(), $arFilter1, false, false, $arSelect1);
 
     while ($arElement = $dbAllElements->Fetch()) {
@@ -14,12 +14,15 @@ if ($_POST['CATEGORY']) {
 
     if (!in_array($propertyID, $arResult['PROPERTY_LIST_FULL']))
         $arResult[$arResult['PROPERTY_LIST_FULL']][] = $arResult["PROPERTY_LIST_FULL"][$propertyID];
+    echo "<pre>";
+    print_r($arResult["PROPERTY_LIST_FULL"]);
+    echo "</pre>";
     ?>
     <div class="form-select-box">
         <? if (count((array)$arResult["PROPERTY_LIST_FULL"][$_POST['CATEGORY']]["ENUM"]) == 0) {?>
             <input type="text"  class="form-control"  readonly placeholder="<?=GetMessage("CT_BIEAF_PROPERTY_VALUE_NON_SUBCATEGORY");?>">
         <?} else {?>
-        <select class="form-select SUBCATEGORY" name="PROPERTY[<?= $propertyID ?>][0]">
+        <select class="form-select SUBCATEGORY" name="PROPERTY[547][0]">
             <option value=""><?=GetMessage("CT_BIEAF_PROPERTY_VALUE_NA_SUBCATEGORY") ?></option>
             <?
             if (intval($propertyID) > 0) $sKey = "ELEMENT_PROPERTIES";

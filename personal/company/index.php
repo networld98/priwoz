@@ -13,7 +13,7 @@ $APPLICATION->SetTitle("Создание компании");
             ); ?>
         </div>
     </section>
-    <section class="add-product-section">
+    <section class="add-company-section">
         <div class="container">
             <? $APPLICATION->IncludeComponent(
 	"bitrix:iblock.element.add.form",
@@ -23,18 +23,31 @@ $APPLICATION->SetTitle("Создание компании");
 		"IBLOCK_TYPE" => "companies",
 		"IBLOCK_ID" => "24",
 		"PROPERTY_CODES" => array(
-            0 => "546",
-            1 => "547",
-            2 => "548",
+            0 => "548",
+            1 => "546",
+            2 => "547",
             3 => "550",
             4 => "551",
+            5 => "567",
+            6 => "563",
+            7 => "564",
+            8 => "565",
+            9 => "566",
+            10 => "557",
+            11 => "558",
+            12 => "559",
+            13 => "568",
+            14 => "NAME",
+            15 => "PREVIEW_TEXT",
+            16 => "569",
 		),
 		"PROPERTY_CODES_REQUIRED" => array(
             0 => "546",
-            1 => "547",
+            1 => "NAME",
             2 => "548",
             3 => "550",
             4 => "551",
+            5 => "PREVIEW_TEXT",
 		),
 		"GROUPS" => array(
 			0 => "5",
@@ -43,7 +56,7 @@ $APPLICATION->SetTitle("Создание компании");
 		"STATUS" => "ANY",
 		"LIST_URL" => "",
 		"ELEMENT_ASSOC" => "PROPERTY_ID",
-		"ELEMENT_ASSOC_PROPERTY" => "549",
+		"ELEMENT_ASSOC_PROPERTY" => "570",
 		"MAX_USER_ENTRIES" => "100",
 		"MAX_LEVELS" => "1000000",
 		"LEVEL_LAST" => "Y",
@@ -65,7 +78,7 @@ $APPLICATION->SetTitle("Создание компании");
 		"CUSTOM_TITLE_DETAIL_TEXT" => "",
 		"CUSTOM_TITLE_DETAIL_PICTURE" => "",
 		"SEF_FOLDER" => "/",
-		"COMPONENT_TEMPLATE" => "custom"
+		"COMPONENT_TEMPLATE" => "company"
 	),
 	false
 ); ?>

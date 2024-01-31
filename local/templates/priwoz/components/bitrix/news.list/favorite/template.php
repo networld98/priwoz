@@ -32,26 +32,22 @@ foreach ($arResult["ITEMS"] as $arItem):?>
         <div class="box <?if($arItem["DISPLAY_PROPERTIES"]['CATEGORY']['LINK_SECTION_VALUE']){?>company<?}?>">
             <? if ($arItem['PROPERTIES']['PHOTOS']['VALUE']):
                 $file = CFile::ResizeImageGet($arItem['PROPERTIES']['PHOTOS']['VALUE'][0], array('width' => 450, 'height' => 450), BX_RESIZE_IMAGE_PROPORTIONAL, true);
+                $logo = CFile::ResizeImageGet($arItem["PROPERTIES"]['LOGO']['VALUE'], array('width' => 150), BX_RESIZE_IMAGE_PROPORTIONAL, true);
                 ?>
                 <div class="img">
+                    <?echo $arItem["PROPERTIES"]['NAME']['VALUE'];?>
+                    <?echo $arItem["PROPERTIES"]['AUTHOR']['VALUE'];?>
                     <img class="bg-img" src="<?= $file['src'] ?>" alt="<?= $arItem['NAME'] ?>">
-                    <? if ($arItem["PROPERTIES"]['AUTHOR']['VALUE'] != $arItem["PROPERTIES"]['NAME']['VALUE'] && is_numeric($arItem["PROPERTIES"]['NAME']['VALUE'])) {
+                    <? if (!empty($arItem["PROPERTIES"]['NAME']['VALUE']) && $arItem["PROPERTIES"]['AUTHOR']['VALUE'] != $arItem["PROPERTIES"]['NAME']['VALUE'] && is_numeric($arItem["PROPERTIES"]['NAME']['VALUE'])) {
                         $companyData = CIBlockElement::GetByID($arItem["PROPERTIES"]['NAME']['VALUE'])->GetNextElement()->GetProperties();
                         if (!empty($companyData)) {
                             $logo = CFile::ResizeImageGet($companyData['LOGO']['VALUE'], array('width' => 150), BX_RESIZE_IMAGE_PROPORTIONAL, true); ?>
                             <img class="company-logo" src="<?= $logo["src"] ?>" alt="<?= $arItem['NAME'] ?>">
                         <? }
                     } ?>
-                </div>
-            <? endif; ?>
-            <? if (!empty($arItem["PROPERTIES"]['LOGO'])):?>
-                <div class="img">
-                    <?
-                    $logo = CFile::ResizeImageGet($arItem["PROPERTIES"]['LOGO']['VALUE'], array('width' => 150), BX_RESIZE_IMAGE_PROPORTIONAL, true);
-                    $picture = CFile::ResizeImageGet($arItem["PREVIEW_PICTURE"]["ID"], array('width' => 400), BX_RESIZE_IMAGE_PROPORTIONAL, true);
-                    ?>
-                    <img class="bg-img" src="<?= $picture["src"] ?>" alt="<?= $arItem['NAME'] ?>">
-                    <img class="company-logo" src="<?= $logo["src"] ?>" alt="<?= $arItem['NAME'] ?>">
+                    <? if (!empty($arItem["PROPERTIES"]['LOGO'])):?>
+                        <img class="company-logo" src="<?= $logo["src"] ?>" alt="<?= $arItem['NAME'] ?>">
+                    <? endif; ?>
                 </div>
             <? endif; ?>
 
@@ -111,7 +107,7 @@ foreach ($arResult["ITEMS"] as $arItem):?>
                                 <div class="overlay-text"><?=GetMessage("CT_EDIT")?></div>
                             </a>
                         </div>
-                     
+
                         <div class="col-xs-12 col-md-4">
                             <a onclick="editItem(<?= $arItem['ID']?>,<?= $arItem['IBLOCK_ID']?>,'<?if($active=='Y'){?>N<?}elseif($active=='N'){?>Y<?}?>')"  class="overlay-link">
                                 <?if($active=='Y'){?>
@@ -195,9 +191,7 @@ if(count((array)$arResult["ITEMS"])==0){
         <?=GetMessage("CT_ADS_NONE")?>
     <?}elseif($APPLICATION->GetCurPage() == SITE_DIR."personal/company-list/") { ?>
         <?=GetMessage("CT_COMPANY_NONE")?>
-    <?}else{?>
-        <?=GetMessage("CT_FAVORITE_NONE")?>
-<? }
+<?}
 }?>
 
 

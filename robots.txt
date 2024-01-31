@@ -1,2 +1,26 @@
-User-agent: *
+User-Agent: *
+Disallow: /
+Disallow: /bitrix/
+Allow: /privacy-policy/
+Allow: /bitrix/components/
+Allow: /bitrix/cache/
+Allow: /bitrix/js/
+Allow: /bitrix/templates/
+Allow: /bitrix/panel/
+Sitemap: https://priwoz.info/sitemap.xml
+
+User-Agent: Googlebot
+Disallow: */index.php
+Disallow: /bitrix/
+Allow: /bitrix/components/
+Allow: /bitrix/cache/
+Allow: /bitrix/js/
+Allow: /bitrix/templates/
+Allow: /bitrix/panel/
+
+User-Agent: YandexBot
+Disallow: /bitrix/
+Host: https://priwoz.info/.ua
+
+User-agent: GPTBot
 Disallow: /

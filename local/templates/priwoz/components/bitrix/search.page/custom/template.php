@@ -218,13 +218,29 @@ $smartPreFilter = array("ID" => $filterItems);
                         ),
                         false
                     ); ?>
-                <? else: ?>
-                    <? ShowNote(GetMessage("SEARCH_NOTHING_TO_FOUND")); ?>
                 <? endif; ?>
             </div>
         </div>
     </div>
 </section>
+<? if (count((array)$smartPreFilter['ID']) == 0): ?>
+<section class="not-found-section">
+    <div class="container">
+        <div class="bg-box">
+            <div class="row">
+                <div class="col-xs-12 col-md-6 col-xl-4">
+                    <h5><? ShowNote(GetMessage("SEARCH_NOTHING_TO_FOUND")); ?></h5>
+                </div>
+                <div class="col-xs-12 col-md-6 col-xl-5">
+                    <div class="img">
+                        <img src="<?=SITE_TEMPLATE_PATH?>/images/404-cat.png" alt="404 Priwoz">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<? endif; ?>
 <script>
     $( document ).ready(function() {
         $(".search-output span.link").click(function () {

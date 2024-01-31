@@ -12,13 +12,21 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(false);
-
+unset ($arResult["PROPERTY_LIST"][1]);
+$first = array_slice($arResult["PROPERTY_LIST"], 0, 4);
+$photo = array_slice($arResult["PROPERTY_LIST"], 4, 2);
+$last = array_slice($arResult["PROPERTY_LIST"], 6);
+$arResult["PROPERTY_LIST"] = $first;
+$arResult["PROPERTY_LIST"][] = 'PREVIEW_TEXT';
+$arResult["PROPERTY_LIST"] = array_merge($arResult["PROPERTY_LIST"], $photo);
 $annoBlock = $arResult["PROPERTY_LIST"];
+$socialBlock = array_slice($last, 0, 4);
+$contactBlock = array_slice($last, 4, 6);
 //костыль закончился
 if ($_GET['edit'] != 'Y') {
-    $title = 'Добавить компанию';
+    $title = GetMessage("IBLOCK_FORM_SUBMIT");
 } else {
-    $title = 'Изменить информацию о компании';
+    $title = GetMessage("IBLOCK_FORM_CHANGE");
 }
 ?>
 <div class="title-box row align-items-xl-baseline">
@@ -27,7 +35,7 @@ if ($_GET['edit'] != 'Y') {
     </div>
     <? if ($_GET['edit'] != 'Y') { ?>
         <div class="col-xs-12 col-xl-8 col-xxl-9">
-            <p class="text-1">Все заполненные данные вы сможете изменить в личном кабинете</p>
+            <div class="text-1"><?=GetMessage("IBLOCK_DATA_CABINET")?></div>
         </div>
     <? } ?>
 </div>
@@ -49,15 +57,14 @@ if ($_GET['edit'] != 'Y') {
                 <div class="row form-group" <?= $INPUT_TYPE ?>>
                     <div class="col-xs-12 col-xl-4">
                         <h2>
-                            <? if (intval($propertyID) > 0): ?><?= $arResult["PROPERTY_LIST_FULL"][$propertyID]["NAME"] ?><? else: ?><?= !empty($arParams["CUSTOM_TITLE_" . $propertyID]) ? $arParams["CUSTOM_TITLE_" . $propertyID] : GetMessage("IBLOCK_FIELD_" . $propertyID) ?><? endif ?><? if (in_array($propertyID, $arResult["PROPERTY_REQUIRED"])): ?>
-                                <span class="starrequired"> *</span><? endif ?>
+                            <?=GetMessage("IBLOCK_CABINET_".$propertyID)?>
                         </h2>
                     </div>
                     <div class="col-xs-12 col-xl-8">
                         <label class="form-label <?= $arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] ?>-block">
-                            <? if ($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == 'SUBCATEGORY' && empty($arResult["PROPERTY_LIST_FULL"]["SUBCATEGORY"]) && $arResult["ELEMENT_PROPERTIES"][$propertyID][0]["VALUE"] && empty($arResult["ELEMENT_PROPERTIES"][$propertyID][0]["VALUE"])) { ?>
+                            <? if ($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == 'SUBCATEGORY' && empty($arResult["ELEMENT_PROPERTIES"][$propertyID][0]["VALUE"])) { ?>
                                 <input type="text" class="form-control" readonly
-                                       placeholder="<?= 'Выберите категорию' ?>">
+                                       placeholder="<?=GetMessage("IBLOCK_CABINET_SELECT_CATEGORY")?>">
                             <? } ?>
                             <? if ($arResult["ELEMENT_PROPERTIES"][$propertyID][0]["VALUE"]) {
                                 if ($arResult["PROPERTY_LIST_FULL"][$propertyID]["PROPERTY_TYPE"] == "E" && $arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == "SUBCATEGORY") {
@@ -260,6 +267,9 @@ if ($_GET['edit'] != 'Y') {
                                         <input type="text" class="form-control"
                                                name="PROPERTY[<?= $propertyID ?>][<?= $i ?>]"
                                                size="<?= $arResult["PROPERTY_LIST_FULL"][$propertyID]["COL_COUNT"]; ?>"
+                                        <?if($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == 'PRICE'){?>
+                                            placeholder="BGN"
+                                        <?}?>
                                                value="<?= $value ?>"/><?
                                         if ($arResult["PROPERTY_LIST_FULL"][$propertyID]["USER_TYPE"] == "DateTime"):?><?
                                             $APPLICATION->IncludeComponent(
@@ -282,56 +292,54 @@ if ($_GET['edit'] != 'Y') {
 
                                 case "F":
                                     ?>
-                                    <div class="hint">Первое фото будет на обложке объявления. Перетащите, чтобы
-                                        изменить порядок.
-                                    </div>
+                                    <div class="hint"><?=GetMessage("FORM_FILE_SIZE")?></div>
                                     <div class="upload-group">
                                         <? for ($i = 0; $i < $inputNum; $i++) {
                                             if($i<5){
-                                            $value = intval($propertyID) > 0 ? $arResult["ELEMENT_PROPERTIES"][$propertyID][$i]["VALUE"] : $arResult["ELEMENT"][$propertyID];
-                                            $imgFile = SITE_TEMPLATE_PATH . '/images/icons/upload-file.svg';
-                                            ?>
-                                            <div class="upload-item-box">
-                                                <div class="upload-file-custom">
-                                                    <? if (!empty($value) && is_array($arResult["ELEMENT_FILES"][$value])) { ?>
-                                                        <input class="delete-img" type="checkbox"
-                                                               name="DELETE_FILE[<?= $propertyID ?>][<?= $arResult["ELEMENT_PROPERTIES"][$propertyID][$i]["VALUE_ID"] ? $arResult["ELEMENT_PROPERTIES"][$propertyID][$i]["VALUE_ID"] : $i ?>]"
-                                                               id="file_delete_<?= $propertyID ?>_<?= $i ?>" value="Y"/>
-                                                        <label class="delete"
-                                                                for="file_delete_<?= $propertyID ?>_<?= $i ?>">
-                                                            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M18.5544 1.83146C17.8693 1.07653 16.7409 0.333984 15.0009 0.333984C13.3292 0.333984 12.24 0.777212 11.5562 1.25869C11.217 1.49751 10.9852 1.74041 10.8349 1.93086C10.7694 2.01397 10.7194 2.08697 10.6828 2.14518L6.0685 1.50539C5.79497 1.46746 5.54249 1.65846 5.50457 1.93198C5.46664 2.20551 5.65763 2.45799 5.93116 2.49591L23.9897 4.99982C24.2633 5.03774 24.5158 4.84675 24.5537 4.57323C24.5916 4.2997 24.4006 4.04722 24.1271 4.00929L19.4809 3.36508C19.4795 3.3602 19.4781 3.35532 19.4765 3.35045L19.4457 3.36019L19.4451 3.36012C19.4764 3.35014 19.4764 3.35003 19.4763 3.34992L19.4762 3.34933L19.4757 3.34795L19.4746 3.34446L19.4713 3.33459C19.4687 3.32675 19.4652 3.31639 19.4607 3.30369C19.4516 3.2783 19.4387 3.24348 19.4216 3.20059C19.3873 3.11489 19.3357 2.9964 19.2637 2.85605C19.1202 2.57618 18.8927 2.20421 18.5544 1.83146ZM18.3157 3.20352C18.2022 2.99972 18.0388 2.75133 17.8139 2.5035C17.2888 1.92494 16.4178 1.33398 15.0009 1.33398C13.5158 1.33398 12.6319 1.72429 12.1319 2.07635C12.0198 2.15527 11.9254 2.23339 11.8466 2.30655L18.3157 3.20352ZM2.31846 8.00065C3.2754 8.00065 3.94281 8.00171 4.44638 8.06942C4.93556 8.13518 5.19461 8.25548 5.37912 8.43999C5.56362 8.6245 5.68392 8.88355 5.74969 9.37273C5.81739 9.8763 5.81846 10.5437 5.81846 11.5006V25.1673V25.2039C5.81844 26.1156 5.81843 26.8505 5.89614 27.4285C5.97681 28.0286 6.14941 28.5338 6.55069 28.9351C6.95197 29.3364 7.45722 29.509 8.05729 29.5896C8.63525 29.6673 9.3701 29.6673 10.2818 29.6673H10.2818H10.2818H10.2819H10.3185H19.6812H19.7178H19.7178H19.7178H19.7179C20.6296 29.6673 21.3644 29.6673 21.9424 29.5896C22.5424 29.509 23.0477 29.3364 23.449 28.9351C23.8502 28.5338 24.0228 28.0286 24.1035 27.4285C24.1812 26.8505 24.1812 26.1157 24.1812 25.204V25.204V25.2039V25.2039V25.1673V11.5007C24.1812 10.5437 24.1823 9.8763 24.25 9.37273C24.3157 8.88355 24.436 8.6245 24.6205 8.43999C24.805 8.25548 25.0641 8.13518 25.5533 8.06942C26.0568 8.00171 26.7243 8.00065 27.6812 8.00065H29.2057V7.00065H27.6812H27.6446H27.5725H2.42716H2.35504H2.31846H0.793945V8.00065H2.31846ZM6.31094 8.00065H23.6887C23.4434 8.35157 23.3225 8.76601 23.2589 9.23948C23.1812 9.81744 23.1812 10.5523 23.1812 11.464V11.464V11.464V11.4641V11.5007V25.1673C23.1812 26.1243 23.1801 26.7917 23.1124 27.2952C23.0467 27.7844 22.9264 28.0435 22.7419 28.228C22.5574 28.4125 22.2983 28.5328 21.8091 28.5986C21.3056 28.6663 20.6381 28.6673 19.6812 28.6673H10.3185C9.36151 28.6673 8.6941 28.6663 8.19054 28.5986C7.70135 28.5328 7.4423 28.4125 7.25779 28.228C7.07329 28.0435 6.95299 27.7844 6.88722 27.2952C6.81952 26.7917 6.81846 26.1243 6.81846 25.1673V11.5006V11.4641V11.4641C6.81847 10.5523 6.81848 9.81746 6.74077 9.23948C6.67712 8.76601 6.55623 8.35157 6.31094 8.00065ZM10.4998 22.0007C10.4998 22.2768 10.7237 22.5007 10.9998 22.5007C11.276 22.5007 11.4998 22.2768 11.4998 22.0007V14.0007C11.4998 13.7245 11.276 13.5007 10.9998 13.5007C10.7237 13.5007 10.4998 13.7245 10.4998 14.0007V22.0007ZM18.4998 22.0007C18.4998 22.2768 18.7237 22.5007 18.9998 22.5007C19.276 22.5007 19.4998 22.2768 19.4998 22.0007L19.4998 14.0007C19.4998 13.7245 19.276 13.5007 18.9998 13.5007C18.7237 13.5007 18.4998 13.7245 18.4998 14.0007L18.4998 22.0007ZM14.9998 22.5007C14.7237 22.5007 14.4998 22.2768 14.4998 22.0007V14.0007C14.4998 13.7245 14.7237 13.5007 14.9998 13.5007C15.276 13.5007 15.4998 13.7245 15.4998 14.0007V22.0007C15.4998 22.2768 15.276 22.5007 14.9998 22.5007Z" fill="white"/>
-                                                            </svg>
-                                                        </label>
-                                                        <?
-                                                        if ($arResult["ELEMENT_FILES"][$value]["IS_IMAGE"]) {
-                                                            $imgFile = CFile::ResizeImageGet($arResult["ELEMENT_FILES"][$value]['ID'], array('width' => 100, 'height' => 100), BX_RESIZE_IMAGE_PROPORTIONAL, true)['src'];
-                                                        }
-                                                    } ?>
-                                                    <input type="hidden"
-                                                           name="PROPERTY[<?= $propertyID ?>][<?= $arResult["ELEMENT_PROPERTIES"][$propertyID][$i]["VALUE_ID"] ? $arResult["ELEMENT_PROPERTIES"][$propertyID][$i]["VALUE_ID"] : $i ?>]"
-                                                           value="<?= $value ?>"/>
-                                                    <input type="file" accept=".png, .jpg, .jpeg, .pdf"
-                                                           class="inputfile"
-                                                           size="<?= $arResult["PROPERTY_LIST_FULL"][$propertyID]["COL_COUNT"] ?>"
-                                                           id="PROPERTY_FILE_<?= $propertyID ?>_<?= $arResult["ELEMENT_PROPERTIES"][$propertyID][$i]["VALUE_ID"] ? $arResult["ELEMENT_PROPERTIES"][$propertyID][$i]["VALUE_ID"] : $i ?>"
-                                                           name="PROPERTY_FILE_<?= $propertyID ?>_<?= $arResult["ELEMENT_PROPERTIES"][$propertyID][$i]["VALUE_ID"] ? $arResult["ELEMENT_PROPERTIES"][$propertyID][$i]["VALUE_ID"] : $i ?>"/>
-                                                    <div class="upload-image-box">
-                                                        <label for="PROPERTY_FILE_<?= $propertyID ?>_<?= $arResult["ELEMENT_PROPERTIES"][$propertyID][$i]["VALUE_ID"] ? $arResult["ELEMENT_PROPERTIES"][$propertyID][$i]["VALUE_ID"] : $i ?>"
+                                                $value = intval($propertyID) > 0 ? $arResult["ELEMENT_PROPERTIES"][$propertyID][$i]["VALUE"] : $arResult["ELEMENT"][$propertyID];
+                                                $imgFile = SITE_TEMPLATE_PATH . '/images/icons/upload-file.svg';
+                                                ?>
+                                                <div class="upload-item-box">
+                                                    <div class="upload-file-custom">
+                                                        <? if (!empty($value) && is_array($arResult["ELEMENT_FILES"][$value])) { ?>
+                                                            <input class="delete-img" type="checkbox"
+                                                                   name="DELETE_FILE[<?= $propertyID ?>][<?= $arResult["ELEMENT_PROPERTIES"][$propertyID][$i]["VALUE_ID"] ? $arResult["ELEMENT_PROPERTIES"][$propertyID][$i]["VALUE_ID"] : $i ?>]"
+                                                                   id="file_delete_<?= $propertyID ?>_<?= $i ?>" value="Y"/>
+                                                            <label class="delete"
+                                                                   for="file_delete_<?= $propertyID ?>_<?= $i ?>">
+                                                                <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M18.5544 1.83146C17.8693 1.07653 16.7409 0.333984 15.0009 0.333984C13.3292 0.333984 12.24 0.777212 11.5562 1.25869C11.217 1.49751 10.9852 1.74041 10.8349 1.93086C10.7694 2.01397 10.7194 2.08697 10.6828 2.14518L6.0685 1.50539C5.79497 1.46746 5.54249 1.65846 5.50457 1.93198C5.46664 2.20551 5.65763 2.45799 5.93116 2.49591L23.9897 4.99982C24.2633 5.03774 24.5158 4.84675 24.5537 4.57323C24.5916 4.2997 24.4006 4.04722 24.1271 4.00929L19.4809 3.36508C19.4795 3.3602 19.4781 3.35532 19.4765 3.35045L19.4457 3.36019L19.4451 3.36012C19.4764 3.35014 19.4764 3.35003 19.4763 3.34992L19.4762 3.34933L19.4757 3.34795L19.4746 3.34446L19.4713 3.33459C19.4687 3.32675 19.4652 3.31639 19.4607 3.30369C19.4516 3.2783 19.4387 3.24348 19.4216 3.20059C19.3873 3.11489 19.3357 2.9964 19.2637 2.85605C19.1202 2.57618 18.8927 2.20421 18.5544 1.83146ZM18.3157 3.20352C18.2022 2.99972 18.0388 2.75133 17.8139 2.5035C17.2888 1.92494 16.4178 1.33398 15.0009 1.33398C13.5158 1.33398 12.6319 1.72429 12.1319 2.07635C12.0198 2.15527 11.9254 2.23339 11.8466 2.30655L18.3157 3.20352ZM2.31846 8.00065C3.2754 8.00065 3.94281 8.00171 4.44638 8.06942C4.93556 8.13518 5.19461 8.25548 5.37912 8.43999C5.56362 8.6245 5.68392 8.88355 5.74969 9.37273C5.81739 9.8763 5.81846 10.5437 5.81846 11.5006V25.1673V25.2039C5.81844 26.1156 5.81843 26.8505 5.89614 27.4285C5.97681 28.0286 6.14941 28.5338 6.55069 28.9351C6.95197 29.3364 7.45722 29.509 8.05729 29.5896C8.63525 29.6673 9.3701 29.6673 10.2818 29.6673H10.2818H10.2818H10.2819H10.3185H19.6812H19.7178H19.7178H19.7178H19.7179C20.6296 29.6673 21.3644 29.6673 21.9424 29.5896C22.5424 29.509 23.0477 29.3364 23.449 28.9351C23.8502 28.5338 24.0228 28.0286 24.1035 27.4285C24.1812 26.8505 24.1812 26.1157 24.1812 25.204V25.204V25.2039V25.2039V25.1673V11.5007C24.1812 10.5437 24.1823 9.8763 24.25 9.37273C24.3157 8.88355 24.436 8.6245 24.6205 8.43999C24.805 8.25548 25.0641 8.13518 25.5533 8.06942C26.0568 8.00171 26.7243 8.00065 27.6812 8.00065H29.2057V7.00065H27.6812H27.6446H27.5725H2.42716H2.35504H2.31846H0.793945V8.00065H2.31846ZM6.31094 8.00065H23.6887C23.4434 8.35157 23.3225 8.76601 23.2589 9.23948C23.1812 9.81744 23.1812 10.5523 23.1812 11.464V11.464V11.464V11.4641V11.5007V25.1673C23.1812 26.1243 23.1801 26.7917 23.1124 27.2952C23.0467 27.7844 22.9264 28.0435 22.7419 28.228C22.5574 28.4125 22.2983 28.5328 21.8091 28.5986C21.3056 28.6663 20.6381 28.6673 19.6812 28.6673H10.3185C9.36151 28.6673 8.6941 28.6663 8.19054 28.5986C7.70135 28.5328 7.4423 28.4125 7.25779 28.228C7.07329 28.0435 6.95299 27.7844 6.88722 27.2952C6.81952 26.7917 6.81846 26.1243 6.81846 25.1673V11.5006V11.4641V11.4641C6.81847 10.5523 6.81848 9.81746 6.74077 9.23948C6.67712 8.76601 6.55623 8.35157 6.31094 8.00065ZM10.4998 22.0007C10.4998 22.2768 10.7237 22.5007 10.9998 22.5007C11.276 22.5007 11.4998 22.2768 11.4998 22.0007V14.0007C11.4998 13.7245 11.276 13.5007 10.9998 13.5007C10.7237 13.5007 10.4998 13.7245 10.4998 14.0007V22.0007ZM18.4998 22.0007C18.4998 22.2768 18.7237 22.5007 18.9998 22.5007C19.276 22.5007 19.4998 22.2768 19.4998 22.0007L19.4998 14.0007C19.4998 13.7245 19.276 13.5007 18.9998 13.5007C18.7237 13.5007 18.4998 13.7245 18.4998 14.0007L18.4998 22.0007ZM14.9998 22.5007C14.7237 22.5007 14.4998 22.2768 14.4998 22.0007V14.0007C14.4998 13.7245 14.7237 13.5007 14.9998 13.5007C15.276 13.5007 15.4998 13.7245 15.4998 14.0007V22.0007C15.4998 22.2768 15.276 22.5007 14.9998 22.5007Z" fill="white"/>
+                                                                </svg>
+                                                            </label>
+                                                            <?
+                                                            if ($arResult["ELEMENT_FILES"][$value]["IS_IMAGE"]) {
+                                                                $imgFile = CFile::ResizeImageGet($arResult["ELEMENT_FILES"][$value]['ID'], array('width' => 100, 'height' => 100), BX_RESIZE_IMAGE_PROPORTIONAL, true)['src'];
+                                                            }
+                                                        } ?>
+                                                        <input type="hidden"
+                                                               name="PROPERTY[<?= $propertyID ?>][<?= $arResult["ELEMENT_PROPERTIES"][$propertyID][$i]["VALUE_ID"] ? $arResult["ELEMENT_PROPERTIES"][$propertyID][$i]["VALUE_ID"] : $i ?>]"
+                                                               value="<?= $value ?>"/>
+                                                        <input type="file" accept=".png, .jpg, .jpeg, .pdf"
+                                                               class="inputfile"
+                                                               size="<?= $arResult["PROPERTY_LIST_FULL"][$propertyID]["COL_COUNT"] ?>"
                                                                id="PROPERTY_FILE_<?= $propertyID ?>_<?= $arResult["ELEMENT_PROPERTIES"][$propertyID][$i]["VALUE_ID"] ? $arResult["ELEMENT_PROPERTIES"][$propertyID][$i]["VALUE_ID"] : $i ?>"
-                                                               class="upload-image -default"
-                                                               data-default="<?= SITE_TEMPLATE_PATH ?>/images/icons/upload-file.svg"
-                                                               data-pdf="<?= SITE_TEMPLATE_PATH ?>/images/icons/PDF_Logo.svg">
-                                                            <img class="preview-image" src="<?= $imgFile ?>"
-                                                                 alt="Preview-<?= $i ?>">
-                                                        </label>
+                                                               name="PROPERTY_FILE_<?= $propertyID ?>_<?= $arResult["ELEMENT_PROPERTIES"][$propertyID][$i]["VALUE_ID"] ? $arResult["ELEMENT_PROPERTIES"][$propertyID][$i]["VALUE_ID"] : $i ?>"/>
+                                                        <div class="upload-image-box">
+                                                            <label for="PROPERTY_FILE_<?= $propertyID ?>_<?= $arResult["ELEMENT_PROPERTIES"][$propertyID][$i]["VALUE_ID"] ? $arResult["ELEMENT_PROPERTIES"][$propertyID][$i]["VALUE_ID"] : $i ?>"
+                                                                   id="PROPERTY_FILE_<?= $propertyID ?>_<?= $arResult["ELEMENT_PROPERTIES"][$propertyID][$i]["VALUE_ID"] ? $arResult["ELEMENT_PROPERTIES"][$propertyID][$i]["VALUE_ID"] : $i ?>"
+                                                                   class="upload-image -default"
+                                                                   data-default="<?= SITE_TEMPLATE_PATH ?>/images/icons/upload-file.svg"
+                                                                   data-pdf="<?= SITE_TEMPLATE_PATH ?>/images/icons/PDF_Logo.svg">
+                                                                <img class="preview-image" src="<?= $imgFile ?>"
+                                                                     alt="Preview-<?= $i ?>">
+                                                            </label>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
                                             <?}
                                         } ?>
                                     </div>
-                                    <div class="hint">Допустимые форматы: png, jpg, pdf до 1 mb</div>
+                                    <div class="hint"><?=GetMessage("FORM_FILE_SIZE")?></div>
                                     <? break;
                                 case "T":
                                     for ($i = 0; $i < $inputNum; $i++) {
@@ -429,9 +437,50 @@ if ($_GET['edit'] != 'Y') {
                     </div>
                 </div>
             <? endforeach; ?>
-            <h2>Контактные данные *</h2>
+            <h2><?=GetMessage("IBLOCK_DATA_SOCIAL")?></h2>
             <div class="row">
-                <? foreach ($contactBlock as $propertyID):
+                <? foreach ($socialBlock as $propertyID):
+                    $value = $arResult["ELEMENT_PROPERTIES"][$propertyID][0]["VALUE"];
+                    if ($_GET['edit'] != 'Y') {
+                        switch (strtolower($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"])) {
+                            case 'site':
+                                $value = $USER->GetByID($USER->GetID())->Fetch()["SITE"];
+                                break;
+                            case 'facebook':
+                                $value = $USER->GetByID($USER->GetID())->Fetch()["FACEBOOK"];
+                                break;
+                            case 'instagram':
+                                $value = $USER->GetByID($USER->GetID())->Fetch()["INSTAGRAM"];
+                                break;
+                            case 'youtube':
+                                $value = $USER->GetByID($USER->GetID())->Fetch()["YOUTUBE"];
+                                break;
+                        }
+                    }
+                    ?>
+                    <div class="form-group col-xs-12 col-md-6">
+                        <label class="form-label -with-icon">
+                            <span class="input-icon -<?= strtolower($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"]) ?>"></span>
+                            <input type="text"
+                                   class="form-control item-<?= strtolower($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"]) ?>"
+                                   name="PROPERTY[<?= $propertyID ?>][0]"
+                                   size="<?= $arResult["PROPERTY_LIST_FULL"][$propertyID]["COL_COUNT"]; ?>"
+                                   value="<?= $value ?>"
+                                   placeholder="<?= $arResult["PROPERTY_LIST_FULL"][$propertyID]["NAME"] ?>"/>
+                        </label>
+                    </div>
+                <? endforeach; ?>
+            </div>
+            <h2><?=GetMessage("IBLOCK_DATA_CONTACT")?></h2>
+            <div class="row">
+                <?
+                $res = CIBlockElement::GetList(Array("name" => "asc"), array("IBLOCK_ID"=>24, "PROPERTY_AUTHOR" => $USER->GetID() ), false, Array(), Array('NAME','ID'));
+                while($ob = $res->GetNextElement())
+                {
+                    $arFields = $ob->GetFields();
+                    $companiesArray[] = ['NAME' => $arFields['NAME'], 'ID' => $arFields['ID']];
+                }?>
+                <?foreach ($contactBlock as $propertyID):
                     $value = $arResult["ELEMENT_PROPERTIES"][$propertyID][0]["VALUE"];
                     if ($_GET['edit'] != 'Y') {
                         switch (strtolower($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"])) {
@@ -455,24 +504,43 @@ if ($_GET['edit'] != 'Y') {
                                 break;
                         }
                     }
-                    ?>
-                    <div class="form-group col-xs-12 col-md-6">
-                        <label class="form-label -with-icon">
-                            <span class="input-icon -<?= strtolower($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"]) ?>"></span>
-                            <input type="text"
-                                   class="form-control item-<?= strtolower($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"]) ?>"
-                                   name="PROPERTY[<?= $propertyID ?>][0]"
-                                   size="<?= $arResult["PROPERTY_LIST_FULL"][$propertyID]["COL_COUNT"]; ?>"
-                                   value="<?= $value ?>"
-                                   placeholder="<?= $arResult["PROPERTY_LIST_FULL"][$propertyID]["NAME"] ?>"/>
-                        </label>
-                    </div>
+                    if($companiesArray && strtolower($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"]) == 'name'){
+                        $name = $USER->GetByID($USER->GetID())->Fetch()["NAME"];
+                        ?>
+                        <div class="form-group col-xs-12 col-md-6">
+                            <div class="form-select-box">
+                                <select class="form-select -with-icon -<?= strtolower($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"]) ?>" name="PROPERTY[<?= $propertyID ?>][0]">
+                                    <? foreach ($companiesArray as $key => $companyName) {
+                                        ?>
+                                        <option value="<?= $companyName['ID'] ?>" <?= $companyName['ID'] == $value ? " selected=\"selected\"" : "" ?>><?= $companyName['NAME'] ?></option>
+                                        <?
+                                    }
+                                    ?>
+                                    <option <?=  $USER->GetID() == $value ? " selected=\"selected\"" : "" ?> value="<?= $USER->GetID() ?>"><?= $name ?></option>
+                                    <?
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                    <?}else{?>
+                        <div class="form-group col-xs-12 col-md-6">
+                            <label class="form-label -with-icon">
+                                <span class="input-icon -<?= strtolower($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"]) ?>"></span>
+                                <input type="text"
+                                       class="form-control item-<?= strtolower($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"]) ?>"
+                                       name="PROPERTY[<?= $propertyID ?>][0]"
+                                       size="<?= $arResult["PROPERTY_LIST_FULL"][$propertyID]["COL_COUNT"]; ?>"
+                                       value="<?= $value ?>"
+                                       placeholder="<?= $arResult["PROPERTY_LIST_FULL"][$propertyID]["NAME"] ?>"/>
+                            </label>
+                        </div>
+                    <?}?>
                 <? endforeach; ?>
             </div>
 
         <? endif ?>
 
-        <div class="required-text">* Обязательно для заполнения</div>
+        <div class="required-text"><?=GetMessage("IBLOCK_FORM_NEED")?></div>
 
         <div class="text-xs-center">
             <? if ($_GET['edit'] != 'Y') { ?>
@@ -488,10 +556,7 @@ if ($_GET['edit'] != 'Y') {
 
 
         </div>
-        <div class="privacy-policy-text">Нажимая на кнопку “Добавить объявление”, вы соглашаетесь с условиями нашей
-            <a href="/">Политики конфиденциальности</a></div>
-
-        </table>
+        <div class="privacy-policy-text"><?=GetMessage("IBLOCK_FORM_BTN")?></div>
     </form>
 </div>
 <script>
@@ -501,7 +566,7 @@ if ($_GET['edit'] != 'Y') {
             let subcategory = $('.SUBCATEGORY-block');
             $.ajax({
                 type: "POST",
-                url: '<?=SITE_TEMPLATE_PATH ?>/components/bitrix/iblock.element.add.form/custom/ajaxCategory.php',
+                url: '<?=SITE_TEMPLATE_PATH ?>/components/bitrix/iblock.element.add.form/company/ajaxCategory.php',
                 data: {CATEGORY: id},
                 success: function (data) {
                     // Вывод текста результата отправки

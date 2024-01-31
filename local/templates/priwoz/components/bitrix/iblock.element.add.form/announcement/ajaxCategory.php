@@ -19,7 +19,7 @@ if ($_POST['CATEGORY']) {
         <? if (count((array)$arResult["PROPERTY_LIST_FULL"][$_POST['CATEGORY']]["ENUM"]) == 0) {?>
             <input type="text"  class="form-control"  readonly placeholder="<?=GetMessage("CT_BIEAF_PROPERTY_VALUE_NON_SUBCATEGORY");?>">
         <?} else {?>
-        <select class="form-select SUBCATEGORY" name="PROPERTY[<?= $propertyID ?>][0]">
+        <select class="form-select SUBCATEGORY" name="PROPERTY[528][0]">
             <option value=""><?=GetMessage("CT_BIEAF_PROPERTY_VALUE_NA_SUBCATEGORY") ?></option>
             <?
             if (intval($propertyID) > 0) $sKey = "ELEMENT_PROPERTIES";

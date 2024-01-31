@@ -11,8 +11,8 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
+$iblock = 22;
 ?>
-
 <? if ($arParams["USE_RSS"] == "Y"): ?>
     <?
     if (method_exists($APPLICATION, 'addheadstring'))
@@ -30,30 +30,165 @@ $this->setFrameMode(true);
         $component
     ); ?>
 <? endif ?>
-
-<? if ($arParams["USE_FILTER"] == "Y" && $APPLICATION->GetCurPage() != "/"): ?>
-    <? /*$APPLICATION->IncludeComponent(
-	"networld:catalog.smart.filter",
-	"ads_filter",
-	Array(
-		"IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
-		"IBLOCK_ID" => $arParams["IBLOCK_ID"],
-		"FILTER_NAME" => $arParams["FILTER_NAME"],
-		"PREFILTER_NAME" => "smartPreFilter",
-		"FIELD_CODE" => $arParams["FILTER_FIELD_CODE"],
-		"PROPERTY_CODE" => $arParams["FILTER_PROPERTY_CODE"],
-		"CACHE_TYPE" => $arParams["CACHE_TYPE"],
-		"CACHE_TIME" => $arParams["CACHE_TIME"],
-		"CACHE_GROUPS" => $arParams["CACHE_GROUPS"],
-		"PAGER_PARAMS_NAME" => $arParams["PAGER_PARAMS_NAME"],
-	),
-	$component
-);
-*/ ?>
-<? endif ?>
-<section class="products-overview-section">
+<?
+$id = CIBlockFindTools::GetSectionID($section_id, $_GET['category'],  array("IBLOCK_ID" => $iblock));
+if($id==0) {
+    $id = CIBlockFindTools::GetElementID($element_id, $_GET['category'], $section_id, $section_code, array("IBLOCK_ID" => $iblock));
+    $sub = CIBlockElement::GetByID($id)->GetNext()['IBLOCK_SECTION_ID'];
+}
+if($id!=0 && $sub==NULL){
+    $name = CIBlockSection::GetByID($id)->GetNextElement()->GetFields()['NAME'];
+    $APPLICATION->AddChainItem($name);
+}elseif($id!=0 && $sub!=NULL){
+    $name = CIBlockElement::GetByID($id)->GetNextElement()->GetFields()['NAME'];
+    $subname = CIBlockSection::GetByID($sub)->GetNextElement()->GetFields()['NAME'];
+    $subcode = CIBlockSection::GetByID($sub)->GetNextElement()->GetFields()['CODE'];
+    $APPLICATION->AddChainItem($subname, SITE_DIR."companies/?category=".$subcode);
+    $APPLICATION->AddChainItem($name);
+}else{
+    $name = 'Компании наших в Болгарии';
+}
+?>
+<section class="company-overview-section">
     <div class="container">
-        <? $APPLICATION->IncludeComponent(
+        <div class="title-box">
+            <h1 class="page-title"><?=$name?></h1>
+                <?if($id!=0){
+                    global $smartPreFilter;
+                    if($id!=0 && $sub==$id){
+                        $smartPreFilter = array("PROPERTY_CATEGORY" => $id);
+                    }elseif($id!=0 && $sub!=NULL){
+                        $smartPreFilter = array("PROPERTY_CATEGORY" => $sub, "PROPERTY_SUBCATEGORY" => $id);
+                    }
+                     $APPLICATION->IncludeComponent(
+                        "networld:catalog.smart.filter",
+                        "companies_filter",
+                        array(
+                            "INSTANT_RELOAD" => "N",
+                            "IBLOCK_TYPE" => "companies",
+                            "IBLOCK_ID" => "24",
+                            "PREFILTER_NAME" => "smartPreFilter",
+                            "FILTER_NAME" => "city",
+                            "PROPERTY_CODE" => array(
+                                1 => "CITY",
+                                2 => "CATEGORY",
+                                3 => "SUBCATEGORY",
+                            ),
+                            "CACHE_TIME" => "36000000",
+                            "CACHE_TYPE" => "N",
+                            "CACHE_GROUPS" => "Y",
+                            "SEARCH_PAGE" => SITE_DIR."search/",
+                        ),
+                        false
+                    );?>
+                <?}else{?>
+                    <a href="<?=SITE_DIR?>personal/company/" class="btn btn-green d-xs-none d-xl-inline-flex">Добавить компанию</a>
+                <?}?>
+
+        </div>
+        <?if($id==0){?>
+            <div class="collapse-head-box d-xl-none">
+                <div class="row">
+                    <div class="col-xs-12 col-md-6">
+                        <div class="collapse-head search-box-opener" data-collapsed="#search-box">Поиск компаний на Priwoze <span class="arrow"></span></div>
+                    </div>
+                    <div class="col-xs-12 col-md-6 d-xs-none d-md-block">
+                        <div class="collapse-head filter-box-opener" data-collapsed="#filter-box">Фильтры поиска <span class="arrow"></span></div>
+                    </div>
+                </div>
+            </div>
+            <?
+            $APPLICATION->IncludeComponent(
+                "networld:catalog.smart.filter",
+                "header_filter",
+                array(
+                    "INSTANT_RELOAD" => "N",
+                    "IBLOCK_TYPE" => "companies",
+                    "IBLOCK_ID" => "24",
+                    "FILTER_NAME" => "city",
+                    "PROPERTY_CODE" => array(
+                        1 => "CATEGORY",
+                        2 => "SUBCATEGORY",
+                        3 => "PRICE",
+                        4 => "CONDITION",
+
+                    ),
+                    "CACHE_TIME" => "36000000",
+                    "CACHE_TYPE" => "N",
+                    "CACHE_GROUPS" => "Y",
+                    "SEARCH_PAGE" => SITE_DIR."search/",
+                ),
+                false
+            );
+            ?>
+        <?}?>
+        <div class="category-list d-xs-none d-xl-flex">
+            <?
+            if($sub==NULL){
+                $sub = $id;
+            }
+            $arFilter = array("IBLOCK_ID" => $iblock, "IBLOCK_SECTION_ID" =>  $sub);
+            if($id==0) {
+                $arSelect = array("NAME", "CODE", "UF_ICON", "UF_NAME_UA");
+                $obSections = CIBlockSection::GetList(array("name" => "asc"), $arFilter, false, $arSelect);
+            }else{
+                $arSelect = array();
+                $obSections = CIBlockElement::GetList(array("name" => "asc"), $arFilter, false, $arSelect);
+            }
+            while ($ar_result = $obSections->GetNext()) {
+                if ($ar_result['UF_ICON'] || $id!=0) {
+                    if (SITE_ID == 's1') {
+                        $nameCategory = $ar_result['NAME'];
+                    }
+                    if (SITE_ID == 'ua') {
+                        if($id==0){
+                            $nameCategory = $ar_result['UF_NAME_UA'];
+                        }else{
+                            $nameCategory = $ar_result['NAME_UA'];
+                        }
+                    } ?>
+                    <div class="item">
+                        <a href="<?= SITE_DIR ?>companies/?category=<?= $ar_result['CODE'] ?>" class="category-link">
+                            <?= htmlspecialchars_decode($ar_result['UF_ICON']) ?>
+                            <?= $nameCategory ?>
+                        </a>
+                    </div>
+                    <?
+                }
+            } ?>
+        </div>
+        <div class="d-xs-block d-md-none">
+            <div class="collapse-head filter-box-opener" data-collapsed="#filter-box">Фильтры поиска <span class="arrow"></span></div>
+        </div>
+        <div id="filter-box" class="collapsed-content filter-box d-xl-none">
+            <div class="form-label">Категория</div>
+            <select class="form-select -without-search select2-hidden-accessible" data-select2-id="select2-data-13-r8o1" tabindex="-1" aria-hidden="true">
+                <option data-count="36643" value="All" selected="" data-select2-id="select2-data-15-0x05">Все объявления</option>
+                <option data-count="126" value="avto">Авто</option>
+                <option data-count="3644" value="det_mir">Детский мир</option>
+                <option data-count="14826" value="dom_i_sad">Дом и сад</option>
+                <option data-count="10433" value="zyvotnye">Животные</option>
+                <option data-count="456" value="krasota">Красота</option>
+                <option data-count="8210" value="nedv">Недвижимость</option>
+                <option data-count="11325" value="odeg">Одежда</option>
+                <option data-count="15247" value="darom">Отдам даром</option>
+                <option data-count="456" value="rabota">Работа</option>
+                <option data-count="8210" value="hobbi">Хобби и спорт</option>
+                <option data-count="11325" value="uslugi">Услуги</option>
+                <option data-count="15247" value="electr">Электроника</option>
+            </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="select2-data-14-6o7o" style="width: 100px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-gs03-container" aria-controls="select2-gs03-container"><span class="select2-selection__rendered" id="select2-gs03-container" role="textbox" aria-readonly="true" title="Все объявления">Все объявления</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+        </div>
+        <div class="container">
+            <?
+            if($id!=0 && empty($_GET['city_548'])) {
+                global $city;
+                if ($id != 0 && $sub == $id) {
+                    $city = array("PROPERTY_CATEGORY" => $id);
+                } elseif ($id != 0 && $sub != NULL) {
+                    $city = array("PROPERTY_CATEGORY" => $sub, "PROPERTY_SUBCATEGORY" => $id);
+                }
+            }
+            $APPLICATION->IncludeComponent(
             "bitrix:news.list",
             "companies",
             array(
@@ -134,5 +269,6 @@ $this->setFrameMode(true);
             ),
             $component
         ); ?>
+        </div>
     </div>
 </section>

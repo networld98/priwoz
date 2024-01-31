@@ -173,7 +173,7 @@ $this->setFrameMode(true);
 
         //not prices
         foreach ($arResult["ITEMS"] as $key => $arItem) {
-            if ($arItem["ID"] == 529) {
+            if ($arItem["CODE"] == 'CITY') {
                 if (
                     empty($arItem["VALUES"])
                     || isset($arItem["PRICE"])
@@ -419,7 +419,7 @@ $this->setFrameMode(true);
     </div>
 <? endif; ?>
 </form>
-<? if ($APPLICATION->GetCurPage() == SITE_DIR || $APPLICATION->GetCurPage() == SITE_DIR."search/"): ?>
+<? if ($APPLICATION->GetCurPage() == SITE_DIR || $APPLICATION->GetCurPage() == SITE_DIR."search/" || $APPLICATION->GetCurPage() == SITE_DIR."companies/"): ?>
 <script>
     var smartFilter = new JCSmartFilter('<?echo CUtil::JSEscape($arResult["FORM_ACTION"])?>', 'horizontal');
 </script>

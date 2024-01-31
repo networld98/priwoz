@@ -14,8 +14,8 @@ $this->setFrameMode(true);
 $this->addExternalCss("/bitrix/css/main/font-awesome.css");
 $this->addExternalCss($this->GetFolder() . '/themes/' . $arParams['TEMPLATE_THEME'] . '/style.css');
 ?>
-<div class="companies-wrap">
-    <div class="grid companies-masonry">
+<div class="companies-wrap" id="companies-wrap">
+    <div class="grid companies-masonry" id="companies-masonry">
         <div class="grid-sizer"></div>
         <div class="gutter-sizer"></div>
         <?php
@@ -95,7 +95,7 @@ $this->addExternalCss($this->GetFolder() . '/themes/' . $arParams['TEMPLATE_THEM
                 <div class="img">
                     <?
                     $logo = CFile::ResizeImageGet($arItem["PROPERTIES"]['LOGO']['VALUE'], array('width' => 150), BX_RESIZE_IMAGE_PROPORTIONAL, true);
-                    $picture = CFile::ResizeImageGet($arItem["PREVIEW_PICTURE"]["ID"], array('width' => 400), BX_RESIZE_IMAGE_PROPORTIONAL, true);
+                    $picture = CFile::ResizeImageGet($arItem['PROPERTIES']['PHOTOS']['VALUE'][0], array('width' => 400), BX_RESIZE_IMAGE_PROPORTIONAL, true);
                     ?>
                     <img class="bg-img" src="<?= $picture["src"] ?>" alt="<?= $arItem['NAME'] ?>">
                     <img class="company-logo" src="<?= $logo["src"] ?>" alt="<?= $arItem['NAME'] ?>">
@@ -122,6 +122,24 @@ $this->addExternalCss($this->GetFolder() . '/themes/' . $arParams['TEMPLATE_THEM
             </div>
         <? endforeach; ?>
     </div>
+    <? if (count($arResult["ITEMS"]) == 0): ?>
+        <section class="not-found-section">
+            <div class="container">
+                <div class="bg-box">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-6 col-xl-4">
+                             <h5><? ShowNote(GetMessage("CT_NOT_COMPANY")); ?></h5>
+                        </div>
+                        <div class="col-xs-12 col-md-6 col-xl-5">
+                            <div class="img">
+                                <img src="<?=SITE_TEMPLATE_PATH?>/images/404-cat.png" alt="404 Priwoz">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <? endif; ?>
     <?if($arParams["DISPLAY_BOTTOM_PAGER"]):?>
         <?=$arResult["NAV_STRING"]?>
     <?endif;?>

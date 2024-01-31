@@ -522,8 +522,6 @@ if ($_GET['edit'] != 'Y') {
 
         </div>
         <div class="privacy-policy-text"><?=GetMessage("IBLOCK_FORM_BTN")?></div>
-
-        </table>
     </form>
 </div>
 <script>
