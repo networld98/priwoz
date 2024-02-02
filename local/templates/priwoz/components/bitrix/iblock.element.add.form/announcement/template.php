@@ -291,7 +291,7 @@ if ($_GET['edit'] != 'Y') {
 
                                 case "F":
                                     ?>
-                                    <div class="hint"><?=GetMessage("FORM_FILE_SIZE")?></div>
+                                    <div class="hint"><?=GetMessage("IBLOCK_FIRST_PHOTO")?></div>
                                     <div class="upload-group">
                                         <? for ($i = 0; $i < $inputNum; $i++) {
                                             if($i<5){
@@ -338,7 +338,7 @@ if ($_GET['edit'] != 'Y') {
                                             <?}
                                         } ?>
                                     </div>
-                                    <div class="hint"><?=GetMessage("FORM_FILE_SIZE")?></div>
+                                    <div class="hint"><?=GetMessage("IBLOCK_FILE_SIZE")?></div>
                                     <? break;
                                 case "T":
                                     for ($i = 0; $i < $inputNum; $i++) {

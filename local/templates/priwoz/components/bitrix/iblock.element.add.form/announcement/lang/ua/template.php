@@ -18,10 +18,10 @@ $MESS["CT_BIEAF_PROPERTY_VALUE_NA_CITY"] = "(виберіть населений
 $MESS["IBLOCK_FORM_CHANGE"] = 'Змінити оголошення';
 $MESS["IBLOCK_DATA_CABINET"] = 'Всі заповнені дані ви зможете змінити в особистому кабінеті';
 $MESS["IBLOCK_FIRST_PHOTO"] = 'Перше фото буде на обкладинці оголошення. Перетягніть, щоб змінити порядок.';
-$MESS["IBLOCK_FILE_SIZE"] = 'Допустимі формати: png, jpg, pdf до 1 mb';
+$MESS["IBLOCK_FILE_SIZE"] = 'Допустимі формати: png, jpg, pdf до 5 mb';
 $MESS["IBLOCK_DATA_CONTACT"] = 'Контактні дані *';
 $MESS["IBLOCK_FORM_NEED"] = "* Обов'язково для заповнення";
-$MESS["IBLOCK_FORM_BTN"] = 'Натискаючи кнопку “Додати оголошення”, ви погоджуєтесь з умовами нашої <a href="/privacy-policy/">Політики конфіденційності';
+$MESS["IBLOCK_FORM_BTN"] = 'Натискаючи кнопку “Додати оголошення”, ви погоджуєтесь з умовами нашої <a href="/ua/privacy-policy/">Політики конфіденційності';
 $MESS["IBLOCK_CABINET_NAME"] = 'Назва *';
 $MESS["IBLOCK_CABINET_527"] = 'Рубрика *';
 $MESS["IBLOCK_CABINET_528"] = 'Подрубрику *';

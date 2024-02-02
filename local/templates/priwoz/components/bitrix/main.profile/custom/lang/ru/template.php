@@ -2,7 +2,7 @@
 $MESS["PROFILE_DATA_SAVED"] = "Изменения сохранены";
 $MESS["REG_SHOW_HIDE"] = "Регистрационная информация";
 $MESS["INFO"] = "Профиль";
-$MESS["INFO_FILE_SIZE"] = "Допустимые форматы: png, jpg, pdf до 1 mb";
+$MESS["INFO_FILE_SIZE"] = "Допустимые форматы: png, jpg, pdf до 5 mb";
 $MESS["INFO_FILE_DELETE"] = "Удалить файл";
 $MESS["INFO_DATA"] = "Контактные данные *";
 $MESS["INFO_PASS"] = "Ваш пароль";

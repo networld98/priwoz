@@ -7,6 +7,7 @@ $MESS["AUTH_PASSWORD"] = "Пароль";
 $MESS["AUTH_REMEMBER_ME"] = "Запомнить меня на этом компьютере";
 $MESS["AUTH_AUTHORIZE"] = "Войти";
 $MESS["AUTH_REGISTER"] = "Регистрация";
+$MESS["AUTH_POLITIC"] = 'Нажимая кнопку “Войти на сайт” вы соглашаетесь с нашей <a href="/privacy-policy/">Политикой конфендициальности</a>';
 $MESS["AUTH_FIRST_ONE"] = "Если вы впервые на сайте, заполните, пожалуйста, регистрационную форму.";
 $MESS["AUTH_FORGOT_PASSWORD_2"] = "Забыли пароль?";
 $MESS["AUTH_CAPTCHA_PROMT"] = "Введите слово на картинке";

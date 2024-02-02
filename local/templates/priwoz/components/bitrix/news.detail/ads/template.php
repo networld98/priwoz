@@ -49,7 +49,7 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
                                 </a>
                             </div>
                             <h1 class="product-title"><?=$arResult["NAME"]?></h1>
-                            <div class="price"><?=$arResult['PROPERTIES']['PRICE']['VALUE']?> BGN</div>
+                            <div class="price"><?if($arResult['PROPERTIES']['PRICE']['VALUE']!=0){echo $arResult['PROPERTIES']['PRICE']['VALUE'];?> BGN<?}else{echo GetMessage("T_PRICE_0");}?></div>
                             <? if (SITE_ID == 's1') {
                                 $locationName = $arResult["DISPLAY_PROPERTIES"]['CITY']['LINK_ELEMENT_VALUE'][$arResult["DISPLAY_PROPERTIES"]['CITY']['VALUE']]['NAME'];
                             }

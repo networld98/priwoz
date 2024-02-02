@@ -5,3 +5,4 @@ $MESS["T_AUTHOR"] = "автора";
 $MESS["T_COMPANY"] = "компанії";
 $MESS["T_ALL_ADS"] = "Всі оголошення";
 $MESS["T_FAK"] = "Поскаржитися";
+$MESS["T_PRICE_0"] = "Договірна";

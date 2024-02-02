@@ -226,7 +226,7 @@ if($arResult["SHOW_SMS_FIELD"] == true)
             <div class="bx-authform-formgroup-container">
                 <input type="submit" class="btn btn-green" name="Register" value="<?=GetMessage("AUTH_REGISTER")?>" />
             </div>
-            <div class="hint">Нажимая кнопку “Зарегистрироваться” вы соглашаетесь с нашей <a href="#">Политикой конфендициальности</a></div>
+            <div class="hint"><?= GetMessage("AUTH_POLITIC") ?></div>
 
 <!--            <div class="bx-authform-description-container">-->
 <!--                <span class="bx-authform-starrequired">*</span>--><?//=GetMessage("AUTH_REQ")?>

@@ -92,7 +92,7 @@ $APPLICATION->SetTitle("Компанії");
         "USE_RSS" => "N",
         "USE_SEARCH" => "N",
         "USE_SHARE" => "Y",
-        "FILTER_NAME" => "",
+        "FILTER_NAME" => "city",
         "FILTER_FIELD_CODE" => array(
             0 => "",
             1 => "",

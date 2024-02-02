@@ -18,7 +18,7 @@ $MESS["CT_BIEAF_PROPERTY_VALUE_NA_CITY"] = "(выберите населенны
 $MESS["IBLOCK_FORM_CHANGE"] = 'Изменить объявление';
 $MESS["IBLOCK_DATA_CABINET"] = 'Все заполненные данные вы сможете изменить в личном кабинете';
 $MESS["IBLOCK_FIRST_PHOTO"] = 'Первое фото будет на обложке объявления. Перетащите, чтобы изменить порядок.';
-$MESS["IBLOCK_FILE_SIZE"] = 'Допустимые форматы: png, jpg, pdf до 1 mb';
+$MESS["IBLOCK_FILE_SIZE"] = 'Допустимые форматы: png, jpg, pdf до 5 mb';
 $MESS["IBLOCK_DATA_CONTACT"] = 'Контактные данные *';
 $MESS["IBLOCK_FORM_NEED"] = '* Обязательно для заполнения';
 $MESS["IBLOCK_FORM_BTN"] = 'Нажимая на кнопку “Добавить объявление”, вы соглашаетесь с условиями нашей <a href="/privacy-policy/">Политики конфиденциальности';

@@ -30,6 +30,7 @@ $iblock = 22;
         $component
     ); ?>
 <? endif ?>
+
 <?
 $id = CIBlockFindTools::GetSectionID($section_id, $_GET['category'],  array("IBLOCK_ID" => $iblock));
 if($id==0) {
@@ -46,7 +47,7 @@ if($id!=0 && $sub==NULL){
     $APPLICATION->AddChainItem($subname, SITE_DIR."companies/?category=".$subcode);
     $APPLICATION->AddChainItem($name);
 }else{
-    $name = 'Компании наших в Болгарии';
+    $name = GetMessage("T_NEWS_TITLE");
 }
 ?>
 <section class="company-overview-section">
@@ -82,7 +83,7 @@ if($id!=0 && $sub==NULL){
                         false
                     );?>
                 <?}else{?>
-                    <a href="<?=SITE_DIR?>personal/company/" class="btn btn-green d-xs-none d-xl-inline-flex">Добавить компанию</a>
+                    <a href="<?=SITE_DIR?>personal/company/" class="btn btn-green d-xs-none d-xl-inline-flex"><?=GetMessage("T_NEWS_ADD_COMPANY")?></a>
                 <?}?>
 
         </div>
@@ -90,10 +91,10 @@ if($id!=0 && $sub==NULL){
             <div class="collapse-head-box d-xl-none">
                 <div class="row">
                     <div class="col-xs-12 col-md-6">
-                        <div class="collapse-head search-box-opener" data-collapsed="#search-box">Поиск компаний на Priwoze <span class="arrow"></span></div>
+                        <div class="collapse-head search-box-opener" data-collapsed="#search-box"><?=GetMessage("T_NEWS_SEARCH_DESK")?> <span class="arrow"></span></div>
                     </div>
                     <div class="col-xs-12 col-md-6 d-xs-none d-md-block">
-                        <div class="collapse-head filter-box-opener" data-collapsed="#filter-box">Фильтры поиска <span class="arrow"></span></div>
+                        <div class="collapse-head filter-box-opener" data-collapsed="#filter-box"><?=GetMessage("T_NEWS_SEARCH")?> <span class="arrow"></span></div>
                     </div>
                 </div>
             </div>
@@ -131,52 +132,65 @@ if($id!=0 && $sub==NULL){
             if($id==0) {
                 $arSelect = array("NAME", "CODE", "UF_ICON", "UF_NAME_UA");
                 $obSections = CIBlockSection::GetList(array("name" => "asc"), $arFilter, false, $arSelect);
+                while ($ar_result = $obSections->GetNext()) {
+                    if ($ar_result['UF_ICON'] || $id!=0) {
+                        if (SITE_ID == 's1') {
+                            $nameCategory = $ar_result['NAME'];
+                        }
+                        if (SITE_ID == 'ua') {
+                            $nameCategory = $ar_result['UF_NAME_UA'];
+                        } ?>
+                        <div class="item">
+                            <a href="<?= SITE_DIR ?>companies/?category=<?= $ar_result['CODE'] ?>" class="category-link">
+                                <?= htmlspecialchars_decode($ar_result['UF_ICON']) ?>
+                                <?= $nameCategory ?>
+                            </a>
+                        </div>
+                        <?
+                        $mobCat[] = ["NAME"=>$nameCategory,"ICON"=>htmlspecialchars_decode($ar_result['UF_ICON']), "CODE"=>$ar_result['CODE']];
+                    }
+                }
             }else{
                 $arSelect = array();
                 $obSections = CIBlockElement::GetList(array("name" => "asc"), $arFilter, false, $arSelect);
-            }
-            while ($ar_result = $obSections->GetNext()) {
-                if ($ar_result['UF_ICON'] || $id!=0) {
-                    if (SITE_ID == 's1') {
-                        $nameCategory = $ar_result['NAME'];
-                    }
-                    if (SITE_ID == 'ua') {
-                        if($id==0){
-                            $nameCategory = $ar_result['UF_NAME_UA'];
-                        }else{
-                            $nameCategory = $ar_result['NAME_UA'];
+                while($ob = $obSections->GetNextElement()){
+                    $ar_result = $ob->GetFields();
+                    $ar_props = $ob->GetProperties();
+                    if ($id!=0) {
+                        if (SITE_ID == 's1') {
+                            $nameCategory = $ar_result['NAME'];
                         }
-                    } ?>
-                    <div class="item">
-                        <a href="<?= SITE_DIR ?>companies/?category=<?= $ar_result['CODE'] ?>" class="category-link">
-                            <?= htmlspecialchars_decode($ar_result['UF_ICON']) ?>
-                            <?= $nameCategory ?>
-                        </a>
-                    </div>
-                    <?
+                        if (SITE_ID == 'ua') {
+                            $nameCategory = $ar_props['NAME_UA']['VALUE'];
+                        } ?>
+                        <div class="item">
+                            <a href="<?= SITE_DIR ?>companies/?category=<?= $ar_result['CODE'] ?>" class="category-link">
+                                <?= htmlspecialchars_decode($ar_result['UF_ICON']) ?>
+                                <?= $nameCategory ?>
+                            </a>
+                        </div>
+                        <?
+                        $mobCat[] = ["NAME"=>$nameCategory,"ICON"=>htmlspecialchars_decode($ar_result['UF_ICON']), "CODE"=>$ar_result['CODE']];
+                    }
                 }
-            } ?>
+            }
+            ?>
         </div>
         <div class="d-xs-block d-md-none">
-            <div class="collapse-head filter-box-opener" data-collapsed="#filter-box">Фильтры поиска <span class="arrow"></span></div>
+            <div class="collapse-head filter-box-opener" data-collapsed="#filter-box"><?=GetMessage("T_NEWS_SEARCH")?> <span class="arrow"></span></div>
         </div>
         <div id="filter-box" class="collapsed-content filter-box d-xl-none">
-            <div class="form-label">Категория</div>
-            <select class="form-select -without-search select2-hidden-accessible" data-select2-id="select2-data-13-r8o1" tabindex="-1" aria-hidden="true">
-                <option data-count="36643" value="All" selected="" data-select2-id="select2-data-15-0x05">Все объявления</option>
-                <option data-count="126" value="avto">Авто</option>
-                <option data-count="3644" value="det_mir">Детский мир</option>
-                <option data-count="14826" value="dom_i_sad">Дом и сад</option>
-                <option data-count="10433" value="zyvotnye">Животные</option>
-                <option data-count="456" value="krasota">Красота</option>
-                <option data-count="8210" value="nedv">Недвижимость</option>
-                <option data-count="11325" value="odeg">Одежда</option>
-                <option data-count="15247" value="darom">Отдам даром</option>
-                <option data-count="456" value="rabota">Работа</option>
-                <option data-count="8210" value="hobbi">Хобби и спорт</option>
-                <option data-count="11325" value="uslugi">Услуги</option>
-                <option data-count="15247" value="electr">Электроника</option>
-            </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="select2-data-14-6o7o" style="width: 100px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-gs03-container" aria-controls="select2-gs03-container"><span class="select2-selection__rendered" id="select2-gs03-container" role="textbox" aria-readonly="true" title="Все объявления">Все объявления</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+            <div class="row">
+                <div class="col-xs-12 col-md-12">
+                    <div class="form-label"><?=GetMessage("T_NEWS_CATEGORY")?></div>
+                    <select class="form-select -without-search">
+                        <option onclick="location.href='<?= SITE_DIR ?>companies/"><?=GetMessage("T_NEWS_COMPANY_ALL")?></option>
+                        <?foreach($mobCat as $item){?>
+                            <option onclick="location.href='<?= SITE_DIR ?>companies/?category=<?= $item['CODE'] ?>"><?= $item['NAME']?></option>
+                        <?}?>
+                    </select>
+                </div>
+            </div>
         </div>
         <div class="container">
             <?

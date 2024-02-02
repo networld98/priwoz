@@ -139,7 +139,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
                             <input type="submit" class="btn btn-green" name="Login"
                                    value="<?= GetMessage("AUTH_AUTHORIZE") ?>"/>
                         </div>
-                        <div class="hint">Нажимая кнопку “Войти на сайт” вы соглашаетесь с нашей <a href="#">Политикой конфендициальности</a></div>
+                        <div class="hint"><?= GetMessage("AUTH_POLITIC") ?></div>
                     </form>
                 </div>
             </div>
