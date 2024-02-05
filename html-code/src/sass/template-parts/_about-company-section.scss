@@ -1,0 +1,84 @@
+.about-company-section {
+  margin: 80px 0;
+  @include media-breakpoint-down(xl) {
+    margin: 50px 0;
+  }
+  @include media-breakpoint-down(md) {
+    margin: 40px 0 35px;
+  }
+
+  .title {
+    font-family: $roboto-condensed-font;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 40px;
+    line-height: 100%;
+    color: $color-gray-1;
+    margin-bottom: 35px;
+    @include media-breakpoint-down(md) {
+      margin-bottom: 22px;
+    }
+  }
+
+  .link-box {
+    @include media-breakpoint-down(md) {
+      margin-top: 10px;
+    }
+  }
+
+  .img-box {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+    @include media-breakpoint-down(xl) {
+      margin: 0 -10px;
+    }
+    @include media-breakpoint-down(md) {
+      margin: 0 -5px;
+    }
+
+    .item {
+      width: 50%;
+      padding: 0 15px;
+      margin-bottom: 30px;
+      @include media-breakpoint-down(xl) {
+        padding: 0 10px;
+        margin-bottom: 18px;
+      }
+      @include media-breakpoint-down(md) {
+        padding: 0 5px;
+        margin-bottom: 10px;
+      }
+
+      .image {
+        position: relative;
+        padding-bottom: 62%;
+        border-radius: 10px;
+        overflow: hidden;
+        @include media-breakpoint-down(xxl) {
+          padding-bottom: 85%;
+        }
+        @include media-breakpoint-down(xl) {
+          border-radius: 5px;
+          padding-bottom: 86%;
+        }
+      }
+    }
+  }
+
+  .text-box {
+    padding-left: 104px;
+    @include media-breakpoint-down(xxl) {
+      padding-left: 73px;
+    }
+    @include media-breakpoint-down(xl) {
+      padding-left: 0;
+    }
+    @include media-breakpoint-down(md) {
+      line-height: 156%;
+      letter-spacing: -0.018em;
+    }
+  }
+}

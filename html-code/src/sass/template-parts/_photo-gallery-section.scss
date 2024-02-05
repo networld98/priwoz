@@ -1,0 +1,138 @@
+.photo-gallery-section {
+  margin-bottom: 80px;
+  @include media-breakpoint-down(xl) {
+    margin-bottom: 50px;
+  }
+  @include media-breakpoint-down(md) {
+    margin-bottom: 20px;
+  }
+
+  .title-wrap {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    margin-bottom: 27px;
+    @include media-breakpoint-down(xl) {
+      margin-bottom: 20px;
+    }
+    @include media-breakpoint-down(md) {
+      display: block;
+      margin-bottom: 17px;
+    }
+
+    .title {
+      font-family: $roboto-condensed-font;
+      font-style: normal;
+      font-weight: 300;
+      font-size: 40px;
+      line-height: 100%;
+      color: #000000;
+      margin-bottom: 0;
+      letter-spacing: -0.012em;
+      @include media-breakpoint-down(xl) {
+        font-size: 26px;
+        line-height: 120%;
+      }
+
+      @include media-breakpoint-down(md) {
+        width: 100%;
+      }
+
+      span {
+        font-size: 20px;
+        margin-left: 5px;
+        @include media-breakpoint-down(xl) {
+          font-size: 16px;
+          margin-left: 3px;
+        }
+      }
+    }
+  }
+
+  .swiper-navigation {
+    flex: none;
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: -5px;
+    @include media-breakpoint-down(xl) {
+      margin-right: 10px;
+    }
+    @include media-breakpoint-down(md) {
+      display: none;
+    }
+
+    .swiper-button-prev, .swiper-button-next {
+      position: relative;
+      left: 0;
+      top: 0;
+      width: 22px;
+      height: 22px;
+      transition: .4s;
+      @include media-breakpoint-down(md) {
+        margin-top: 0;
+      }
+
+      &:after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background: url('../../../images/icons/right-arrow-slider-gray.svg') no-repeat 50% 50%/ contain;
+      }
+
+      &:hover {
+        opacity: .8;
+      }
+    }
+
+    .swiper-button-prev {
+      margin-right: 27px;
+      @include media-breakpoint-down(xl) {
+        margin-right: 41px;
+      }
+      @include media-breakpoint-down(md) {
+        margin-right: 37px;
+      }
+
+      &:after {
+        transform: translate(-50%, -50%) rotate(180deg);
+      }
+    }
+  }
+
+  .photo-gallery-slider {
+    .swiper-slide {
+      width: auto;
+      margin-right: 10px;
+      @include media-breakpoint-down(xl) {
+        margin-right: 5px;
+      }
+
+      .img {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        overflow: hidden;
+        border-radius: 10px;
+        @include media-breakpoint-down(md) {
+          border-radius: 5px;
+        }
+
+        img {
+          height: 500px;
+          width: auto;
+          display: block;
+          @include media-breakpoint-down(xl) {
+            height: 283px;
+          }
+        }
+      }
+    }
+  }
+}

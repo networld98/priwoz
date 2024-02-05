@@ -1,0 +1,57 @@
+.our-services-section {
+  background: $color-lightgray-2;
+  padding: 80px 0 120px;
+  @include media-breakpoint-down(xxl) {
+    padding: 80px 0 70px;
+  }
+  @include media-breakpoint-down(xl) {
+    padding: 54px 0 30px;
+  }
+  @include media-breakpoint-down(md) {
+    padding: 23px 0 2px;
+  }
+
+  .container {
+    position: relative;
+    z-index: 0;
+    &:before {
+      content: '';
+      position: absolute;
+      top: -30px;
+      right: 68px;
+      width: 46px;
+      height: 60px;
+      z-index: -1;
+      background: url('../../../images/icons/dots-white.svg') no-repeat 50% 50%/ contain;
+      @include media-breakpoint-down(xl) {
+        width: 41px;
+        height: 53px;
+        right: 11px;
+        top: -19px;
+      }
+      @include media-breakpoint-down(md) {
+        right: 21px;
+        top: -12px;
+      }
+    }
+  }
+
+  .title {
+    font-family: $roboto-condensed-font;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 40px;
+    line-height: 100%;
+    color: $color-gray-1;
+    margin-bottom: 35px;
+    letter-spacing: -0.012em;
+    @include media-breakpoint-down(xl) {
+      font-size: 26px;
+      margin-bottom: 24px;
+    }
+    @include media-breakpoint-down(md) {
+      margin-bottom: 25px;
+    }
+  }
+
+}
