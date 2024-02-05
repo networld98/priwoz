@@ -1,3 +1,5 @@
+</div>
+
 <div class="video-modal">
     <div class="modal-overlay"></div>
     <div class="modal-box">

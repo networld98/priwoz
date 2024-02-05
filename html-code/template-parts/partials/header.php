@@ -666,61 +666,63 @@
         </div>
     </div>
 
-    <section class="filter-section d-xs-none d-xl-block">
-        <div class="container">
-            <div class="row align-items-md-center">
-                <div class="col-xl-8">
-                    <form class="search-box">
-                        <label class="form-label">
-                            <input type="text" class="form-control form-control-filter -search" placeholder="Шо найти на Priwoze">
-                        </label>
-                        <label class="form-label">
-                            <select class="form-select -location">
-                                <option value="All" selected>Все объявления</option>
-                                <option value="12">София</option>
-                                <option value="123">Пловдив</option>
-                                <option value="1234">Варна</option>
-                                <option value="12345">Бургас</option>
-                                <option value="123456">Благоевградская область</option>
-                                <option value="1234457">Бургасская область</option>
-                                <option value="12345436">Добричская область</option>
-                                <option value="123874">Габровская область</option>
-                                <option value="1238765">Хасковская область</option>
-                                <option value="123876">Кырджалийская область</option>
-                                <option value="12387">Кюстендилская область</option>
-                                <option value="1238">Ловечская область</option>
-                                <option value="1235674">Монтанская область</option>
-                                <option value="12345">Пазарджикская область</option>
-                                <option value="12453">Перникская область</option>
-                                <option value="123453">Плевенская область</option>
-                                <option value="123523">Пловдивская область</option>
-                                <option value="123243">Разградская область</option>
-                                <option value="12365">Русенская область</option>
-                                <option value="12398">Шуменская область</option>
-                                <option value="123456">Силистренская область</option>
-                                <option value="123234">Сливенская область</option>
-                                <option value="12324">Смолянская область</option>
-                                <option value="123214">Софийская область</option>
-                                <option value="123225">Старозагорская область</option>
-                                <option value="12354">Тырговиштская область</option>
-                                <option value="12364">Варненская область</option>
-                                <option value="12376">Великотырновская область</option>
-                                <option value="12385">Видинская область</option>
-                                <option value="12348">Врацкая область</option>
-                                <option value="1233788">Ямбольская область</option>
-                            </select>
-                        </label>
-                        <input type="submit" class="btn btn-search" value="Поиск">
-                    </form>
-                </div>
-                <div class="col-xl-4">
-                    <div class="buttons-wrap">
-                        <div class="row">
-                            <div class="col-xs-12 col-md-6"><a href="/" class="btn btn-green">Добавить компанию</a></div>
-                            <div class="col-xs-12 col-md-6"><a href="/" class="btn btn-orange">Добавить объявление</a></div>
+    <div class="site-content">
+
+        <section class="filter-section d-xs-none d-xl-block">
+            <div class="container">
+                <div class="row align-items-md-center">
+                    <div class="col-xl-8">
+                        <form class="search-box">
+                            <label class="form-label">
+                                <input type="text" class="form-control form-control-filter -search" placeholder="Шо найти на Priwoze">
+                            </label>
+                            <label class="form-label">
+                                <select class="form-select -location">
+                                    <option value="All" selected>Все объявления</option>
+                                    <option value="12">София</option>
+                                    <option value="123">Пловдив</option>
+                                    <option value="1234">Варна</option>
+                                    <option value="12345">Бургас</option>
+                                    <option value="123456">Благоевградская область</option>
+                                    <option value="1234457">Бургасская область</option>
+                                    <option value="12345436">Добричская область</option>
+                                    <option value="123874">Габровская область</option>
+                                    <option value="1238765">Хасковская область</option>
+                                    <option value="123876">Кырджалийская область</option>
+                                    <option value="12387">Кюстендилская область</option>
+                                    <option value="1238">Ловечская область</option>
+                                    <option value="1235674">Монтанская область</option>
+                                    <option value="12345">Пазарджикская область</option>
+                                    <option value="12453">Перникская область</option>
+                                    <option value="123453">Плевенская область</option>
+                                    <option value="123523">Пловдивская область</option>
+                                    <option value="123243">Разградская область</option>
+                                    <option value="12365">Русенская область</option>
+                                    <option value="12398">Шуменская область</option>
+                                    <option value="123456">Силистренская область</option>
+                                    <option value="123234">Сливенская область</option>
+                                    <option value="12324">Смолянская область</option>
+                                    <option value="123214">Софийская область</option>
+                                    <option value="123225">Старозагорская область</option>
+                                    <option value="12354">Тырговиштская область</option>
+                                    <option value="12364">Варненская область</option>
+                                    <option value="12376">Великотырновская область</option>
+                                    <option value="12385">Видинская область</option>
+                                    <option value="12348">Врацкая область</option>
+                                    <option value="1233788">Ямбольская область</option>
+                                </select>
+                            </label>
+                            <input type="submit" class="btn btn-search" value="Поиск">
+                        </form>
+                    </div>
+                    <div class="col-xl-4">
+                        <div class="buttons-wrap">
+                            <div class="row">
+                                <div class="col-xs-12 col-md-6"><a href="/" class="btn btn-green">Добавить компанию</a></div>
+                                <div class="col-xs-12 col-md-6"><a href="/" class="btn btn-orange">Добавить объявление</a></div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
