@@ -8,7 +8,7 @@ if (SITE_ID == 's1') {
     setlocale(LC_TIME, 'ru_RU.utf8');
     $uaUrl = SITE_DIR.'ua'.$_SERVER['SCRIPT_URL'];
 }
-if (SITE_ID == 'ua') {
+if (SITE_ID == 's2') {
     setlocale(LC_TIME, 'uk_UA.utf8');
     $ruUrl = str_replace(SITE_DIR, '/',  $_SERVER['SCRIPT_URL']);
 }

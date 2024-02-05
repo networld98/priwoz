@@ -339,12 +339,10 @@ JCSmartFilter.prototype.values2post = function (values)
 	//Костыль для работы поиска не лету
 	url = url.join('&').slice(1);
 	let shrink = url.split('&');
-	console.log(shrink[1]);
+	let categoryValue = shrink[0].split('=');
 	if(url!=null){
 		fullUrl = currentUrl+'&'+shrink[1];
-		console.log(fullUrl);
-		$("#companies-wrap").load(fullUrl +"&set_filter=Найти #companies-masonry");
-		console.log(fullUrl +"&set_filter=Найти #companies-masonry");
+		$("#companies-container").load(fullUrl +"&category_546="+categoryValue[1]+"&set_filter=Найти #companies-wrap");
 	}
 	return post;
 };

@@ -14,9 +14,6 @@ if ($_POST['CATEGORY']) {
 
     if (!in_array($propertyID, $arResult['PROPERTY_LIST_FULL']))
         $arResult[$arResult['PROPERTY_LIST_FULL']][] = $arResult["PROPERTY_LIST_FULL"][$propertyID];
-    echo "<pre>";
-    print_r($arResult["PROPERTY_LIST_FULL"]);
-    echo "</pre>";
     ?>
     <div class="form-select-box">
         <? if (count((array)$arResult["PROPERTY_LIST_FULL"][$_POST['CATEGORY']]["ENUM"]) == 0) {?>

@@ -15,7 +15,7 @@ $this->addExternalCss("/bitrix/css/main/font-awesome.css");
 $this->addExternalCss($this->GetFolder() . '/themes/' . $arParams['TEMPLATE_THEME'] . '/style.css');
 ?>
 <div class="companies-wrap" id="companies-wrap">
-    <div class="grid companies-masonry" id="companies-masonry">
+    <div class="grid companies-masonry">
         <div class="grid-sizer"></div>
         <div class="gutter-sizer"></div>
         <?php
@@ -140,6 +140,7 @@ $this->addExternalCss($this->GetFolder() . '/themes/' . $arParams['TEMPLATE_THEM
             </div>
         </section>
     <? endif; ?>
+</div>
     <?if($arParams["DISPLAY_BOTTOM_PAGER"]):?>
         <?=$arResult["NAV_STRING"]?>
     <?endif;?>

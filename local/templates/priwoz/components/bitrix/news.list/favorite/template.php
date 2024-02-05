@@ -38,7 +38,7 @@ foreach ($arResult["ITEMS"] as $arItem):?>
                     <?echo $arItem["PROPERTIES"]['NAME']['VALUE'];?>
                     <?echo $arItem["PROPERTIES"]['AUTHOR']['VALUE'];?>
                     <img class="bg-img" src="<?= $file['src'] ?>" alt="<?= $arItem['NAME'] ?>">
-                    <? if (!empty($arItem["PROPERTIES"]['NAME']['VALUE']) && $arItem["PROPERTIES"]['AUTHOR']['VALUE'] != $arItem["PROPERTIES"]['NAME']['VALUE'] && is_numeric($arItem["PROPERTIES"]['NAME']['VALUE'])) {
+                    <? echo $arItem["PROPERTIES"]['NAME']['VALUE']; if (!empty($arItem["PROPERTIES"]['NAME']['VALUE']) && $arItem["PROPERTIES"]['AUTHOR']['VALUE'] != $arItem["PROPERTIES"]['NAME']['VALUE'] && is_numeric($arItem["PROPERTIES"]['NAME']['VALUE'])) {
                         $companyData = CIBlockElement::GetByID($arItem["PROPERTIES"]['NAME']['VALUE'])->GetNextElement()->GetProperties();
                         if (!empty($companyData)) {
                             $logo = CFile::ResizeImageGet($companyData['LOGO']['VALUE'], array('width' => 150), BX_RESIZE_IMAGE_PROPORTIONAL, true); ?>

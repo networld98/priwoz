@@ -30,7 +30,6 @@ $iblock = 22;
         $component
     ); ?>
 <? endif ?>
-
 <?
 $id = CIBlockFindTools::GetSectionID($section_id, $_GET['category'],  array("IBLOCK_ID" => $iblock));
 if($id==0) {
@@ -69,7 +68,7 @@ if($id!=0 && $sub==NULL){
                             "IBLOCK_TYPE" => "companies",
                             "IBLOCK_ID" => "24",
                             "PREFILTER_NAME" => "smartPreFilter",
-                            "FILTER_NAME" => "city",
+                            "FILTER_NAME" => "category",
                             "PROPERTY_CODE" => array(
                                 1 => "CITY",
                                 2 => "CATEGORY",
@@ -106,7 +105,7 @@ if($id!=0 && $sub==NULL){
                     "INSTANT_RELOAD" => "N",
                     "IBLOCK_TYPE" => "companies",
                     "IBLOCK_ID" => "24",
-                    "FILTER_NAME" => "city",
+                    "FILTER_NAME" => "category",
                     "PROPERTY_CODE" => array(
                         1 => "CATEGORY",
                         2 => "SUBCATEGORY",
@@ -130,7 +129,7 @@ if($id!=0 && $sub==NULL){
             }
             $arFilter = array("IBLOCK_ID" => $iblock, "IBLOCK_SECTION_ID" =>  $sub);
             if($id==0) {
-                $arSelect = array("NAME", "CODE", "UF_ICON", "UF_NAME_UA");
+                $arSelect = array("ID", "NAME", "CODE", "UF_ICON", "UF_NAME_UA");
                 $obSections = CIBlockSection::GetList(array("name" => "asc"), $arFilter, false, $arSelect);
                 while ($ar_result = $obSections->GetNext()) {
                     if ($ar_result['UF_ICON'] || $id!=0) {
@@ -151,7 +150,7 @@ if($id!=0 && $sub==NULL){
                     }
                 }
             }else{
-                $arSelect = array();
+                $arSelect = array("ID","NAME","CODE","PROPERTY_NAME_UA");
                 $obSections = CIBlockElement::GetList(array("name" => "asc"), $arFilter, false, $arSelect);
                 while($ob = $obSections->GetNextElement()){
                     $ar_result = $ob->GetFields();
@@ -165,12 +164,11 @@ if($id!=0 && $sub==NULL){
                         } ?>
                         <div class="item">
                             <a href="<?= SITE_DIR ?>companies/?category=<?= $ar_result['CODE'] ?>" class="category-link">
-                                <?= htmlspecialchars_decode($ar_result['UF_ICON']) ?>
                                 <?= $nameCategory ?>
                             </a>
                         </div>
                         <?
-                        $mobCat[] = ["NAME"=>$nameCategory,"ICON"=>htmlspecialchars_decode($ar_result['UF_ICON']), "CODE"=>$ar_result['CODE']];
+                        $mobCat[] = ["NAME"=>$nameCategory, "CODE"=>$ar_result['CODE']];
                     }
                 }
             }
@@ -184,22 +182,22 @@ if($id!=0 && $sub==NULL){
                 <div class="col-xs-12 col-md-12">
                     <div class="form-label"><?=GetMessage("T_NEWS_CATEGORY")?></div>
                     <select class="form-select -without-search">
-                        <option onclick="location.href='<?= SITE_DIR ?>companies/"><?=GetMessage("T_NEWS_COMPANY_ALL")?></option>
+                        <option><a href="<?= SITE_DIR ?>companies/">Все компанії</a></option>
                         <?foreach($mobCat as $item){?>
-                            <option onclick="location.href='<?= SITE_DIR ?>companies/?category=<?= $item['CODE'] ?>"><?= $item['NAME']?></option>
+                            <option ON><a href="<?= SITE_DIR ?>companies/?category=<?= $item['CODE'] ?>"><?= $item['ICON'] ?><?= $item['NAME']?></a></option>
                         <?}?>
                     </select>
                 </div>
             </div>
         </div>
-        <div class="container">
+        <div class="container" id="companies-container">
             <?
-            if($id!=0 && empty($_GET['city_548'])) {
-                global $city;
+            if($id!=0 && empty($_GET['category_548'])) {
+                global $category;
                 if ($id != 0 && $sub == $id) {
-                    $city = array("PROPERTY_CATEGORY" => $id);
+                    $category = array("PROPERTY_CATEGORY" => $id);
                 } elseif ($id != 0 && $sub != NULL) {
-                    $city = array("PROPERTY_CATEGORY" => $sub, "PROPERTY_SUBCATEGORY" => $id);
+                    $category = array("PROPERTY_CATEGORY" => $sub, "PROPERTY_SUBCATEGORY" => $id);
                 }
             }
             $APPLICATION->IncludeComponent(

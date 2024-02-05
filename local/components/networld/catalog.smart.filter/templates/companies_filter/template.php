@@ -32,7 +32,7 @@ while ($arElement = $dbAllElements->Fetch()) {
 
             //not prices
             foreach ($arResult["ITEMS"] as $key => $arItem) {
-                if ($arItem["ID"] != 529) {
+                if ($arItem["ID"] != 529 && $arItem["ID"] != 546 && $arItem["ID"] != 547) {
                     if (
                         empty($arItem["VALUES"])
                         || isset($arItem["PRICE"])
@@ -65,7 +65,7 @@ while ($arElement = $dbAllElements->Fetch()) {
                                         <? foreach ($arItem["VALUES"] as $val => $ar): ?>
                                             <option value="<? echo $ar["HTML_VALUE_ALT"] ?>"
                                                     id="<? echo $ar["CONTROL_ID"] ?>"
-                                                <?if($ar["HTML_VALUE_ALT"] == $_GET['city_529']) {echo 'selected';}?>>
+                                                <?if($ar["HTML_VALUE_ALT"] == $_GET['category_529']) {echo 'selected';}?>>
                                                 <?= str_replace(".", "", $ar["VALUE"]); ?>
                                             </option>
                                         <? endforeach; ?>
