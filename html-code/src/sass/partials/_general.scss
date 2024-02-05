@@ -4,6 +4,14 @@ body {
   }
 }
 
+html {
+  &.swipebox-html {
+    body {
+      overflow: hidden;
+    }
+  }
+}
+
 .site {
   background: $color-lightgray-4;
   padding-top: 70px;

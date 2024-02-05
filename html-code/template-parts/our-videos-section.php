@@ -1,4 +1,4 @@
-<section class="our-videos-section">
+<section class="our-videos-section" id="our-videos-section">
     <div class="container">
         <h2 class="title">Наши видео</h2>
 

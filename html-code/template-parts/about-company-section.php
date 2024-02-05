@@ -5,31 +5,31 @@
                 <h2 class="title d-xs-block d-md-none">О компании</h2>
                 <div class="img-box">
                     <div class="item">
-                        <div class="image">
+                        <a rel="gallery-min" href="/html-code/temporary-images/companies/single-1.png" class="image swipebox">
                             <img class="bg-img" src="/html-code/temporary-images/companies/single-1.png"
                                  alt="company 1">
-                        </div>
+                        </a>
                     </div>
                     <div class="item">
-                        <div class="image">
+                        <a rel="gallery-min" href="/html-code/temporary-images/companies/single-2.png" class="image swipebox">
                             <img class="bg-img" src="/html-code/temporary-images/companies/single-2.png"
                                  alt="company 2">
-                        </div>
+                        </a>
                     </div>
                     <div class="item">
-                        <div class="image">
+                        <a rel="gallery-min" href="/html-code/temporary-images/companies/single-3.png" class="image swipebox">
                             <img class="bg-img" src="/html-code/temporary-images/companies/single-3.png"
                                  alt="company 3">
-                        </div>
+                        </a>
                     </div>
                     <div class="item">
-                        <div class="image">
+                        <a rel="gallery-min" href="/html-code/temporary-images/companies/single-4.png" class="image swipebox">
                             <img class="bg-img" src="/html-code/temporary-images/companies/single-4.png"
                                  alt="company 4">
-                        </div>
+                        </a>
                     </div>
                 </div>
-                <div class="link-box"><a class="general-link" href="/">Все 18 фото</a></div>
+                <div class="link-box"><a class="general-link" href="#photo-gallery-section">Все 18 фото</a></div>
             </div>
             <div class="col-xs-12 col-md-6">
                 <div class="text-box text-1">

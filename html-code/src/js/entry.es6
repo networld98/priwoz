@@ -5,6 +5,7 @@ require("../fonts/fontello/css/fontello.css");
 require("./vendor/masonry.pkgd");
 require("./vendor/jquery.dad");
 require("./vendor/select2");
+require("./vendor/jquery.swipebox");
 
 import 'swiper/css/bundle';
 
@@ -12,6 +13,7 @@ import 'swiper/css/bundle';
 
     require("./custom/header.es6");
     require("./custom/forms.es6");
+    require("./custom/lightbox.es6");
     require("./custom/collapsed-content.es6");
 
     $(".upload-file-custom").length > 0 && require("./custom/upload-file-custom.es6");

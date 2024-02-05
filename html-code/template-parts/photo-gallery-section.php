@@ -1,4 +1,4 @@
-<section class="photo-gallery-section">
+<section class="photo-gallery-section" id="photo-gallery-section">
     <div class="container">
         <div class="title-wrap">
             <h2 class="title">Фотографии компании  <span>(18 фото)</span></h2>
@@ -10,29 +10,29 @@
         <div class="photo-gallery-slider swiper-container">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                    <div class="img">
+                    <a rel="gallery-main" href="/html-code/temporary-images/companies/gallery1.png" class="img swipebox">
                         <img src="/html-code/temporary-images/companies/gallery1.png" alt="company gallery photo 1">
-                    </div>
+                    </a>
                 </div>
                 <div class="swiper-slide">
-                    <div class="img">
+                    <a rel="gallery-main" href="/html-code/temporary-images/companies/gallery2.png" class="img swipebox">
                         <img src="/html-code/temporary-images/companies/gallery2.png" alt="company gallery photo 2">
-                    </div>
+                    </a>
                 </div>
                 <div class="swiper-slide">
-                    <div class="img">
+                    <a rel="gallery-main" href="/html-code/temporary-images/companies/gallery3.png" class="img swipebox">
                         <img src="/html-code/temporary-images/companies/gallery3.png" alt="company gallery photo 3">
-                    </div>
+                    </a>
                 </div>
                 <div class="swiper-slide">
-                    <div class="img">
+                    <a rel="gallery-main" href="/html-code/temporary-images/companies/gallery3.png" class="img swipebox">
                         <img src="/html-code/temporary-images/companies/gallery3.png" alt="company gallery photo 3">
-                    </div>
+                    </a>
                 </div>
                 <div class="swiper-slide">
-                    <div class="img">
+                    <a rel="gallery-main" href="/html-code/temporary-images/companies/gallery3.png" class="img swipebox">
                         <img src="/html-code/temporary-images/companies/gallery3.png" alt="company gallery photo 3">
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>

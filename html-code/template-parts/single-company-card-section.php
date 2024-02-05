@@ -65,7 +65,7 @@
                                 </svg>
                             </div>
                             <div class="item-text">
-                                <a href="/">
+                                <a href="#photo-gallery-section">
                                     18 фото
                                 </a>
                             </div>
@@ -93,7 +93,7 @@
                                 </svg>
                             </div>
                             <div class="item-text">
-                                <a href="/">
+                                <a href="#our-videos-section">
                                     видео
                                 </a>
                             </div>
