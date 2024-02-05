@@ -14,7 +14,7 @@ $(document).ready(function() {
 
         if (file) {
             const allowedTypes = ['image/png', 'image/jpeg', 'application/pdf'];
-            const maxFileSize = 1 * 1024 * 1024; // 1 MB
+            const maxFileSize = 5 * 1024 * 1024; // 5 MB
 
             if (allowedTypes.includes(file.type) && file.size <= maxFileSize) {
                 const reader = new FileReader();

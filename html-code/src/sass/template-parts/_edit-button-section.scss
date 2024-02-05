@@ -1,0 +1,72 @@
+.edit-button-section {
+  margin-bottom: 49px;
+  @include media-breakpoint-down(xl) {
+    margin-bottom: 20px;
+  }
+
+  a.sidebar-widget {
+    display: block;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid $color-lightgray-3;
+    background: #FFF;
+    transition: .4s;
+    max-width: 300px;
+    &:hover {
+      border-color: $color-green-3;
+      background: $color-green-3;
+
+      .blue-link {
+        color: #FFF;
+      }
+    }
+    &.edit-link {
+      color: rgba(0, 0, 0, 0.75);
+      font-family: $roboto-condensed-font;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: 120%;
+      text-align: left;
+      padding: 10px 23px 10px 30px;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      svg {
+        width: 16px;
+        height: 16px;
+        display: inline-block;
+        vertical-align: baseline;
+        margin-left: 9px;
+        color: $color-gray-3;
+        transition: .3s;
+      }
+      &:hover {
+        color: #000;
+        svg {
+          color: #000;
+        }
+      }
+      @include media-breakpoint-down(xl) {
+        border-color: $color-green-3;
+        background: $color-green-3;
+        max-width: 228px;
+        color: #000;
+        text-align: left;
+        font-size: 16px;
+        padding: 10px 15px 10px 20px;
+        svg {
+          color: #000;
+        }
+      }
+      @include media-breakpoint-down(md) {
+        max-width: 100%;
+        svg {
+          color: #000;
+          margin-left: 12px;
+        }
+      }
+    }
+  }
+}

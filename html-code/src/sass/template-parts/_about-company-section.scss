@@ -26,6 +26,51 @@
     }
   }
 
+  .img-default {
+    position: relative;
+    img {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      top: 55.5%;
+      left: 54.5%;
+      width: 46px;
+      height: 60px;
+      z-index: 1;
+      background: url('../../../images/icons/dots-white.svg') no-repeat 50% 50%/ contain;
+      opacity: 1;
+      @include media-breakpoint-down(xl) {
+        width: 28px;
+        height: 37px;
+      }
+    }
+    .company-name {
+      font-family: $roboto-condensed-font;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 120px;
+      line-height: 100%;
+      color: rgba(0, 0, 0, 0.2);
+      position: absolute;
+      top: 20%;
+      left: 2px;
+      z-index: 2;
+      @include media-breakpoint-down(xxl) {
+        font-size: 100px;
+      }
+      @include media-breakpoint-down(xl) {
+        font-size: 60px;
+      }
+      @include media-breakpoint-down(md) {
+        font-size: 15vw;
+      }
+    }
+  }
+
   .img-box {
     display: flex;
     align-items: flex-start;

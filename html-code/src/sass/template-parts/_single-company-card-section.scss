@@ -64,6 +64,49 @@
         transform: none;
       }
     }
+
+    &.-default {
+      background: #E4E7E8;
+      .default-text {
+        cursor: default;
+        position: absolute;
+        max-width: 518px;
+        width: 100%;
+        top: 35.5%;
+
+        right: calc((1594px / 2) - 30px);
+        transform: translateX(100%);
+
+        font-family: $roboto-condensed-font;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 80px;
+        line-height: 100%;
+        color: #E4E7E8;
+        text-shadow:
+                -1px -1px 0 rgba(0, 0, 0, 0.2),
+                1px -1px 0 rgba(0, 0, 0, 0.2),
+                -1px  1px 0 rgba(0, 0, 0, 0.2),
+                1px  1px 0 rgba(0, 0, 0, 0.2);
+
+        @include media-breakpoint-down(xxl) {
+          right: calc((1196px / 2) - 30px);
+        }
+        @include media-breakpoint-down(xl) {
+          right: calc((748px / 2) - 22px);
+          max-width: 265px;
+          font-size: 36px;
+        }
+        @include media-breakpoint-down(md) {
+          right: auto;
+          left: 15px;
+          transform: none;
+          font-size: 11vw;
+          max-width: 80%;
+          top: 40%;
+        }
+      }
+    }
   }
 
   .text-box {
@@ -151,6 +194,33 @@
         margin-top: 20px;
       }
 
+      &.-one-column {
+        .item {
+          width: 100%;
+          @include media-breakpoint-down(xl) {
+            &:nth-child(2n - 1) {
+              width: 100%;
+            }
+            &:nth-child(2n) {
+              width: 100%;
+            }
+          }
+
+          &:last-child {
+            margin-bottom: 0;
+            @include media-breakpoint-down(xl) {
+              margin-bottom: 22px;
+            }
+          }
+        }
+        & + .menu {
+          margin-top: 28px;
+          @include media-breakpoint-down(xl) {
+            margin-top: 22px;
+          }
+        }
+      }
+
       .item {
         width: 50%;
         margin-bottom: 28px;
@@ -224,6 +294,17 @@
     }
     @include media-breakpoint-down(md) {
       column-gap: 21px;
+    }
+  }
+
+  &.-without-img-and-logo {
+    min-height: 200px;
+    @include media-breakpoint-down(xl) {
+      min-height: 150px;
+    }
+
+    .text-box {
+      max-width: 100%;
     }
   }
 }

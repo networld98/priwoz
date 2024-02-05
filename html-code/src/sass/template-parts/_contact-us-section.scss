@@ -1,21 +1,21 @@
 .contact-us-section {
-  margin-bottom: 80px;
+  margin: 80px 0;
   @include media-breakpoint-down(xl) {
-    margin-bottom: 50px;
+    margin: 50px 0;
   }
   @include media-breakpoint-down(md) {
-    margin-bottom: 40px;
+    margin: 40px 0;
   }
 
   .contact-us-box {
     border-radius: 10px;
     background: $color-gray-3 url('../../../images/contact-us-bg.svg') no-repeat 50% 50%/ cover;
     overflow: hidden;
-    padding: 72px 30px 75px;
+    padding: 74px 30px 82px;
     z-index: 0;
     position: relative;
     @include media-breakpoint-down(xxl) {
-      padding: 72px 30px 75px 100px;
+      padding: 75px 30px 80px 100px;
     }
     @include media-breakpoint-down(xl) {
       border-radius: 5px;
@@ -24,13 +24,14 @@
     @include media-breakpoint-down(md) {
       margin: 0 -16px;
       padding: 20px 15px 13px;
+      background-position: 71% 50%;
     }
 
     &:before {
       content: '';
       position: absolute;
       top: 23px;
-      left: 50%;
+      left: 42.5%;
       width: 46px;
       height: 60px;
       z-index: -1;
@@ -38,7 +39,6 @@
       opacity: .5;
       @include media-breakpoint-down(xxl) {
         left: 43.5%;
-
       }
       @include media-breakpoint-down(xl) {
         top: 14px;
@@ -82,17 +82,17 @@
       font-size: 40px;
       line-height: 120%;
       color: #FFFFFF;
-      width: 41%;
+      width: 33%;
       padding-right: 30px;
       letter-spacing: -0.012em;
       margin-bottom: 0;
       @include media-breakpoint-down(xxl) {
         padding-left: 5px;
-        width: 41.5%;
+        width: 34.5%;
       }
       @include media-breakpoint-down(xl) {
         font-size: 26px;
-        width: 50%;
+        width: 40%;
         padding-left: 0;
       }
       @include media-breakpoint-down(md) {
@@ -104,20 +104,26 @@
     .links {
       display: flex;
       align-items: flex-start;
+      justify-content: flex-end;
       flex-wrap: wrap;
       column-gap: 35px;
       row-gap: 15px;
-      width: 69%;
+      width: 67%;
       letter-spacing: -0.012em;
+      padding-right: 50px;
       @include media-breakpoint-down(xxl) {
-        width: 68.5%;
+        width: 65.5%;
+        padding-right: 38px;
       }
       @include media-breakpoint-down(xl) {
-        width: 50%;
+        width: 60%;
         column-gap: 20px;
+        padding-right: 10px;
       }
       @include media-breakpoint-down(md) {
         width: 100%;
+        padding-right: 0;
+        justify-content: flex-start;
       }
 
       a {
