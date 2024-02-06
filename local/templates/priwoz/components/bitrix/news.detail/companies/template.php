@@ -32,8 +32,8 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
 <? if ($arResult['PROPERTIES']['AUTHOR']['VALUE'] == $USER->GetID() && CUser::IsAuthorized()) { ?>
     <section class="edit-button-section">
         <div class="container">
-            <a href="/personal/company/?edit=Y&CODE=<?= $arResult["ID"] ?>" class="sidebar-widget edit-link">
-                <?= GetMessage("T_EDIT_COMPANY") ?>Редактировать
+            <a href="<?=SITE_DIR?>personal/company/?edit=Y&CODE=<?= $arResult["ID"] ?>" class="sidebar-widget edit-link">
+                <?= GetMessage("T_EDIT_COMPANY") ?>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                     <path d="M11.325 1.21319L11.3251 1.2131C11.7994 0.738518 12.426 0.5 13.0559 0.5C13.6859 0.5 14.3124 0.738518 14.7868 1.2131L14.7869 1.21318C15.7377 2.16399 15.7377 3.72424 14.7869 4.67505L14.7869 4.67506L5.46506 13.9977C5.46505 13.9977 5.46505 13.9977 5.46504 13.9977C5.34857 14.1141 5.20365 14.199 5.04377 14.245L4.91967 14.2806L4.91918 14.2811L0.667922 15.495C0.667901 15.495 0.667879 15.495 0.667857 15.495C0.645283 15.5014 0.621406 15.5017 0.598696 15.4958C0.575961 15.4899 0.555218 15.478 0.538611 15.4614C0.522005 15.4448 0.510135 15.424 0.504231 15.4013C0.498342 15.3786 0.498605 15.3548 0.504991 15.3322C0.505006 15.3322 0.505021 15.3321 0.505036 15.3321L1.75446 10.9571L1.75461 10.9565C1.79994 10.7972 1.88555 10.6518 2.00233 10.535C2.00234 10.535 2.00234 10.535 2.00235 10.535L11.325 1.21319ZM13.0767 5.30565L13.4302 5.6592L13.7838 5.30565L14.6006 4.4888C15.4595 3.62992 15.4581 2.25766 14.5998 1.39942C14.1727 0.972164 13.6152 0.756122 13.0559 0.756122C12.4969 0.756122 11.9385 0.971985 11.5113 1.39942C11.5112 1.39945 11.5112 1.39948 11.5112 1.39951L10.6944 2.21627L10.3408 2.56983L10.6944 2.92338L13.0767 5.30565ZM10.5082 3.10962L10.1546 2.75609L9.80106 3.10961L2.18862 10.7212L2.18861 10.7212C2.09992 10.8099 2.03993 10.9165 2.00791 11.0287C2.00789 11.0288 2.00788 11.0289 2.00786 11.0289C2.00782 11.029 2.00779 11.0292 2.00775 11.0293L1.07013 14.3118L0.822958 15.1771L1.68826 14.9299L4.97048 13.9921L4.97126 13.9919C5.08855 13.9582 5.19321 13.8956 5.27677 13.8126L5.27799 13.8114L12.8904 6.199L13.244 5.84545L12.8904 5.4919L10.5082 3.10962Z"
                           stroke="currentColor"/>
@@ -48,7 +48,7 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
                 <?if($picture){?>
                     <img src="<?= $picture['src'] ?>" alt="<?= $arResult["NAME"] ?>" class="bg-img">
                 <?}else{?>
-                    <div class="default-text">Здесь будет фото компании</div>
+                    <div class="default-text"><?= GetMessage("T_PHOTO_COMPANY") ?></div>
                 <?}?>
                 <?if($logo){?>
                     <img src="<?= $logo['src'] ?>" alt="<?= $arResult["NAME"] ?>-logo" class="company-logo">
@@ -79,16 +79,16 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
                                         </svg>
                                     </div>
                                     <div class="item-text">
-                                        <a href="<?if (stripos($arResult['DISPLAY_PROPERTIES']['SITE']['DISPLAY_VALUE'], 'https://')===false) {?>https://<?}?><?= $arResult['DISPLAY_PROPERTIES']['SITE']['DISPLAY_VALUE'] ?>">
-                                            <?= str_replace("'https://", "",$arResult['DISPLAY_PROPERTIES']['SITE']['DISPLAY_VALUE']) ?>
+                                        <a href="<?if (stripos($arResult['PROPERTIES']['SITE']['VALUE'], 'https://')===false) {?>https://<?}?><?= $arResult['PROPERTIES']['SITE']['VALUE'] ?>">
+                                            <?= str_replace("https://", "",$arResult['PROPERTIES']['SITE']['VALUE']) ?>
                                         </a>
                                     </div>
                                 </div>
                             <? } ?>
                             <div class="item">
                                 <div class="item-text">
-                                    <a href="/ads/?companisAds=<?= $arResult['ID'] ?>" class="item-link">
-                                        Объявления компании
+                                    <a href="<?=SITE_DIR?>ads/?companisAds=<?= $arResult['ID'] ?>" class="item-link">
+                                        <?= GetMessage("T_COMPANY_ADS") ?>
                                     </a>
                                 </div>
                             </div>
@@ -125,7 +125,7 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
                                     </div>
                                     <div class="item-text">
                                         <a href="#photo-gallery-section">
-                                            <?= count((array)$arResult['PROPERTIES']['PHOTOS']['VALUE']) ?> фото
+                                            <?= count((array)$arResult['PROPERTIES']['PHOTOS']['VALUE']) ?> <?= GetMessage("T_PHOTO") ?>
                                         </a>
                                     </div>
                                 </div>
@@ -165,7 +165,7 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
                                 </div>
                                 <div class="item-text">
                                     <a href="#our-videos-section">
-                                        видео
+                                        <?= GetMessage("T_VIDEO") ?>
                                     </a>
                                 </div>
                             </div>
@@ -364,7 +364,7 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
 <? if ($arResult['PROPERTIES']['SERVICES']['VALUE']) { ?>
     <section class="our-services-section">
         <div class="container">
-            <h2 class="title">Наши услуги</h2>
+            <h2 class="title"><?= GetMessage("T_COMPANY_SERVICES") ?></h2>
             <div class="column-list">
                 <? foreach ($arResult['PROPERTIES']['SERVICES']['VALUE'] as $key => $item) { ?>
                     <div class="item"><?= $item ?></div>
@@ -378,7 +378,7 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-md-6 d-xs-block d-md-none">
-                    <h2 class="title">О компании</h2>
+                    <h2 class="title"><?= GetMessage("T_ABOUT") ?></h2>
                 </div>
               <? if ( $arResult['PROPERTIES']['PHOTOS']['VALUE']) { ?>
                 <div class="col-xs-12 col-md-6">
@@ -398,15 +398,13 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
                     </div>
                     <? } ?>
                     <? if (count((array)$arResult['PROPERTIES']['PHOTOS']['VALUE']) > 4) { ?>
-                        <div class="link-box"><a class="general-link"
-                                                 href="#photo-gallery-section">Все <?= count((array)$arResult['PROPERTIES']['PHOTOS']['VALUE']) ?>
-                                фото</a></div>
+                        <div class="link-box"><a class="general-link" href="#photo-gallery-section"><?= GetMessage("T_ALL") ?> <?= count((array)$arResult['PROPERTIES']['PHOTOS']['VALUE']) ?><?= GetMessage("T_PHOTO") ?></a></div>
                     <? } ?>
                 </div>
                 <? if ($arResult['PREVIEW_TEXT']) { ?>
                     <div class="col-xs-12 <?if($arResult['PROPERTIES']['PHOTOS']['VALUE']){?>col-md-6<?}?>">
                         <div class="<?if($arResult['PROPERTIES']['PHOTOS']['VALUE']){?>text-box<?}?> text-1">
-                            <h2 class="title d-xs-none d-md-block">О компании</h2>
+                            <h2 class="title d-xs-none d-md-block"><?= GetMessage("T_ABOUT") ?></h2>
                             <?= $arResult['PREVIEW_TEXT'] ?>
                         </div>
                     </div>
@@ -428,7 +426,7 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
 <? if ($arResult['PROPERTIES']['BANNER']['VALUE']) { ?>
     <section class="why-our-company-section">
         <div class="container">
-            <h2 class="title">Почему выбирают нас</h2>
+            <h2 class="title"><?= GetMessage("T_WHY") ?></h2>
             <div class="advantages">
                 <? foreach ($arResult['PROPERTIES']['WHY']['VALUE'] as $key => $item) { ?>
                     <? if ($key % 2 === 0) { ?>
@@ -448,7 +446,7 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
 <? if ($arResult['PROPERTIES']['YOUTUBEVIDEO']['VALUE']) { ?>
     <section class="our-videos-section" id="our-videos-section">
         <div class="container">
-            <h2 class="title">Наши видео</h2>
+            <h2 class="title"><?= GetMessage("T_COMPANY_VIDEO") ?></h2>
             <div class="videos-box">
                 <? foreach ($arResult['PROPERTIES']['YOUTUBEVIDEO']['VALUE'] as $key => $photo) { ?>
                     <div class="item">
@@ -629,15 +627,15 @@ $APPLICATION->IncludeComponent(
     <div class="container">
     <div class="contact-us-box">
     <div class="top-part">
-    <h2 class="title">Свяжитесь с нами</h2>
-    <p class="subtitle d-xs-block d-md-none">и мы ответим на все ваши вопросы</p>
+    <h2 class="title"><?= GetMessage("T_CALL_AS") ?></h2>
+    <p class="subtitle d-xs-block d-md-none"><?= GetMessage("T_MY_OTV") ?></p>
     <div class="links">
     <a href="tel:<?= $arResult['DISPLAY_PROPERTIES']['PHONE']['VALUE'] ?>"><?= $arResult['PROPERTIES']['PHONE']['VALUE'] ?></a>
     <a href="tel:<?= $arResult['PROPERTIES']['DOPPHONE']['VALUE'] ?>"><?= $arResult['PROPERTIES']['DOPPHONE']['VALUE'] ?></a>
     </div>
     </div>
     <div class="bottom-part">
-        <p class="subtitle d-xs-none d-md-block">и мы ответим на все ваши вопросы</p>
+        <p class="subtitle d-xs-none d-md-block"><?= GetMessage("T_MY_OTV") ?></p>
         <ul class="menu -social">
             <? if ($arResult['PROPERTIES']['TELEGRAM']['VALUE']) { ?>
                 <li>
@@ -725,8 +723,8 @@ if ($arResult['PROPERTIES']['PHOTOS']['VALUE']) {
     <section class="photo-gallery-section" id="photo-gallery-section">
         <div class="container">
             <div class="title-wrap">
-                <h2 class="title">Фотографии компании
-                    <span>(<?= count((array)$arResult['PROPERTIES']['PHOTOS']['VALUE']) ?> фото)</span></h2>
+                <h2 class="title"><?= GetMessage("T_COMPANY_PHOTO") ?>
+                    <span>(<?= count((array)$arResult['PROPERTIES']['PHOTOS']['VALUE']) ?> <?= GetMessage("T_PHOTO") ?>)</span></h2>
                 <div class="swiper-navigation">
                     <div class="swiper-button-prev photo-gallery-swiper-button-prev"></div>
                     <div class="swiper-button-next photo-gallery-swiper-button-next"></div>

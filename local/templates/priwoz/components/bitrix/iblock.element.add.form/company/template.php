@@ -273,15 +273,17 @@ if ($_GET['edit'] != 'Y') {
                                     <? if ($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == "WHY") { ?>
                                         <?if($i % 2 === 0){?>
                                             <div class="col-xs-4">
-                                                <div class="hint">Заголовок</div>
+                                                <div class="hint"><?= GetMessage("WHY_TITLE") ?></div>
                                         <?}else{?>
                                             <div class="col-xs-8">
-                                                <div class="hint">Описание</div>
+                                                <div class="hint"><?= GetMessage("WHY_PARAGRAPH") ?></div>
                                         <?}?>
                                     <?
                                     } ?>
                                     <? if ($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == "YOUTUBEVIDEO") { ?>
                                         <div class="col-xs-6">
+                                            <span class="form-label -with-icon">
+                                                <span class="input-icon -youtube"></span>
                                     <? } ?>
                                     <input <?= $INPUT_TYPE ?> type="text" class="form-control"
                                                               name="PROPERTY[<?= $propertyID ?>][<?= $i ?>]"
@@ -291,12 +293,14 @@ if ($_GET['edit'] != 'Y') {
                                             <?
                                         } ?>
                                                               value="<?= $value ?>"/>
-                                    <? if ($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == "WHY" || $arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == "YOUTUBEVIDEO") { ?>
+                                    <? if ($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == "WHY" ) { ?>
                                     </div>
-                                    <?
-                                } ?>
-                                    <?
-                                if ($arResult["PROPERTY_LIST_FULL"][$propertyID]["USER_TYPE"] == "DateTime"): ?><?
+                                    <?}?>
+                                     <? if ($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == "YOUTUBEVIDEO") { ?>
+                                            </span>
+                                    </div>
+                                    <?}?>
+                                   <? if ($arResult["PROPERTY_LIST_FULL"][$propertyID]["USER_TYPE"] == "DateTime"): ?><?
                                     $APPLICATION->IncludeComponent(
                                         'bitrix:main.calendar',
                                         '',

@@ -12,4 +12,5 @@ $MESS ['T_NEW_DESC'] = "Спочатку нові";
 $MESS ['T_PRICE_ASC'] = "Спочатку дорогі";
 $MESS ['T_PRICE_DESC'] = "Спочатку дешеві";
 $MESS ['T_DESK_ADS_ALL'] = "оголошень(я)";
+$MESS ['T_ABOUT_COMPANY'] = "Про компанію";
 ?>

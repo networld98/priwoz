@@ -15,7 +15,7 @@ if(count((array)$arResult["ITEMS"])>0){?>
 <section class="products-overview-min-section -company">
     <div class="bg-overlay">
         <div class="container">
-            <div class="section-title -min">Объявления компании</div>
+            <div class="section-title -min"><?= GetMessage("CT_TITLE") ?></div>
             <div class="products-wrap">
                 <div id="products-wrap">
                     <div class="grid products-masonry" id="products-masonry">

@@ -12,4 +12,5 @@ $MESS ['T_PRICE_DESC'] = "Сначала дешевые";
 $MESS ['T_DESK_ADS_ALL'] = "объявлений(ие)";
 $MESS ['T_ADS_COMPANY'] = "Объявления компании";
 $MESS ['T_ADS_USER'] = "Объявления автора";
+$MESS ['T_ABOUT_COMPANY'] = "О компании";
 ?>

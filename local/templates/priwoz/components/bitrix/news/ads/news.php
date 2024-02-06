@@ -20,7 +20,7 @@ global $arUser;
                 <h1 class="page-title"><?=GetMessage("T_DESK_ADS")?></h1>
                 <a href="<?=SITE_DIR?>personal/announcement/" class="btn btn-orange d-xs-none d-xl-inline-flex"><?=GetMessage("T_ADD_ADS")?></a>
             </div>
-            <div class="collapse-head search-box-opener" data-collapsed="#search-box">Поиск на доске объявлений<?=GetMessage("T_ADD_ADS")?><span class="arrow">
+            <div class="collapse-head search-box-opener" data-collapsed="#search-box"><?=GetMessage("T_SEARCH_DESK")?><span class="arrow">
                 </span></div>
             <? $APPLICATION->IncludeComponent(
                 "networld:catalog.smart.filter",
@@ -107,13 +107,14 @@ global $arUser;
                 $userTitle = GetMessage("T_ADS_USER");
 
             } elseif ($_GET['companisAds'] != NULL) {
-                $res = CIBlockElement::GetList(array("name" => "asc"), array("IBLOCK_ID" => 24, "ID" => $_GET['companisAds']), false, array(), array('NAME', 'ID', 'PROPERTY_LOGO','PROPERTY_PHONE','PROPERTY_VIBER', 'PROPERTY_WHATSAPP', 'PROPERTY_TELEGRAM'));
+                $res = CIBlockElement::GetList(array("name" => "asc"), array("IBLOCK_ID" => 24, "ID" => $_GET['companisAds']), false, array(), array('NAME','CODE', 'ID', 'PROPERTY_LOGO','PROPERTY_PHONE','PROPERTY_VIBER', 'PROPERTY_WHATSAPP', 'PROPERTY_TELEGRAM'));
                 while ($ob = $res->GetNextElement()) {
                     $arFields = $ob->GetFields();
                         if ($arFields['PROPERTY_LOGO_VALUE']) {
                             $userPhoto = CFile::ResizeImageGet($arFields['PROPERTY_LOGO_VALUE'], array('width' => 200, 'height' => 200), BX_RESIZE_IMAGE_PROPORTIONAL, true)['src'];
                         }
                         $userName = $arFields['NAME'];
+                        $userCode = $arFields['CODE'];
                         $userPhone = $arFields['PROPERTY_PHONE_VALUE'];
                         $userTelega = $arFields['PROPERTY_TELEGRAM_VALUE'];
                         $userViber = $arFields['PROPERTY_VIBER_VALUE'];
@@ -128,7 +129,7 @@ global $arUser;
                 <div class="author-box">
                     <div class="avatar"><img src="<?= $userPhoto ?>" class="bg-img" alt="<?= $userName ?>">
                     </div>
-                    <div class="name"><a href="#"><?= $userName ?></a></div>
+                    <div class="name"><?= $userName ?></div>
                 </div>
                 <div class="count-products"><?= $APPLICATION->ShowViewContent('countElements'); ?> <?=GetMessage("T_DESK_ADS_ALL")?></div>
                 <div class="phone-link">
@@ -213,6 +214,16 @@ global $arUser;
                         </li>
                     <? } ?>
                 </ul>
+            </div>
+        <? } ?>
+        <?if ($_GET['companisAds'] != NULL) {?>
+            <div class="row title-box">
+                <div class="col-xs-12 col-xl-4 col-xxl-5">
+                    <div class="section-title"><?=GetMessage("T_ADS_COMPANY")?></div>
+                </div>
+                <div class="col-xs-12 col-xl-8 col-xxl-7">
+                    <a href="<?=SITE_DIR?>companies/<?=$userCode?>/" class="blue-link"><?=GetMessage("T_ABOUT_COMPANY")?> <?= $userName ?></a>
+                </div>
             </div>
         <? } ?>
     </div>
