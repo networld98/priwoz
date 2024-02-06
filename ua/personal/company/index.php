@@ -40,6 +40,10 @@ $APPLICATION->SetTitle("Створення/зміна команії");
                         14 => "NAME",
                         15 => "PREVIEW_TEXT",
                         16 => "569",
+                        17 => "572",
+                        18 => "573",
+                        19 => "574",
+                        20 => "575",
                     ),
                     "PROPERTY_CODES_REQUIRED" => array(
                         0 => "546",

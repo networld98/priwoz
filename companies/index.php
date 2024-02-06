@@ -46,15 +46,6 @@ $APPLICATION->SetTitle("Компании");
             10 => "INSTAGRAM",
             11 => "YOUTUBE",
             12 => "PHONE",
-            13=> "DOPPHONE",
-            13=> "TELEGRAM",
-            13=> "VIBER",
-            13=> "WHATSAPP",
-            13=> "PHOTOS",
-            13=> "",
-            13=> "",
-
-
         ),
         "DETAIL_SET_CANONICAL_URL" => "N",
         "DISPLAY_BOTTOM_PAGER" => "Y",
