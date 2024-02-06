@@ -3,7 +3,22 @@ require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_before.
 global $arrFilter, $USER;
 if (!empty($_POST['id'])) {
     $author = CIBlockElement::GetByID($_POST['id'])->GetNextElement()->GetProperties()['AUTHOR'];
-    if ($author['VALUE'] == $USER->GetID()) {
+    if ($author['VALUE'] == $USER->GetID() && $_POST['iblock']!=24) {
+        CIBlockElement::Delete($_POST['id']);
+    }else{
+        $arSelect = array("ID","PROPERTY_NAME","PROPERTY_AUTHOR");
+        $arFilter = array(
+            "IBLOCK_ID" => 19,
+        );
+        $rsElements = CIBlockElement::GetList(array(), $arFilter, false, false, $arSelect);
+        while($arElement = $rsElements->GetNext())
+        {
+            if($arElement['PROPERTY_NAME_VALUE'] == $_POST['id']){
+                $el = new CIBlockElement;
+                $res = $el->Update($arElement['ID'], Array("ACTIVE" => "N", "PROPERTY_NAME" => $arElement['PROPERTY_AUTHOR_VALUE'],  "DATE_ACTIVE_FROM" => date()));
+                CIBlockElement::SetPropertyValuesEx($arElement['ID'], 19, Array("NAME" => $arElement['PROPERTY_AUTHOR_VALUE']));
+            }
+        }
         CIBlockElement::Delete($_POST['id']);
     }
 }

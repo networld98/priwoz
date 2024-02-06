@@ -13,15 +13,15 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /** @var CBitrixComponent $component */
 $this->setFrameMode(false);
 unset ($arResult["PROPERTY_LIST"][1]);
-$first = array_slice($arResult["PROPERTY_LIST"], 0, 4);
-$photo = array_slice($arResult["PROPERTY_LIST"], 4, 2);
-$last = array_slice($arResult["PROPERTY_LIST"], 6);
+$first = array_slice($arResult["PROPERTY_LIST"], 0, 7);
+$photo = array_slice($arResult["PROPERTY_LIST"], 7, 3);
+$last = array_slice($arResult["PROPERTY_LIST"], 10);
 $arResult["PROPERTY_LIST"] = $first;
 $arResult["PROPERTY_LIST"][] = 'PREVIEW_TEXT';
 $arResult["PROPERTY_LIST"] = array_merge($arResult["PROPERTY_LIST"], $photo);
 $annoBlock = $arResult["PROPERTY_LIST"];
-$socialBlock = array_slice($last, 0, 4);
-$contactBlock = array_slice($last, 4, 6);
+$socialBlock = array_slice($last, 0, 8);
+$contactBlock = array_slice($last, 8, 10);
 //костыль закончился
 if ($_GET['edit'] != 'Y') {
     $title = GetMessage("IBLOCK_FORM_SUBMIT");
@@ -254,45 +254,75 @@ if ($_GET['edit'] != 'Y') {
                                     break;
                                 case "S":
                                 case "N":
+                                    if ($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == "WHY" ||  $arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == "YOUTUBEVIDEO") { ?>
+                                        <div class="row group-block">
+                                    <?}
                                     for ($i = 0; $i < $inputNum; $i++) {
-                                        if ($arParams["ID"] > 0 || count($arResult["ERRORS"]) > 0) {
-                                            $value = intval($propertyID) > 0 ? $arResult["ELEMENT_PROPERTIES"][$propertyID][$i]["VALUE"] : $arResult["ELEMENT"][$propertyID];
-                                        } elseif ($i == 0) {
-                                            $value = intval($propertyID) <= 0 ? "" : $arResult["PROPERTY_LIST_FULL"][$propertyID]["DEFAULT_VALUE"];
+                                    if ($arParams["ID"] > 0 || count($arResult["ERRORS"]) > 0) {
+                                    $value = intval($propertyID) > 0 ?
+                                    $arResult["ELEMENT_PROPERTIES"][$propertyID][$i]["VALUE"] :
+                                    $arResult["ELEMENT"][$propertyID];
+                                    } elseif ($i == 0) {
+                                    $value = intval($propertyID) <= 0 ? "" :
+                                    $arResult["PROPERTY_LIST_FULL"][$propertyID]["DEFAULT_VALUE"];
 
-                                        } else {
-                                            $value = "";
-                                        }
-                                        ?>
-                                        <input type="text" class="form-control"
-                                               name="PROPERTY[<?= $propertyID ?>][<?= $i ?>]"
-                                               size="<?= $arResult["PROPERTY_LIST_FULL"][$propertyID]["COL_COUNT"]; ?>"
-                                        <?if($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == 'PRICE'){?>
-                                            placeholder="BGN"
+                                    } else {
+                                    $value = "";
+                                    }
+                                    ?>
+                                    <? if ($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == "WHY") { ?>
+                                        <?if($i % 2 === 0){?>
+                                            <div class="col-xs-4">
+                                                <div class="hint">Заголовок</div>
+                                        <?}else{?>
+                                            <div class="col-xs-8">
+                                                <div class="hint">Описание</div>
                                         <?}?>
-                                               value="<?= $value ?>"/><?
-                                        if ($arResult["PROPERTY_LIST_FULL"][$propertyID]["USER_TYPE"] == "DateTime"):?><?
-                                            $APPLICATION->IncludeComponent(
-                                                'bitrix:main.calendar',
-                                                '',
-                                                array(
-                                                    'FORM_NAME' => 'iblock_add',
-                                                    'INPUT_NAME' => "PROPERTY[" . $propertyID . "][" . $i . "]",
-                                                    'INPUT_VALUE' => $value,
-                                                ),
-                                                null,
-                                                array('HIDE_ICONS' => 'Y')
-                                            );
-                                            ?>
-                                            <small><?= GetMessage("IBLOCK_FORM_DATE_FORMAT") ?><?= FORMAT_DATETIME ?></small><?
-                                        endif
-                                        ?><?
+                                    <?
+                                    } ?>
+                                    <? if ($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == "YOUTUBEVIDEO") { ?>
+                                        <div class="col-xs-6">
+                                    <? } ?>
+                                    <input <?= $INPUT_TYPE ?> type="text" class="form-control"
+                                                              name="PROPERTY[<?= $propertyID ?>][<?= $i ?>]"
+                                                              size="<?= $arResult["PROPERTY_LIST_FULL"][$propertyID]["COL_COUNT"]; ?>"
+                                        <? if ($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == 'PRICE') { ?>
+                                            placeholder="BGN"
+                                            <?
+                                        } ?>
+                                                              value="<?= $value ?>"/>
+                                    <? if ($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == "WHY" || $arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == "YOUTUBEVIDEO") { ?>
+                                    </div>
+                                    <?
+                                } ?>
+                                    <?
+                                if ($arResult["PROPERTY_LIST_FULL"][$propertyID]["USER_TYPE"] == "DateTime"): ?><?
+                                    $APPLICATION->IncludeComponent(
+                                        'bitrix:main.calendar',
+                                        '',
+                                        array(
+                                            'FORM_NAME' => 'iblock_add',
+                                            'INPUT_NAME' => "PROPERTY[" . $propertyID . "][" . $i . "]",
+                                            'INPUT_VALUE' => $value,
+                                        ),
+                                        null,
+                                        array('HIDE_ICONS' => 'Y')
+                                    );
+                                    ?>
+                                    <small><?= GetMessage("IBLOCK_FORM_DATE_FORMAT") ?><?= FORMAT_DATETIME ?></small><?
+                                endif;
+
+                                }
+                                    if ($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == "WHY" || $arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == "YOUTUBEVIDEO") { ?>
+                                        </div>
+
+                                        <?
                                     }
                                     break;
 
                                 case "F":
                                     ?>
-                                    <?if($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"]!='LOGO'){?>
+                                    <?if($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"]!='LOGO' && $arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"]!='BANNER'){?>
                                     <div class="hint"><?=GetMessage("IBLOCK_FIRST_PHOTO")?></div>
                                     <?}?>
                                     <div class="upload-group">

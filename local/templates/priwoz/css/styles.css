@@ -25,7 +25,7 @@
     background-position: center;
     background-repeat: no-repeat;
 }
-.product-info .fa-star-custom-o:before, .product-info .fa-star-custom:before  {
+.product-info .fa-star-custom-o:before, .product-info .fa-star-custom:before, .single-company-card-section .fa-star-custom:before, .single-company-card-section .fa-star-custom-o:before {
     width: 32px;
     height: 32px;
     background-size: contain;
@@ -293,4 +293,16 @@ span.blue-link, .personal-section .products-masonry.my-products .product-grid-it
 }
 .company-overview-section .title-box .form-label {
     width: 100vw;
+}
+.product-form .group-block input, .SERVICES-block input {
+    margin-bottom: 10px;
+}
+.companies-wrap .company-grid-item .img.-default {
+    font-weight: 500;
+    font-size: 45px;
+    line-height: 100%;
+    color: #E4E7E8;
+    text-shadow: -1px -1px 0 rgba(0,0,0,0.2), 1px -1px 0 rgba(0,0,0,0.2), -1px 1px 0 rgba(0,0,0,0.2), 1px 1px 0 rgba(0,0,0,0.2);
+    margin: 0!important;
+    padding: 30% 10px 10%;
 }

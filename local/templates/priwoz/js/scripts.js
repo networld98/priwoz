@@ -109,11 +109,13 @@ function favoriteInit() {
 }
 
 function deleteItem(id,iblock){
+    let block = $('.grid.products-masonry.my-products');
         $.ajax({
             type: "POST",
             url: '/ajax/delete-announcement.php',
             data: {'id':id, 'iblock':iblock},
             success: function (data) {
+                alert('Если от имени компании были созданы объявления, они будут деактивированы и привязаны к вашему пользователю. Позже вы их можете подвязать к новой компании или просто активировать!');
                 // Вывод текста результата отправки
                 $(block).html(data);
                 let grid = $('.grid').masonry({}).css('opacity', '1');
@@ -124,9 +126,6 @@ function deleteItem(id,iblock){
 }
 function editItem(id,iblock,active){
         let block = $('.grid.products-masonry.my-products');
-        console.log(id);
-    console.log(active);
-    console.log(iblock);
         $.ajax({
             type: "POST",
             url: '/ajax/disabled-announcement.php',

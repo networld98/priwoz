@@ -31,4 +31,9 @@ $MESS["IBLOCK_CABINET_SELECT_CATEGORY"] = 'Выберите категорию';
 $MESS["IBLOCK_CABINET_567"] = 'Загрузите фотографии';
 $MESS["IBLOCK_CABINET_PREVIEW_TEXT"] = 'Описание компаниии *';
 $MESS["IBLOCK_CABINET_548"] = 'Населенный пункт *';
+
+$MESS["IBLOCK_CABINET_572"] = 'Видео Youtube (ID)';
+$MESS["IBLOCK_CABINET_575"] = 'Почему выбирают нас';
+$MESS["IBLOCK_CABINET_573"] = 'Наши услуги';
+$MESS["IBLOCK_CABINET_574"] = 'Баннер компании';
 ?>
