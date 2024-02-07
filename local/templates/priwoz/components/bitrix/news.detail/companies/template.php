@@ -66,7 +66,24 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
                                data-iblock-id="<?= $arResult['IBLOCK_ID'] ?>">
                             </a>
                         </div>
-                        <div class="subtitle"><?= $arResult['DISPLAY_PROPERTIES']['SUBCATEGORY']['DISPLAY_VALUE'] ?></div>
+                        <?
+                        if(SITE_ID=='s1'){
+                            if($arResult["DISPLAY_PROPERTIES"]['SUBCATEGORY']['DISPLAY_VALUE']){
+                                $categoryName = $arResult["DISPLAY_PROPERTIES"]['SUBCATEGORY']['LINK_ELEMENT_VALUE'][$arResult["DISPLAY_PROPERTIES"]['SUBCATEGORY']['VALUE']]['NAME'] ;
+                            }else{
+                                $categoryName = $arResult["DISPLAY_PROPERTIES"]['CATEGORY']['LINK_SECTION_VALUE'][$arResult["DISPLAY_PROPERTIES"]['CATEGORY']['VALUE']]['NAME'] ;
+                            }
+                        }elseif(SITE_ID=='ua'){
+                            if($arResult["DISPLAY_PROPERTIES"]['SUBCATEGORY']['DISPLAY_VALUE']){
+                                $id = $arResult["DISPLAY_PROPERTIES"]['SUBCATEGORY']['LINK_ELEMENT_VALUE'][$arResult["DISPLAY_PROPERTIES"]['SUBCATEGORY']['VALUE']]['ID'];
+                                $categoryName = CIBlockElement::GetByID($id)->GetNextElement()->GetProperties()['NAME_UA']['VALUE'];
+                            }else{
+                                $id = $arResult["DISPLAY_PROPERTIES"]['CATEGORY']['LINK_SECTION_VALUE'][$arResult["DISPLAY_PROPERTIES"]['CATEGORY']['VALUE']]['ID'];
+                                $categoryName  = CIBlockSection::GetList(array(), array('IBLOCK_ID'=>22, 'ID'=>$id), false, array('UF_NAME_UA'))->GetNext()['UF_NAME_UA'];
+                            }
+                        }
+                        ?>
+                        <div class="subtitle"><?= $categoryName ?></div>
                         <div class="info-box">
                             <? if ($arResult['DISPLAY_PROPERTIES']['SITE']['DISPLAY_VALUE']) { ?>
                                 <div class="item">
@@ -448,10 +465,14 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
         <div class="container">
             <h2 class="title"><?= GetMessage("T_COMPANY_VIDEO") ?></h2>
             <div class="videos-box">
-                <? foreach ($arResult['PROPERTIES']['YOUTUBEVIDEO']['VALUE'] as $key => $photo) { ?>
+                <? foreach ($arResult['PROPERTIES']['YOUTUBEVIDEO']['VALUE'] as $key => $id) {
+                    if (stripos($id, '=')!==false) {
+                        $id = explode('=',$id)[1];
+                    }
+                  ?>
                     <div class="item">
-                        <div class="video youtube-open-trigger" data-youtube="<?= $photo ?>">
-                            <img class="bg-img" src="https://i.ytimg.com/vi/<?= $photo ?>/hqdefault.jpg"
+                        <div class="video youtube-open-trigger" data-youtube="<?= $id ?>">
+                            <img class="bg-img" src="https://i.ytimg.com/vi/<?= $id ?>/hqdefault.jpg"
                                  alt="Video-<?= $arResult["NAME"] ?>-<?= $key ?>">
                         </div>
                     </div>

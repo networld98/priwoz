@@ -69,7 +69,12 @@ $APPLICATION->SetTitle("Компанії");
             4 => "CONDITION",
             5 => "LOGO",
             6 => "CITY",
-            7 => "CATEGORY"
+            7 => "CATEGORY",
+            8 => "SITE",
+            9 => "FACEBOOK",
+            10 => "INSTAGRAM",
+            11 => "YOUTUBE",
+            12 => "PHONE",
         ),
         "MESSAGE_404" => "",
         "META_DESCRIPTION" => "-",

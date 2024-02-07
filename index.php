@@ -323,7 +323,7 @@ $APPLICATION->SetTitle("Priwoz.info");
                         6 => "DOPPHONE",
                         7 => "CITY",
                         8 => "CATEGORY",
-                        9 => "",
+                        9 => "SUBCATEGORY",
                     ),
                     "IBLOCK_ID" => "24",
                     "FILE_404" => "",

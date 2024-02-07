@@ -111,7 +111,25 @@ $this->addExternalCss($this->GetFolder() . '/themes/' . $arParams['TEMPLATE_THEM
                             $locationId = $arItem["DISPLAY_PROPERTIES"]['CITY']['LINK_ELEMENT_VALUE'][$arItem["DISPLAY_PROPERTIES"]['CITY']['VALUE']]['ID'];
                             $locationName = CIBlockElement::GetByID($locationId)->GetNextElement()->GetProperties()['NAME_UA']['VALUE'];
                         }?>
-                        <div class="category"><?= $arItem["DISPLAY_PROPERTIES"]['CATEGORY']['LINK_SECTION_VALUE'][$arItem["DISPLAY_PROPERTIES"]['CATEGORY']['VALUE']]['NAME'] ?></div>
+                        
+                        <?
+                        if(SITE_ID=='s1'){
+                            if($arItem["DISPLAY_PROPERTIES"]['SUBCATEGORY']['DISPLAY_VALUE']){
+                                $categoryName = $arItem["DISPLAY_PROPERTIES"]['SUBCATEGORY']['LINK_ELEMENT_VALUE'][$arItem["DISPLAY_PROPERTIES"]['SUBCATEGORY']['VALUE']]['NAME'] ;
+                            }else{
+                                $categoryName = $arItem["DISPLAY_PROPERTIES"]['CATEGORY']['LINK_SECTION_VALUE'][$arItem["DISPLAY_PROPERTIES"]['CATEGORY']['VALUE']]['NAME'] ;
+                            }
+                        }elseif(SITE_ID=='ua'){
+                            if($arItem["DISPLAY_PROPERTIES"]['SUBCATEGORY']['DISPLAY_VALUE']){
+                                $id = $arItem["DISPLAY_PROPERTIES"]['SUBCATEGORY']['LINK_ELEMENT_VALUE'][$arItem["DISPLAY_PROPERTIES"]['SUBCATEGORY']['VALUE']]['ID'];
+                                $categoryName = CIBlockElement::GetByID($id)->GetNextElement()->GetProperties()['NAME_UA']['VALUE'];
+                            }else{
+                                $id = $arItem["DISPLAY_PROPERTIES"]['CATEGORY']['LINK_SECTION_VALUE'][$arItem["DISPLAY_PROPERTIES"]['CATEGORY']['VALUE']]['ID'];
+                                $categoryName  = CIBlockSection::GetList(array(), array('IBLOCK_ID'=>22, 'ID'=>$id), false, array('UF_NAME_UA'))->GetNext()['UF_NAME_UA'];
+                            }
+                        }
+                        ?>
+                        <div class="category"><?= $categoryName ?></div>
                         <div class="location"><?= $locationName ?></div>
                     </div>
                 </div>
