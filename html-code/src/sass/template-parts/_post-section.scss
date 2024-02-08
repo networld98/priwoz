@@ -132,14 +132,14 @@
 
     .name {
       color: $color-green-3;
-      font-family: $barista-font;
-      font-size: 48px;
+      font-family: $roboto-condensed-font;
+      font-size: 30px;
       font-style: normal;
-      font-weight: 400;
+      font-weight: 300;
       line-height: 100%;
       margin-top: -7px;
       @include media-breakpoint-down(xl) {
-        font-size: 40px;
+        font-size: 24px;
         margin-top: 2px;
       }
     }
@@ -165,15 +165,15 @@
 
   time, .date {
     color: #000;
-    font-family: $barista-font;
-    font-size: 26px;
+    font-family: $roboto-condensed-font;
+    font-size: 15px;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 300;
     line-height: 120%;
     display: block;
     margin-bottom: 13px;
     @include media-breakpoint-down(xl) {
-      font-size: 20px;
+      font-size: 11px;
       margin-bottom: 22px;
     }
   }

@@ -96,14 +96,14 @@
       .subtitle {
         padding-left: 32px;
         color: rgba(255, 255, 255, 0.80);
-        font-family: $barista-font;
-        font-size: 48px;
+        font-family: $roboto-condensed-font;
+        font-size: 30px;
         font-style: normal;
-        font-weight: 400;
+        font-weight: 300;
         line-height: 100%;
         margin-top: 1px;
         @include media-breakpoint-down(xl) {
-          font-size: 40px;
+          font-size: 24px;
           padding-left: 22px;
         }
         @include media-breakpoint-down(md) {

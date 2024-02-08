@@ -214,19 +214,19 @@ button {
 
 .section-title {
   color: $color-green-1;
-  font-family: $barista-font;
-  font-size: 64px;
+  font-family: $roboto-condensed-font;
+  font-size: 36px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 100%;
   @include media-breakpoint-down(xl) {
-    font-size: 40px;
+    font-size: 24px;
   }
 
   &.-min {
-    font-size: 48px;
+    font-size: 30px;
     @include media-breakpoint-down(xl) {
-      font-size: 40px;
+      font-size: 24px;
     }
   }
 }
@@ -326,13 +326,13 @@ button {
 
 .page-title {
   color: $color-green-1;
-  font-family: $barista-font;
-  font-size: 64px;
+  font-family: $roboto-condensed-font;
+  font-size: 36px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 100%;
   @include media-breakpoint-down(xl) {
-    font-size: 48px;
+    font-size: 30px;
   }
 }
 

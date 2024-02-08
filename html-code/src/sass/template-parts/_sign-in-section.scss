@@ -50,15 +50,15 @@
         }
         .subtitle {
           color: rgba(0, 0, 0, 0.50);
-          font-family: $barista-font;
-          font-size: 48px;
+          font-family: $roboto-condensed-font;
+          font-size: 30px;
           font-style: normal;
-          font-weight: 400;
+          font-weight: 300;
           line-height: 1;
           padding-left: 76px;
           margin-top: -12px;
           @include media-breakpoint-down(xl) {
-            font-size: 40px;
+            font-size: 24px;
             padding-left: 30px;
             margin-top: -6px;
             padding-right: 15px;
