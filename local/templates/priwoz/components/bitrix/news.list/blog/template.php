@@ -16,7 +16,7 @@ $this->setFrameMode(true);
 	<?
 	$this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
 	$this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
-    $picture = CFile::ResizeImageGet($arItem["PREVIEW_PICTURE"]["ID"], array('width'=>400), BX_RESIZE_IMAGE_PROPORTIONAL, true);
+    $picture = CFile::ResizeImageGet($arItem["PREVIEW_PICTURE"]["ID"], array('width'=>400,'height'=> 400), BX_RESIZE_IMAGE_PROPORTIONAL, true);
     ?>
         <div class="<? if($APPLICATION->GetCurPage() != SITE_DIR."blog/"){?>item<?}else{?>grid-item blog-grid-item<?}?>" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
             <?if($arItem['PROPERTIES']['YOUTUBE']['VALUE']!='' && $arItem['PROPERTIES']['YOUTUBE_IN_MAIN']['VALUE'] == 'Y' && $APPLICATION->GetCurPage() == "/") {?>

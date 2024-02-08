@@ -533,7 +533,14 @@ while ($arElement = $dbAllElements->Fetch()) {
                                                 <? echo GetMessage("CT_BCSF_FILTER_ALL"); ?>
                                             </option>
 
-                                            <? foreach ($arItem["VALUES"] as $val => $ar): ?>
+                                            <? foreach ($arItem["VALUES"] as $val => $ar):
+                                                if(SITE_ID=='ua'){
+                                                    if(CUtil::JSEscape($key)=='527') {
+                                                        $ar["VALUE"] = CIBlockSection::GetList(array(), array('IBLOCK_ID' => 20, 'ID' => $ar["SECTION"]), false, array('UF_NAME_UA'))->GetNext()['UF_NAME_UA'];
+                                                    }elseif(CUtil::JSEscape($key)=='528'|| CUtil::JSEscape($key)=='526') {
+                                                        $ar["VALUE"] = CIBlockElement::GetByID($ar["SECTION"])->GetNextElement()->GetProperties()['NAME_UA']['VALUE'];
+                                                    }
+                                                }?>
                                                 <option
                                                         <?if(CUtil::JSEscape($key)=='528'){?>
                                                         class="subcategory"

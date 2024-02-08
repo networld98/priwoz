@@ -84,7 +84,7 @@ $this->setFrameMode(true);
                     $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
                     $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
                     $props = CIBlockElement::GetByID($arItem["ID"])->GetNextElement()->GetProperties();
-                    $picture = CFile::ResizeImageGet($arItem["PREVIEW_PICTURE"]["ID"], array('width'=>400), BX_RESIZE_IMAGE_PROPORTIONAL, true);
+                    $picture = CFile::ResizeImageGet($arItem["PREVIEW_PICTURE"]["ID"], array('width'=>400,'height'=> 400), BX_RESIZE_IMAGE_PROPORTIONAL, true);
                    if($_GET['social']==''){?>
                        <div class="grid-item community-grid-item">
                            <a href="<?=$props["LINK"]["VALUE"]?>" class="box">

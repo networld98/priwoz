@@ -16,7 +16,7 @@ $this->addExternalCss("/bitrix/css/main/font-awesome.css");
 $this->addExternalCss($this->GetFolder().'/themes/'.$arParams['TEMPLATE_THEME'].'/style.css');
 CUtil::InitJSCore(array('fx'));
 $pictureID = CIBlockElement::GetByID($arResult["ID"])->GetNextElement()->GetFields()["PREVIEW_PICTURE"];
-$picture = CFile::ResizeImageGet($pictureID, array('width'=>1000), BX_RESIZE_IMAGE_PROPORTIONAL, true);
+$picture = CFile::ResizeImageGet($pictureID, array('width'=>1000,'height'=> 1000), BX_RESIZE_IMAGE_PROPORTIONAL, true);
 ?>
 <section class="post-section">
     <div class="container">

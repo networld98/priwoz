@@ -29,19 +29,17 @@ foreach ($arResult["ITEMS"] as $arItem):?>
     $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
     $active = CIBlockElement::GetByID($arItem['ID'])->GetNextElement()->GetFields()['ACTIVE'];?>
     <div class="grid-item product-grid-item" id="<?= $this->GetEditAreaId($arItem['ID']); ?>">
-        <div class="box <?if($arItem["DISPLAY_PROPERTIES"]['CATEGORY']['LINK_SECTION_VALUE']){?>company<?}?>">
+        <<? if ($APPLICATION->GetCurPage() != SITE_DIR."personal/ads-list/" && $APPLICATION->GetCurPage() != SITE_DIR."personal/company-list/"){?>a href="<?= $arItem["DETAIL_PAGE_URL"] ?>"<?}else{?>div<?}?> class="box <?if($arItem["DISPLAY_PROPERTIES"]['CATEGORY']['LINK_SECTION_VALUE']){?>company<?}?>">
             <? if ($arItem['PROPERTIES']['PHOTOS']['VALUE']):
                 $file = CFile::ResizeImageGet($arItem['PROPERTIES']['PHOTOS']['VALUE'][0], array('width' => 450, 'height' => 450), BX_RESIZE_IMAGE_PROPORTIONAL, true);
                 $logo = CFile::ResizeImageGet($arItem["PROPERTIES"]['LOGO']['VALUE'], array('width' => 150), BX_RESIZE_IMAGE_PROPORTIONAL, true);
                 ?>
                 <div class="img">
-                    <?echo $arItem["PROPERTIES"]['NAME']['VALUE'];?>
-                    <?echo $arItem["PROPERTIES"]['AUTHOR']['VALUE'];?>
                     <img class="bg-img" src="<?= $file['src'] ?>" alt="<?= $arItem['NAME'] ?>">
                     <? echo $arItem["PROPERTIES"]['NAME']['VALUE']; if (!empty($arItem["PROPERTIES"]['NAME']['VALUE']) && $arItem["PROPERTIES"]['AUTHOR']['VALUE'] != $arItem["PROPERTIES"]['NAME']['VALUE'] && is_numeric($arItem["PROPERTIES"]['NAME']['VALUE'])) {
                         $companyData = CIBlockElement::GetByID($arItem["PROPERTIES"]['NAME']['VALUE'])->GetNextElement()->GetProperties();
                         if (!empty($companyData)) {
-                            $logo = CFile::ResizeImageGet($companyData['LOGO']['VALUE'], array('width' => 150), BX_RESIZE_IMAGE_PROPORTIONAL, true); ?>
+                            $logo = CFile::ResizeImageGet($companyData['LOGO']['VALUE'], array('width' => 150,'height'=> 150), BX_RESIZE_IMAGE_PROPORTIONAL, true); ?>
                             <img class="company-logo" src="<?= $logo["src"] ?>" alt="<?= $arItem['NAME'] ?>">
                         <? }
                     } ?>
@@ -62,8 +60,25 @@ foreach ($arResult["ITEMS"] as $arItem):?>
                     $locationName = CIBlockElement::GetByID($locationId)->GetNextElement()->GetProperties()['NAME_UA']['VALUE'];
                 }
                 if($arItem["DISPLAY_PROPERTIES"]['CATEGORY']['LINK_SECTION_VALUE']){?>
+                    <?
+                    if(SITE_ID=='s1'){
+                        if($arItem["DISPLAY_PROPERTIES"]['SUBCATEGORY']['DISPLAY_VALUE']){
+                            $categoryName = $arItem["DISPLAY_PROPERTIES"]['SUBCATEGORY']['LINK_ELEMENT_VALUE'][$arItem["DISPLAY_PROPERTIES"]['SUBCATEGORY']['VALUE']]['NAME'] ;
+                        }else{
+                            $categoryName = $arItem["DISPLAY_PROPERTIES"]['CATEGORY']['LINK_SECTION_VALUE'][$arItem["DISPLAY_PROPERTIES"]['CATEGORY']['VALUE']]['NAME'] ;
+                        }
+                    }elseif(SITE_ID=='ua'){
+                        if($arItem["DISPLAY_PROPERTIES"]['SUBCATEGORY']['DISPLAY_VALUE']){
+                            $id = $arItem["DISPLAY_PROPERTIES"]['SUBCATEGORY']['LINK_ELEMENT_VALUE'][$arItem["DISPLAY_PROPERTIES"]['SUBCATEGORY']['VALUE']]['ID'];
+                            $categoryName = CIBlockElement::GetByID($id)->GetNextElement()->GetProperties()['NAME_UA']['VALUE'];
+                        }else{
+                            $id = $arItem["DISPLAY_PROPERTIES"]['CATEGORY']['LINK_SECTION_VALUE'][$arItem["DISPLAY_PROPERTIES"]['CATEGORY']['VALUE']]['ID'];
+                            $categoryName  = CIBlockSection::GetList(array(), array('IBLOCK_ID'=>22, 'ID'=>$id), false, array('UF_NAME_UA'))->GetNext()['UF_NAME_UA'];
+                        }
+                    }
+                    ?>
                      <div class="category-location">
-                        <div class="category"><?= $arItem["DISPLAY_PROPERTIES"]['CATEGORY']['LINK_SECTION_VALUE'][$arItem["DISPLAY_PROPERTIES"]['CATEGORY']['VALUE']]['NAME'] ?></div>
+                        <div class="category"><?= $categoryName ?></div>
                         <div class="location"><?= $locationName ?></div>
                     </div>
                 <?}else{?>
@@ -92,6 +107,7 @@ foreach ($arResult["ITEMS"] as $arItem):?>
                 </div>
                 <?}?>
                 <div class="overlay">
+                    <a class="link-item" href="<?= $arItem["DETAIL_PAGE_URL"] ?>"></a>
                     <div class="row overlay-inner">
                         <div class="col-xs-12 col-md-4">
                             <a href="/personal/<?if($arItem["DISPLAY_PROPERTIES"]['CATEGORY']['LINK_SECTION_VALUE']){?>company<?}else{?>announcement<?}?>/?edit=Y&CODE=<?= $arItem['ID'] ?>" class="overlay-link">
@@ -107,7 +123,6 @@ foreach ($arResult["ITEMS"] as $arItem):?>
                                 <div class="overlay-text"><?=GetMessage("CT_EDIT")?></div>
                             </a>
                         </div>
-
                         <div class="col-xs-12 col-md-4">
                             <a onclick="editItem(<?= $arItem['ID']?>,<?= $arItem['IBLOCK_ID']?>,'<?if($active=='Y'){?>N<?}elseif($active=='N'){?>Y<?}?>')"  class="overlay-link">
                                 <?if($active=='Y'){?>
@@ -155,7 +170,6 @@ foreach ($arResult["ITEMS"] as $arItem):?>
                                 <?}?>
                             </a>
                         </div>
-
                         <div class="col-xs-12 col-md-4">
                             <a onclick="deleteItem(<?= $arItem['ID']?>, <?= $arItem['IBLOCK_ID']?>);" class="overlay-link">
                                 <div class="overlay-icon">
@@ -183,7 +197,7 @@ foreach ($arResult["ITEMS"] as $arItem):?>
                    data-iblock-id="<?= $arItem['IBLOCK_ID'] ?>">
                 </a>
             <?}?>
-        </div>
+        </<? if ($APPLICATION->GetCurPage() != SITE_DIR."personal/ads-list/" && $APPLICATION->GetCurPage() != SITE_DIR."personal/company-list/"){?>a<?}else{?>div<?}?>>
     </div>
 <? endforeach;
 if(count((array)$arResult["ITEMS"])==0){

@@ -328,6 +328,8 @@ if ($_GET['edit'] != 'Y') {
                                     ?>
                                     <?if($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"]!='LOGO' && $arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"]!='BANNER'){?>
                                     <div class="hint"><?=GetMessage("IBLOCK_FIRST_PHOTO")?></div>
+                                    <?} if($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"]=='BANNER'){?>
+                                    <div class="hint"><?=GetMessage("IBLOCK_BANNER_SIZE")?></div>
                                     <?}?>
                                     <div class="upload-group">
                                         <? for ($i = 0; $i < $inputNum; $i++) {
@@ -444,6 +446,13 @@ if ($_GET['edit'] != 'Y') {
                                                     else $sKey = "ELEMENT";
 
                                                     foreach ($arResult["PROPERTY_LIST_FULL"][$propertyID]["ENUM"] as $key => $arEnum) {
+                                                        if(SITE_ID=='ua'){
+                                                            if($propertyID=='546') {
+                                                                $arEnum["VALUE"] = CIBlockSection::GetList(array(), array('IBLOCK_ID' => 22, 'ID' => $key), false, array('UF_NAME_UA'))->GetNext()['UF_NAME_UA'];
+                                                            }elseif($propertyID=='548'|| $propertyID=='547') {
+                                                                $arEnum["VALUE"] = CIBlockElement::GetByID($key)->GetNextElement()->GetProperties()['NAME_UA']['VALUE'];
+                                                            }
+                                                        }
                                                         $checked = false;
                                                         if ($arParams["ID"] > 0 || count($arResult["ERRORS"]) > 0) {
                                                             foreach ($arResult[$sKey][$propertyID] as $elKey => $arElEnum) {
@@ -603,7 +612,7 @@ if ($_GET['edit'] != 'Y') {
             $.ajax({
                 type: "POST",
                 url: '<?=SITE_TEMPLATE_PATH ?>/components/bitrix/iblock.element.add.form/company/ajaxCategory.php',
-                data: {CATEGORY: id},
+                data: {CATEGORY: id, SITE_ID: "<?=SITE_ID?>"},
                 success: function (data) {
                     // Вывод текста результата отправки
                     $(subcategory).html(data);

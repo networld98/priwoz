@@ -85,8 +85,8 @@ $this->addExternalCss($this->GetFolder() . '/themes/' . $arParams['TEMPLATE_THEM
             }
             $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
             $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
-            $logo = CFile::ResizeImageGet($arItem["PROPERTIES"]['LOGO']['VALUE'], array('width' => 150), BX_RESIZE_IMAGE_PROPORTIONAL, true);
-            $picture = CFile::ResizeImageGet($arItem['PROPERTIES']['PHOTOS']['VALUE'][0], array('width' => 400), BX_RESIZE_IMAGE_PROPORTIONAL, true);
+            $logo = CFile::ResizeImageGet($arItem["PROPERTIES"]['LOGO']['VALUE'], array('width' => 100,'height'=> 100), BX_RESIZE_IMAGE_PROPORTIONAL, true);
+            $picture = CFile::ResizeImageGet($arItem['PROPERTIES']['PHOTOS']['VALUE'][0], array('width' => 450,'height'=> 450), BX_RESIZE_IMAGE_PROPORTIONAL, true);
             ?>
             <div class="grid-item company-grid-item" id="<?= $this->GetEditAreaId($arItem['ID']); ?>">
                 <a href="<?= $arItem["DETAIL_PAGE_URL"] ?>" class="box">

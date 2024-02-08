@@ -12,8 +12,8 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 CUtil::InitJSCore(array('fx'));
-$logo = CFile::ResizeImageGet($arResult['DISPLAY_PROPERTIES']['LOGO']['VALUE'], array('width' => 150), BX_RESIZE_IMAGE_PROPORTIONAL, true);
-$picture = CFile::ResizeImageGet($arResult['PROPERTIES']['PHOTOS']['VALUE'][0], array('width' => 400), BX_RESIZE_IMAGE_PROPORTIONAL, true);
+$logo = CFile::ResizeImageGet($arResult['DISPLAY_PROPERTIES']['LOGO']['VALUE'], array('width' => 150,'height'=>150), BX_RESIZE_IMAGE_PROPORTIONAL, true);
+$picture = CFile::ResizeImageGet($arResult['PROPERTIES']['PHOTOS']['VALUE'][0], array('width' => 950,'height'=>500), BX_RESIZE_IMAGE_EXACT, true);
 unset($arResult['PROPERTIES']['PHOTOS']['VALUE'][0]);
 
 $arSelect = array("PROPERTY_YOUTUBE", "PROPERTY_COMPANY");
@@ -402,7 +402,7 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
                     <div class="img-box">
                         <? foreach ($arResult['PROPERTIES']['PHOTOS']['VALUE'] as $key => $photo) {
                             if ($key <= 4) {
-                                $picture = CFile::ResizeImageGet($photo, array('width' => 400), BX_RESIZE_IMAGE_PROPORTIONAL, true);
+                                $picture = CFile::ResizeImageGet($photo, array('width' => 400,'height' => 400), BX_RESIZE_IMAGE_PROPORTIONAL, true);
                                 ?>
                                 <div class="item">
                                     <div class="image">
@@ -431,7 +431,7 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
     </section>
 <? } ?>
 <? if ($arResult['PROPERTIES']['BANNER']['VALUE']) {
-    $banner = CFile::ResizeImageGet($arResult['PROPERTIES']['BANNER']['VALUE'], array('width' => 1200), BX_RESIZE_IMAGE_PROPORTIONAL, true); ?>
+    $banner = CFile::ResizeImageGet($arResult['PROPERTIES']['BANNER']['VALUE'], array('width' => 1570, 'height' => 537), BX_RESIZE_IMAGE_EXACT, true); ?>
     <section class="company-banner-section">
         <div class="container">
             <div class="img-box">
@@ -754,7 +754,7 @@ if ($arResult['PROPERTIES']['PHOTOS']['VALUE']) {
             <div class="photo-gallery-slider swiper-container">
                 <div class="swiper-wrapper">
                     <? foreach ($arResult['PROPERTIES']['PHOTOS']['VALUE'] as $photo) {
-                        $picture = CFile::ResizeImageGet($photo, array('width' => 800), BX_RESIZE_IMAGE_PROPORTIONAL, true); ?>
+                        $picture = CFile::ResizeImageGet($photo, array('width' => 800,'height' => 500), BX_RESIZE_IMAGE_PROPORTIONAL, true); ?>
                         <div class="swiper-slide">
                             <div class="img">
                                 <img src="<?= $picture['src'] ?>" alt="company<?= $arResult["NAME"] ?>-<?= $key ?>">

@@ -315,9 +315,7 @@ if ($_GET['edit'] != 'Y') {
                                                             $imgFile = CFile::ResizeImageGet($arResult["ELEMENT_FILES"][$value]['ID'], array('width' => 100, 'height' => 100), BX_RESIZE_IMAGE_PROPORTIONAL, true)['src'];
                                                         }
                                                     } ?>
-                                                    <input type="hidden"
-                                                           name="PROPERTY[<?= $propertyID ?>][<?= $arResult["ELEMENT_PROPERTIES"][$propertyID][$i]["VALUE_ID"] ? $arResult["ELEMENT_PROPERTIES"][$propertyID][$i]["VALUE_ID"] : $i ?>]"
-                                                           value="<?= $value ?>"/>
+                                                    <input type="hidden" name="PROPERTY[<?= $propertyID ?>][<?= $arResult["ELEMENT_PROPERTIES"][$propertyID][$i]["VALUE_ID"] ? $arResult["ELEMENT_PROPERTIES"][$propertyID][$i]["VALUE_ID"] : $i ?>]" value="<?= $value ?>"/>
                                                     <input type="file" accept=".png, .jpg, .jpeg, .pdf"
                                                            class="inputfile"
                                                            size="<?= $arResult["PROPERTY_LIST_FULL"][$propertyID]["COL_COUNT"] ?>"
@@ -407,6 +405,13 @@ if ($_GET['edit'] != 'Y') {
                                                     else $sKey = "ELEMENT";
 
                                                     foreach ($arResult["PROPERTY_LIST_FULL"][$propertyID]["ENUM"] as $key => $arEnum) {
+                                                        if(SITE_ID=='ua'){
+                                                            if($propertyID=='527') {
+                                                                $arEnum["VALUE"] = CIBlockSection::GetList(array(), array('IBLOCK_ID' => 20, 'ID' => $key), false, array('UF_NAME_UA'))->GetNext()['UF_NAME_UA'];
+                                                            }elseif($propertyID=='529'|| $propertyID=='528'|| $propertyID=='526') {
+                                                                $arEnum["VALUE"] = CIBlockElement::GetByID($key)->GetNextElement()->GetProperties()['NAME_UA']['VALUE'];
+                                                            }
+                                                        }
                                                         $checked = false;
                                                         if ($arParams["ID"] > 0 || count($arResult["ERRORS"]) > 0) {
                                                             foreach ($arResult[$sKey][$propertyID] as $elKey => $arElEnum) {
@@ -532,7 +537,7 @@ if ($_GET['edit'] != 'Y') {
             $.ajax({
                 type: "POST",
                 url: '<?=SITE_TEMPLATE_PATH ?>/components/bitrix/iblock.element.add.form/announcement/ajaxCategory.php',
-                data: {CATEGORY: id},
+                data: {CATEGORY: id, SITE_ID: "<?=SITE_ID?>"},
                 success: function (data) {
                     // Вывод текста результата отправки
                     $(subcategory).html(data);

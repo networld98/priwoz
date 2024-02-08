@@ -49,8 +49,8 @@ global $allUrl;?>
                                     <? if (!empty($arItem["PROPERTIES"]['LOGO'])):?>
                                         <div class="img">
                                             <?
-                                            $logo = CFile::ResizeImageGet($arItem["PROPERTIES"]['LOGO']['VALUE'], array('width' => 150), BX_RESIZE_IMAGE_PROPORTIONAL, true);
-                                            $picture = CFile::ResizeImageGet($arItem["PREVIEW_PICTURE"]["ID"], array('width' => 400), BX_RESIZE_IMAGE_PROPORTIONAL, true);
+                                            $logo = CFile::ResizeImageGet($arItem["PROPERTIES"]['LOGO']['VALUE'], array('width' => 150,'height'=> 150), BX_RESIZE_IMAGE_PROPORTIONAL, true);
+                                            $picture = CFile::ResizeImageGet($arItem["PREVIEW_PICTURE"]["ID"], array('width' => 400,'height'=> 400), BX_RESIZE_IMAGE_PROPORTIONAL, true);
                                             ?>
                                             <img class="bg-img" src="<?= $picture["src"] ?>"
                                                  alt="<?= $arItem['NAME'] ?>">

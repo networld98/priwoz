@@ -17,15 +17,18 @@ if ($_POST['CATEGORY']) {
     ?>
     <div class="form-select-box">
         <? if (count((array)$arResult["PROPERTY_LIST_FULL"][$_POST['CATEGORY']]["ENUM"]) == 0) {?>
-            <input type="text"  class="form-control"  readonly placeholder="<?=GetMessage("CT_BIEAF_PROPERTY_VALUE_NON_SUBCATEGORY");?>">
+            <input type="text"  class="form-control"  readonly placeholder="<?=GetMessage("CT_BIEAF_PROPERTY_VALUE_NON_SUBCATEGORY".$_POST['SITE_ID']);?>">
         <?} else {?>
         <select class="form-select SUBCATEGORY" name="PROPERTY[528][0]">
-            <option value=""><?=GetMessage("CT_BIEAF_PROPERTY_VALUE_NA_SUBCATEGORY") ?></option>
+            <option value=""><?=GetMessage("CT_BIEAF_PROPERTY_VALUE_NA_SUBCATEGORY_".$_POST['SITE_ID']) ?></option>
             <?
             if (intval($propertyID) > 0) $sKey = "ELEMENT_PROPERTIES";
             else $sKey = "ELEMENT";
 
             foreach ($arResult["PROPERTY_LIST_FULL"][$_POST['CATEGORY']]["ENUM"] as $key => $arEnum) {
+                if($_POST['SITE_ID']=='ua'){
+                    $arEnum["VALUE"] = CIBlockElement::GetByID($key)->GetNextElement()->GetProperties()['NAME_UA']['VALUE'];
+                }
                 $checked = false;
                 if ($arParams["ID"] > 0 || count($arResult["ERRORS"]) > 0) {
                     foreach ($arResult[$sKey][$_POST['CATEGORY']] as $elKey => $arElEnum) {
@@ -53,6 +56,6 @@ if ($_POST['CATEGORY']) {
         <?}?>
 <? }elseif($_POST['CATEGORY']==""){?>
 <div class="form-select-box">
-    <input type="text"  class="form-control"  readonly placeholder="<?=GetMessage("CT_BIEAF_PROPERTY_VALUE_NON_SUBCATEGORY");?>">
+    <input type="text"  class="form-control"  readonly placeholder="<?=GetMessage("CT_BIEAF_PROPERTY_VALUE_NON_SUBCATEGORY_".$_POST['SITE_ID']);?>">
 </div>
 <?}?>

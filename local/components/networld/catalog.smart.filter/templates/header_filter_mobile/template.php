@@ -412,7 +412,12 @@ $templateData = array(
                                                     id="<? echo "all_" . $arCur["CONTROL_ID"] ?>">
                                                 <span class="bx_filter_param_text"><? echo GetMessage("CT_BCSF_FILTER_ALL"); ?></span>
                                             </option>
-                                            <? foreach ($arItem["VALUES"] as $val => $ar): ?>
+                                            <? foreach ($arItem["VALUES"] as $val => $ar):
+                                                if(SITE_ID=='ua'){
+                                                    if(CUtil::JSEscape($key)=='529') {
+                                                        $ar["VALUE"] = CIBlockElement::GetByID($ar["SECTION"])->GetNextElement()->GetProperties()['NAME_UA']['VALUE'];
+                                                    }
+                                                }?>
                                                 <option value="<? echo $ar["HTML_VALUE_ALT"] ?>"
                                                         id="<? echo $ar["CONTROL_ID"] ?>"
                                                     <?if($ar["HTML_VALUE_ALT"] == $_GET['city_529']) {echo 'selected';}?>>

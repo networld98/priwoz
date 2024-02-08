@@ -177,7 +177,7 @@
     max-height: 80px;
     border-radius: 5px;
 }
-.company-grid-item .box .img img.company-logo {
+.company-grid-item .box .img img.company-logo, .single-company-card-section .img-box img.company-logo {
     border-radius: 5px;
 }
 .post-section .video-box {
@@ -305,4 +305,16 @@ span.blue-link, .personal-section .products-masonry.my-products .product-grid-it
     text-shadow: -1px -1px 0 rgba(0,0,0,0.2), 1px -1px 0 rgba(0,0,0,0.2), -1px 1px 0 rgba(0,0,0,0.2), 1px 1px 0 rgba(0,0,0,0.2);
     margin: 0!important;
     padding: 30% 10px 10%;
+}
+.our-videos-section .videos-box .item .video {
+    padding-bottom: 55.9%;
+}
+.video-modal .modal-box .video-box {
+    height: auto;
+    aspect-ratio: 16/9;
+}
+.link-item{
+    position: absolute;
+    width: 100%;
+    height: 100%;
 }
