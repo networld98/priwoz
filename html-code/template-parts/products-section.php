@@ -1,11 +1,45 @@
 <section class="products-section">
     <div class="container">
-        <div class="advertisement advertisement-type-1">
-            <a href="/" class="box">
-                <img class="bg-img" src="/html-code/temporary-images/home/advertisement.png" alt="Priwoz ad">
-                Сегодня на Priwoze свежая риба. Спешим бегом, бо не хватит
-            </a>
+        <div class="advertisement-slider swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="advertisement advertisement-type-1">
+                        <a href="/" class="box">
+                            <img class="bg-img" src="/html-code/temporary-images/home/advertisement.png" alt="Priwoz ad">
+                            Сегодня на Priwoze свежая риба. Спешим бегом, бо не хватит
+                        </a>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="advertisement advertisement-type-2">
+                        <a href="/" class="box">
+                            <img class="bg-img" src="/html-code/temporary-images/home/advertisement-2.png" alt="Priwoz ad">
+                            Здесь может быть ваша реклама
+                        </a>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="advertisement advertisement-type-4">
+                        <div class="box">
+                            <img class="bg-img" src="/html-code/temporary-images/products/adv-bg.png" alt="Priwoz ad">
+                            <h2 class="main-text">Купить грузовик MAN в Болгарии</h2>
+                            <div class="right-block">
+                                <a href="tel:+359293760160" class="number">+359 293 760 160</a>
+                                <div class="logo">
+                                    <img src="/html-code/temporary-images/products/company-logo.png" alt="Priwoz ad">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <a href="/" class="advertisement-image">
+                        <img class="bg-img" src="/html-code/temporary-images/products/adv-bg.png" alt="Priwoz ad">
+                    </a>
+                </div>
+            </div>
         </div>
+
 
         <div class="products-wrap">
             <div class="grid products-masonry">
@@ -203,4 +237,3 @@
         </div>
     </div>
 </section>
-

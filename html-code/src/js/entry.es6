@@ -18,6 +18,7 @@ import 'swiper/css/bundle';
 
     $(".upload-file-custom").length > 0 && require("./custom/upload-file-custom.es6");
     $(".video-open-trigger, .youtube-open-trigger").length > 0 && require("./custom/video.es6");
+    $(".advertisement-slider").length > 0 && require("./custom/advertisement-slider.es6");
     $(".products-masonry").length > 0 && require("./template-parts/products-section.es6");
     $(".companies-masonry").length > 0 && require("./template-parts/companies-section.es6");
     $(".communities-masonry").length > 0 && require("./template-parts/community-overview-section.es6");

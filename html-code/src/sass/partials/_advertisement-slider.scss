@@ -1,0 +1,38 @@
+.advertisement-slider {
+  overflow: hidden;
+  .advertisement {
+    padding: 0 !important;
+    margin: 0 !important;
+    height: 100% !important;
+    .box {
+      height: 100% !important;
+      min-height: 130px;
+      border-radius: 10px;
+      @include media-breakpoint-down(xl) {
+        border-radius: 7px;
+      }
+    }
+  }
+
+  .swiper-wrapper {
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+
+    .swiper-slide {
+      height: auto !important;
+    }
+  }
+
+  .advertisement-image {
+    display: block;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    min-height: 130px;
+    height: 100% !important;
+    @include media-breakpoint-down(xl) {
+      border-radius: 7px;
+    }
+  }
+}
