@@ -20,8 +20,8 @@ $arResult["PROPERTY_LIST"] = $first;
 $arResult["PROPERTY_LIST"][] = 'PREVIEW_TEXT';
 $arResult["PROPERTY_LIST"] = array_merge($arResult["PROPERTY_LIST"], $photo);
 $annoBlock = $arResult["PROPERTY_LIST"];
-$socialBlock = array_slice($last, 0, 8);
-$contactBlock = array_slice($last, 8, 10);
+$socialBlock = array_slice($last, 0, 4);
+$contactBlock = array_slice($last, 4, 10);
 //костыль закончился
 if ($_GET['edit'] != 'Y') {
     $title = GetMessage("IBLOCK_FORM_SUBMIT");
