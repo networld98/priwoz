@@ -535,7 +535,7 @@ while ($arElement = $dbAllElements->Fetch()) {
 
                                             <? foreach ($arItem["VALUES"] as $val => $ar):
                                                 if(SITE_ID=='ua'){
-                                                    if(CUtil::JSEscape($key)=='527') {
+                                                    if(CUtil::JSEscape($key)=='527' || CUtil::JSEscape($key)=='571') {
                                                         $ar["VALUE"] = CIBlockSection::GetList(array(), array('IBLOCK_ID' => 20, 'ID' => $ar["SECTION"]), false, array('UF_NAME_UA'))->GetNext()['UF_NAME_UA'];
                                                     }elseif(CUtil::JSEscape($key)=='528'|| CUtil::JSEscape($key)=='526') {
                                                         $ar["VALUE"] = CIBlockElement::GetByID($ar["SECTION"])->GetNextElement()->GetProperties()['NAME_UA']['VALUE'];
@@ -543,7 +543,10 @@ while ($arElement = $dbAllElements->Fetch()) {
                                                 }?>
                                                 <option
                                                         <?if(CUtil::JSEscape($key)=='528'){?>
-                                                        class="subcategory"
+                                                            class="subcategory"
+                                                        <?}?>
+                                                        <?if(CUtil::JSEscape($key)=='571'){?>
+                                                            class="betcategory"
                                                         <?}?>
                                                         data-count="<? echo $ar["ELEMENT_COUNT"]; ?>"
                                                         data-section="<?=$arAllElements[$ar["URL_ID"]]?>"

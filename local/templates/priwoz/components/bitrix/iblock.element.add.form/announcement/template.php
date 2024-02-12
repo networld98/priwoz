@@ -14,13 +14,13 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 $this->setFrameMode(false);
 //Костыль чтоб вклинить PREVIEW_TEXT в средину блока
 unset ($arResult["PROPERTY_LIST"][1]);
-$first = array_slice($arResult["PROPERTY_LIST"], 0, 4);
-$last = array_slice($arResult["PROPERTY_LIST"], 4);
+$first = array_slice($arResult["PROPERTY_LIST"], 0, 5);
+$last = array_slice($arResult["PROPERTY_LIST"], 5);
 $arResult["PROPERTY_LIST"] = $first;
 $arResult["PROPERTY_LIST"][] = 'PREVIEW_TEXT';
 $arResult["PROPERTY_LIST"] = array_merge($arResult["PROPERTY_LIST"], $last);
 $annoBlock = array_slice($arResult["PROPERTY_LIST"], 0, -6);
-$contactBlock = array_slice($arResult["PROPERTY_LIST"], 8);
+$contactBlock = array_slice($arResult["PROPERTY_LIST"], 9);
 //костыль закончился
 if ($_GET['edit'] != 'Y') {
     $title = GetMessage("IBLOCK_FORM_SUBMIT");
@@ -65,8 +65,12 @@ if ($_GET['edit'] != 'Y') {
                                 <input type="text" class="form-control" readonly
                                        placeholder="<?=GetMessage("IBLOCK_CABINET_SELECT_CATEGORY")?>">
                             <? } ?>
+                            <? if ($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == 'BETCATEGORY' && empty($arResult["ELEMENT_PROPERTIES"][$propertyID][0]["VALUE"])) { ?>
+                                <input type="text" class="form-control" readonly
+                                       placeholder="<?=GetMessage("IBLOCK_CABINET_SELECT_BETCATEGORY")?>">
+                            <? } ?>
                             <? if ($arResult["ELEMENT_PROPERTIES"][$propertyID][0]["VALUE"]) {
-                                if ($arResult["PROPERTY_LIST_FULL"][$propertyID]["PROPERTY_TYPE"] == "E" && $arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == "SUBCATEGORY") {
+                                if ($arResult["PROPERTY_LIST_FULL"][$propertyID]["PROPERTY_TYPE"] == "E" && ($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == "SUBCATEGORY" || $arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == "BETCATEGORY") ) {
                                     $arAllElements = [];
                                     $arResult["PROPERTY_LIST_FULL"][$propertyID]["PROPERTY_TYPE"] = "L";
 
@@ -116,8 +120,7 @@ if ($_GET['edit'] != 'Y') {
                                 if ($arResult["PROPERTY_LIST_FULL"][$propertyID]["PROPERTY_TYPE"] == "G") {
                                     $arAllElements = [];
                                     $arResult["PROPERTY_LIST_FULL"][$propertyID]["PROPERTY_TYPE"] = "L";
-
-                                    $arSelect1 = array("ID", "NAME");
+                                    $arSelect1 = array("ID", "NAME", "DEPTH_LEVEL");
                                     $arFilter1 = array("IBLOCK_ID" => IntVal($yvalue), "ACTIVE_DATE" => "Y", "ACTIVE" => "Y");
                                     $dbAllElements = CIBlockSection::GetList(array(), $arFilter1, false, false, $arSelect1);
 
@@ -125,7 +128,17 @@ if ($_GET['edit'] != 'Y') {
 
 
                                     while ($arElement = $dbAllElements->Fetch()) {
-                                        $arAllElements[$arElement['ID']] = array('VALUE' => $arElement['NAME']);
+                                        if($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == "CATEGORY"){
+                                            if($arElement['DEPTH_LEVEL']==1){
+                                                $arAllElements[$arElement['ID']] = array('VALUE' => $arElement['NAME']);
+                                            }
+                                        }elseif($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == "BETCATEGORY"){
+                                            if($arElement['DEPTH_LEVEL']==2){
+                                                $arAllElements[$arElement['ID']] = array('VALUE' => $arElement['NAME']);
+                                            }
+                                        }else{
+                                            $arAllElements[$arElement['ID']] = array('VALUE' => $arElement['NAME']);
+                                        }
                                     }
 
                                     $arResult["PROPERTY_LIST_FULL"][$propertyID]['ENUM'] = $arAllElements;
@@ -534,13 +547,15 @@ if ($_GET['edit'] != 'Y') {
         $(".CATEGORY").change(function () {
             let id = $(this).val();
             let subcategory = $('.SUBCATEGORY-block');
+            let betcategory = $('.BETCATEGORY-block');
             $.ajax({
                 type: "POST",
-                url: '<?=SITE_TEMPLATE_PATH ?>/components/bitrix/iblock.element.add.form/announcement/ajaxCategory.php',
+                url: '<?=SITE_TEMPLATE_PATH ?>/components/bitrix/iblock.element.add.form/announcement/ajaxBet.php',
                 data: {CATEGORY: id, SITE_ID: "<?=SITE_ID?>"},
                 success: function (data) {
                     // Вывод текста результата отправки
-                    $(subcategory).html(data);
+                    $(betcategory).html(data);
+                    $(subcategory).html('<div class="form-select-box"> <input type="text" class="form-control" readonly placeholder="<?=GetMessage("IBLOCK_CABINET_SELECT_CATEGORY")?>"> </div>');
                 }
             });
             return false;
