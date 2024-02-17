@@ -79,7 +79,9 @@ if ($_GET['edit'] != 'Y') {
 
 
                                     while ($arElement = $dbAllElements->Fetch()) {
-                                        $arAllElements[$arElement['ID']] = array('VALUE' => $arElement['NAME']);
+                                        if ($arElement['IBLOCK_SECTION_ID'] == $arResult["ELEMENT_PROPERTIES"][546][0]['VALUE']) {
+                                            $arAllElements[$arElement['ID']] = array('VALUE' => $arElement['NAME']);
+                                        }
                                     }
 
                                     $arResult["PROPERTY_LIST_FULL"][$propertyID]['ENUM'] = $arAllElements;
