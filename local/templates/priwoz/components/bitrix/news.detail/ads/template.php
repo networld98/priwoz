@@ -202,11 +202,15 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
                             <div class="big-image-slider swiper-container">
                                 <div class="swiper-wrapper">
                                     <? foreach ($arResult['PROPERTIES']['PHOTOS']['VALUE'] as $key => $photo) {
-                                        $file = CFile::ResizeImageGet($photo, array('width' => 900, 'height' => 900), BX_RESIZE_IMAGE_PROPORTIONAL, true); ?>
+                                        $file = CFile::ResizeImageGet($photo, array('width' => 900, 'height' => 900), BX_RESIZE_IMAGE_PROPORTIONAL, true);
+                                        $fileFancy = CFile::ResizeImageGet($photo, array('width' => 1920, 'height' => 1920), BX_RESIZE_IMAGE_PROPORTIONAL, true);?>
                                         <div class="swiper-slide">
                                             <div class="image">
-                                                <img class="bg-img" src="<?= $file['src'] ?>"
-                                                     alt="<?= $arResult['NAME'] ?>-<?= $key + 1 ?>">
+                                                <a href="<?= $fileFancy['src']?>" data-fancybox="gallery" data-caption="<?=$arResult["NAME"]?>">
+                                                    <img class="bg-img" src="<?= $file['src'] ?>"
+                                                         alt="<?= $arResult['NAME'] ?>-<?= $key + 1 ?>">
+                                                </a>
+
                                             </div>
                                         </div>
                                     <? } ?>

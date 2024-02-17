@@ -34,7 +34,7 @@ $this->addExternalCss($this->GetFolder() . '/themes/' . $arParams['TEMPLATE_THEM
                 <div class="grid-item company-grid-item">
                     <? $APPLICATION->IncludeComponent(
                         "bitrix:advertising.banner",
-                        "",
+                        "slider-company",
                         array(
                             "BS_ARROW_NAV" => "N",
                             "BS_BULLET_NAV" => "Y",
@@ -64,7 +64,7 @@ $this->addExternalCss($this->GetFolder() . '/themes/' . $arParams['TEMPLATE_THEM
                     if($arFields["PPROPERTY_COMPANY"] && $arFields["PROPERTY_YOUTUBE_IN_MAIN_VALUE"] && !in_array($arFields["PROPERTY_YOUTUBE_IN_MAIN_VALUE"],$videoArray)){
                         $companyLogo = CIBlockElement::GetByID($arFields["PROPERTY_COMPANY_VALUE"])->GetNextElement()->GetProperties()["LOGO"]["VALUE"];
                         $logo = CFile::ResizeImageGet($companyLogo, array('width' => 150), BX_RESIZE_IMAGE_PROPORTIONAL, true);
-                        $picture = CFile::ResizeImageGet($arFields["PREVIEW_PICTURE"], array('width' => 400), BX_RESIZE_IMAGE_PROPORTIONAL, true);
+                        $picture = CFile::ResizeImageGet($arFields["PREVIEW_PICTURE"], array('width' => 400), BX_RESIZE_IMAGE_EXACT, true);
                         $videoArray[] = $arFields["PROPERTY_YOUTUBE_IN_MAIN_VALUE"];
                         ?>
                     <div class="grid-item company-grid-item">

@@ -321,3 +321,20 @@ span.blue-link, .personal-section .products-masonry.my-products .product-grid-it
 .advertisement-slider img {
     width:100%;
 }
+.site-header .logo {
+    width: auto;
+    height: 45px;
+}
+@media (min-width: 1024px){
+    .product-grid-item .box.-adv {
+        min-height: 500px;
+    }
+}
+.swiper-wrapper .advertisement img {
+    border-radius: 7px;
+    max-width: 100%;
+}
+.company-grid-item .box.-adv {
+    min-height: 600px;
+}
+.advertisement.advertisement-type-3

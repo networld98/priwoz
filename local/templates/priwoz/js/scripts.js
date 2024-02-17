@@ -193,6 +193,9 @@ $( document ).ready(function() {
             input.addEventListener( 'blur', function(){ input.classList.remove( 'has-focus' ); });
         });
     }( document, window, 0 ));
+    Fancybox.bind('[data-fancybox="gallery"]', {
+        // Your custom options for a specific gallery
+    });
     $(".filter-sort").change(function () {
         let url = $(this).val();
         $("#products-wrap").load(url +" #products-masonry");

@@ -135,9 +135,9 @@ div.title-search-fader {
 	background-repeat: repeat-y;
 	position:absolute;
 }
-form.smartfilter {
-	display: flex;
-}
+/*form.smartfilter {*/
+/*	display: flex;*/
+/*}*/
 @media screen and (max-width: 576px){
 	.title-search-result th {
 		display: none;

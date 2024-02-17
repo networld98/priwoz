@@ -190,10 +190,10 @@ $APPLICATION->SetTitle("Priwoz.info");
                 ),
                 false
             ); ?>
-            <div class="advertisement advertisement-type-2">
+
                 <? $APPLICATION->IncludeComponent(
                     "bitrix:advertising.banner",
-                    "",
+                    "slider-main-big",
                     array(
                         "BS_ARROW_NAV" => "N",
                         "BS_BULLET_NAV" => "Y",
@@ -212,7 +212,6 @@ $APPLICATION->SetTitle("Priwoz.info");
                         "TYPE" => "mainpage"
                     )
                 ); ?>
-            </div>
         </div>
     </section>
     <section class="companies-section">

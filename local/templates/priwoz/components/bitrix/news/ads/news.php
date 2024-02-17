@@ -229,10 +229,9 @@ global $arUser;
     </div>
     <div class="bg-overlay">
         <div class="container">
-            <div class="advertisement advertisement-type-3">
                 <? $APPLICATION->IncludeComponent(
                     "bitrix:advertising.banner",
-                    "",
+                    "slider-ads-big",
                     array(
                         "BS_ARROW_NAV" => "N",
                         "BS_BULLET_NAV" => "Y",
@@ -251,7 +250,6 @@ global $arUser;
                         "TYPE" => "adspage"
                     )
                 ); ?>
-            </div>
             <? if ($_GET['userAds'] != NULL && $_GET['companisAds'] != NULL) { ?>
                 <? if ($arParams["USE_RSS"] == "Y"): ?>
                     <?

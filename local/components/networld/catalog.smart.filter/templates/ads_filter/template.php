@@ -23,6 +23,17 @@ while ($arElement = $dbAllElements->Fetch()) {
     $res = CIBlockSection::GetByID($arElement["IBLOCK_SECTION_ID"])->GetNext()['CODE'];
     $arAllElements[$arElement['CODE']] = $res;
 }
+$dbAllSections = CIBlockSection::GetList (
+    Array("ID" => "ASC"),
+    Array("IBLOCK_ID" => 20),
+    false,
+    Array('CODE','IBLOCK_SECTION_ID')
+);
+while($arElement = $dbAllSections->GetNext())
+{
+    $res = CIBlockSection::GetByID($arElement["IBLOCK_SECTION_ID"])->GetNext()['CODE'];
+    $arAllElements[$arElement['CODE']] = $res;
+}
 ?>
 <div class="bx_filter <?= $templateData["TEMPLATE_CLASS"] ?> bx_horizontal" id="smartFilterAds">
     <div class="bx_filter_section" id="smartFilterAds-block">

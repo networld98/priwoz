@@ -70,7 +70,7 @@ if ($_GET['edit'] != 'Y') {
                                        placeholder="<?=GetMessage("IBLOCK_CABINET_SELECT_BETCATEGORY")?>">
                             <? } ?>
                             <? if ($arResult["ELEMENT_PROPERTIES"][$propertyID][0]["VALUE"]) {
-                                if ($arResult["PROPERTY_LIST_FULL"][$propertyID]["PROPERTY_TYPE"] == "E" && ($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == "SUBCATEGORY" || $arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == "BETCATEGORY") ) {
+                            if ($arResult["PROPERTY_LIST_FULL"][$propertyID]["PROPERTY_TYPE"] == "E" && ($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == "SUBCATEGORY" || $arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == "BETCATEGORY") ) {
                                     $arAllElements = [];
                                     $arResult["PROPERTY_LIST_FULL"][$propertyID]["PROPERTY_TYPE"] = "L";
 
@@ -82,7 +82,9 @@ if ($_GET['edit'] != 'Y') {
 
 
                                     while ($arElement = $dbAllElements->Fetch()) {
-                                        $arAllElements[$arElement['ID']] = array('VALUE' => $arElement['NAME']);
+                                        if ($arElement['IBLOCK_SECTION_ID'] == $arResult["ELEMENT_PROPERTIES"][571][0]['VALUE']) {
+                                            $arAllElements[$arElement['ID']] = array('VALUE' => $arElement['NAME']);
+                                        }
                                     }
 
                                     $arResult["PROPERTY_LIST_FULL"][$propertyID]['ENUM'] = $arAllElements;
@@ -118,34 +120,36 @@ if ($_GET['edit'] != 'Y') {
                                 }
 
                                 if ($arResult["PROPERTY_LIST_FULL"][$propertyID]["PROPERTY_TYPE"] == "G") {
-                                    $arAllElements = [];
-                                    $arResult["PROPERTY_LIST_FULL"][$propertyID]["PROPERTY_TYPE"] = "L";
-                                    $arSelect1 = array("ID", "NAME", "DEPTH_LEVEL");
-                                    $arFilter1 = array("IBLOCK_ID" => IntVal($yvalue), "ACTIVE_DATE" => "Y", "ACTIVE" => "Y");
-                                    $dbAllElements = CIBlockSection::GetList(array(), $arFilter1, false, false, $arSelect1);
+                                    if ($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] != 'BETCATEGORY' || $arResult["ELEMENT_PROPERTIES"][$propertyID][0]["VALUE"]) {
+                                        $arAllElements = [];
 
-                                    $dbAllElements = GetIBlockSectionList($arResult["PROPERTY_LIST_FULL"][$propertyID]["LINK_IBLOCK_ID"]);
+                                        $arResult["PROPERTY_LIST_FULL"][$propertyID]["PROPERTY_TYPE"] = "L";
+                                        $arSelect1 = array("ID", "NAME", "DEPTH_LEVEL");
+                                        $arFilter1 = array("IBLOCK_ID" => IntVal($yvalue), "ACTIVE_DATE" => "Y", "ACTIVE" => "Y");
+                                        $dbAllElements = CIBlockSection::GetList(array(), $arFilter1, false, false, $arSelect1);
+
+                                        $dbAllElements = GetIBlockSectionList($arResult["PROPERTY_LIST_FULL"][$propertyID]["LINK_IBLOCK_ID"]);
 
 
-                                    while ($arElement = $dbAllElements->Fetch()) {
-                                        if($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == "CATEGORY"){
-                                            if($arElement['DEPTH_LEVEL']==1){
+                                        while ($arElement = $dbAllElements->Fetch()) {
+                                            if ($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == "CATEGORY") {
+                                                if ($arElement['DEPTH_LEVEL'] == 1) {
+                                                    $arAllElements[$arElement['ID']] = array('VALUE' => $arElement['NAME']);
+                                                }
+                                            } elseif ($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == "BETCATEGORY") {
+                                                if ($arElement['DEPTH_LEVEL'] == 2 && $arElement['IBLOCK_SECTION_ID'] == $arResult["ELEMENT_PROPERTIES"][527][0]['VALUE']) {
+                                                    $arAllElements[$arElement['ID']] = array('VALUE' => $arElement['NAME']);
+                                                }
+                                            } else {
                                                 $arAllElements[$arElement['ID']] = array('VALUE' => $arElement['NAME']);
                                             }
-                                        }elseif($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == "BETCATEGORY"){
-                                            if($arElement['DEPTH_LEVEL']==2){
-                                                $arAllElements[$arElement['ID']] = array('VALUE' => $arElement['NAME']);
-                                            }
-                                        }else{
-                                            $arAllElements[$arElement['ID']] = array('VALUE' => $arElement['NAME']);
                                         }
+
+                                        $arResult["PROPERTY_LIST_FULL"][$propertyID]['ENUM'] = $arAllElements;
+
+                                        if (!in_array($propertyID, $arResult['PROPERTY_LIST_FULL']))
+                                            $arResult[$arResult['PROPERTY_LIST_FULL']][] = $arResult["PROPERTY_LIST_FULL"][$propertyID];
                                     }
-
-                                    $arResult["PROPERTY_LIST_FULL"][$propertyID]['ENUM'] = $arAllElements;
-
-                                    if (!in_array($propertyID, $arResult['PROPERTY_LIST_FULL']))
-                                        $arResult[$arResult['PROPERTY_LIST_FULL']][] = $arResult["PROPERTY_LIST_FULL"][$propertyID];
-
                                 }
                                 if (
                                     $arResult["PROPERTY_LIST_FULL"][$propertyID]["PROPERTY_TYPE"] == "T"

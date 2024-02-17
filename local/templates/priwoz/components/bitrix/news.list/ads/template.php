@@ -29,7 +29,7 @@ $this->EndViewTarget(); ?>
                     <div class="grid-item product-grid-item">
                         <? $APPLICATION->IncludeComponent(
                             "bitrix:advertising.banner",
-                            "",
+                            "slider-ads",
                             array(
                                 "BS_ARROW_NAV" => "N",
                                 "BS_BULLET_NAV" => "Y",
@@ -57,7 +57,7 @@ $this->EndViewTarget(); ?>
                 <div class="grid-item product-grid-item ads-item" id="<?= $this->GetEditAreaId($arItem['ID']); ?>">
                     <a href="<?= $arItem["DETAIL_PAGE_URL"] ?>" class="box">
                         <? if ($arItem['PROPERTIES']['PHOTOS']['VALUE']):
-                            $file = CFile::ResizeImageGet($arItem['PROPERTIES']['PHOTOS']['VALUE'][0], array('width' => 450, 'height' => 450), BX_RESIZE_IMAGE_PROPORTIONAL, true);
+                            $file = CFile::ResizeImageGet($arItem['PROPERTIES']['PHOTOS']['VALUE'][0], array('width' => 450, 'height' => 450), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, true);
                             ?>
                             <div class="img">
                                 <img class="bg-img" src="<?= $file['src'] ?>" alt="<?= $arItem['NAME'] ?>">

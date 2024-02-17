@@ -1,6 +1,7 @@
 $( document ).ready(function() {
 	let categoryVal = $('select[name=arrFilter_527] :selected').val(),
 	subCategoryVal = $('select[name=arrFilter_528] :selected').val(),
+	betCategoryVal = $('select[name=arrFilter_571] :selected').val(),
 	category = $('select[name=arrFilter_527] :selected').data('name'),
 	link = '<a href="/">Priwoz</a><span class="sep">-</span><span class="category-page">'+category+'</span>';
 	$( ".subcategory" ).remove();
@@ -14,15 +15,23 @@ $( document ).ready(function() {
 $(document).ajaxComplete(function() {
 	let categoryVal = $('select[name=arrFilter_527] :selected').val(),
 	subCategoryVal = $('select[name=arrFilter_528] :selected').val(),
+	betcategoryVal = $('select[name=arrFilter_571] :selected').val(),
 	category = $('select[name=arrFilter_527] :selected').data('name'),
 	subCategory = $('select[name=arrFilter_528] :selected').data('name'),
+	betCategory = $('select[name=arrFilter_571] :selected').data('name'),
 	grid = $('.grid').masonry({}).css('opacity', '1'),
 	currentUrl = $(location).attr('href');
 	$(".filter-output .category-page").text(category);
+	$(".filter-output .betcategory-page").text(betCategory);
 	$(".filter-output .current-page").text(subCategory);
+
 	if(categoryVal != '') {
-		$( ".subcategory:not([data-section="+categoryVal+"])" ).remove();
-	}else if(categoryVal == '' && subCategoryVal != '') {
+		$( ".betcategory:not([data-section="+categoryVal+"])" ).remove();
+	}
+	if(betcategoryVal != '') {
+		$( ".subcategory:not([data-section="+betcategoryVal+"])" ).remove();
+	}
+	if(categoryVal == '' && subCategoryVal != '') {
 		$("#products-wrap").load(currentUrl +"?del_filter=Сбросить #products-masonry");
 		$("#smartFilterAds").load(currentUrl +"?del_filter=Сбросить #smartFilterAds-block");
 	}
@@ -338,6 +347,10 @@ JCSmartFilter.prototype.values2post = function (values)
 		if(values[i].name=='arrFilter_528'){
 			var subCategoryBread = 'Y';
 		}
+		if(values[i].name=='arrFilter_571'){
+			var betCategoryBread = 'Y';
+			var betcategoryUrl = values[i].value;
+		}
 		var p = values[i].name.indexOf('[');
 		if(p == -1)
 		{
@@ -383,16 +396,20 @@ JCSmartFilter.prototype.values2post = function (values)
 		$("#price_asc").val(fullUrl +"&sort=PROPERTY_PRICE&ads=asc&set_filter=Найти");
 		$("#price_desc").val(fullUrl +"&sort=PROPERTY_PRICE&ads=desc&set_filter=Найти");
 		if (window.location.href.indexOf("ua") > -1) {
-			if(categoryBread=='Y' && subCategoryBread != 'Y'){
+			if(categoryBread=='Y' && betCategoryBread != 'Y' && subCategoryBread != 'Y'){
 				var link = '<a href="/ua/">Priwoz</a><span class="sep">-</span><span class="category-page"></span>';
-			}else if(categoryBread=='Y' && subCategoryBread == 'Y'){
-				var link = '<a href="/ua/">Priwoz</a><span class="sep">-</span><a class="category-page" href="'+currentUrl+'?arrFilter_527='+categoryUrl+'&set_filter=Найти"></a><span class="sep">-</span><span class="current-page"></span>'
+			}else if(categoryBread=='Y' && betCategoryBread == 'Y' && subCategoryBread != 'Y'){
+				var link = '<a href="/ua/">Priwoz</a><span class="sep">-</span><a class="category-page" href="'+currentUrl+'?arrFilter_527='+categoryUrl+'&set_filter=Найти"></a><span class="sep">-</span><span class="betcategory-page"></span>';
+			} else if(categoryBread=='Y' && betCategoryBread == 'Y' && subCategoryBread == 'Y'){
+				var link = '<a href="/ua/">Priwoz</a><span class="sep">-</span><a class="category-page" href="'+currentUrl+'?arrFilter_527='+categoryUrl+'&set_filter=Найти"></a><span class="sep">-</span><a class="betcategory-page" href="'+currentUrl+'?arrFilter_527='+categoryUrl+'&arrFilter_571='+betcategoryUrl+'&set_filter=Найти"></a><span class="sep">-</span><span class="current-page"></span>';
 			}
 		}else{
-			if(categoryBread=='Y' && subCategoryBread != 'Y'){
+			if(categoryBread=='Y' && betCategoryBread != 'Y' && subCategoryBread != 'Y'){
 				var link = '<a href="/">Priwoz</a><span class="sep">-</span><span class="category-page"></span>';
-			}else if(categoryBread=='Y' && subCategoryBread == 'Y'){
-				var link = '<a href="/">Priwoz</a><span class="sep">-</span><a class="category-page" href="'+currentUrl+'?arrFilter_527='+categoryUrl+'&set_filter=Найти"></a><span class="sep">-</span><span class="current-page"></span>'
+			}else if(categoryBread=='Y' && betCategoryBread == 'Y' && subCategoryBread != 'Y'){
+				var link = '<a href="/">Priwoz</a><span class="sep">-</span><a class="category-page" href="'+currentUrl+'?arrFilter_527='+categoryUrl+'&set_filter=Найти"></a><span class="sep">-</span><span class="betcategory-page"></span>';
+			} else if(categoryBread=='Y' && betCategoryBread == 'Y' && subCategoryBread == 'Y'){
+				var link = '<a href="/">Priwoz</a><span class="sep">-</span><a class="category-page" href="'+currentUrl+'?arrFilter_527='+categoryUrl+'&set_filter=Найти"></a><span class="sep">-</span><a class="betcategory-page" href="'+currentUrl+'?arrFilter_527='+categoryUrl+'&arrFilter_571='+betcategoryUrl+'&set_filter=Найти"></a><span class="sep">-</span><span class="current-page"></span>';
 			}
 		}
 
