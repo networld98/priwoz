@@ -1,5 +1,6 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_before.php");
+CModule::IncludeModule('iblock');
 global $arrFilter, $USER;
 if (!empty($_POST['id'])) {
     $author = CIBlockElement::GetByID($_POST['id'])->GetNextElement()->GetProperties()['AUTHOR'];
