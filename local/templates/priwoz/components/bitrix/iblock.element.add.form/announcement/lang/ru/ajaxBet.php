@@ -1,0 +1,8 @@
+<?
+$MESS["CT_BIEAF_PROPERTY_VALUE_NA_SUBCATEGORY"] = "(выберите рубрику)";
+$MESS["CT_BIEAF_PROPERTY_VALUE_NON_SUBCATEGORY"] = "(нет подрубрик)";
+$MESS["CT_BIEAF_PROPERTY_VALUE_NA_SUBCATEGORY_s1"] = "(выберите рубрику)";
+$MESS["CT_BIEAF_PROPERTY_VALUE_NON_SUBCATEGORY_s1"] = "(нет подрубрик)";
+$MESS["CT_BIEAF_PROPERTY_VALUE_NA_SUBCATEGORY_ua"] = "(виберіть рубрику)";
+$MESS["CT_BIEAF_PROPERTY_VALUE_NON_SUBCATEGORY_ua"] = "(немає підрубрик)";
+?>
