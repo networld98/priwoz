@@ -56,7 +56,7 @@
                     <div class="menu-title -md-link"><?=GetMessage('DEF_HELP')?></div>
                     <ul class="menu -social">
                         <li>
-                            <a href="#">
+                            <a href="https://www.instagram.com/priwoz.info/">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 60 60"
                                      fill="none">
                                     <path d="M9.94733 44.3923C7.80382 43.2619 5.62402 42.1054 3.90711 40.4137C0.699802 37.2523 -0.472301 32.506 0.168801 28.2007C0.810202 23.896 3.07941 19.9987 5.90812 16.6876C8.43923 13.7242 11.5079 11.1115 15.1844 9.62975C18.8604 8.14804 23.1987 7.89184 26.922 9.49145C29.4492 10.5771 31.6047 12.4543 34.2192 13.3045C38.4387 14.6761 42.9804 13.1362 47.3733 13.6399C51.9475 14.1643 56.233 17.0728 58.354 21.0919C60.6667 25.4749 60.3652 30.7693 58.5484 35.2447C56.7316 39.7207 53.5465 43.5061 50.1846 47.0069C46.1787 51.1787 41.2833 55.2935 35.3241 55.3769C31.0104 55.4375 26.9418 53.3534 23.0976 51.3266C18.7143 49.0151 14.3306 46.7035 9.94733 44.3923Z"
@@ -89,7 +89,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="https://telegram.me/+380999865321">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"
                                      fill="none">
                                     <path d="M19.8946 87.513C15.6076 85.2522 11.248 82.9392 7.8142 79.5558C1.3996 73.233 -0.9446 63.7404 0.3376 55.1298C1.6204 46.5204 6.1588 38.7258 11.8162 32.1036C16.8784 26.1768 23.0158 20.9514 30.3688 17.988C37.7206 15.0246 46.3972 14.5122 53.8438 17.7114C58.8982 19.8828 63.2092 23.637 68.4382 25.3374C76.8772 28.0806 85.9606 25.0008 94.7464 26.0082C103.895 27.057 112.466 32.874 116.708 40.9122C121.333 49.6782 120.73 60.267 117.096 69.2178C113.463 78.1698 107.093 85.7406 100.369 92.742C92.3572 101.086 82.5664 109.315 70.648 109.482C62.0206 109.603 53.8834 105.435 46.195 101.381C37.4284 96.7584 28.6612 92.1354 19.8946 87.513Z"
@@ -115,7 +115,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="https://www.facebook.com/priwoz/">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"
                                      fill="none">
                                     <path d="M19.8946 87.5473C15.6076 85.2854 11.248 82.9713 7.8142 79.5863C1.3996 73.2605 -0.9446 63.7633 0.3376 55.1486C1.6204 46.5352 6.1588 38.7368 11.8162 32.1115C16.8784 26.1819 23.0158 20.954 30.3688 17.9892C37.7206 15.0244 46.3972 14.5117 53.8438 17.7124C58.8982 19.8849 63.2092 23.6409 68.4382 25.3421C76.8772 28.0866 85.9606 25.0053 94.7464 26.0132C103.895 27.0625 112.466 32.8823 116.708 40.9243C121.333 49.6945 120.73 60.2883 117.096 69.2434C113.463 78.1996 107.093 85.774 100.369 92.7787C92.3572 101.126 82.5664 109.36 70.648 109.527C62.0206 109.648 53.8834 105.478 46.195 101.422C37.4284 96.7971 28.6612 92.1719 19.8946 87.5473Z"
@@ -140,7 +140,7 @@
                                 </svg>
                             </a>
                         </li>
-                        <li>
+                        <?/*<li>
                             <a href="#">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 60 60"
                                      fill="none">
@@ -213,16 +213,19 @@
                                           fill="white"/>
                                 </svg>
                             </a>
-                        </li>
+                        </li>*/?>
                     </ul>
                     <div class="link d-xs-none d-md-block d-xl-none -md-link">
                         <a href="<?=SITE_DIR?>privacy-policy/"><?=GetMessage('DEF_POLICY')?></a>
                     </div>
                 </div>
                 <div class="col-xs-12 col-md-4 col-xl-3">
-                    <div class="widget-box">
-                        <div id="SinoptikInformer" style="width:270px;" class="SinoptikInformer type1c1"><div class="siHeader"><div class="siLh"><div class="siMh"><a onmousedown="siClickCount();" class="siLogo" href="https://sinoptik.ua/" target="_blank" rel="nofollow" title="Погода"> </a>Погода <span id="siHeader"></span></div></div></div><div class="siBody"><a onmousedown="siClickCount();" href="https://sinoptik.ua/погода-киев" title="Погода в Киеве" target="_blank"><div class="siCity"><div class="siCityName"><span>Киев</span></div><div id="siCont0" class="siBodyContent"><div class="siLeft"><div class="siTerm"></div><div class="siT" id="siT0"></div><div id="weatherIco0"></div></div><div class="siInf"><p>влажность: <span id="vl0"></span></p><p>давление: <span id="dav0"></span></p><p>ветер: <span id="wind0"></span></p></div></div></div></a><div class="siLinks">Погода на 10 дней от <a href="https://sinoptik.ua/погода-киев/10-дней" title="Погода на 10 дней" target="_blank" onmousedown="siClickCount();">sinoptik.ua</a></div></div><div class="siFooter"><div class="siLf"><div class="siMf"></div></div></div></div><script type="text/javascript" charset="UTF-8" src="//sinoptik.ua/informers_js.php?title=4&amp;wind=3&amp;cities=303010783&amp;lang=ru"></script>
-                    </div>
+                    <a class="logo" href="<?=SITE_DIR?>">
+                        <img src="<?=SITE_TEMPLATE_PATH?>/images/Priwoz2.svg" alt="Priwoz">
+                    </a>
+<!--                    <div class="widget-box">-->
+<!--                        <div id="SinoptikInformer" style="width:270px;" class="SinoptikInformer type1c1"><div class="siHeader"><div class="siLh"><div class="siMh"><a onmousedown="siClickCount();" class="siLogo" href="https://sinoptik.ua/" target="_blank" rel="nofollow" title="Погода"> </a>Погода <span id="siHeader"></span></div></div></div><div class="siBody"><a onmousedown="siClickCount();" href="https://sinoptik.ua/погода-киев" title="Погода в Киеве" target="_blank"><div class="siCity"><div class="siCityName"><span>Киев</span></div><div id="siCont0" class="siBodyContent"><div class="siLeft"><div class="siTerm"></div><div class="siT" id="siT0"></div><div id="weatherIco0"></div></div><div class="siInf"><p>влажность: <span id="vl0"></span></p><p>давление: <span id="dav0"></span></p><p>ветер: <span id="wind0"></span></p></div></div></div></a><div class="siLinks">Погода на 10 дней от <a href="https://sinoptik.ua/погода-киев/10-дней" title="Погода на 10 дней" target="_blank" onmousedown="siClickCount();">sinoptik.ua</a></div></div><div class="siFooter"><div class="siLf"><div class="siMf"></div></div></div></div><script type="text/javascript" charset="UTF-8" src="//sinoptik.ua/informers_js.php?title=4&amp;wind=3&amp;cities=53704&amp;lang=ru"></script>-->
+<!--                    </div>-->
                     <div class="link d-xs-block d-md-none d-xl-block -md-link">
                         <a href="<?=SITE_DIR?>privacy-policy/"><?=GetMessage('DEF_POLICY')?></a>
                     </div>

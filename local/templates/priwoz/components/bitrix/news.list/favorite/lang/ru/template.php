@@ -10,6 +10,7 @@ $MESS["CT_ACTIVE"] = "активировать";
 $MESS["CT_DISABLE"] = "деактивировать";
 $MESS["CT_SHOW_ALL"] = "Все объявления автора";
 $MESS["CT_DISABLED"] = "Деактивировано";
+$MESS["CT_MODERATION"] = "На модерации";
 $MESS["CT_ADS_NONE"] = "У вас нет объявлений";
 $MESS["CT_COMPANY_NONE"] = "Список компаний пуст";
 $MESS["CT_FAVORITE_NONE"] = "Список избранного пуст";

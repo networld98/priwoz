@@ -7,23 +7,13 @@ $( document ).ready(function() {
 
 	$('.social-tabs .social-tab').click(function() {
 		let name = $(this).data('name'), currentUrl = $(location).attr('href');
-		if( $(this).hasClass("active")){
-			$(".community-overview-section").load(currentUrl+" #community-section-ajax");
-		}else{
-			$(".community-overview-section").load(currentUrl +"?social="+name+" #community-section-ajax");
-		}
+		$('.social-tabs .social-tab').removeClass('active');
+		$(this).addClass('active');
+		$(".communities-wrap").load(currentUrl +"?social="+name+" #community-section-ajax");
 
 	});
 })
 $(document).ajaxComplete(function() {
-	let grid = $('.grid').masonry({}).css('opacity', '1');;
+	let grid = $('.grid').masonry({}).css('opacity', '1');
 	grid.masonry('reloadItems');
-	$('.social-tabs .social-tab').click(function() {
-		let name = $(this).data('name'), currentUrl = $(location).attr('href');
-		if( $(this).hasClass("active")){
-			$(".community-overview-section").load(currentUrl+" #community-section-ajax");
-		}else{
-			$(".community-overview-section").load(currentUrl +"?social="+name+" #community-section-ajax");
-		}
-	});
 })

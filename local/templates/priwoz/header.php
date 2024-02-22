@@ -20,6 +20,12 @@ if (SITE_ID == 'ua') {
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="robots" content="noindex, nofollow" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <?
@@ -179,7 +185,7 @@ if (SITE_ID == 'ua') {
                 <div class="row sub-menu">
                     <?
                     $arSelect = array("NAME", "CODE", "UF_ICON", "UF_NAME_UA");
-                    $arFilter = array("IBLOCK_ID" => 22);
+                    $arFilter = array("IBLOCK_ID" => 22, "ACTIVE" => "Y");
                     $obSections = CIBlockSection::GetList(array("name" => "asc"), $arFilter, false, $arSelect);
                     while ($ar_result = $obSections->GetNext()) {
                         if ($ar_result['UF_ICON']) {

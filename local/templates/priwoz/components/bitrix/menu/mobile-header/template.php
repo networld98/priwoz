@@ -14,7 +14,7 @@ foreach($arResult as $arItem):?>
         <ul class="menu sub-menu">
             <?
             $arSelect = array("NAME", "CODE", "UF_ICON");
-            $arFilter = array("IBLOCK_ID"=>22);
+            $arFilter = array("IBLOCK_ID" => 22, "ACTIVE" => "Y");
             $obSections = CIBlockSection::GetList(array("name" => "asc"), $arFilter, false, $arSelect);
             while($ar_result = $obSections->GetNext())
             {if($ar_result['UF_ICON']){?>

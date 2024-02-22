@@ -13,7 +13,7 @@
 $this->setFrameMode(true);
 ?>
 <section class="community-overview-section">
-    <div class="container" id="community-section-ajax">
+    <div class="container">
         <div class="title-box">
             <div class="row align-items-md-baseline">
                 <div class="col-xs-12 col-md-9">
@@ -76,7 +76,7 @@ $this->setFrameMode(true);
             </div>
         </div>
         <div class="communities-wrap">
-            <div class="grid communities-masonry">
+            <div class="grid communities-masonry" id="community-section-ajax">
                 <div class="grid-sizer"></div>
                 <div class="gutter-sizer"></div>
                 <?foreach($arResult["ITEMS"] as $arItem):?>
@@ -84,42 +84,53 @@ $this->setFrameMode(true);
                     $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
                     $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
                     $props = CIBlockElement::GetByID($arItem["ID"])->GetNextElement()->GetProperties();
-                    $picture = CFile::ResizeImageGet($arItem["PREVIEW_PICTURE"]["ID"], array('width'=>400,'height'=> 400), BX_RESIZE_IMAGE_PROPORTIONAL, true);
-                   if($_GET['social']==''){?>
-                       <div class="grid-item community-grid-item">
-                           <a href="<?=$props["LINK"]["VALUE"]?>" class="box">
-                               <div class="img">
-                                   <img class="bg-img" src="<?= $picture["src"]?>" alt="<?=$arItem['NAME']?>">
-                                   <div class="social-icon">
-                                       <img src="<?=SITE_TEMPLATE_PATH?>/images/icons/social/<?=$props["LOGO"]["VALUE"]?>.svg" alt="<?=$arItem['NAME']?>">
-                                   </div>
-                               </div>
-                               <div class="text">
-                                   <h2 class="community-title"><?=$arItem['NAME']?></h2>
-                                   <div class="description"><?=$arItem["PREVIEW_TEXT"]?></div>
-                               </div>
-                           </a>
-                       </div>
-                   <? } else {
-                       if ($props["LOGO"]["VALUE"] == $_GET['social']) {
-                           ?>
-                           <div class="grid-item community-grid-item">
-                               <a href="<?=$props["LINK"]["VALUE"]?>" class="box">
-                                   <div class="img">
-                                       <img class="bg-img" src="<?= $picture["src"]?>" alt="<?=$arItem['NAME']?>">
-                                       <div class="social-icon">
-                                           <img src="<?=SITE_TEMPLATE_PATH?>/images/icons/social/<?=$props["LOGO"]["VALUE"]?>.svg" alt="<?=$arItem['NAME']?>">
-                                       </div>
-                                   </div>
-                                   <div class="text">
-                                       <h2 class="community-title"><?=$arItem['NAME']?></h2>
-                                       <div class="description"><?=$arItem["PREVIEW_TEXT"]?></div>
-                                   </div>
-                               </a>
-                           </div>
-                       <? }
-                   } ?>
+                    $picture = CFile::ResizeImageGet($props["PICTURE"]["VALUE"], array('width'=>400,'height'=> 400), BX_RESIZE_IMAGE_PROPORTIONAL, true);
+                    if($props["MODERATION"]["VALUE"] == "Y"){
+                        if($_GET['social']==''){?>
+                            <div class="grid-item community-grid-item">
+                                <a href="<?=$props["LINK"]["VALUE"]?>" class="box">
+                                    <div class="img">
+                                        <img class="bg-img" src="<?= $picture["src"]?>" alt="<?=$arItem['NAME']?>">
+                                        <div class="social-icon">
+                                            <img src="<?=SITE_TEMPLATE_PATH?>/images/icons/social/<?=$props["LOGO"]["VALUE"]?>.svg" alt="<?=$arItem['NAME']?>">
+                                        </div>
+                                    </div>
+                                    <div class="text">
+                                        <h2 class="community-title"><?=$arItem['NAME']?></h2>
+                                        <div class="description"><?=$arItem["PREVIEW_TEXT"]?></div>
+                                    </div>
+                                </a>
+                            </div>
+                        <? } else {
+                            if ($props["LOGO"]["VALUE"] == $_GET['social']) {
+                                ?>
+                                <div class="grid-item community-grid-item">
+                                    <a href="<?=$props["LINK"]["VALUE"]?>" class="box">
+                                        <div class="img">
+                                            <img class="bg-img" src="<?= $picture["src"]?>" alt="<?=$arItem['NAME']?>">
+                                            <div class="social-icon">
+                                                <img src="<?=SITE_TEMPLATE_PATH?>/images/icons/social/<?=$props["LOGO"]["VALUE"]?>.svg" alt="<?=$arItem['NAME']?>">
+                                            </div>
+                                        </div>
+                                        <div class="text">
+                                            <h2 class="community-title"><?=$arItem['NAME']?></h2>
+                                            <div class="description"><?=$arItem["PREVIEW_TEXT"]?></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            <? }
+                        }
+                    } ?>
                 <?endforeach;?>
+                <?if($_GET['strIMessage']!=''){?>
+                <div class="grid-item community-grid-item">
+                    <div class="box">
+                        <div class="text">
+                            <?=GetMessage("FORM_NOTE_ADDOK_2")?>
+                        </div>
+                    </div>
+                </div>
+                <? } ?>
             </div>
         </div>
     </div>
@@ -128,34 +139,59 @@ $this->setFrameMode(true);
     <div class="modal-box">
         <div class="scroll-box">
             <div class="form-box">
-                <?$APPLICATION->IncludeComponent(
-                    "networld:form.result.new",
-                    "community",
-                    array(
-                        "AJAX_MODE" => "Y",
-                        "AJAX_OPTION_SHADOW" => "N",
-                        "AJAX_OPTION_JUMP" => "Y",
-                        "AJAX_OPTION_STYLE" => "Y",
-                        "AJAX_OPTION_HISTORY" => "N",
-                        "CACHE_TIME" => "3600",
-                        "CACHE_TYPE" => "N",
-                        "CHAIN_ITEM_LINK" => "",
-                        "CHAIN_ITEM_TEXT" => "",
-                        "EDIT_URL" => "",
-                        "IGNORE_CUSTOM_TEMPLATE" => "N",
-                        "LIST_URL" => "",
-                        "SEF_MODE" => "N",
-                        "SUCCESS_URL" => "",
-                        "USE_EXTENDED_ERRORS" => "Y",
-                        "WEB_FORM_ID" => "2",
-                        "COMPONENT_TEMPLATE" => "community",
-                        "VARIABLE_ALIASES" => array(
-                            "WEB_FORM_ID" => "WEB_FORM_ID",
-                            "RESULT_ID" => "RESULT_ID",
-                        )
+                <? $APPLICATION->IncludeComponent("bitrix:iblock.element.add.form", "community", array(
+                    "SEF_MODE" => "Y",    // Включить поддержку ЧПУ
+                    "IBLOCK_TYPE" => "community",    // Тип инфоблока
+                    "IBLOCK_ID" => "26",    // Инфоблок
+                    "PROPERTY_CODES" => array(    // Свойства, выводимые на редактирование
+                        0 => "NAME",
+                        1 => "PREVIEW_TEXT",
+                        2 => "560",
+                        3 => "561",
+                        4 => "578",
+                        5 => "579",
                     ),
+                    "PROPERTY_CODES_REQUIRED" => array(    // Свойства, обязательные для заполнения
+                        0 => "NAME",
+                        1 => "PREVIEW_TEXT",
+                        2 => "560",
+                        3 => "561",
+                        4 => "578",
+                        5 => "579",
+                    ),
+                    "GROUPS" => array(    // Группы пользователей, имеющие право на добавление/редактирование
+                        0 => "2",
+                    ),
+                    "STATUS_NEW" => "NEW",
+                    "STATUS" => "N",    // Редактирование возможно
+                    "LIST_URL" => "",    // Страница со списком своих элементов
+                    "ELEMENT_ASSOC" => "PROPERTY_ID",
+                    "ELEMENT_ASSOC_PROPERTY" => "530",
+                    "MAX_USER_ENTRIES" => "100",    // Ограничить кол-во элементов для одного пользователя
+                    "MAX_LEVELS" => "1000000",    // Ограничить кол-во рубрик, в которые можно добавлять элемент
+                    "LEVEL_LAST" => "Y",    // Разрешить добавление только на последний уровень рубрикатора
+                    "USE_CAPTCHA" => "N",    // Использовать CAPTCHA
+                    "USER_MESSAGE_EDIT" => "",    // Сообщение об успешном сохранении
+                    "USER_MESSAGE_ADD" => GetMessage("FORM_NOTE_ADDOK"),    // Сообщение об успешном добавлении
+                    "DEFAULT_INPUT_SIZE" => "30",    // Размер полей ввода
+                    "RESIZE_IMAGES" => "Y",    // Использовать настройки инфоблока для обработки изображений
+                    "MAX_FILE_SIZE" => "5242880",    // Максимальный размер загружаемых файлов, байт (0 - не ограничивать)
+                    "PREVIEW_TEXT_USE_HTML_EDITOR" => "N",
+                    "DETAIL_TEXT_USE_HTML_EDITOR" => "N",
+                    "CUSTOM_TITLE_NAME" => "",    // * наименование *
+                    "CUSTOM_TITLE_TAGS" => "",    // * теги *
+                    "CUSTOM_TITLE_DATE_ACTIVE_FROM" => "",    // * дата начала *
+                    "CUSTOM_TITLE_DATE_ACTIVE_TO" => "",    // * дата завершения *
+                    "CUSTOM_TITLE_IBLOCK_SECTION" => "",    // * раздел инфоблока *
+                    "CUSTOM_TITLE_PREVIEW_TEXT" => "",    // * текст анонса *
+                    "CUSTOM_TITLE_PREVIEW_PICTURE" => "",    // * картинка анонса *
+                    "CUSTOM_TITLE_DETAIL_TEXT" => "",    // * подробный текст *
+                    "CUSTOM_TITLE_DETAIL_PICTURE" => "",    // * подробная картинка *
+                    "SEF_FOLDER" => "/",    // Каталог ЧПУ (относительно корня сайта)
+                    "COMPONENT_TEMPLATE" => ".default"
+                ),
                     false
-                );?>
+                ); ?>
             </div>
         </div>
     </div>

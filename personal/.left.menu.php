@@ -62,13 +62,13 @@ $aMenuLinks = array(
         array(),
         "\$GLOBALS['USER']->IsAuthorized()"
     ),
-    array(
-        "FAq",
-        "/personal/faq/",
-        array(),
-        array(),
-        ""
-    ),
+//    array(
+//        "FAq",
+//        "/personal/faq/",
+//        array(),
+//        array(),
+//        ""
+//    ),
     array(
         "Выход",
         "/?logout=yes",

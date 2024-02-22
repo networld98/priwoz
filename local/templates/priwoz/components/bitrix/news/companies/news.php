@@ -127,7 +127,7 @@ if($id!=0 && $sub==NULL){
             if($sub==NULL){
                 $sub = $id;
             }
-            $arFilter = array("IBLOCK_ID" => $iblock, "IBLOCK_SECTION_ID" =>  $sub);
+            $arFilter = array("IBLOCK_ID" => $iblock, "IBLOCK_SECTION_ID" =>  $sub, "ACTIVE"=>"Y");
             if($id==0) {
                 $arSelect = array("ID", "NAME", "CODE", "UF_ICON", "UF_NAME_UA");
                 $obSections = CIBlockSection::GetList(array("name" => "asc"), $arFilter, false, $arSelect);

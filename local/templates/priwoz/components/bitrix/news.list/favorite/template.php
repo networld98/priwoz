@@ -27,7 +27,8 @@ foreach ($arResult["ITEMS"] as $arItem):?>
     <?
     $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
     $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
-    $active = CIBlockElement::GetByID($arItem['ID'])->GetNextElement()->GetFields()['ACTIVE'];?>
+    $active = CIBlockElement::GetByID($arItem['ID'])->GetNextElement()->GetFields()['ACTIVE'];
+    $moderation = CIBlockElement::GetByID($arItem['ID'])->GetNextElement()->GetProperties()['MODERATION']['VALUE']; ?>
     <div class="grid-item product-grid-item" id="<?= $this->GetEditAreaId($arItem['ID']); ?>">
         <<? if ($APPLICATION->GetCurPage() != SITE_DIR."personal/ads-list/" && $APPLICATION->GetCurPage() != SITE_DIR."personal/company-list/" && !$_POST['id']){?>a href="<?= $arItem["DETAIL_PAGE_URL"] ?>"<?}else{?>div<?}?> class="box <?if($arItem["DISPLAY_PROPERTIES"]['CATEGORY']['LINK_SECTION_VALUE']){?>company<?}?>">
             <? if ($arItem['PROPERTIES']['PHOTOS']['VALUE']):
@@ -36,7 +37,7 @@ foreach ($arResult["ITEMS"] as $arItem):?>
                 ?>
                 <div class="img">
                     <img class="bg-img" src="<?= $file['src'] ?>" alt="<?= $arItem['NAME'] ?>">
-                    <? echo $arItem["PROPERTIES"]['NAME']['VALUE']; if (!empty($arItem["PROPERTIES"]['NAME']['VALUE']) && $arItem["PROPERTIES"]['AUTHOR']['VALUE'] != $arItem["PROPERTIES"]['NAME']['VALUE'] && is_numeric($arItem["PROPERTIES"]['NAME']['VALUE'])) {
+                    <? if (!empty($arItem["PROPERTIES"]['NAME']['VALUE']) && $arItem["PROPERTIES"]['AUTHOR']['VALUE'] != $arItem["PROPERTIES"]['NAME']['VALUE'] && is_numeric($arItem["PROPERTIES"]['NAME']['VALUE'])) {
                         $companyData = CIBlockElement::GetByID($arItem["PROPERTIES"]['NAME']['VALUE'])->GetNextElement()->GetProperties();
                         if (!empty($companyData)) {
                             $logo = CFile::ResizeImageGet($companyData['LOGO']['VALUE'], array('width' => 150,'height'=> 150), BX_RESIZE_IMAGE_PROPORTIONAL, true); ?>
@@ -101,16 +102,20 @@ foreach ($arResult["ITEMS"] as $arItem):?>
                 <? } ?>
             </div>
             <? if ($APPLICATION->GetCurPage() == SITE_DIR."personal/ads-list/" || $APPLICATION->GetCurPage() == SITE_DIR."personal/company-list/" || $_POST['id']) { ?>
-                <?if($active=='N'){?>
+                <?if($active=='N'|| $moderation!='Y'){?>
                 <div class="overlay overlay-disabled">
-                    <p><?=GetMessage("CT_DISABLED")?></p>
+                    <?if($moderation=='Y'){?>
+                        <p><?=GetMessage("CT_DISABLED")?></p>
+                    <?}else{?>
+                        <p><?=GetMessage("CT_MODERATION")?></p>
+                    <?}?>
                 </div>
                 <?}?>
                 <div class="overlay">
                     <a class="link-item" href="<?= $arItem["DETAIL_PAGE_URL"] ?>"></a>
                     <div class="row overlay-inner">
-                        <div class="col-xs-12 col-md-4">
-                            <a href="/personal/<?if($arItem["DISPLAY_PROPERTIES"]['CATEGORY']['LINK_SECTION_VALUE']){?>company<?}else{?>announcement<?}?>/?edit=Y&CODE=<?= $arItem['ID'] ?>" class="overlay-link">
+                        <div class="col-xs-12 <?if($moderation=='Y'){?>col-md-4<?}else{?>col-md-6<?}?>">
+                            <a href="<?=SITE_DIR?>personal/<?if($arItem["DISPLAY_PROPERTIES"]['CATEGORY']['LINK_SECTION_VALUE']){?>company<?}else{?>announcement<?}?>/?edit=Y&CODE=<?= $arItem['ID'] ?>" class="overlay-link">
                                 <div class="overlay-icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30"
                                          fill="none">
@@ -123,7 +128,8 @@ foreach ($arResult["ITEMS"] as $arItem):?>
                                 <div class="overlay-text"><?=GetMessage("CT_EDIT")?></div>
                             </a>
                         </div>
-                        <div class="col-xs-12 col-md-4">
+                        <?if($moderation=='Y'){?>
+                            <div class="col-xs-12 col-md-4">
                             <a onclick="editItem(<?= $arItem['ID']?>,<?= $arItem['IBLOCK_ID']?>,'<?if($active=='Y'){?>N<?}elseif($active=='N'){?>Y<?}?>')"  class="overlay-link">
                                 <?if($active=='Y'){?>
                                     <div class="overlay-icon">
@@ -170,7 +176,8 @@ foreach ($arResult["ITEMS"] as $arItem):?>
                                 <?}?>
                             </a>
                         </div>
-                        <div class="col-xs-12 col-md-4">
+                        <?}?>
+                        <div class="col-xs-12 <?if($moderation=='Y'){?>col-md-4<?}else{?>col-md-6<?}?>">
                             <a onclick="deleteItem(<?= $arItem['ID']?>, <?= $arItem['IBLOCK_ID']?>);" class="overlay-link">
                                 <div class="overlay-icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30"
