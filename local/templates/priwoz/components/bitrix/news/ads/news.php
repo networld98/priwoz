@@ -127,9 +127,16 @@ global $arUser;
             ?>
             <div class="author-wrap">
                 <div class="author-box">
-                    <div class="avatar"><img src="<?= $userPhoto ?>" class="bg-img" alt="<?= $userName ?>">
+                    <div class="avatar">
+                        <a href="<?=SITE_DIR?>companies/<?=$userCode?>/">
+                            <img src="<?= $userPhoto ?>" class="bg-img" alt="<?= $userName ?>">
+                        </a>
                     </div>
-                    <div class="name"><?= $userName ?></div>
+                    <div class="name">
+                        <a href="<?=SITE_DIR?>companies/<?=$userCode?>/">
+                            <?= $userName ?>
+                        </a>
+                    </div>
                 </div>
                 <div class="count-products"><?= $APPLICATION->ShowViewContent('countElements'); ?> <?=GetMessage("T_DESK_ADS_ALL")?></div>
                 <div class="phone-link">
@@ -218,10 +225,10 @@ global $arUser;
         <? } ?>
         <?if ($_GET['companisAds'] != NULL) {?>
             <div class="row title-box">
-                <div class="col-xs-12 col-xl-4 col-xxl-5">
+                <div class="col-xs-12 col-xl-5">
                     <div class="section-title"><?=GetMessage("T_ADS_COMPANY")?></div>
                 </div>
-                <div class="col-xs-12 col-xl-8 col-xxl-7">
+                <div class="col-xs-12 col-xl-7">
                     <a href="<?=SITE_DIR?>companies/<?=$userCode?>/" class="blue-link"><?=GetMessage("T_ABOUT_COMPANY")?> <?= $userName ?></a>
                 </div>
             </div>
@@ -229,6 +236,7 @@ global $arUser;
     </div>
     <div class="bg-overlay">
         <div class="container">
+            <div class="advertisement-slider swiper-container">
                 <? $APPLICATION->IncludeComponent(
                     "bitrix:advertising.banner",
                     "slider-ads-big",
@@ -250,6 +258,7 @@ global $arUser;
                         "TYPE" => "adspage"
                     )
                 ); ?>
+            </div>
             <? if ($_GET['userAds'] != NULL && $_GET['companisAds'] != NULL) { ?>
                 <? if ($arParams["USE_RSS"] == "Y"): ?>
                     <?

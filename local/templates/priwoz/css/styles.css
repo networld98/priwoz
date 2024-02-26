@@ -349,3 +349,63 @@ span.blue-link, .personal-section .products-masonry.my-products .product-grid-it
 .company-grid-item .box.-adv {
     min-height: 600px;
 }
+
+.advertisement-slider .advertisement .box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.ads-item .overlay, .company-grid-item .overlay, .product-grid-item .overlay{
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    position: absolute;
+    z-index: 1;
+    padding: 10px 15px;
+    color: #fff;
+    font-family: "Barista",sans-serif;
+    font-size: 28px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+.single-product-section .product-info {
+    position: relative;
+}
+.single-company-card-section .overlay, .single-product-section .overlay {
+    background: rgba(0,0,0,0.5);
+    padding: 25px;
+    color: #fff;
+    font-family: "Barista",sans-serif;
+    font-size: 47px;
+    line-height: 1;
+    border-radius: 10px;
+    height: 100%;
+    display: flex;
+    position: absolute;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+ }
+.single-product-section .overlay {
+    height: calc(100% + 60px);
+    margin: -30px;
+}
+.company-grid-item .overlay{
+    display: flex;
+    align-items: flex-end;
+}
+.personal-section .products-masonry.my-products .product-grid-item .add-to-favourite {
+    right: 27px;
+    bottom: 32px;
+}
+@media (max-width: 768px){
+    .advertisement-slider .advertisement .box {
+        font-size: 22px;
+    }
+    .ads-item .overlay, .company-grid-item .overlay{
+        padding: 10px 10px;
+        font-size: 18px;
+    }
+}

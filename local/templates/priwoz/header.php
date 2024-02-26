@@ -16,13 +16,35 @@ if (SITE_ID == 'ua') {
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RBFFG4PDVH"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-RBFFG4PDVH');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="robots" content="noindex, nofollow" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <?
+    if ($curPagePath[1] != "companies" && $curPagePath[2] != "companies" && $curPagePath[1] != "ads" && $curPagePath[2] != "ads") { ?>
+        <meta property="og:description" content="<?=$APPLICATION->GetDirProperty("description")?>">
+        <meta property="og:image" content="https://priwoz.info<?= SITE_TEMPLATE_PATH ?>/images/priwoz.jpg">
+        <meta property="og:image:url" content="https://priwoz.info<?= SITE_TEMPLATE_PATH ?>/images/priwoz.jpg">
+    <? } else {
+        $APPLICATION->ShowViewContent('og');
+    } ?>
+    <meta property="og:title" content="<? $APPLICATION->ShowTitle() ?>">
+    <meta property="og:type" content="website">
+    <meta property="og:image:type" content="article">
+    <meta property="og:image:width" content="300">
+    <meta property="og:image:height" content="300">
+    <meta property="og:url" content="https://priwoz.info<?= $_SERVER['SCRIPT_URL'] ?>">
     <link rel="icon" href="/favicon.ico">
-    <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
@@ -38,6 +60,7 @@ if (SITE_ID == 'ua') {
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH . '/js/jquery.maskedinput.min.js');
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH . '/js/scripts.js');
     $APPLICATION->ShowHead(); ?>
+    <meta name="robots" content="noindex, nofollow" />
     <title><?$APPLICATION->ShowTitle()?></title>
 </head>
 <body>

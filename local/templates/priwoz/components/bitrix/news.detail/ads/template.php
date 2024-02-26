@@ -12,6 +12,29 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 CUtil::InitJSCore(array('fx'));
+
+//Если не прошел модерацию или автор, тогда редирект
+if($arResult["PROPERTIES"]['MODERATION']['VALUE']!='Y' && $arResult["PROPERTIES"]['AUTHOR']['VALUE']!=$USER->GetID()){
+    header('Location: https://priwoz.info'.SITE_DIR."ads/");
+    exit;
+}
+
+$picture = CFile::ResizeImageGet($arResult['PROPERTIES']['PHOTOS']['VALUE'][0], array('width' => 950,'height'=>500), BX_RESIZE_IMAGE_EXACT, true);
+
+// Предположим, что ваш текст находится в переменной $arResult['PREVIEW_TEXT']
+$previewText = $arResult['PREVIEW_TEXT'];
+
+// Удаляем HTML-теги из текста
+$cleanText = strip_tags($previewText);
+
+// Ограничиваем количество символов до 200
+$trimmedText = mb_substr($cleanText, 0, 150);
+
+$this->SetViewTarget('og');?>
+<meta property="og:description" content="<?=$trimmedText ?>...">
+<meta property="og:image" content="https://priwoz.info<?=$picture['src']?>">
+<meta property="og:image:url" content="https://priwoz.info<?=$picture['src']?>">
+<?$this->EndViewTarget();
 ?>
 <?php
 Bitrix\Main\Loader::includeModule('neti.favorite');
@@ -41,6 +64,11 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
                     <?}?>
                     <div class="sidebar-widget">
                         <div class="product-info">
+                            <?if($arResult["PROPERTIES"]['MODERATION']['VALUE']!='Y' && $arResult["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID()){?>
+                                <div class="overlay">
+                                    <p>Объявление будет видно только вам, так как находится на модерации. Исправте ошибки в обьявлении и свяжитесь с администратором.</p>
+                                </div>
+                            <?}?>
                             <div class="top-part">
                                 <time datetime="<?=strtolower(FormatDate("d m Y", MakeTimeStamp($arResult['TIMESTAMP_X']))) ?>" class="date"><?= strtolower(strftime('%d %b %Y', MakeTimeStamp($arResult['TIMESTAMP_X']))) ?></time>
                                 <a href="#" class="js-favorite add-to-favourite" aria-hidden="true"

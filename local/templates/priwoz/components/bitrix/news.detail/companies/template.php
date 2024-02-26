@@ -12,12 +12,34 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 CUtil::InitJSCore(array('fx'));
+
+//Если не прошел модерацию или автор, тогда редирект
+if($arResult["PROPERTIES"]['MODERATION']['VALUE']!='Y' && $arResult["PROPERTIES"]['AUTHOR']['VALUE']!=$USER->GetID()){
+    header('Location: https://priwoz.info'.SITE_DIR."companies/");
+    exit;
+}
+
 $logo = CFile::ResizeImageGet($arResult['DISPLAY_PROPERTIES']['LOGO']['VALUE'], array('width' => 150,'height'=>150), BX_RESIZE_IMAGE_PROPORTIONAL, true);
 $picture = CFile::ResizeImageGet($arResult['PROPERTIES']['PHOTOS']['VALUE'][0], array('width' => 950,'height'=>500), BX_RESIZE_IMAGE_EXACT, true);
 unset($arResult['PROPERTIES']['PHOTOS']['VALUE'][0]);
 
+// Предположим, что ваш текст находится в переменной $arResult['PREVIEW_TEXT']
+$previewText = $arResult['PREVIEW_TEXT'];
+
+// Удаляем HTML-теги из текста
+$cleanText = strip_tags($previewText);
+
+// Ограничиваем количество символов до 200
+$trimmedText = mb_substr($cleanText, 0, 150);
+
+$this->SetViewTarget('og');?>
+    <meta property="og:description" content="<?=$trimmedText ?>...">
+    <meta property="og:image" content="https://priwoz.info<?=$picture['src']?>">
+    <meta property="og:image:url" content="https://priwoz.info<?=$picture['src']?>">
+<?$this->EndViewTarget();
+
 $arSelect = array("PROPERTY_YOUTUBE", "PROPERTY_COMPANY");
-$arFilter = array("IBLOCK_ID" => 25);
+$arFilter = array("IBLOCK_ID" => 25, "ACTIVE"=>"Y");
 $rsElements = CIBlockElement::GetList(array(), $arFilter, false, false, $arSelect);
 while ($arElement = $rsElements->GetNext()) {
     if ($arElement['PROPERTY_COMPANY_VALUE'] == $arResult['ID'] && $arElement['PROPERTY_YOUTUBE_VALUE']) {
@@ -58,6 +80,11 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 <?if($picture || $logo){?>col-md-6 offset-md-6<?}?>">
+                    <?if($arResult["PROPERTIES"]['MODERATION']['VALUE']!='Y' && $arResult["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID()){?>
+                        <div class="overlay">
+                            <p>Компанию будет видно только вам, так как находится на модерации. Исправте ошибки и свяжитесь с администратором.</p>
+                        </div>
+                    <?}?>
                     <div class="text-box">
                         <div class="title-box">
                             <h1 class="section-title-type-2"><?= $arResult["NAME"] ?></h1>

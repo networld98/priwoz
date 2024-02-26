@@ -27,30 +27,33 @@ $this->EndViewTarget(); ?>
                 if (($i == 7 || $i == 12 || $i == 18) || (count((array)$arResult["ITEMS"]) < 6 && $i == 3)) {
                     ?>
                     <div class="grid-item product-grid-item">
-                        <? $APPLICATION->IncludeComponent(
-                            "bitrix:advertising.banner",
-                            "slider-ads",
-                            array(
-                                "BS_ARROW_NAV" => "N",
-                                "BS_BULLET_NAV" => "Y",
-                                "BS_CYCLING" => "N",
-                                "BS_EFFECT" => "fade",
-                                "BS_HIDE_FOR_PHONES" => "Y",
-                                "BS_HIDE_FOR_TABLETS" => "N",
-                                "BS_KEYBOARD" => "Y",
-                                "BS_PAUSE" => "Y",
-                                "BS_WRAP" => "Y",
-                                "CACHE_TIME" => "36000000",
-                                "CACHE_TYPE" => "A",
-                                "COMPONENT_TEMPLATE" => "",
-                                "NOINDEX" => "Y",
-                                "QUANTITY" => "5",
-                                "TYPE" => "asdblock"
-                            )
-                        ); ?>
+                        <div class="advertisement-slider swiper-container">
+                            <? $APPLICATION->IncludeComponent(
+                                "bitrix:advertising.banner",
+                                "slider-ads",
+                                array(
+                                    "BS_ARROW_NAV" => "N",
+                                    "BS_BULLET_NAV" => "Y",
+                                    "BS_CYCLING" => "N",
+                                    "BS_EFFECT" => "fade",
+                                    "BS_HIDE_FOR_PHONES" => "Y",
+                                    "BS_HIDE_FOR_TABLETS" => "N",
+                                    "BS_KEYBOARD" => "Y",
+                                    "BS_PAUSE" => "Y",
+                                    "BS_WRAP" => "Y",
+                                    "CACHE_TIME" => "36000000",
+                                    "CACHE_TYPE" => "A",
+                                    "COMPONENT_TEMPLATE" => "",
+                                    "NOINDEX" => "Y",
+                                    "QUANTITY" => "5",
+                                    "TYPE" => "asdblock"
+                                )
+                            ); ?>
+                        </div>
                     </div>
                     <?
                 }
+                if($arItem["PROPERTIES"]['MODERATION']['VALUE']=='Y' || $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID()){
                 $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
                 $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
                 ?>
@@ -60,6 +63,11 @@ $this->EndViewTarget(); ?>
                             $file = CFile::ResizeImageGet($arItem['PROPERTIES']['PHOTOS']['VALUE'][0], array('width' => 450, 'height' => 450), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, true);
                             ?>
                             <div class="img">
+                                <?if($arItem["PROPERTIES"]['MODERATION']['VALUE']!='Y' && $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID()){?>
+                                    <div class="overlay">
+                                        <p>Объявление будет видно только вам, так как находится на модерации. Исправте ошибки в обьявлении и свяжитесь с администратором.</p>
+                                    </div>
+                                <?}?>
                                 <img class="bg-img" src="<?= $file['src'] ?>" alt="<?= $arItem['NAME'] ?>">
                             </div>
                         <? endif; ?>
@@ -90,7 +98,8 @@ $this->EndViewTarget(); ?>
                        data-iblock-id="<?= $arItem['IBLOCK_ID'] ?>">
                     </a>
                 </div>
-            <? endforeach; ?>
+            <?}
+                endforeach; ?>
         </div>
     </div>
     <? if ($arParams["DISPLAY_BOTTOM_PAGER"]): ?>

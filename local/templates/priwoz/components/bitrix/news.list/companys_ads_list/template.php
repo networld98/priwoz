@@ -23,6 +23,7 @@ if(count((array)$arResult["ITEMS"])>0){?>
                         <div class="gutter-sizer"></div>
                         <? $i = 0;
                         foreach ($arResult["ITEMS"] as $arItem):
+                        if($arItem["PROPERTIES"]['MODERATION']['VALUE']=='Y' || $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID()){
                             $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
                             $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
                             ?>
@@ -33,6 +34,11 @@ if(count((array)$arResult["ITEMS"])>0){?>
                                         $file = CFile::ResizeImageGet($arItem['PROPERTIES']['PHOTOS']['VALUE'][0], array('width' => 450, 'height' => 450), BX_RESIZE_IMAGE_PROPORTIONAL, true);
                                         ?>
                                         <div class="img">
+                                            <?if($arItem["PROPERTIES"]['MODERATION']['VALUE']!='Y' && $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID()){?>
+                                                <div class="overlay">
+                                                    <p>Объявление будет видно только вам, так как находится на модерации. Исправте ошибки в обьявлении и свяжитесь с администратором.</p>
+                                                </div>
+                                            <?}?>
                                             <img class="bg-img" src="<?= $file['src'] ?>" alt="<?= $arItem['NAME'] ?>">
                                         </div>
                                     <? endif; ?>
@@ -63,7 +69,8 @@ if(count((array)$arResult["ITEMS"])>0){?>
                                    data-iblock-id="<?= $arItem['IBLOCK_ID'] ?>">
                                 </a>
                             </div>
-                        <? endforeach; ?>
+                        <?}
+                        endforeach; ?>
                     </div>
                 </div>
                 <? if ($arParams["DISPLAY_BOTTOM_PAGER"]): ?>

@@ -32,6 +32,7 @@ $this->addExternalCss($this->GetFolder() . '/themes/' . $arParams['TEMPLATE_THEM
             if ($i == 3 || $i == 12 || $i == 18) {
                 ?>
                 <div class="grid-item company-grid-item">
+                    <div class="advertisement-slider swiper-container">
                     <? $APPLICATION->IncludeComponent(
                         "bitrix:advertising.banner",
                         "slider-company",
@@ -53,6 +54,7 @@ $this->addExternalCss($this->GetFolder() . '/themes/' . $arParams['TEMPLATE_THEM
                             "TYPE" => "companiesblock"
                         )
                     ); ?>
+                    </div>
                 </div>
             <?
             }elseif ($i % 2 == 0) {
@@ -83,6 +85,7 @@ $this->addExternalCss($this->GetFolder() . '/themes/' . $arParams['TEMPLATE_THEM
                     }
                 }
             }
+            if($arItem["PROPERTIES"]['MODERATION']['VALUE']=='Y' || $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID()){
             $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
             $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
             $logo = CFile::ResizeImageGet($arItem["PROPERTIES"]['LOGO']['VALUE'], array('width' => 100,'height'=> 100), BX_RESIZE_IMAGE_PROPORTIONAL, true);
@@ -91,6 +94,11 @@ $this->addExternalCss($this->GetFolder() . '/themes/' . $arParams['TEMPLATE_THEM
             <div class="grid-item company-grid-item" id="<?= $this->GetEditAreaId($arItem['ID']); ?>">
                 <a href="<?= $arItem["DETAIL_PAGE_URL"] ?>" class="box">
                 <div class="img <?if(!$picture && $logo){?>-default<?}?>">
+                    <?if($arItem["PROPERTIES"]['MODERATION']['VALUE']!='Y' && $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID()){?>
+                        <div class="overlay">
+                            <p>Компанию будет видно только вам, так как находится на модерации. Исправте ошибки и свяжитесь с администратором.</p>
+                        </div>
+                    <?}?>
                     <?
                     if($picture){?>
                     <img class="bg-img" src="<?= $picture["src"] ?>" alt="<?= $arItem['NAME'] ?>">
@@ -139,7 +147,8 @@ $this->addExternalCss($this->GetFolder() . '/themes/' . $arParams['TEMPLATE_THEM
                    data-iblock-id="<?= $arItem['IBLOCK_ID'] ?>">
                 </a>
             </div>
-        <? endforeach; ?>
+        <?}
+            endforeach; ?>
     </div>
     <? if (count($arResult["ITEMS"]) == 0): ?>
         <section class="not-found-section">

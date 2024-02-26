@@ -25,6 +25,7 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
 <? $i = 0;
 foreach ($arResult["ITEMS"] as $arItem):?>
     <?
+ if($arItem["PROPERTIES"]['MODERATION']['VALUE']=='Y' || $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID()){
     $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
     $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
     $active = CIBlockElement::GetByID($arItem['ID'])->GetNextElement()->GetFields()['ACTIVE'];
@@ -36,6 +37,11 @@ foreach ($arResult["ITEMS"] as $arItem):?>
                 $logo = CFile::ResizeImageGet($arItem["PROPERTIES"]['LOGO']['VALUE'], array('width' => 150), BX_RESIZE_IMAGE_PROPORTIONAL, true);
                 ?>
                 <div class="img">
+                    <?if($arItem["PROPERTIES"]['MODERATION']['VALUE']!='Y' && $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID()){?>
+                        <div class="overlay">
+                            <p>Объявление будет видно только вам, так как находится на модерации. Исправте ошибки в обьявлении и свяжитесь с администратором.</p>
+                        </div>
+                    <?}?>
                     <img class="bg-img" src="<?= $file['src'] ?>" alt="<?= $arItem['NAME'] ?>">
                     <? if (!empty($arItem["PROPERTIES"]['NAME']['VALUE']) && $arItem["PROPERTIES"]['AUTHOR']['VALUE'] != $arItem["PROPERTIES"]['NAME']['VALUE'] && is_numeric($arItem["PROPERTIES"]['NAME']['VALUE'])) {
                         $companyData = CIBlockElement::GetByID($arItem["PROPERTIES"]['NAME']['VALUE'])->GetNextElement()->GetProperties();
@@ -206,7 +212,7 @@ foreach ($arResult["ITEMS"] as $arItem):?>
             <?}?>
         </<? if ($APPLICATION->GetCurPage() != SITE_DIR."personal/ads-list/" && $APPLICATION->GetCurPage() != SITE_DIR."personal/company-list/" && !$_POST['id']&& !$_POST['id']){?>a<?}else{?>div<?}?>>
     </div>
-<? endforeach;
+<?} endforeach;
 if(count((array)$arResult["ITEMS"])==0){
     if($APPLICATION->GetCurPage() == SITE_DIR."personal/ads-list/"){?>
         <?=GetMessage("CT_ADS_NONE")?>

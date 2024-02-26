@@ -7,28 +7,16 @@ $APPLICATION->SetTitle("Priwoz.info");
     <section class="products-section">
         <div class="container">
             <div class="advertisement-slider swiper-container">
-                <? $APPLICATION->IncludeComponent(
-                "bitrix:advertising.banner", 
-                "slider-main", 
-                array(
-                    "BS_ARROW_NAV" => "N",
-                    "BS_BULLET_NAV" => "Y",
-                    "BS_CYCLING" => "N",
-                    "BS_EFFECT" => "fade",
-                    "BS_HIDE_FOR_PHONES" => "Y",
-                    "BS_HIDE_FOR_TABLETS" => "N",
-                    "BS_KEYBOARD" => "Y",
-                    "BS_PAUSE" => "Y",
-                    "BS_WRAP" => "Y",
-                    "CACHE_TIME" => "36000000",
-                    "CACHE_TYPE" => "A",
-                    "COMPONENT_TEMPLATE" => "slider-main",
-                    "NOINDEX" => "Y",
-                    "QUANTITY" => "5",
-                    "TYPE" => "mainhead"
-                ),
-                false
-            ); ?>
+                <?
+                $APPLICATION->IncludeComponent(
+                    "bitrix:main.include",
+                    "",
+                    array(
+                        "AREA_FILE_SHOW" => "file",
+                        "PATH" => SITE_DIR . "includes/odessa-main-slider.php"
+                    )
+                );
+                ?>
             </div>
             <? $APPLICATION->IncludeComponent(
                 "bitrix:news.list",
@@ -190,7 +178,7 @@ $APPLICATION->SetTitle("Priwoz.info");
                 ),
                 false
             ); ?>
-
+            <div class="advertisement-slider swiper-container">
                 <? $APPLICATION->IncludeComponent(
                     "bitrix:advertising.banner",
                     "slider-main-big",
@@ -212,6 +200,7 @@ $APPLICATION->SetTitle("Priwoz.info");
                         "TYPE" => "mainpage"
                     )
                 ); ?>
+            </div>
         </div>
     </section>
     <section class="companies-section">

@@ -2,7 +2,7 @@
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die(); ?>
 <div class="swiper-wrapper">
     <? shuffle($arResult['BANNERS_PROPERTIES']);
-    foreach ($arResult['BANNERS_PROPERTIES'] as $key => $banner) {
+    foreach (array_reverse($arResult['BANNERS_PROPERTIES']) as $key => $banner) {
         if ($banner['AD_TYPE'] == 'image') {
             $file = CFile::ResizeImageGet($banner['IMAGE_ID'], array('width' => 1570, 'height' => 160), BX_RESIZE_IMAGE_EXACT, true); ?>
             <div class="swiper-slide">
