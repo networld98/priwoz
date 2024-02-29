@@ -28,6 +28,9 @@ $this->addExternalCss($this->GetFolder() . '/themes/' . $arParams['TEMPLATE_THEM
         ?>
         <? foreach ($arResult["ITEMS"] as $arItem): ?>
             <?
+            //Получаем дату окончания действия елемента и текущую
+            $date=CIBlockElement::GetByID($arItem['ID'])->GetNextElement()->GetFields()['ACTIVE_TO'];
+            $dateNow = date("d.m.Y H:i:s");
             $i++;
             if ($i == 3 || $i == 12 || $i == 18) {
                 ?>
@@ -85,7 +88,8 @@ $this->addExternalCss($this->GetFolder() . '/themes/' . $arParams['TEMPLATE_THEM
                     }
                 }
             }
-            if($arItem["PROPERTIES"]['MODERATION']['VALUE']=='Y' || $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID()){
+            if(($arItem["PROPERTIES"]['MODERATION']['VALUE']=='Y' && $date>=$dateNow)  || $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID()){
+
             $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
             $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
             $logo = CFile::ResizeImageGet($arItem["PROPERTIES"]['LOGO']['VALUE'], array('width' => 100,'height'=> 100), BX_RESIZE_IMAGE_PROPORTIONAL, true);
@@ -94,9 +98,16 @@ $this->addExternalCss($this->GetFolder() . '/themes/' . $arParams['TEMPLATE_THEM
             <div class="grid-item company-grid-item" id="<?= $this->GetEditAreaId($arItem['ID']); ?>">
                 <a href="<?= $arItem["DETAIL_PAGE_URL"] ?>" class="box">
                 <div class="img <?if(!$picture && $logo){?>-default<?}?>">
-                    <?if($arItem["PROPERTIES"]['MODERATION']['VALUE']!='Y' && $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID()){?>
+                    <?if($arItem["PROPERTIES"]['MODERATION']['VALUE']!='Y' && $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID() && $date>=$dateNow){?>
                         <div class="overlay">
                             <p>Компанию будет видно только вам, так как находится на модерации. Исправте ошибки и свяжитесь с администратором.</p>
+                        </div>
+                    <?}?>
+                    <?if($date<$dateNow){?>
+                        <div class="overlay">
+                            <p>Комания видна только вам, и будет удалено через 3 дня.  Оплатите обьявление в личном кабинете, чтобы оно было видно всем посетителям.
+                                <?/*<span onclick="window.location.href='<?=SITE_DIR?>personal/company-list/'" class="btn btn-orange">Перейти к оплате</span>*/?>
+                            </p>
                         </div>
                     <?}?>
                     <?

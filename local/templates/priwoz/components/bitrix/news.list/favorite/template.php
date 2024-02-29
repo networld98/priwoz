@@ -25,7 +25,11 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
 <? $i = 0;
 foreach ($arResult["ITEMS"] as $arItem):?>
     <?
- if($arItem["PROPERTIES"]['MODERATION']['VALUE']=='Y' || $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID()){
+    //Получаем дату окончания действия елемента и текущую
+    $date=CIBlockElement::GetByID($arItem['ID'])->GetNextElement()->GetFields()['ACTIVE_TO'];
+    $dateNow = date("d.m.Y H:i:s");
+
+ if(($arItem["PROPERTIES"]['MODERATION']['VALUE']=='Y' && $date>=$dateNow) || $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID()){
     $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
     $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
     $active = CIBlockElement::GetByID($arItem['ID'])->GetNextElement()->GetFields()['ACTIVE'];
@@ -35,11 +39,29 @@ foreach ($arResult["ITEMS"] as $arItem):?>
             <? if ($arItem['PROPERTIES']['PHOTOS']['VALUE']):
                 $file = CFile::ResizeImageGet($arItem['PROPERTIES']['PHOTOS']['VALUE'][0], array('width' => 450, 'height' => 450), BX_RESIZE_IMAGE_PROPORTIONAL, true);
                 $logo = CFile::ResizeImageGet($arItem["PROPERTIES"]['LOGO']['VALUE'], array('width' => 150), BX_RESIZE_IMAGE_PROPORTIONAL, true);
+                if($arItem['IBLOCK_ID']==19){
+                    $link = SITE_DIR.'personal/ads-list/';
+                    $nameOverlay = "Объявление";
+                    $price = "100 UAH";
+                    $priceVal = "100";
+                }elseif($arItem['IBLOCK_ID']==24){
+                    $link = SITE_DIR.'personal/company-list/';
+                    $nameOverlay = "Компанию";
+                    $price = "2000 UAH";
+                    $priceVal = "100";
+                }
                 ?>
                 <div class="img">
-                    <?if($arItem["PROPERTIES"]['MODERATION']['VALUE']!='Y' && $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID()){?>
+                    <?if($arItem["PROPERTIES"]['MODERATION']['VALUE']!='Y' && $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID() && $APPLICATION->GetCurPage() == SITE_DIR . "personal/favorite/" && $date>=$dateNow){?>
                         <div class="overlay">
-                            <p>Объявление будет видно только вам, так как находится на модерации. Исправте ошибки в обьявлении и свяжитесь с администратором.</p>
+                            <p><?=$nameOverlay?> видно только вам, так как находится на модерации. Исправте ошибки в обьявлении и свяжитесь с администратором.</p>
+                        </div>
+                    <?}?>
+                    <?if($date<$dateNow && $APPLICATION->GetCurPage() == SITE_DIR . "personal/favorite/" && $date<$dateNow){?>
+                        <div class="overlay">
+                            <p><?=$nameOverlay?> видно только вам, и будет удалено через 3 дня. Оплатите обьявление в личном кабинете, чтобы оно было видно все посетителям.
+                               <?/* <span onclick="window.location.href='<?=$link?>'" class="btn btn-orange">Перейти к оплате</span>*/?>
+                            </p>
                         </div>
                     <?}?>
                     <img class="bg-img" src="<?= $file['src'] ?>" alt="<?= $arItem['NAME'] ?>">
@@ -108,18 +130,25 @@ foreach ($arResult["ITEMS"] as $arItem):?>
                 <? } ?>
             </div>
             <? if ($APPLICATION->GetCurPage() == SITE_DIR."personal/ads-list/" || $APPLICATION->GetCurPage() == SITE_DIR."personal/company-list/" || $_POST['id']) { ?>
-                <?if($active=='N'|| $moderation!='Y'){?>
-                <div class="overlay overlay-disabled">
-                    <?if($moderation=='Y'){?>
-                        <p><?=GetMessage("CT_DISABLED")?></p>
-                    <?}else{?>
-                        <p><?=GetMessage("CT_MODERATION")?></p>
-                    <?}?>
-                </div>
-                <?}?>
+                <? if ($active == 'N' || $moderation != 'Y' || $date < $dateNow) { ?>
+                    <div class="overlay overlay-disabled">
+                        <? if ($moderation == 'Y' && $date >= $dateNow) { ?>
+                            <p><?= GetMessage("CT_DISABLED") ?></p>
+                        <? } elseif ($moderation != 'Y' && $date >= $dateNow) { ?>
+                            <p><?= GetMessage("CT_MODERATION") ?></p>
+                        <? } elseif ($date < $dateNow) { ?>
+                            <p>Не оплачено</p>
+                        <? } ?>
+                    </div>
+                <? } ?>
                 <div class="overlay">
                     <a class="link-item" href="<?= $arItem["DETAIL_PAGE_URL"] ?>"></a>
                     <div class="row overlay-inner">
+                        <? if ($date >= $dateNow) { ?>
+                            <div class="col-xs-12 element-date-to">
+                                <p>Оплачено до <?= $date ?></p>
+                            </div>
+                        <? } ?>
                         <div class="col-xs-12 <?if($moderation=='Y'){?>col-md-4<?}else{?>col-md-6<?}?>">
                             <a href="<?=SITE_DIR?>personal/<?if($arItem["DISPLAY_PROPERTIES"]['CATEGORY']['LINK_SECTION_VALUE']){?>company<?}else{?>announcement<?}?>/?edit=Y&CODE=<?= $arItem['ID'] ?>" class="overlay-link">
                                 <div class="overlay-icon">
@@ -134,7 +163,7 @@ foreach ($arResult["ITEMS"] as $arItem):?>
                                 <div class="overlay-text"><?=GetMessage("CT_EDIT")?></div>
                             </a>
                         </div>
-                        <?if($moderation=='Y'){?>
+                        <?if($moderation=='Y' && $date >= $dateNow){?>
                             <div class="col-xs-12 col-md-4">
                             <a onclick="editItem(<?= $arItem['ID']?>,<?= $arItem['IBLOCK_ID']?>,'<?if($active=='Y'){?>N<?}elseif($active=='N'){?>Y<?}?>')"  class="overlay-link">
                                 <?if($active=='Y'){?>
@@ -201,6 +230,16 @@ foreach ($arResult["ITEMS"] as $arItem):?>
                                 <div class="overlay-text"><?=GetMessage("CT_DELETE")?></div>
                             </a>
                         </div>
+                        <? if ($date < $dateNow) { ?>
+                            <div class="col-xs-12">
+                                <a href="/local/scripts/monoPay/pay.php?id=<?= $arItem['ID']?>&p=<?= $priceVal ?>&link=<?=$link?>" class="overlay-link">
+                                    <div class="btn btn-green btn-buy">
+                                        Оплатить <?= $price ?>
+                                        <span>за 1 месяц</span>
+                                    </div>
+                                </a>
+                            </div>
+                        <? } ?>
                     </div>
                 </div>
             <? } ?>
@@ -220,5 +259,7 @@ if(count((array)$arResult["ITEMS"])==0){
         <?=GetMessage("CT_COMPANY_NONE")?>
 <?}
 }?>
+
+
 
 

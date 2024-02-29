@@ -13,8 +13,12 @@
 $this->setFrameMode(true);
 CUtil::InitJSCore(array('fx'));
 
+//Получаем дату окончания действия елемента и текущую
+$date=CIBlockElement::GetByID($arResult['ID'])->GetNextElement()->GetFields()['ACTIVE_TO'];
+$dateNow = date("d.m.Y H:i:s");
+
 //Если не прошел модерацию или автор, тогда редирект
-if($arResult["PROPERTIES"]['MODERATION']['VALUE']!='Y' && $arResult["PROPERTIES"]['AUTHOR']['VALUE']!=$USER->GetID()){
+if(($arResult["PROPERTIES"]['MODERATION']['VALUE']!='Y' || $date<$dateNow) && $arResult["PROPERTIES"]['AUTHOR']['VALUE']!=$USER->GetID()){
     header('Location: https://priwoz.info'.SITE_DIR."ads/");
     exit;
 }
@@ -64,9 +68,16 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
                     <?}?>
                     <div class="sidebar-widget">
                         <div class="product-info">
-                            <?if($arResult["PROPERTIES"]['MODERATION']['VALUE']!='Y' && $arResult["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID()){?>
+                            <?if($arResult["PROPERTIES"]['MODERATION']['VALUE']!='Y' && $arResult["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID() && $date>=$dateNow){?>
                                 <div class="overlay">
                                     <p>Объявление будет видно только вам, так как находится на модерации. Исправте ошибки в обьявлении и свяжитесь с администратором.</p>
+                                </div>
+                            <?}?>
+                            <?if($date<$dateNow){?>
+                                <div class="overlay">
+                                    <p>Объявление видно только вам, и будет удалено через 3 дня. Оплатите обьявление в личном кабинете, чтобы оно было видно всем посетителям.
+                                        <span onclick="window.location.href='<?=SITE_DIR?>personal/ads-list/'" class="btn btn-orange">Перейти к оплате</span>
+                                    </p>
                                 </div>
                             <?}?>
                             <div class="top-part">

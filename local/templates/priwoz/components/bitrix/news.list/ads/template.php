@@ -23,37 +23,44 @@ $this->EndViewTarget(); ?>
             <? $i = 0;
             foreach ($arResult["ITEMS"] as $arItem):?>
                 <?
-                $i++;
-                if (($i == 7 || $i == 12 || $i == 18) || (count((array)$arResult["ITEMS"]) < 6 && $i == 3)) {
-                    ?>
-                    <div class="grid-item product-grid-item">
-                        <div class="advertisement-slider swiper-container">
-                            <? $APPLICATION->IncludeComponent(
-                                "bitrix:advertising.banner",
-                                "slider-ads",
-                                array(
-                                    "BS_ARROW_NAV" => "N",
-                                    "BS_BULLET_NAV" => "Y",
-                                    "BS_CYCLING" => "N",
-                                    "BS_EFFECT" => "fade",
-                                    "BS_HIDE_FOR_PHONES" => "Y",
-                                    "BS_HIDE_FOR_TABLETS" => "N",
-                                    "BS_KEYBOARD" => "Y",
-                                    "BS_PAUSE" => "Y",
-                                    "BS_WRAP" => "Y",
-                                    "CACHE_TIME" => "36000000",
-                                    "CACHE_TYPE" => "A",
-                                    "COMPONENT_TEMPLATE" => "",
-                                    "NOINDEX" => "Y",
-                                    "QUANTITY" => "5",
-                                    "TYPE" => "asdblock"
-                                )
-                            ); ?>
+                //Получаем дату окончания действия елемента и текущую
+                $date=CIBlockElement::GetByID($arItem['ID'])->GetNextElement()->GetFields()['ACTIVE_TO'];
+                $dateNow = date("d.m.Y H:i:s");
+
+                if(($arItem["PROPERTIES"]['MODERATION']['VALUE']=='Y' && $date>=$dateNow) || $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID()){
+
+                    //Добавляем обьявления
+                    $i++;
+                    if (($i == 7 || $i == 12 || $i == 18) || (count((array)$arResult["ITEMS"]) < 6 && $i == 3)) {
+                        ?>
+                        <div class="grid-item product-grid-item">
+                            <div class="advertisement-slider swiper-container">
+                                <? $APPLICATION->IncludeComponent(
+                                    "bitrix:advertising.banner",
+                                    "slider-ads",
+                                    array(
+                                        "BS_ARROW_NAV" => "N",
+                                        "BS_BULLET_NAV" => "Y",
+                                        "BS_CYCLING" => "N",
+                                        "BS_EFFECT" => "fade",
+                                        "BS_HIDE_FOR_PHONES" => "Y",
+                                        "BS_HIDE_FOR_TABLETS" => "N",
+                                        "BS_KEYBOARD" => "Y",
+                                        "BS_PAUSE" => "Y",
+                                        "BS_WRAP" => "Y",
+                                        "CACHE_TIME" => "36000000",
+                                        "CACHE_TYPE" => "A",
+                                        "COMPONENT_TEMPLATE" => "",
+                                        "NOINDEX" => "Y",
+                                        "QUANTITY" => "5",
+                                        "TYPE" => "asdblock"
+                                    )
+                                ); ?>
+                            </div>
                         </div>
-                    </div>
-                    <?
-                }
-                if($arItem["PROPERTIES"]['MODERATION']['VALUE']=='Y' || $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID()){
+                        <?
+                    }
+
                 $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
                 $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
                 ?>
@@ -63,9 +70,16 @@ $this->EndViewTarget(); ?>
                             $file = CFile::ResizeImageGet($arItem['PROPERTIES']['PHOTOS']['VALUE'][0], array('width' => 450, 'height' => 450), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, true);
                             ?>
                             <div class="img">
-                                <?if($arItem["PROPERTIES"]['MODERATION']['VALUE']!='Y' && $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID()){?>
+                                <?if($arItem["PROPERTIES"]['MODERATION']['VALUE']!='Y' && $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID() && $date>=$dateNow){?>
                                     <div class="overlay">
                                         <p>Объявление будет видно только вам, так как находится на модерации. Исправте ошибки в обьявлении и свяжитесь с администратором.</p>
+                                    </div>
+                                <?}?>
+                                <?if($date<$dateNow){?>
+                                    <div class="overlay">
+                                        <p>Объявление видно только вам, и будет удалено через 3 дня. Оплатите обьявление в личном кабинете, чтобы оно было видно всем посетителям.
+                                            <?/*<span onclick="window.location.href='<?=SITE_DIR?>personal/ads-list/'" class="btn btn-orange">Перейти к оплате</span>*/?>
+                                        </p>
                                     </div>
                                 <?}?>
                                 <img class="bg-img" src="<?= $file['src'] ?>" alt="<?= $arItem['NAME'] ?>">

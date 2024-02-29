@@ -22,8 +22,13 @@ if(count((array)$arResult["ITEMS"])>0){?>
                         <div class="grid-sizer"></div>
                         <div class="gutter-sizer"></div>
                         <? $i = 0;
+
+                        //Получаем дату окончания действия елемента и текущую
+                        $date=CIBlockElement::GetByID($arItem['ID'])->GetNextElement()->GetFields()['ACTIVE_TO'];
+                        $dateNow = date("d.m.Y H:i:s");
+
                         foreach ($arResult["ITEMS"] as $arItem):
-                        if($arItem["PROPERTIES"]['MODERATION']['VALUE']=='Y' || $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID()){
+                        if(($arItem["PROPERTIES"]['MODERATION']['VALUE']=='Y' && $date>=$dateNow)  || $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID()){
                             $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
                             $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
                             ?>
@@ -34,9 +39,16 @@ if(count((array)$arResult["ITEMS"])>0){?>
                                         $file = CFile::ResizeImageGet($arItem['PROPERTIES']['PHOTOS']['VALUE'][0], array('width' => 450, 'height' => 450), BX_RESIZE_IMAGE_PROPORTIONAL, true);
                                         ?>
                                         <div class="img">
-                                            <?if($arItem["PROPERTIES"]['MODERATION']['VALUE']!='Y' && $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID()){?>
+                                            <?if($arItem["PROPERTIES"]['MODERATION']['VALUE']!='Y' && $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID() && $date>=$dateNow){?>
                                                 <div class="overlay">
                                                     <p>Объявление будет видно только вам, так как находится на модерации. Исправте ошибки в обьявлении и свяжитесь с администратором.</p>
+                                                </div>
+                                            <?}?>
+                                            <?if($date<$dateNow){?>
+                                                <div class="overlay">
+                                                    <p>Объявление видно только вам, и будет удалено через 3 дня. Оплатите обьявление в личном кабинете, чтобы оно было видно все посетителям.
+                                                        <span onclick="window.location.href='<?=SITE_DIR?>personal/ads-list/'" class="btn btn-orange">Перейти к оплате</span>
+                                                    </p>
                                                 </div>
                                             <?}?>
                                             <img class="bg-img" src="<?= $file['src'] ?>" alt="<?= $arItem['NAME'] ?>">

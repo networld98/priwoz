@@ -12,9 +12,12 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 CUtil::InitJSCore(array('fx'));
+//Получаем дату окончания действия елемента и текущую
+$date=CIBlockElement::GetByID($arResult['ID'])->GetNextElement()->GetFields()['ACTIVE_TO'];
+$dateNow = date("d.m.Y H:i:s");
 
 //Если не прошел модерацию или автор, тогда редирект
-if($arResult["PROPERTIES"]['MODERATION']['VALUE']!='Y' && $arResult["PROPERTIES"]['AUTHOR']['VALUE']!=$USER->GetID()){
+if(($arResult["PROPERTIES"]['MODERATION']['VALUE']!='Y' || $date<$dateNow) && $arResult["PROPERTIES"]['AUTHOR']['VALUE']!=$USER->GetID()){
     header('Location: https://priwoz.info'.SITE_DIR."companies/");
     exit;
 }
@@ -80,9 +83,16 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 <?if($picture || $logo){?>col-md-6 offset-md-6<?}?>">
-                    <?if($arResult["PROPERTIES"]['MODERATION']['VALUE']!='Y' && $arResult["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID()){?>
+                    <?if($arResult["PROPERTIES"]['MODERATION']['VALUE']!='Y' && $arResult["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID() && $date>=$dateNow){?>
                         <div class="overlay">
                             <p>Компанию будет видно только вам, так как находится на модерации. Исправте ошибки и свяжитесь с администратором.</p>
+                        </div>
+                    <?}?>
+                    <?if($date<$dateNow){?>
+                        <div class="overlay">
+                            <p>Комания видна только вам, и будет удалено через 3 дня.  Оплатите обьявление в личном кабинете, чтобы оно было видно всем посетителям.
+                                <span onclick="window.location.href='<?=SITE_DIR?>personal/company-list/'" class="btn btn-orange">Перейти к оплате</span>
+                            </p>
                         </div>
                     <?}?>
                     <div class="text-box">
