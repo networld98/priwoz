@@ -12,4 +12,10 @@ $MESS ['FORM_PUBLIC_ICON_EDIT'] = "Редактировать параметры
 $MESS ['FORM_NOTE_ADDOK'] = "<div class='success-box'><p>Ваша жалоба отправлена и будет рассмотрена в ближайшее время</p><p>Спасибо за неравнодушие к экологии пространства</p><p>Шоб вы так жили как мы вас ждем!</p></div>";
 $MESS ['FORM_NOTE_ADDOK_COMM'] = '<div class="success-box"><p>Сообщество добавлено, спасибо</p><p>Шоб вы так жили как мы вас ждем!</p></div>';
 $MESS ['FORM_FILE_SIZE'] = "Допустимые форматы: png, jpg, pdf до 1 mb";
+$MESS ['FORM_REQUIRED_FIELDS_3'] = "ссылки на сторонние сайты";
+$MESS ['FORM_REQUIRED_FIELDS_4'] = "чужое фото";
+$MESS ['FORM_REQUIRED_FIELDS_5'] = "нецензуное фото";
+$MESS ['FORM_REQUIRED_FIELDS_6'] = "нецензурные, оскорбительные слова";
+$MESS ['FORM_REQUIRED_FIELDS_7'] = "политика, религия";
+$MESS ['FORM_REQUIRED_FIELDS_8'] = "другое";
 ?>

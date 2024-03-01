@@ -85,13 +85,13 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
                 <div class="col-xs-12 <?if($picture || $logo){?>col-md-6 offset-md-6<?}?>">
                     <?if($arResult["PROPERTIES"]['MODERATION']['VALUE']!='Y' && $arResult["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID() && $date>=$dateNow){?>
                         <div class="overlay">
-                            <p>Компанию будет видно только вам, так как находится на модерации. Исправте ошибки и свяжитесь с администратором.</p>
+                            <p><?=GetMessage("T_ADS_NONE")?></p>
                         </div>
                     <?}?>
                     <?if($date<$dateNow){?>
                         <div class="overlay">
-                            <p>Комания видна только вам, и будет удалено через 3 дня.  Оплатите обьявление в личном кабинете, чтобы оно было видно всем посетителям.
-                                <span onclick="window.location.href='<?=SITE_DIR?>personal/company-list/'" class="btn btn-orange">Перейти к оплате</span>
+                            <p><?=GetMessage("T_ADS_BUY")?>
+                                <span onclick="window.location.href='<?=SITE_DIR?>personal/company-list/'" class="btn btn-orange"><?=GetMessage("T_CABINET")?></span>
                             </p>
                         </div>
                     <?}?>

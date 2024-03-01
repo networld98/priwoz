@@ -573,11 +573,11 @@ if (CModule::IncludeModule("form"))
 
 							if ($ans_id <> '')
 							{
-                                $res .= "<div class='form-check'>".$input."<label class='form-check-label' for='".$ans_id."'>".$arAnswer["MESSAGE"]."</label></div>";
+                                $res .= "<div class='form-check'>".$input."<label class='form-check-label' for='".$ans_id."'>".GetMessage("FORM_REQUIRED_FIELDS_".$ans_id)."</label></div>";
                             }
 							else
 							{
-								$res .= "<div class='form-check'>".$input."<label class='form-check-label' for='form_radio_".$FIELD_SID."'>".$arAnswer["MESSAGE"]."</label></div>";
+								$res .= "<div class='form-check'>".$input."<label class='form-check-label' for='form_radio_".$FIELD_SID."'>".GetMessage("FORM_REQUIRED_FIELDS_".$FIELD_SID)."</label></div>";
 							}
 
 							$arResult["QUESTIONS"][$FIELD_SID]["HTML_CODE"][] = $res;

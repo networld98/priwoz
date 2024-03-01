@@ -41,13 +41,13 @@ if(count((array)$arResult["ITEMS"])>0){?>
                                         <div class="img">
                                             <?if($arItem["PROPERTIES"]['MODERATION']['VALUE']!='Y' && $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID() && $date>=$dateNow){?>
                                                 <div class="overlay">
-                                                    <p>Объявление будет видно только вам, так как находится на модерации. Исправте ошибки в обьявлении и свяжитесь с администратором.</p>
+                                                    <p><?=GetMessage("T_ADS_NONE")?></p>
                                                 </div>
                                             <?}?>
                                             <?if($date<$dateNow){?>
                                                 <div class="overlay">
-                                                    <p>Объявление видно только вам, и будет удалено через 3 дня. Оплатите обьявление в личном кабинете, чтобы оно было видно все посетителям.
-                                                        <span onclick="window.location.href='<?=SITE_DIR?>personal/ads-list/'" class="btn btn-orange">Перейти к оплате</span>
+                                                    <p><?=GetMessage("T_ADS_BUY")?>
+                                                        <?/*<span onclick="window.location.href='<?=SITE_DIR?>personal/ads-list/'" class="btn btn-orange">Перейти к оплате</span>*/?>
                                                     </p>
                                                 </div>
                                             <?}?>

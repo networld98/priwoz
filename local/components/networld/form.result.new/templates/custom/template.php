@@ -6,8 +6,8 @@ if ($arResult["isFormErrors"] == "Y"):?><?= $arResult["FORM_ERRORS_TEXT"]; ?><? 
 <?= $arResult["FORM_NOTE"] ?>
 <? if ($arResult["isFormNote"] != "Y") {
     ?>
-    <div class="title">Пожаловаться</div>
-    <div class="subtitle">Отметьте нарушения:</div>
+    <div class="title"><?=GetMessage("FORM_TITLES")?></div>
+    <div class="subtitle"><?=GetMessage("FORM_SUBTITLE")?></div>
     <?= $arResult["FORM_HEADER"] ?>
     <? foreach ($arResult["QUESTIONS"] as $FIELD_SID => $arQuestion) {
         if ($arQuestion['STRUCTURE'][0]['FIELD_TYPE'] == 'hidden') { ?>
@@ -25,29 +25,10 @@ if ($arResult["isFormErrors"] == "Y"):?><?= $arResult["FORM_ERRORS_TEXT"]; ?><? 
         }
     } //endwhile
     ?>
-    <? /*
-if($arResult["isUseCaptcha"] == "Y")
-{
-?>
-		<tr>
-			<th colspan="2"><b><?=GetMessage("FORM_CAPTCHA_TABLE_TITLE")?></b></th>
-		</tr>
-		<tr>
-			<td>&nbsp;</td>
-			<td><input type="hidden" name="captcha_sid" value="<?=htmlspecialcharsbx($arResult["CAPTCHACode"]);?>" /><img src="/bitrix/tools/captcha.php?captcha_sid=<?=htmlspecialcharsbx($arResult["CAPTCHACode"]);?>" width="180" height="40" /></td>
-		</tr>
-		<tr>
-			<td><?=GetMessage("FORM_CAPTCHA_FIELD_TITLE")?><?=$arResult["REQUIRED_SIGN"];?></td>
-			<td><input type="text" name="captcha_word" size="30" maxlength="50" value="" class="inputtext" /></td>
-		</tr>
-<?
-} // isUseCaptcha
-*/
-    ?>
-    <div class="form-text">Нарушения обязательно проверит модератор</div>
+    <div class="form-text"><?= GetMessage("FORM_OK")?></div>
     <div class="btn-box">
         <input type="submit" class="btn btn-green" name="web_form_submit"
-               value="<?= htmlspecialcharsbx(trim($arResult["arForm"]["BUTTON"]) == '' ? GetMessage("FORM_ADD") : $arResult["arForm"]["BUTTON"]); ?>">
+               value="<?= GetMessage("FORM_SUBMIT")?>">
     </div>
     <?= $arResult["FORM_FOOTER"] ?>
     <?

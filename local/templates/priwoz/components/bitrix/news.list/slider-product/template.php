@@ -33,7 +33,11 @@ if(count((array)$arResult["ITEMS"])>1){?>
                     <? $i = 0;
                     foreach ($arResult["ITEMS"] as $arItem):?>
                         <?
-                        if($arItem["PROPERTIES"]['MODERATION']['VALUE']=='Y' || $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID()){
+                        //Получаем дату окончания действия елемента и текущую
+                        $date=CIBlockElement::GetByID($arItem['ID'])->GetNextElement()->GetFields()['ACTIVE_TO'];
+                        $dateNow = date("d.m.Y H:i:s");
+
+                        if(($arItem["PROPERTIES"]['MODERATION']['VALUE']=='Y' && $date>=$dateNow) || $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID()){
                         $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
                         $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
                         ?>
@@ -47,7 +51,12 @@ if(count((array)$arResult["ITEMS"])>1){?>
                                         <div class="img">
                                             <?if($arItem["PROPERTIES"]['MODERATION']['VALUE']!='Y' && $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID()){?>
                                                 <div class="overlay">
-                                                    <p>Объявление будет видно только вам, так как находится на модерации. Исправте ошибки в обьявлении и свяжитесь с администратором.</p>
+                                                    <p><?=GetMessage("T_ADS_NONE")?></p>
+                                                </div>
+                                            <?}?>
+                                            <?if($date<$dateNow){?>
+                                                <div class="overlay">
+                                                    <p><?=GetMessage("T_ADS_BUY")?></p>
                                                 </div>
                                             <?}?>
                                             <img class="bg-img" src="<?= $file['src'] ?>" alt="<?= $arItem['NAME'] ?>">

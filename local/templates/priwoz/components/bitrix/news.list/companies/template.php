@@ -100,12 +100,12 @@ $this->addExternalCss($this->GetFolder() . '/themes/' . $arParams['TEMPLATE_THEM
                 <div class="img <?if(!$picture && $logo){?>-default<?}?>">
                     <?if($arItem["PROPERTIES"]['MODERATION']['VALUE']!='Y' && $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID() && $date>=$dateNow){?>
                         <div class="overlay">
-                            <p>Компанию будет видно только вам, так как находится на модерации. Исправте ошибки и свяжитесь с администратором.</p>
+                            <p><?=GetMessage("T_ADS_NONE")?></p>
                         </div>
                     <?}?>
                     <?if($date<$dateNow){?>
                         <div class="overlay">
-                            <p>Комания видна только вам, и будет удалено через 3 дня.  Оплатите обьявление в личном кабинете, чтобы оно было видно всем посетителям.
+                            <p><?=GetMessage("T_ADS_BUY")?>
                                 <?/*<span onclick="window.location.href='<?=SITE_DIR?>personal/company-list/'" class="btn btn-orange">Перейти к оплате</span>*/?>
                             </p>
                         </div>
@@ -114,7 +114,7 @@ $this->addExternalCss($this->GetFolder() . '/themes/' . $arParams['TEMPLATE_THEM
                     if($picture){?>
                     <img class="bg-img" src="<?= $picture["src"] ?>" alt="<?= $arItem['NAME'] ?>">
                     <?}else{?>
-                        <div class="default-text">Здесь будет фото компании</div>
+                        <div class="default-text"><?=GetMessage("T_DEFAULT_PHOTO")?></div>
                     <?}?>
                     <?if($logo){?>
                         <img class="company-logo" src="<?= $logo["src"] ?>" alt="<?= $arItem['NAME'] ?>">

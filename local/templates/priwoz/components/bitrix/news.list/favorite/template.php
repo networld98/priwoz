@@ -41,12 +41,12 @@ foreach ($arResult["ITEMS"] as $arItem):?>
                 $logo = CFile::ResizeImageGet($arItem["PROPERTIES"]['LOGO']['VALUE'], array('width' => 150), BX_RESIZE_IMAGE_PROPORTIONAL, true);
                 if($arItem['IBLOCK_ID']==19){
                     $link = SITE_DIR.'personal/ads-list/';
-                    $nameOverlay = "Объявление";
+                    $nameOverlay = GetMessage("T_ASD");
                     $price = "100 UAH";
                     $priceVal = "100";
                 }elseif($arItem['IBLOCK_ID']==24){
                     $link = SITE_DIR.'personal/company-list/';
-                    $nameOverlay = "Компанию";
+                    $nameOverlay = GetMessage("T_COMPANY");
                     $price = "2000 UAH";
                     $priceVal = "100";
                 }
@@ -54,12 +54,12 @@ foreach ($arResult["ITEMS"] as $arItem):?>
                 <div class="img">
                     <?if($arItem["PROPERTIES"]['MODERATION']['VALUE']!='Y' && $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID() && $APPLICATION->GetCurPage() == SITE_DIR . "personal/favorite/" && $date>=$dateNow){?>
                         <div class="overlay">
-                            <p><?=$nameOverlay?> видно только вам, так как находится на модерации. Исправте ошибки в обьявлении и свяжитесь с администратором.</p>
+                            <p><?=$nameOverlay?><?=GetMessage("T_ADS_NONE")?></p>
                         </div>
                     <?}?>
                     <?if($date<$dateNow && $APPLICATION->GetCurPage() == SITE_DIR . "personal/favorite/" && $date<$dateNow){?>
                         <div class="overlay">
-                            <p><?=$nameOverlay?> видно только вам, и будет удалено через 3 дня. Оплатите обьявление в личном кабинете, чтобы оно было видно все посетителям.
+                            <p><?=$nameOverlay?><?=GetMessage("T_ADS_BUY")?>
                                <?/* <span onclick="window.location.href='<?=$link?>'" class="btn btn-orange">Перейти к оплате</span>*/?>
                             </p>
                         </div>
@@ -137,7 +137,7 @@ foreach ($arResult["ITEMS"] as $arItem):?>
                         <? } elseif ($moderation != 'Y' && $date >= $dateNow) { ?>
                             <p><?= GetMessage("CT_MODERATION") ?></p>
                         <? } elseif ($date < $dateNow) { ?>
-                            <p>Не оплачено</p>
+                            <p><?=GetMessage("T_NO_PAY")?></p>
                         <? } ?>
                     </div>
                 <? } ?>
@@ -146,7 +146,7 @@ foreach ($arResult["ITEMS"] as $arItem):?>
                     <div class="row overlay-inner">
                         <? if ($date >= $dateNow) { ?>
                             <div class="col-xs-12 element-date-to">
-                                <p>Оплачено до <?= $date ?></p>
+                                <p><?=GetMessage("T_PAY_TO")?><?= $date ?></p>
                             </div>
                         <? } ?>
                         <div class="col-xs-12 <?if($moderation=='Y'){?>col-md-4<?}else{?>col-md-6<?}?>">
@@ -234,8 +234,8 @@ foreach ($arResult["ITEMS"] as $arItem):?>
                             <div class="col-xs-12">
                                 <a href="/local/scripts/monoPay/pay.php?id=<?= $arItem['ID']?>&p=<?= $priceVal ?>&link=<?=$link?>" class="overlay-link">
                                     <div class="btn btn-green btn-buy">
-                                        Оплатить <?= $price ?>
-                                        <span>за 1 месяц</span>
+                                        <?=GetMessage("T_PAY")?><?= $price ?>
+                                        <span><?=GetMessage("T_MONTH")?></span>
                                     </div>
                                 </a>
                             </div>
