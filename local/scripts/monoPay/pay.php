@@ -34,8 +34,6 @@ curl_setopt_array($curl, array(
     CURLOPT_HTTPHEADER => array(
         'Content-Type: application/json',
         'X-Token:  mE8i2rhkdoUNjaMUw1qVXUQ',
-        'X-Cms: Priwoz PHP',
-        'X-Cms-Version: 0.1',
     ),
 ));
 

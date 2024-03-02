@@ -27,7 +27,7 @@ $this->EndViewTarget(); ?>
                 $date=CIBlockElement::GetByID($arItem['ID'])->GetNextElement()->GetFields()['ACTIVE_TO'];
                 $dateNow = date("d.m.Y H:i:s");
 
-                if(($arItem["PROPERTIES"]['MODERATION']['VALUE']=='Y' && $date>=$dateNow) || $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID()){
+                if(($arItem["PROPERTIES"]['MODERATION']['VALUE']!='Y' && $date>=$dateNow) || $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID()){
 
                     //Добавляем обьявления
                     $i++;
@@ -70,7 +70,7 @@ $this->EndViewTarget(); ?>
                             $file = CFile::ResizeImageGet($arItem['PROPERTIES']['PHOTOS']['VALUE'][0], array('width' => 450, 'height' => 450), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, true);
                             ?>
                             <div class="img">
-                                <?if($arItem["PROPERTIES"]['MODERATION']['VALUE']!='Y' && $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID() && $date>=$dateNow){?>
+                                <?if($arItem["PROPERTIES"]['MODERATION']['VALUE']=='Y' && $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID() && $date>=$dateNow){?>
                                     <div class="overlay">
                                         <p><?=GetMessage("T_ADS_NONE")?></p>
                                     </div>

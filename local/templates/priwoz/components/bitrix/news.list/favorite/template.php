@@ -29,7 +29,7 @@ foreach ($arResult["ITEMS"] as $arItem):?>
     $date=CIBlockElement::GetByID($arItem['ID'])->GetNextElement()->GetFields()['ACTIVE_TO'];
     $dateNow = date("d.m.Y H:i:s");
 
- if(($arItem["PROPERTIES"]['MODERATION']['VALUE']=='Y' && $date>=$dateNow) || $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID()){
+ if(($arItem["PROPERTIES"]['MODERATION']['VALUE']!='Y' && $date>=$dateNow) || $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID()){
     $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
     $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
     $active = CIBlockElement::GetByID($arItem['ID'])->GetNextElement()->GetFields()['ACTIVE'];
@@ -43,16 +43,16 @@ foreach ($arResult["ITEMS"] as $arItem):?>
                     $link = SITE_DIR.'personal/ads-list/';
                     $nameOverlay = GetMessage("T_ASD");
                     $price = "100 UAH";
-                    $priceVal = "100";
+                    $priceVal = "10000";
                 }elseif($arItem['IBLOCK_ID']==24){
                     $link = SITE_DIR.'personal/company-list/';
                     $nameOverlay = GetMessage("T_COMPANY");
                     $price = "2000 UAH";
-                    $priceVal = "100";
+                    $priceVal = "200000";
                 }
                 ?>
                 <div class="img">
-                    <?if($arItem["PROPERTIES"]['MODERATION']['VALUE']!='Y' && $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID() && $APPLICATION->GetCurPage() == SITE_DIR . "personal/favorite/" && $date>=$dateNow){?>
+                    <?if($arItem["PROPERTIES"]['MODERATION']['VALUE']=='Y' && $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID() && $APPLICATION->GetCurPage() == SITE_DIR . "personal/favorite/" && $date>=$dateNow){?>
                         <div class="overlay">
                             <p><?=$nameOverlay?><?=GetMessage("T_ADS_NONE")?></p>
                         </div>
@@ -130,11 +130,11 @@ foreach ($arResult["ITEMS"] as $arItem):?>
                 <? } ?>
             </div>
             <? if ($APPLICATION->GetCurPage() == SITE_DIR."personal/ads-list/" || $APPLICATION->GetCurPage() == SITE_DIR."personal/company-list/" || $_POST['id']) { ?>
-                <? if ($active == 'N' || $moderation != 'Y' || $date < $dateNow) { ?>
+                <? if ($active == 'N' || $moderation == 'Y' || $date < $dateNow) { ?>
                     <div class="overlay overlay-disabled">
-                        <? if ($moderation == 'Y' && $date >= $dateNow) { ?>
+                        <? if ($moderation != 'Y' && $date >= $dateNow) { ?>
                             <p><?= GetMessage("CT_DISABLED") ?></p>
-                        <? } elseif ($moderation != 'Y' && $date >= $dateNow) { ?>
+                        <? } elseif ($moderation == 'Y' && $date >= $dateNow) { ?>
                             <p><?= GetMessage("CT_MODERATION") ?></p>
                         <? } elseif ($date < $dateNow) { ?>
                             <p><?=GetMessage("T_NO_PAY")?></p>
@@ -149,7 +149,7 @@ foreach ($arResult["ITEMS"] as $arItem):?>
                                 <p><?=GetMessage("T_PAY_TO")?><?= $date ?></p>
                             </div>
                         <? } ?>
-                        <div class="col-xs-12 <?if($moderation=='Y'){?>col-md-4<?}else{?>col-md-6<?}?>">
+                        <div class="col-xs-12 <?if($moderation!='Y'){?>col-md-4<?}else{?>col-md-6<?}?>">
                             <a href="<?=SITE_DIR?>personal/<?if($arItem["DISPLAY_PROPERTIES"]['CATEGORY']['LINK_SECTION_VALUE']){?>company<?}else{?>announcement<?}?>/?edit=Y&CODE=<?= $arItem['ID'] ?>" class="overlay-link">
                                 <div class="overlay-icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30"
@@ -163,7 +163,7 @@ foreach ($arResult["ITEMS"] as $arItem):?>
                                 <div class="overlay-text"><?=GetMessage("CT_EDIT")?></div>
                             </a>
                         </div>
-                        <?if($moderation=='Y' && $date >= $dateNow){?>
+                        <?if($moderation!='Y' && $date >= $dateNow){?>
                             <div class="col-xs-12 col-md-4">
                             <a onclick="editItem(<?= $arItem['ID']?>,<?= $arItem['IBLOCK_ID']?>,'<?if($active=='Y'){?>N<?}elseif($active=='N'){?>Y<?}?>')"  class="overlay-link">
                                 <?if($active=='Y'){?>
@@ -212,7 +212,7 @@ foreach ($arResult["ITEMS"] as $arItem):?>
                             </a>
                         </div>
                         <?}?>
-                        <div class="col-xs-12 <?if($moderation=='Y'){?>col-md-4<?}else{?>col-md-6<?}?>">
+                        <div class="col-xs-12 <?if($moderation!='Y'){?>col-md-4<?}else{?>col-md-6<?}?>">
                             <a onclick="deleteItem(<?= $arItem['ID']?>, <?= $arItem['IBLOCK_ID']?>);" class="overlay-link">
                                 <div class="overlay-icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30"

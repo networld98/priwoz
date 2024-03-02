@@ -1,4 +1,7 @@
 <?
+use Bitrix\Main\Loader;
+Loader::includeModule("iblock");
+
 AddEventHandler("iblock", "OnBeforeIBlockElementAdd", Array("CustomFields", "OnBeforeIBlockElementAddHandler"));
 class CustomFields
 {
@@ -178,10 +181,30 @@ class CUtilEx extends \CUtil{
 /*КОНЕЦ КОСТЫЛЯ */
 
 AddEventHandler("main", "OnBeforeUserRegister", "OnBeforeUserUpdateHandler");
-AddEventHandler("main", "OnBeforeUserUpdate", "OnBeforeUserUpdateHandler");
 function OnBeforeUserUpdateHandler(&$arFields)
 {
-    $arFields["LOGIN"] = $arFields["EMAIL"];
-    return $arFields;
+        $arFields["LOGIN"] = $arFields["EMAIL"];
+        return $arFields;
 }
+
+
+
+AddEventHandler("iblock", "OnAfterIBlockElementAdd", Array("MyClass", "OnAfterIBlockElementAddHandler"));
+class MyClass
+{
+    // создаем обработчик события "OnAfterIBlockElementAdd"
+    public static function OnAfterIBlockElementAddHandler(&$arFields)
+    {
+        if($arFields["IBLOCK_ID"] == 19) {
+            $newDate = date('d.m.Y', strtotime('+1 month'));
+            $el = new CIBlockElement;
+            $el->Update(
+                $arFields["ID"],
+                ['DATE_ACTIVE_TO' => $newDate, 'ACTIVE' => 'Y'],
+                true
+            );
+        }
+    }
+}
+
 ?>

@@ -18,7 +18,7 @@ $date=CIBlockElement::GetByID($arResult['ID'])->GetNextElement()->GetFields()['A
 $dateNow = date("d.m.Y H:i:s");
 
 //Если не прошел модерацию или автор, тогда редирект
-if(($arResult["PROPERTIES"]['MODERATION']['VALUE']!='Y' || $date<$dateNow) && $arResult["PROPERTIES"]['AUTHOR']['VALUE']!=$USER->GetID()){
+if(($arResult["PROPERTIES"]['MODERATION']['VALUE']=='Y' || $date<$dateNow) && $arResult["PROPERTIES"]['AUTHOR']['VALUE']!=$USER->GetID()){
     header('Location: https://priwoz.info'.SITE_DIR."ads/");
     exit;
 }
@@ -68,7 +68,7 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
                     <?}?>
                     <div class="sidebar-widget">
                         <div class="product-info">
-                            <?if($arResult["PROPERTIES"]['MODERATION']['VALUE']!='Y' && $arResult["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID() && $date>=$dateNow){?>
+                            <?if($arResult["PROPERTIES"]['MODERATION']['VALUE']=='Y' && $arResult["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID() && $date>=$dateNow){?>
                                 <div class="overlay">
                                     <p><?=GetMessage("T_ADS_NONE")?></p>
                                 </div>

@@ -20,7 +20,7 @@ $this->setFrameMode(true);
                     <h1 class="section-title"><?$APPLICATION->ShowTitle(false)?></h1>
                 </div>
                 <div class="col-xs-12 col-md-3">
-                    <a href="/" class="blue-link" data-popup="addCommunityPopup"><?=GetMessage("CT_BNL_ADD_COMM")?></a>
+                    <a href="<?=SITE_DIR?>" class="blue-link" data-popup="addCommunityPopup"><?=GetMessage("CT_BNL_ADD_COMM")?></a>
                 </div>
             </div>
         </div>

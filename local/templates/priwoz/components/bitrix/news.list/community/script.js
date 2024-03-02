@@ -2,6 +2,7 @@ $( document ).ready(function() {
 	//Удаляем параметр social при загрузке
 	const url = new URL(document.location);
 	const searchParams = url.searchParams;
+	searchParams.delete("strIMessage");
 	searchParams.delete("social");
 	window.history.pushState({}, '', url.toString());
 
