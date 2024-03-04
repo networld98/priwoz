@@ -234,14 +234,6 @@
         <style>
             .btn-vidget--wrapper::before {
                 content: "<?=GetMessage('DEF_WRITE_PRIWOZ')?>";
-                width: 100%;
-                height: 100%;
-                color: rgb(255, 255, 255);
-                display: none;
-                text-align: center;
-                z-index: 2;
-                font-size: 8px;
-                text-transform: uppercase;
             }
         </style>
         <div class="vidget-content">
