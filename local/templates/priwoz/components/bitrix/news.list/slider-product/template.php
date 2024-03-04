@@ -34,8 +34,8 @@ if(count((array)$arResult["ITEMS"])>1){?>
                     foreach ($arResult["ITEMS"] as $arItem):?>
                         <?
                         //Получаем дату окончания действия елемента и текущую
-                        $date=CIBlockElement::GetByID($arItem['ID'])->GetNextElement()->GetFields()['ACTIVE_TO'];
-                        $dateNow = date("d.m.Y H:i:s");
+                        $date=DateTime::createFromFormat('d.m.Y H:i:s', CIBlockElement::GetByID($arItem['ID'])->GetNextElement()->GetFields()['ACTIVE_TO']);
+                        $dateNow = new DateTime();
 
                         if(($arItem["PROPERTIES"]['MODERATION']['VALUE']!='Y' && $date>=$dateNow) || $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID()){
                         $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));

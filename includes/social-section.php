@@ -1,6 +1,6 @@
 <section class="social-section">
     <div class="container">
-        <div class="social-inner">
+        <div class="social-inner" onclick="window.location='/community/'" style>
             <img src="/images/home/social-bg.png" class="bg-img" alt="social">
 
             <div class="text-box">

@@ -26,8 +26,8 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
 foreach ($arResult["ITEMS"] as $arItem):?>
     <?
     //Получаем дату окончания действия елемента и текущую
-    $date=CIBlockElement::GetByID($arItem['ID'])->GetNextElement()->GetFields()['ACTIVE_TO'];
-    $dateNow = date("d.m.Y H:i:s");
+    $date=DateTime::createFromFormat('d.m.Y H:i:s', CIBlockElement::GetByID($arItem['ID'])->GetNextElement()->GetFields()['ACTIVE_TO']);
+    $dateNow = new DateTime();
 
  if(($arItem["PROPERTIES"]['MODERATION']['VALUE']!='Y' && $date>=$dateNow) || $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID()){
     $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
@@ -142,13 +142,11 @@ foreach ($arResult["ITEMS"] as $arItem):?>
                     </div>
                 <? } ?>
                 <div class="overlay">
+                    <? if ($date >= $dateNow) { ?>
+                      <p class="element-date-to"><?=GetMessage("T_PAY_TO")?><?=FormatDate('d.m.Y',strtotime(CIBlockElement::GetByID($arItem['ID'])->GetNextElement()->GetFields()['ACTIVE_TO'])) ?></p>
+                    <? } ?>
                     <a class="link-item" href="<?= $arItem["DETAIL_PAGE_URL"] ?>"></a>
                     <div class="row overlay-inner">
-                        <? if ($date >= $dateNow) { ?>
-                            <div class="col-xs-12 element-date-to">
-                                <p><?=GetMessage("T_PAY_TO")?><?= $date ?></p>
-                            </div>
-                        <? } ?>
                         <div class="col-xs-12 <?if($moderation!='Y'){?>col-md-4<?}else{?>col-md-6<?}?>">
                             <a href="<?=SITE_DIR?>personal/<?if($arItem["DISPLAY_PROPERTIES"]['CATEGORY']['LINK_SECTION_VALUE']){?>company<?}else{?>announcement<?}?>/?edit=Y&CODE=<?= $arItem['ID'] ?>" class="overlay-link">
                                 <div class="overlay-icon">

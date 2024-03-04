@@ -18,7 +18,9 @@ $APPLICATION->SetTitle("Priwoz");
                 );
                 ?>
             </div>
-            <? $APPLICATION->IncludeComponent(
+            <?
+            $arrFilter = array("!PROPERTY_MODERATION_VALUE" => "Y");
+            $APPLICATION->IncludeComponent(
                 "bitrix:news.list",
                 "ads",
                 array(
@@ -207,7 +209,9 @@ $APPLICATION->SetTitle("Priwoz");
     <section class="companies-section">
         <div class="container">
             <div class="section-title">Компанії наших у Болгарії</div>
-            <? $APPLICATION->IncludeComponent(
+            <?
+            $arrFilter = array("!PROPERTY_MODERATION_VALUE" => "Y");
+            $APPLICATION->IncludeComponent(
                 "bitrix:news.list",
                 "companies",
                 array(

@@ -11,4 +11,6 @@ $MESS["DEF_HELP"]="Priwoz-поддержка";
 $MESS["DEF_MY_ADS"]="Мои объявления";
 $MESS["DEF_POLICY"]="Политика конфендициальности";
 $MESS["DEF_COPYRIGHT"]="© Priwoz. Все права защищены";
+$MESS["DEF_WRITE_ME"]="Напишите нам";
+$MESS["DEF_WRITE_PRIWOZ"]="Связать с Priwoz";
 ?>

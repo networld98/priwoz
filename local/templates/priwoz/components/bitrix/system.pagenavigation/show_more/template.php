@@ -8,7 +8,7 @@ $this->createFrame()->begin("Загрузка навигации");
     if($APPLICATION->GetCurPage() != SITE_DIR):?>
         <? if ($arResult["NavPageNomer"] + 1 <= $arResult["nEndPage"]): ?>
             <div class="load-more-box load_page" data-url="<?= $url ?>">
-                <span class="blue-link"><?=GetMessage("PAG_LOAD_ADS")?></span>
+                <span class="blue-link"><?=GetMessage("PAG_SHOW_MORE")?></span>
             </div>
         <? endif ?>
     <?else:?>
@@ -18,7 +18,7 @@ $this->createFrame()->begin("Загрузка навигации");
             </div>
         <?}else{?>
             <div class="load-more-box load_page" data-url="<?= $url ?>">
-                <span class="blue-link"><?=GetMessage("PAG_LOAD_ADS")?></span>
+                <span class="blue-link"><?=GetMessage("PAG_SHOW_MORE")?></span>
             </div>
         <?}?>
     <? endif ?>

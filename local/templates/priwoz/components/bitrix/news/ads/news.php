@@ -128,14 +128,14 @@ global $arUser;
             <div class="author-wrap">
                 <div class="author-box">
                     <div class="avatar">
-                        <a href="<?=SITE_DIR?>companies/<?=$userCode?>/">
+                        <?if($_GET['companisAds']){?><a href="<?=SITE_DIR?>companies/<?=$userCode?>/"><?}?>
                             <img src="<?= $userPhoto ?>" class="bg-img" alt="<?= $userName ?>">
-                        </a>
+                        <?if($_GET['companisAds']){?></a><?}?>
                     </div>
                     <div class="name">
-                        <a href="<?=SITE_DIR?>companies/<?=$userCode?>/">
+                        <?if($_GET['companisAds']){?><a href="<?=SITE_DIR?>companies/<?=$userCode?>/"><?}?>
                             <?= $userName ?>
-                        </a>
+                        <?if($_GET['companisAds']){?></a><?}?>
                     </div>
                 </div>
                 <div class="count-products"><?= $APPLICATION->ShowViewContent('countElements'); ?> <?=GetMessage("T_DESK_ADS_ALL")?></div>

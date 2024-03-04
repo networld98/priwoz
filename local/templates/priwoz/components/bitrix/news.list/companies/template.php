@@ -29,8 +29,13 @@ $this->addExternalCss($this->GetFolder() . '/themes/' . $arParams['TEMPLATE_THEM
         <? foreach ($arResult["ITEMS"] as $arItem): ?>
             <?
             //Получаем дату окончания действия елемента и текущую
-            $date=CIBlockElement::GetByID($arItem['ID'])->GetNextElement()->GetFields()['ACTIVE_TO'];
-            $dateNow = date("d.m.Y H:i:s");
+            $date=DateTime::createFromFormat('d.m.Y H:i:s', CIBlockElement::GetByID($arItem['ID'])->GetNextElement()->GetFields()['ACTIVE_TO']);
+            $dateNow = new DateTime();
+            if ($USER->IsAdmin()) {
+                if ($date >  $dateNow) {
+                    'есть';
+                }
+            }
             $i++;
             if ($i == 3 || $i == 12 || $i == 18) {
                 ?>

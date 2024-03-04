@@ -46,6 +46,7 @@ $APPLICATION->SetTitle("Компанії");
             10 => "INSTAGRAM",
             11 => "YOUTUBE",
             12 => "PHONE",
+            13 => "ADDRESS",
         ),
         "DETAIL_SET_CANONICAL_URL" => "N",
         "DISPLAY_BOTTOM_PAGER" => "Y",

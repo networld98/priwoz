@@ -7,7 +7,7 @@ $this->createFrame()->begin("Загрузка навигации");
     $url = $arResult["sUrlPathParams"] . "PAGEN_" . $arResult["NavNum"] . "=" . $plus;
     if($plus>$arResult["nEndPage"]){?>
         <div class="load-more-box load_page">
-            <a href="<?=SITE_DIR?>ads/" class="blue-link"><?=GetMessage("PAG_LOAD_ADS")?></a>
+            <a href="<?=SITE_DIR?>companies/" class="blue-link"><?=GetMessage("PAG_LOAD_ADS")?></a>
         </div>
     <?}else{?>
         <div class="load-more-box load_page" data-url="<?= $url ?>">
@@ -31,7 +31,7 @@ $this->createFrame()->begin("Загрузка навигации");
                     $('.load_page').remove();
                     $('.load_all').remove();
                     var elements = $(data).find('.ads-item'),  //  Ищем элементы
-                        pagination = $(data).find('.load_all');//  Ищем навигацию
+                        pagination = '<div class="load-more-box load_page"> <a href="<?=SITE_DIR?>companies/" class="blue-link"><?=GetMessage("PAG_LOAD_ADS")?></a></div>';
                     targetContainer.append(elements);   //  Добавляем посты в конец контейнера
                     targetContainer.parent('div').append(pagination); //  добавляем навигацию следом
                 }

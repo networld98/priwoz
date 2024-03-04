@@ -18,7 +18,10 @@ $APPLICATION->SetTitle("Priwoz.info");
                 );
                 ?>
             </div>
-            <? $APPLICATION->IncludeComponent(
+            <?
+            global $arrFilter;
+            $arrFilter = array("!PROPERTY_MODERATION_VALUE" => "Y");
+            $APPLICATION->IncludeComponent(
                 "bitrix:news.list",
                 "ads",
                 array(
@@ -92,7 +95,7 @@ $APPLICATION->SetTitle("Priwoz.info");
                     "MESSAGE_404" => "",
                     "META_DESCRIPTION" => "-",
                     "META_KEYWORDS" => "-",
-                    "NEWS_COUNT" => "10",
+                    "NEWS_COUNT" => "9",
                     "PAGER_BASE_LINK_ENABLE" => "N",
                     "PAGER_DESC_NUMBERING" => "N",
                     "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",

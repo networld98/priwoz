@@ -12,10 +12,11 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(false);
+global $USER;
 unset ($arResult["PROPERTY_LIST"][1]);
-$first = array_slice($arResult["PROPERTY_LIST"], 0, 7);
-$photo = array_slice($arResult["PROPERTY_LIST"], 7, 3);
-$last = array_slice($arResult["PROPERTY_LIST"], 10);
+$first = array_slice($arResult["PROPERTY_LIST"], 0, 8);
+$photo = array_slice($arResult["PROPERTY_LIST"], 8, 3);
+$last = array_slice($arResult["PROPERTY_LIST"], 11);
 $arResult["PROPERTY_LIST"] = $first;
 $arResult["PROPERTY_LIST"][] = 'PREVIEW_TEXT';
 $arResult["PROPERTY_LIST"] = array_merge($arResult["PROPERTY_LIST"], $photo);
@@ -100,7 +101,7 @@ if ($_GET['edit'] != 'Y') {
 
                                     $arSelect1 = array("ID", "NAME");
                                     $arFilter1 = array("IBLOCK_ID" => IntVal($yvalue), "ACTIVE_DATE" => "Y", "ACTIVE" => "Y");
-                                    $dbAllElements = CIBlockElement::GetList(array(), $arFilter1, false, false, $arSelect1);
+                                    $dbAllElements = CIBlockElement::GetList(array('NAME' => 'ASC'), $arFilter1, false, false, $arSelect1);
 
                                     $dbAllElements = GetIBlockElementList($arResult["PROPERTY_LIST_FULL"][$propertyID]["LINK_IBLOCK_ID"]);
 

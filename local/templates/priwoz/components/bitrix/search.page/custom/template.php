@@ -263,7 +263,17 @@ $smartPreFilter = array("ID" => $filterItems);
         })
         grid = $('.grid').masonry({}).css('opacity', '1'),
             grid.masonry('reloadItems');
-        $('.form-select').select2();
+        var isAndroid = navigator.userAgent.toLowerCase().indexOf("android") > -1;
+        if (isAndroid) {
+            $('.form-select').select2(
+                {
+                    minimumResultsForSearch: -1
+                }
+            );
+        }else{
+            $('.form-select').select2();
+        }
+
     })
 </script>
 

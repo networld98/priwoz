@@ -15,7 +15,7 @@ $data = json_decode($postData, true);
 if ($data['status'] == 'success') {
 
 //Отримуємо дату дякої діє оголошення
-$newDate = date('d.m.Y', strtotime('+1 month'));
+$newDate = date('d.m.Y H:i:s', strtotime('+1 month'));
 
 // Отримуємо айді елемента
     $id = explode('/', $data['reference']);

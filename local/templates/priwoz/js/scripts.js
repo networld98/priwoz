@@ -226,4 +226,25 @@ $( document ).ready(function() {
             $(this).parent('.upload-file-custom').find('label.delete').removeClass('active');
         }
     });
+    var isAndroid = navigator.userAgent.toLowerCase().indexOf("android") > -1;
+    if (isAndroid) {
+        $('.form-select').select2(
+            {
+                minimumResultsForSearch: -1
+            }
+        );
+    }else{
+        $('.form-select').select2();
+    }
+    $('.btn-vidget-skarlat').click(function () {
+        $('.vidget-content').toggleClass('active');
+    });
+    $(document).mouseup(function (e) {
+        const btnSkarlat = $('.btn-vidget-skarlat');
+        if (!btnSkarlat.is(e.target) && btnSkarlat.has(e.target) && !mobmenu.is(e.target) && mobmenu.has(e.target).length === 0 && !modalWindow.is(e.target) && modalWindow.has(e.target).length === 0) {
+            btnSkarlat
+                .children('.vidget-content')
+                .removeClass('active');
+        }
+    });
 });

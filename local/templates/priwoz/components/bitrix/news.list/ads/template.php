@@ -24,14 +24,15 @@ $this->EndViewTarget(); ?>
             foreach ($arResult["ITEMS"] as $arItem):?>
                 <?
                 //Получаем дату окончания действия елемента и текущую
-                $date=CIBlockElement::GetByID($arItem['ID'])->GetNextElement()->GetFields()['ACTIVE_TO'];
-                $dateNow = date("d.m.Y H:i:s");
+                $date=DateTime::createFromFormat('d.m.Y H:i:s', CIBlockElement::GetByID($arItem['ID'])->GetNextElement()->GetFields()['ACTIVE_TO']);
+                $dateNow = new DateTime();
 
                 if(($arItem["PROPERTIES"]['MODERATION']['VALUE']!='Y' && $date>=$dateNow) || $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID()){
-
+                $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
+                $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
                     //Добавляем обьявления
                     $i++;
-                    if (($i == 7 || $i == 12 || $i == 18) || (count((array)$arResult["ITEMS"]) < 6 && $i == 3)) {
+                    if (($i == 7 || $i == 14 || $i == 18) || (count((array)$arResult["ITEMS"]) < 6 && $i == 3)) {
                         ?>
                         <div class="grid-item product-grid-item">
                             <div class="advertisement-slider swiper-container">
@@ -60,11 +61,8 @@ $this->EndViewTarget(); ?>
                         </div>
                         <?
                     }
-
-                $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
-                $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
                 ?>
-                <div class="grid-item product-grid-item ads-item" id="<?= $this->GetEditAreaId($arItem['ID']); ?>">
+                <div class="grid-item <?=$i?> product-grid-item ads-item" id="<?= $this->GetEditAreaId($arItem['ID']); ?>">
                     <a href="<?= $arItem["DETAIL_PAGE_URL"] ?>" class="box">
                         <? if ($arItem['PROPERTIES']['PHOTOS']['VALUE']):
                             $file = CFile::ResizeImageGet($arItem['PROPERTIES']['PHOTOS']['VALUE'][0], array('width' => 450, 'height' => 450), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, true);

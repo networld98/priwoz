@@ -101,17 +101,19 @@ if ($_GET['edit'] != 'Y') {
                                     $arAllElements = [];
                                     $arResult["PROPERTY_LIST_FULL"][$propertyID]["PROPERTY_TYPE"] = "L";
 
+
                                     $arSelect1 = array("ID", "NAME");
                                     $arFilter1 = array("IBLOCK_ID" => IntVal($yvalue), "ACTIVE_DATE" => "Y", "ACTIVE" => "Y");
-                                    $dbAllElements = CIBlockElement::GetList(array(), $arFilter1, false, false, $arSelect1);
+                                    $dbAllElements = CIBlockElement::GetList(array('NAME' => 'ASC'), $arFilter1, false, false, $arSelect1);
 
                                     $dbAllElements = GetIBlockElementList($arResult["PROPERTY_LIST_FULL"][$propertyID]["LINK_IBLOCK_ID"]);
-
 
                                     while ($arElement = $dbAllElements->Fetch()) {
                                         $arAllElements[$arElement['ID']] = array('VALUE' => $arElement['NAME']);
                                     }
-
+                                    usort($arAllElements, function($a, $b) {
+                                        return strcmp($a['VALUE'], $b['VALUE']); // Сортировка по возрастанию значения поля VALUE
+                                    });
                                     $arResult["PROPERTY_LIST_FULL"][$propertyID]['ENUM'] = $arAllElements;
 
                                     if (!in_array($propertyID, $arResult['PROPERTY_LIST_FULL']))
@@ -144,7 +146,6 @@ if ($_GET['edit'] != 'Y') {
                                                 $arAllElements[$arElement['ID']] = array('VALUE' => $arElement['NAME']);
                                             }
                                         }
-
                                         $arResult["PROPERTY_LIST_FULL"][$propertyID]['ENUM'] = $arAllElements;
 
                                         if (!in_array($propertyID, $arResult['PROPERTY_LIST_FULL']))

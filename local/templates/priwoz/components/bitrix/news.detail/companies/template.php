@@ -13,8 +13,8 @@
 $this->setFrameMode(true);
 CUtil::InitJSCore(array('fx'));
 //Получаем дату окончания действия елемента и текущую
-$date=CIBlockElement::GetByID($arResult['ID'])->GetNextElement()->GetFields()['ACTIVE_TO'];
-$dateNow = date("d.m.Y H:i:s");
+$date=DateTime::createFromFormat('d.m.Y H:i:s', CIBlockElement::GetByID($arResult['ID'])->GetNextElement()->GetFields()['ACTIVE_TO']);
+$dateNow = new DateTime();
 
 //Если не прошел модерацию или автор, тогда редирект
 if(($arResult["PROPERTIES"]['MODERATION']['VALUE']=='Y' || $date<$dateNow) && $arResult["PROPERTIES"]['AUTHOR']['VALUE']!=$USER->GetID()){
@@ -164,7 +164,7 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
                                             $locationId = $arResult["DISPLAY_PROPERTIES"]['CITY']['LINK_ELEMENT_VALUE'][$arResult["DISPLAY_PROPERTIES"]['CITY']['VALUE']]['ID'];
                                             $locationName = CIBlockElement::GetByID($locationId)->GetNextElement()->GetProperties()['NAME_UA']['VALUE'];
                                         } ?>
-                                        <?= $locationName ?>
+                                        <?= $locationName ?><? if ($arResult['DISPLAY_PROPERTIES']['ADDRESS']['DISPLAY_VALUE']) { ?>, <?=$arResult['DISPLAY_PROPERTIES']['ADDRESS']['DISPLAY_VALUE']?><? } ?>
                                     </div>
                                 </div>
                             <? } ?>

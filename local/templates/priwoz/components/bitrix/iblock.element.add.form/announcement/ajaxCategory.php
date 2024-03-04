@@ -50,7 +50,16 @@ if ($_POST['CATEGORY']) {
     </div>
     <script>
         $( document ).ready(function() {
-            $(".form-select:not(.-with-icon)").select2();
+            var isAndroid = navigator.userAgent.toLowerCase().indexOf("android") > -1;
+            if (isAndroid) {
+                $('.form-select').select2(
+                    {
+                        minimumResultsForSearch: -1
+                    }
+                );
+            }else{
+                $('.form-select').select2();
+            }
         })
     </script>
 
