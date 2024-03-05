@@ -57,6 +57,7 @@ if (SITE_ID == 'ua') {
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH . '/js/bundle.js');
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH . '/js/fancybox.umd.js');
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH . '/js/jquery.maskedinput.min.js');
+    $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH . '/js/lazysizes.min.js');
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH . '/js/scripts.js');
     $APPLICATION->ShowHead(); ?>
     <meta name="robots" content="noindex, nofollow" />
