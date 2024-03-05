@@ -22,12 +22,10 @@ if(count((array)$arResult["ITEMS"])>0){?>
                         <div class="grid-sizer"></div>
                         <div class="gutter-sizer"></div>
                         <? $i = 0;
-
-                        //Получаем дату окончания действия елемента и текущую
-                        $date=DateTime::createFromFormat('d.m.Y H:i:s', CIBlockElement::GetByID($arItem['ID'])->GetNextElement()->GetFields()['ACTIVE_TO']);
-                        $dateNow = new DateTime();
-
                         foreach ($arResult["ITEMS"] as $arItem):
+                            //Получаем дату окончания действия елемента и текущую
+                            $date=DateTime::createFromFormat('d.m.Y H:i:s', CIBlockElement::GetByID($arItem['ID'])->GetNextElement()->GetFields()['ACTIVE_TO']);
+                            $dateNow = new DateTime();
                         if(($arItem["PROPERTIES"]['MODERATION']['VALUE']!='Y' && $date>=$dateNow)  || $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID()){
                             $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
                             $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
