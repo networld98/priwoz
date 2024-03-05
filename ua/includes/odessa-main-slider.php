@@ -1,5 +1,5 @@
 <?
-$file = $_SERVER["DOCUMENT_ROOT"] . '/includes/odessa-slider/text.txt';
+$file = $_SERVER["DOCUMENT_ROOT"] . '/ua/includes/odessa-slider/text.txt';
 $src = fopen($file, 'r');
 if (!$src) die('File read error');
 while (($data = fgetcsv($src, 0, "\t")) !== FALSE) {
@@ -26,9 +26,9 @@ while (($data = fgetcsv($src, 0, "\t")) !== FALSE) {
             <div class="advertisement advertisement-type-1">
                 <a class="box">
                     <img class="bg-img d-sm-none d-md-block lazyload" <?=$src?>="<?=SITE_DIR?>includes/odessa-slider/<?= $random_image_number ?>.jpg"
-                         alt="odessa-slider-<?= $i ?>">
+                    alt="odessa-slider-<?= $i ?>">
                     <img class="bg-img d-none d-sm-block d-md-none lazyload"
-                        <?=$src?>="<?=SITE_DIR?>includes/odessa-slider/<?= $random_image_number ?>-sm.jpg" alt="odessa-slider-<?= $i ?>">
+                    <?=$src?>="<?=SITE_DIR?>includes/odessa-slider/<?= $random_image_number ?>-sm.jpg" alt="odessa-slider-<?= $i ?>">
                     <?= $textArray[$random_text_number] ?>
                 </a>
             </div>
