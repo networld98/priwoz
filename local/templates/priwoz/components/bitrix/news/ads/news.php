@@ -145,7 +145,8 @@ global $arUser;
                     <?}?>
                 </div>
                 <ul class="menu -social">
-                    <? if ($userTelega) { ?>
+                    <? if ($userTelega) {
+                        $userTelega = str_replace(array('@', 'https://t.me/'), array('', ''), $userTelega);?>
                         <li>
                             <a href="https://telegram.me/<?= $userTelega ?>" target="_blank">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"

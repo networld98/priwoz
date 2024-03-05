@@ -48,7 +48,16 @@ $(document).ajaxComplete(function() {
 		$(".filter-output-box").show('fast');
 	}
 	grid.masonry('reloadItems');
-	$('.form-select').select2();
+	var isAndroid = navigator.userAgent.toLowerCase().indexOf("android") > -1;
+	if (isAndroid) {
+		$('.form-select').select2(
+			{
+				minimumResultsForSearch: -1
+			}
+		);
+	}else{
+		$('.form-select').select2();
+	}
 });
 function JCSmartFilter(ajaxURL, viewMode)
 {

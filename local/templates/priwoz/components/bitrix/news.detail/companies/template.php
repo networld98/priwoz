@@ -228,7 +228,7 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
                         <ul class="menu -social">
                             <? if ($arResult['PROPERTIES']['TELEGRAM']['VALUE']) { ?>
                                 <li>
-                                    <a href="https://telegram.me/<?= $arResult['PROPERTIES']['TELEGRAM']['VALUE'] ?>">
+                                    <a target="_blank" href="https://telegram.me/<?= $arResult['PROPERTIES']['TELEGRAM']['VALUE'] ?>">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120"
                                              viewBox="0 0 120 120"
                                              fill="none">
@@ -258,7 +258,7 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
                             <? } ?>
                             <? if ($arResult['PROPERTIES']['VIBER']['VALUE']) { ?>
                                 <li>
-                                    <a href="viber://chat?number=<?= $arResult['PROPERTIES']['VIBER']['VALUE'] ?>">
+                                    <a target="_blank" href="viber://chat?number=<?= $arResult['PROPERTIES']['VIBER']['VALUE'] ?>">
                                         <svg width="120" height="120" viewBox="0 0 120 120" fill="none"
                                              xmlns="http://www.w3.org/2000/svg">
                                             <path d="M19.8946 87.513C15.6076 85.2522 11.248 82.9392 7.8142 79.5558C1.3996 73.233 -0.9446 63.7404 0.3376 55.1298C1.6204 46.5204 6.1588 38.7258 11.8162 32.1036C16.8784 26.1768 23.0158 20.9514 30.3688 17.988C37.7206 15.0246 46.3972 14.5122 53.8438 17.7114C58.8982 19.8828 63.2092 23.637 68.4382 25.3374C76.8772 28.0806 85.9606 25.0008 94.7464 26.0082C103.895 27.057 112.466 32.874 116.708 40.9122C121.333 49.6782 120.73 60.267 117.096 69.2178C113.463 78.1698 107.093 85.7406 100.369 92.742C92.3572 101.086 82.5664 109.315 70.648 109.482C62.0206 109.603 53.8834 105.435 46.195 101.381C37.4284 96.7584 28.6612 92.1354 19.8946 87.513Z"
@@ -287,7 +287,7 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
                             <? } ?>
                             <? if ($arResult['PROPERTIES']['WHATSAPP']['VALUE']) { ?>
                                 <li>
-                                    <a href="whatsapp://send?phone=<?= $arResult['PROPERTIES']['WHATSAPP']['VALUE'] ?>">
+                                    <a target="_blank" href="whatsapp://send?phone=<?= $arResult['PROPERTIES']['WHATSAPP']['VALUE'] ?>">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120"
                                              viewBox="0 0 60 60"
                                              fill="none">
@@ -307,7 +307,7 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
                             <? } ?>
                             <? if ($arResult['PROPERTIES']['FACEBOOK']['VALUE']) { ?>
                                 <li>
-                                    <a href="<?= $arResult['PROPERTIES']['FACEBOOK']['VALUE'] ?>">
+                                    <a target="_blank" href="<?= $arResult['PROPERTIES']['FACEBOOK']['VALUE'] ?>">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120"
                                              viewBox="0 0 120 120"
                                              fill="none">
@@ -335,9 +335,10 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
                                     </a>
                                 </li>
                             <? } ?>
-                            <? if ($arResult['PROPERTIES']['INSTAGRAM']['VALUE']) { ?>
+                            <? if ($arResult['PROPERTIES']['INSTAGRAM']['VALUE']) {
+                                $arResult['PROPERTIES']['INSTAGRAM']['VALUE'] = str_replace(array('#', 'https://www.instagram.com/'), array('', ''), $arResult['PROPERTIES']['INSTAGRAM']['VALUE']);?>
                                 <li>
-                                    <a href="<?= $arResult['PROPERTIES']['INSTAGRAM']['VALUE'] ?>">
+                                    <a target="_blank" href="https://www.instagram.com/<?= $arResult['PROPERTIES']['INSTAGRAM']['VALUE'] ?>">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120"
                                              viewBox="0 0 60 60"
                                              fill="none">
@@ -375,7 +376,7 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
                             <? } ?>
                             <? if ($arResult['PROPERTIES']['YOUTUBE']['VALUE']) { ?>
                                 <li>
-                                    <a href="<?= $arResult['PROPERTIES']['YOUTUBE']['VALUE'] ?>">
+                                    <a target="_blank" href="<?= $arResult['PROPERTIES']['YOUTUBE']['VALUE'] ?>">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120"
                                              viewBox="0 0 60 60"
                                              fill="none">
@@ -695,9 +696,10 @@ $APPLICATION->IncludeComponent(
     <div class="bottom-part">
         <p class="subtitle d-xs-none d-md-block"><?= GetMessage("T_MY_OTV") ?></p>
         <ul class="menu -social">
-            <? if ($arResult['PROPERTIES']['TELEGRAM']['VALUE']) { ?>
+            <? if ($arResult['PROPERTIES']['TELEGRAM']['VALUE']) {
+                $arResult['PROPERTIES']['TELEGRAM']['VALUE'] = str_replace(array('@', 'https://t.me/'), array('', ''), $arResult['PROPERTIES']['TELEGRAM']['VALUE']);?>
                 <li>
-                    <a href="https://telegram.me/<?= $arResult['PROPERTIES']['TELEGRAM']['VALUE'] ?>">
+                    <a target="_blank" href="https://telegram.me/<?= $arResult['PROPERTIES']['TELEGRAM']['VALUE'] ?>">
                         <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"
                              fill="none">
                             <path d="M19.8946 87.513C15.6076 85.2522 11.248 82.9392 7.8142 79.5558C1.3996 73.233 -0.9446 63.7404 0.3376 55.1298C1.6204 46.5204 6.1588 38.7258 11.8162 32.1036C16.8784 26.1768 23.0158 20.9514 30.3688 17.988C37.7206 15.0246 46.3972 14.5122 53.8438 17.7114C58.8982 19.8828 63.2092 23.637 68.4382 25.3374C76.8772 28.0806 85.9606 25.0008 94.7464 26.0082C103.895 27.057 112.466 32.874 116.708 40.9122C121.333 49.6782 120.73 60.267 117.096 69.2178C113.463 78.1698 107.093 85.7406 100.369 92.742C92.3572 101.086 82.5664 109.315 70.648 109.482C62.0206 109.603 53.8834 105.435 46.195 101.381C37.4284 96.7584 28.6612 92.1354 19.8946 87.513Z"

@@ -239,12 +239,12 @@ $( document ).ready(function() {
     $('.btn-vidget-skarlat').click(function () {
         $('.vidget-content').toggleClass('active');
     });
-    $(document).mouseup(function (e) {
-        const btnSkarlat = $('.btn-vidget-skarlat');
-        if (!btnSkarlat.is(e.target) && btnSkarlat.has(e.target) && !mobmenu.is(e.target) && mobmenu.has(e.target).length === 0 && !modalWindow.is(e.target) && modalWindow.has(e.target).length === 0) {
-            btnSkarlat
-                .children('.vidget-content')
-                .removeClass('active');
+    $(document).mouseup(function(e) {
+        var myBlock = $(".vidget-content.active");
+
+        // Если клик был сделан вне блока, скрываем его
+        if (!myBlock.is(e.target) && myBlock.has(e.target).length === 0) {
+            myBlock.removeClass('active');
         }
     });
 });

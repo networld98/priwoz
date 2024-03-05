@@ -109,8 +109,8 @@
 }
 .btn-vidget-skarlat {
     position: fixed;
-    right: 90px;
-    bottom: 50px;
+    right: 40px;
+    bottom: 35px;
     z-index: 10;
     display: flex;
     justify-content: center;
@@ -614,6 +614,9 @@ span.blue-link, .personal-section .products-masonry.my-products .product-grid-it
     .btn-vidget-skarlat {
         right: 10px;
         bottom: 10px;
+    }
+    .vidget-item a {
+        font-size: 20px;
     }
     .single-company-card-section .overlay, .single-product-section .overlay {
         position: fixed;
