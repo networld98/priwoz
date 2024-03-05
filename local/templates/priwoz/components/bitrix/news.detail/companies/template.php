@@ -12,6 +12,9 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 CUtil::InitJSCore(array('fx'));
+
+global $allUrl;
+$allUrl = 'companisAds='.$arResult['ID'];
 //Получаем дату окончания действия елемента и текущую
 $date=DateTime::createFromFormat('d.m.Y H:i:s', CIBlockElement::GetByID($arResult['ID'])->GetNextElement()->GetFields()['ACTIVE_TO']);
 $dateNow = new DateTime();
@@ -523,7 +526,7 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
 $arrFilter = array("PROPERTY_NAME" => $arResult['ID']);
 $APPLICATION->IncludeComponent(
     "bitrix:news.list",
-    "companys_ads_list",
+    "slider-product",
     array(
         "ADD_ELEMENT_CHAIN" => "Y",
         "ADD_SECTIONS_CHAIN" => "Y",
@@ -547,7 +550,7 @@ $APPLICATION->IncludeComponent(
             1 => "",
         ),
         "DETAIL_PAGER_SHOW_ALL" => "Y",
-        "DETAIL_PAGER_TEMPLATE" => "",
+        "PAGER_TEMPLATE" => "",
         "DETAIL_PAGER_TITLE" => "Страница",
         "DETAIL_PROPERTY_CODE" => array(
             0 => "PRICE",
@@ -595,13 +598,12 @@ $APPLICATION->IncludeComponent(
         "MESSAGE_404" => "",
         "META_DESCRIPTION" => "-",
         "META_KEYWORDS" => "-",
-        "NEWS_COUNT" => "5",
+        "NEWS_COUNT" => "10",
         "PAGER_BASE_LINK_ENABLE" => "N",
         "PAGER_DESC_NUMBERING" => "N",
         "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
         "PAGER_SHOW_ALL" => "N",
         "PAGER_SHOW_ALWAYS" => "N",
-        "PAGER_TEMPLATE" => "",
         "PAGER_TITLE" => "Новости",
         "PREVIEW_TRUNCATE_LEN" => "",
         "SEF_FOLDER" => "/",
