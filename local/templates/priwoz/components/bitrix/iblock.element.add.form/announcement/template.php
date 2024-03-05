@@ -111,9 +111,17 @@ if ($_GET['edit'] != 'Y') {
                                     while ($arElement = $dbAllElements->Fetch()) {
                                         $arAllElements[$arElement['ID']] = array('VALUE' => $arElement['NAME']);
                                     }
+                                    // Создаем массив ключей
+                                    $keys = array_keys($arAllElements);
+
+                                    // Сортируем массив $arAllElements по значению поля VALUE
                                     usort($arAllElements, function($a, $b) {
                                         return strcmp($a['VALUE'], $b['VALUE']); // Сортировка по возрастанию значения поля VALUE
                                     });
+
+                                    // Восстанавливаем порядок ключей
+                                    $arAllElements = array_combine($keys, $arAllElements);
+
                                     $arResult["PROPERTY_LIST_FULL"][$propertyID]['ENUM'] = $arAllElements;
 
                                     if (!in_array($propertyID, $arResult['PROPERTY_LIST_FULL']))
