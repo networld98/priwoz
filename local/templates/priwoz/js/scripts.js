@@ -109,7 +109,9 @@ function favoriteInit() {
 }
 
 function deleteItem(id,iblock){
+    let result = confirm("Вы уверены, что хотите удалить обьявление или компанию?");
     let block = $('.grid.products-masonry.my-products');
+    if (result) {
         $.ajax({
             type: "POST",
             url: '/ajax/delete-announcement.php',
@@ -122,7 +124,8 @@ function deleteItem(id,iblock){
                 grid.masonry('reloadItems');
             }
         });
-        return false;
+    }
+    return false;
 }
 function editItem(id,iblock,active){
         let block = $('.grid.products-masonry.my-products');
