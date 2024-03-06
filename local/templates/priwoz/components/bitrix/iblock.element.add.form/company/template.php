@@ -107,8 +107,13 @@ if ($_GET['edit'] != 'Y') {
 
 
                                     while ($arElement = $dbAllElements->Fetch()) {
-                                        $arAllElements[$arElement['ID']] = array('VALUE' => $arElement['NAME']);
+                                        $arAllElements[$arElement['ID']] = array('VALUE' => $arElement['NAME'], 'DATA' => $arElement['ID']);
                                     }
+
+                                    // Сортируем массив $arAllElements по значению поля VALUE
+                                    usort($arAllElements, function($a, $b) {
+                                        return strcmp($a['VALUE'], $b['VALUE']); // Сортировка по возрастанию значения поля VALUE
+                                    });
 
                                     $arResult["PROPERTY_LIST_FULL"][$propertyID]['ENUM'] = $arAllElements;
 
@@ -468,7 +473,7 @@ if ($_GET['edit'] != 'Y') {
                                                             if ($arEnum["DEF"] == "Y") $checked = true;
                                                         }
                                                         ?>
-                                                        <option value="<?= $key ?>" <?= $checked ? " selected=\"selected\"" : "" ?>><?= $arEnum["VALUE"] ?></option>
+                                                        <option value="<?= $arEnum["DATA"] ?>" <?= $checked ? " selected=\"selected\"" : "" ?>><?= $arEnum["VALUE"] ?></option>
                                                         <?
                                                     }
                                                     ?>
