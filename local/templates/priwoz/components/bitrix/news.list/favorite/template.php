@@ -33,23 +33,25 @@ foreach ($arResult["ITEMS"] as $arItem):?>
     $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
     $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
     $active = CIBlockElement::GetByID($arItem['ID'])->GetNextElement()->GetFields()['ACTIVE'];
-    $moderation = CIBlockElement::GetByID($arItem['ID'])->GetNextElement()->GetProperties()['MODERATION']['VALUE']; ?>
+    $moderation = CIBlockElement::GetByID($arItem['ID'])->GetNextElement()->GetProperties()['MODERATION']['VALUE'];
+    $logo = CFile::ResizeImageGet($arItem["PROPERTIES"]['LOGO']['VALUE'], array('width' => 150), BX_RESIZE_IMAGE_PROPORTIONAL, true);
+
+     if($arItem['IBLOCK_ID']==19){
+         $link = SITE_DIR.'personal/ads-list/';
+         $nameOverlay = GetMessage("T_ASD");
+         $price = "100 UAH";
+         $priceVal = "10000";
+     }elseif($arItem['IBLOCK_ID']==24){
+         $link = SITE_DIR.'personal/company-list/';
+         $nameOverlay = GetMessage("T_COMPANY");
+         $price = "2000 UAH";
+         $priceVal = "200000";
+     }?>
     <div class="grid-item product-grid-item" id="<?= $this->GetEditAreaId($arItem['ID']); ?>">
         <<? if ($APPLICATION->GetCurPage() != SITE_DIR."personal/ads-list/" && $APPLICATION->GetCurPage() != SITE_DIR."personal/company-list/" && !$_POST['id']){?>a href="<?= $arItem["DETAIL_PAGE_URL"] ?>"<?}else{?>div<?}?> class="box <?if($arItem["DISPLAY_PROPERTIES"]['CATEGORY']['LINK_SECTION_VALUE']){?>company<?}?>">
-            <? if ($arItem['PROPERTIES']['PHOTOS']['VALUE']):
+            <? if ($arItem['PROPERTIES']['PHOTOS']['VALUE']){
                 $file = CFile::ResizeImageGet($arItem['PROPERTIES']['PHOTOS']['VALUE'][0], array('width' => 450, 'height' => 450), BX_RESIZE_IMAGE_PROPORTIONAL, true);
-                $logo = CFile::ResizeImageGet($arItem["PROPERTIES"]['LOGO']['VALUE'], array('width' => 150), BX_RESIZE_IMAGE_PROPORTIONAL, true);
-                if($arItem['IBLOCK_ID']==19){
-                    $link = SITE_DIR.'personal/ads-list/';
-                    $nameOverlay = GetMessage("T_ASD");
-                    $price = "100 UAH";
-                    $priceVal = "10000";
-                }elseif($arItem['IBLOCK_ID']==24){
-                    $link = SITE_DIR.'personal/company-list/';
-                    $nameOverlay = GetMessage("T_COMPANY");
-                    $price = "2000 UAH";
-                    $priceVal = "200000";
-                }
+
                 ?>
                 <div class="img">
                     <?if($arItem["PROPERTIES"]['MODERATION']['VALUE']=='Y' && $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID() && $APPLICATION->GetCurPage() == SITE_DIR . "personal/favorite/" && $date>=$dateNow){?>
@@ -76,8 +78,14 @@ foreach ($arResult["ITEMS"] as $arItem):?>
                         <img class="company-logo" src="<?= $logo["src"] ?>" alt="<?= $arItem['NAME'] ?>">
                     <? endif; ?>
                 </div>
-            <? endif; ?>
-
+            <?}else{?>
+                <div class="img">
+                    <div class="default-text"><?=GetMessage("T_DEFAULT_PHOTO")?></div>
+                    <? if (!empty($arItem["PROPERTIES"]['LOGO'])):?>
+                        <img class="company-logo" src="<?= $logo["src"] ?>" alt="<?= $arItem['NAME'] ?>">
+                    <? endif; ?>
+                </div>
+            <?}?>
             <div class="text">
                 <h2 class="product-title"><?= $arItem["NAME"] ?></h2>
                 <?

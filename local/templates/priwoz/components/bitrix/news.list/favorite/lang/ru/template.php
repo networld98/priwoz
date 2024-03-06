@@ -22,4 +22,5 @@ $MESS["T_COMPANY"] = "Компанию ";
 $MESS["T_PAY_TO"] = "Оплачено до ";
 $MESS["T_NO_PAY"] = "Не оплачено";
 $MESS["T_MONTH"] = "за 1 месяц";
+$MESS["T_DEFAULT_PHOTO"] = "Здесь будет фото компании";
 ?>

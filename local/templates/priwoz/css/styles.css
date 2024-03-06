@@ -461,14 +461,23 @@ span.blue-link, .personal-section .products-masonry.my-products .product-grid-it
 .product-form .group-block input, .SERVICES-block input {
     margin-bottom: 10px;
 }
-.companies-wrap .company-grid-item .img.-default {
+.companies-wrap .company-grid-item .img.-default, .personal-section .product-grid-item .default-text {
     font-weight: 500;
     font-size: 45px;
     line-height: 100%;
     color: #E4E7E8;
     text-shadow: -1px -1px 0 rgba(0,0,0,0.2), 1px -1px 0 rgba(0,0,0,0.2), -1px 1px 0 rgba(0,0,0,0.2), 1px 1px 0 rgba(0,0,0,0.2);
     margin: 0!important;
-    padding: 30% 10px 10%;
+    height: 248px;
+}
+.companies-wrap .company-grid-item .default-text {
+    text-align: center;
+    margin-top: 45px;
+}
+.personal-section .product-grid-item .default-text {
+    position: absolute;
+    padding: 45px 10px 0;
+    text-align: center;
 }
 .our-videos-section .videos-box .item .video {
     padding-bottom: 55.9%;
@@ -606,7 +615,6 @@ span.blue-link, .personal-section .products-masonry.my-products .product-grid-it
 }
 .personal-section .products-masonry.my-products .product-grid-item .box .overlay-link {
     width: 100%;
-    position: absolute;
     top: 0;
     left: 0;
 }
