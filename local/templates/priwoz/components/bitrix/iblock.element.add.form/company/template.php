@@ -12,6 +12,10 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(false);
+if($_GET['strIMessage']=="Элемент успешно добавлен"){
+    header('Location: https://priwoz.info'.SITE_DIR."personal/company-list/");
+    exit;
+}
 global $USER;
 unset ($arResult["PROPERTY_LIST"][1]);
 $first = array_slice($arResult["PROPERTY_LIST"], 0, 8);
@@ -81,7 +85,7 @@ if ($_GET['edit'] != 'Y') {
 
                                     while ($arElement = $dbAllElements->Fetch()) {
                                         if ($arElement['IBLOCK_SECTION_ID'] == $arResult["ELEMENT_PROPERTIES"][546][0]['VALUE']) {
-                                            $arAllElements[$arElement['ID']] = array('VALUE' => $arElement['NAME']);
+                                            $arAllElements[$arElement['ID']] = array('VALUE' => $arElement['NAME'], 'DATA' => $arElement['ID']);
                                         }
                                     }
 
@@ -134,7 +138,7 @@ if ($_GET['edit'] != 'Y') {
 
 
                                     while ($arElement = $dbAllElements->Fetch()) {
-                                        $arAllElements[$arElement['ID']] = array('VALUE' => $arElement['NAME']);
+                                        $arAllElements[$arElement['ID']] = array('VALUE' => $arElement['NAME'],'DATA' => $arElement['ID']);
                                     }
 
                                     $arResult["PROPERTY_LIST_FULL"][$propertyID]['ENUM'] = $arAllElements;

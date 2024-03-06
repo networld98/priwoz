@@ -12,6 +12,11 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(false);
+echo $_GET['strIMessage'];
+if($_GET['strIMessage']=="Элемент успешно добавлен"){
+    header('Location: https://priwoz.info'.SITE_DIR."personal/ads-list/");
+    exit;
+}
 //Костыль чтоб вклинить PREVIEW_TEXT в средину блока
 unset ($arResult["PROPERTY_LIST"][1]);
 $first = array_slice($arResult["PROPERTY_LIST"], 0, 5);
@@ -83,7 +88,7 @@ if ($_GET['edit'] != 'Y') {
 
                                     while ($arElement = $dbAllElements->Fetch()) {
                                         if ($arElement['IBLOCK_SECTION_ID'] == $arResult["ELEMENT_PROPERTIES"][571][0]['VALUE']) {
-                                            $arAllElements[$arElement['ID']] = array('VALUE' => $arElement['NAME']);
+                                            $arAllElements[$arElement['ID']] = array('VALUE' => $arElement['NAME'], 'DATA' => $arElement['ID']);
                                         }
                                     }
 
@@ -140,14 +145,14 @@ if ($_GET['edit'] != 'Y') {
                                         while ($arElement = $dbAllElements->Fetch()) {
                                             if ($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == "CATEGORY") {
                                                 if ($arElement['DEPTH_LEVEL'] == 1) {
-                                                    $arAllElements[$arElement['ID']] = array('VALUE' => $arElement['NAME']);
+                                                    $arAllElements[$arElement['ID']] = array('VALUE' => $arElement['NAME'],'DATA' => $arElement['ID']);
                                                 }
                                             } elseif ($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == "BETCATEGORY") {
                                                 if ($arElement['DEPTH_LEVEL'] == 2 && $arElement['IBLOCK_SECTION_ID'] == $arResult["ELEMENT_PROPERTIES"][527][0]['VALUE']) {
                                                     $arAllElements[$arElement['ID']] = array('VALUE' => $arElement['NAME']);
                                                 }
                                             } else {
-                                                $arAllElements[$arElement['ID']] = array('VALUE' => $arElement['NAME']);
+                                                $arAllElements[$arElement['ID']] = array('VALUE' => $arElement['NAME'],'DATA' => $arElement['ID']);
                                             }
                                         }
                                         $arResult["PROPERTY_LIST_FULL"][$propertyID]['ENUM'] = $arAllElements;

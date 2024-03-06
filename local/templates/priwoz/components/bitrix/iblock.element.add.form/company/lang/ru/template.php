@@ -24,7 +24,7 @@ $MESS["IBLOCK_DATA_CONTACT"] = 'Контактные данные *';
 $MESS["IBLOCK_FORM_NEED"] = '* Обязательно для заполнения';
 $MESS["IBLOCK_FORM_BTN"] = 'Нажимая на кнопку “Добавить объявление”, вы соглашаетесь с условиями нашей <a href="/privacy-policy/">Политики конфиденциальности';
 $MESS["IBLOCK_CABINET_NAME"] = 'Название компании *';
-$MESS["IBLOCK_CABINET_551"] = 'Загрузите логотип';
+$MESS["IBLOCK_CABINET_551"] = 'Загрузите логотип *';
 $MESS["IBLOCK_CABINET_546"] = 'Рубрика *';
 $MESS["IBLOCK_CABINET_547"] = 'Подрубрику';
 $MESS["IBLOCK_CABINET_SELECT_CATEGORY"] = 'Выберите категорию';
