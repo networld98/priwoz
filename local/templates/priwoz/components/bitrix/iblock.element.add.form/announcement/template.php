@@ -13,7 +13,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /** @var CBitrixComponent $component */
 $this->setFrameMode(false);
 echo $_GET['strIMessage'];
-if($_GET['strIMessage']=="Элемент успешно добавлен"){
+if($_GET['strIMessage']=="Элемент успешно добавлен" || $_GET['strIMessage']=="Изменения успешно сохранены"){
     header('Location: https://priwoz.info'.SITE_DIR."personal/ads-list/");
     exit;
 }
@@ -118,10 +118,12 @@ if ($_GET['edit'] != 'Y') {
                                     }
 
                                     // Сортируем массив $arAllElements по значению поля VALUE
-                                    usort($arAllElements, function($a, $b) {
-                                        return strcmp($a['VALUE'], $b['VALUE']); // Сортировка по возрастанию значения поля VALUE
+                                    uasort($arAllElements, function($a, $b) {
+                                        if ($a['VALUE'] == $b['VALUE']) {
+                                            return 0;
+                                        }
+                                        return ($a['VALUE'] < $b['VALUE']) ? -1 : 1;
                                     });
-
 
                                     $arResult["PROPERTY_LIST_FULL"][$propertyID]['ENUM'] = $arAllElements;
 

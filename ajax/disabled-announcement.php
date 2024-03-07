@@ -6,7 +6,7 @@ if (!empty($_POST['id'])) {
     $author = CIBlockElement::GetByID($_POST['id'])->GetNextElement()->GetProperties()['AUTHOR'];
     if ($author['VALUE'] == $USER->GetID()) {
         $el = new CIBlockElement;
-        $res = $el->Update($_POST['id'], Array("ACTIVE" => $_POST['active'], "DATE_ACTIVE_FROM" => date()));
+        $res = $el->Update($_POST['id'], Array("ACTIVE" => $_POST['active'], "DATE_ACTIVE_FROM" => date('d.m.Y H:i:s')));
     }
 }
 $arrFilter = array("PROPERTY_AUTHOR" => $USER->GetID(),"ACTIVE" => array("Y", "N")); ?>

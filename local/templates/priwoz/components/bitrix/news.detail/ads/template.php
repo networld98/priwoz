@@ -274,7 +274,8 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
                     <?endif;?>
 
                     <div class="content-box">
-                        <?=$arResult['PREVIEW_TEXT']?>
+                        <?$obParser = new CTextParser;?>
+                        <?= $obParser->convertText($arResult['PREVIEW_TEXT'])?>
                     </div>
                     <div class="complaint-box">
                         <a href="/" class="report-popup-opener">

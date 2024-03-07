@@ -250,4 +250,12 @@ $( document ).ready(function() {
             myBlock.removeClass('active');
         }
     });
+    $("textarea.form-control").emojioneArea(
+        {
+            tones: false,
+            buttonTitle: "Выбрать эмодзи",
+            emojiPlaceholder: ":smile_cat:",
+            useInternalCDN: true
+        }
+    );
 });
