@@ -627,6 +627,12 @@ span.blue-link, .personal-section .products-masonry.my-products .product-grid-it
 .personal-section .products-masonry.my-products .product-grid-item .box:hover .overlay{
     visibility:visible;opacity:1
 }
+@media (min-width: 768px) {
+    .personal-section .products-masonry.my-products .product-grid-item .box .img + .text + .overlay .overlay-inner {
+        top: auto;
+        bottom: -100px;
+    }
+}
 @media (max-width: 768px){
     span.blue-link, .personal-section .products-masonry.my-products .product-grid-item .box a.overlay-link {
         margin: 4px 0;

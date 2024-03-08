@@ -43,12 +43,12 @@ foreach ($arResult["ITEMS"] as $arItem):?>
          $link = SITE_DIR.'personal/ads-list/';
          $nameOverlay = GetMessage("T_ASD");
          $price = "100 UAH";
-         $priceVal = "10000";
+         $priceVal = "100";
      }elseif($arItem['IBLOCK_ID']==24){
          $link = SITE_DIR.'personal/company-list/';
          $nameOverlay = GetMessage("T_COMPANY");
          $price = "2000 UAH";
-         $priceVal = "200000";
+         $priceVal = "100";
      }?>
     <div class="grid-item product-grid-item" id="<?= $this->GetEditAreaId($arItem['ID']); ?>">
         <<? if ($APPLICATION->GetCurPage() != SITE_DIR."personal/ads-list/" && $APPLICATION->GetCurPage() != SITE_DIR."personal/company-list/" && !$_POST['id']){?>a href="<?= $arItem["DETAIL_PAGE_URL"] ?>"<?}else{?>div<?}?> class="box <?if($arItem["DISPLAY_PROPERTIES"]['CATEGORY']['LINK_SECTION_VALUE']){?>company<?}?>">
@@ -255,7 +255,12 @@ foreach ($arResult["ITEMS"] as $arItem):?>
                                 <div class="overlay-text"><?=GetMessage("CT_DELETE")?></div>
                             </a>
                         </div>
-                        <? if ($date < $dateNow) { ?>
+                        <?
+                        // Отнимаем 3 дня чтоб, кнопка была на 3 дня раньше доступна чем закончится обьява
+                        if($date){
+                            $date->modify('-3 days');
+                        }
+                        if ($date < $dateNow) { ?>
                             <div class="col-xs-12">
                                 <a href="/local/scripts/monoPay/pay.php?id=<?= $arItem['ID']?>&p=<?= $priceVal ?>&link=<?=$link?>" class="overlay-link">
                                     <div class="btn btn-green btn-buy">

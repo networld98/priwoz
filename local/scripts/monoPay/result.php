@@ -11,18 +11,30 @@ $postData = file_get_contents('php://input');
 
 // Перетворюємо JSON-рядок у асоціативний масив
 $data = json_decode($postData, true);
-
 if ($data['status'] == 'success') {
-
-//Отримуємо дату дякої діє оголошення
-$newDate = date('d.m.Y H:i:s', strtotime('+1 month'));
 
 // Отримуємо айді елемента
     $id = explode('/', $data['reference']);
+    $newDateElement = CIBlockElement::GetByID($id[0])->GetNextElement()->GetFields()['ACTIVE_TO'];
+    $dateNow = new DateTime();
+    if ($newDateElement && $newDateElement>=$dateNow) {
+        $newDate = new DateTime($newDateElement);
+        // Добавляем 1 месяц к дате
+        $newDate->add('P1M'); // Добавляем 1 месяц
+    } else {
+        // Если нет даты, добавляем 1 месяц к текущей дате
+        $newDate = new DateTime();
+        $newDate->add('P1M'); // Добавляем 1 месяц
+    }
+// Форматируем новую дату
+    $newDateFormatted = $newDate->format('d.m.Y H:i:s');
+
+echo $newDateFormatted;
+
     $el = new CIBlockElement;
     $el->Update(
         $id[0],
-        ['DATE_ACTIVE_TO' => $newDate, 'ACTIVE' => 'Y', 'PAYMENT_DATE' => date('d.m.Y'), 'PAYMENT_NUMBER' => $data['invoiceId']],
+        ['DATE_ACTIVE_TO' => $newDateFormatted, 'ACTIVE' => 'Y', 'PAYMENT_DATE' => date('d.m.Y'), 'PAYMENT_NUMBER' => $data['invoiceId']],
         true
     );
 

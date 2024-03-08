@@ -20,8 +20,8 @@ curl_setopt_array($curl, array(
         'amount' => (int)$_GET['p'],
         'ccy' => 980,
         'tds' => true,
-        'redirectUrl' => 'https://priwoz.info'.$_GET['link'],
-        'webHookUrl' => 'https://priwoz.info/local/scripts/monoPay/result.php',
+        'redirectUrl' => 'https://'.$_SERVER['SERVER_NAME'].$_GET['link'],
+        'webHookUrl' => 'https://'.$_SERVER['SERVER_NAME'].'/local/scripts/monoPay/result.php',
         'merchantPaymInfo' => array(
             'reference' => $_GET['id'].'/'.date('dmYHis'),
             'destination' => 'Оплата місячної підписки на сайті priwoz.info',
