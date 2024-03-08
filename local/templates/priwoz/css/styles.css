@@ -621,7 +621,22 @@ span.blue-link, .personal-section .products-masonry.my-products .product-grid-it
 .popup-menu.mobile-menu .inner ul.main-menu a svg path {
     fill:#BDC9C9;
 }
+.box:hover .img img{
+    transform:scale(1)
+}
+.personal-section .products-masonry.my-products .product-grid-item .box:hover .overlay{
+    visibility:visible;opacity:1
+}
 @media (max-width: 768px){
+    span.blue-link, .personal-section .products-masonry.my-products .product-grid-item .box a.overlay-link {
+        margin: 4px 0;
+    }
+    .personal-section .products-masonry.my-products .product-grid-item .box .img+.text+.overlay {
+        padding-bottom: 0;
+    }
+    .personal-section .products-masonry.my-products .product-grid-item .box .overlay-link .overlay-text {
+        font-size: 10px;
+    }
     .personal-section .products-masonry.my-products .product-grid-item .box .img+.text+.overlay-disabled {
         justify-content: flex-start;
     }

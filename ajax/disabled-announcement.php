@@ -12,7 +12,7 @@ if (!empty($_POST['id'])) {
 $arrFilter = array("PROPERTY_AUTHOR" => $USER->GetID(),"ACTIVE" => array("Y", "N")); ?>
 <div class="grid-sizer"></div>
 <div class="gutter-sizer"></div>
-<? $APPLICATION->IncludeComponent(
+<?   $APPLICATION->IncludeComponent(
     "bitrix:news.list",
     "favorite",
     array(
@@ -41,7 +41,7 @@ $arrFilter = array("PROPERTY_AUTHOR" => $USER->GetID(),"ACTIVE" => array("Y", "N
         "DETAIL_PAGER_TEMPLATE" => "",
         "DETAIL_PAGER_TITLE" => "Страница",
         "DETAIL_PROPERTY_CODE" => array(
-            0 => "LOGO",
+            0 => "PRICE",
             1 => "CONDITION",
             2 => "PHOTOS",
             3 => "AUTHOR",
@@ -69,7 +69,7 @@ $arrFilter = array("PROPERTY_AUTHOR" => $USER->GetID(),"ACTIVE" => array("Y", "N
             1 => "",
         ),
         "LIST_PROPERTY_CODE" => array(
-            0 => "LOGO",
+            0 => "PRICE",
             1 => "CONDITION",
             2 => "PHOTOS",
             3 => "AUTHOR",

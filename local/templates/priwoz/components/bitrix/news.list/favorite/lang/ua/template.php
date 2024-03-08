@@ -5,6 +5,7 @@ $MESS["CT_DETAIL"] = "Докладніше";
 $MESS["CT_SHOW_MORE"] = "Інші оголошення автора";
 $MESS["CT_DOGOVIRNAYA"] = "Договірна";
 $MESS["CT_EDIT"] = "редагувати";
+$MESS["CT_VIEW"] = "переглянути";
 $MESS["CT_DELETE"] = "видалити";
 $MESS["CT_ACTIVE"] = "активувати";
 $MESS["CT_DISABLE"] = "деактивувати";

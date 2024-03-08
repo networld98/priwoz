@@ -15,7 +15,10 @@ $this->setFrameMode(true);
 $this->addExternalCss("/bitrix/css/main/font-awesome.css");
 $this->addExternalCss($this->GetFolder() . '/themes/' . $arParams['TEMPLATE_THEME'] . '/style.css');
 
-
+if (!$USER->IsAuthorized() && ($APPLICATION->GetCurPage() != SITE_DIR."personal/ads-list/" || $APPLICATION->GetCurPage() != SITE_DIR."personal/company-list/")) {
+    header('Location: https://priwoz.info'.SITE_DIR."personal/");
+    exit;
+}
 ?>
 <?php
 Bitrix\Main\Loader::includeModule('neti.favorite');
@@ -153,9 +156,25 @@ foreach ($arResult["ITEMS"] as $arItem):?>
                     <? if ($date >= $dateNow) { ?>
                       <p class="element-date-to"><?=GetMessage("T_PAY_TO")?><?=FormatDate('d.m.Y',strtotime(CIBlockElement::GetByID($arItem['ID'])->GetNextElement()->GetFields()['ACTIVE_TO'])) ?></p>
                     <? } ?>
-                    <a class="link-item" href="<?= $arItem["DETAIL_PAGE_URL"] ?>"></a>
+                       <?if($active=='Y'){?><a class="link-item" href="<?= $arItem["DETAIL_PAGE_URL"] ?>"></a><?}?>
                     <div class="row overlay-inner">
-                        <div class="col-xs-12 <?if($moderation!='Y'){?>col-md-4<?}else{?>col-md-6<?}?>">
+                        <?if($active=='Y'){?>
+                            <div class="col-xs-6 <?if($moderation!='Y'){?>col-md-6<?}else{?>col-md-4<?}?>">
+                                <a href="<?= $arItem["DETAIL_PAGE_URL"] ?>" class="overlay-link">
+                                    <div class="overlay-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30"
+                                             fill="none">
+                                            <path d="M3.91682 26.0832L3.49255 26.5075C3.73384 26.7487 4.03307 26.7502 4.1982 26.7341C4.34647 26.7196 4.52075 26.6759 4.67483 26.6373C4.68463 26.6348 4.69435 26.6324 4.70397 26.63L4.55845 26.0479L4.70397 26.63L10.8581 25.0914C10.8743 25.0874 10.8904 25.0834 10.9065 25.0794C11.1253 25.025 11.3356 24.9728 11.5271 24.8644C11.7185 24.756 11.8715 24.6025 12.0307 24.4429C12.0424 24.4311 12.0542 24.4194 12.066 24.4076L27.1351 9.33848L27.1619 9.31164C27.4722 9.00136 27.7465 8.72715 27.9378 8.47639C28.1452 8.20457 28.3108 7.89104 28.3108 7.5C28.3108 7.10896 28.1452 6.79543 27.9378 6.52361C27.7465 6.27285 27.4722 5.99864 27.1619 5.68835L27.1351 5.66152L24.3385 2.86495L24.3116 2.8381C24.0014 2.52778 23.7271 2.25352 23.4764 2.0622C23.2046 1.85481 22.891 1.68921 22.5 1.68921C22.109 1.68921 21.7954 1.85481 21.5236 2.0622C21.2729 2.25352 20.9986 2.52777 20.6884 2.8381L20.6615 2.86495L5.59887 17.9276L5.59245 17.934L5.59244 17.934C5.58063 17.9458 5.56885 17.9576 5.5571 17.9693C5.39748 18.1285 5.24404 18.2815 5.13564 18.4729C5.02725 18.6644 4.97499 18.8747 4.92062 19.0935C4.91662 19.1096 4.91261 19.1257 4.90856 19.1419L3.37003 25.296C3.36762 25.3057 3.36518 25.3154 3.36272 25.3252C3.32411 25.4793 3.28044 25.6535 3.26593 25.8018C3.24978 25.9669 3.25127 26.2662 3.49255 26.5074L3.91682 26.0832Z"
+                                                  stroke="currentColor" stroke-width="1.2"/>
+                                            <path d="M19.6875 4.6875L27.1875 12.1875" stroke="currentColor"
+                                                  stroke-width="1.2"/>
+                                        </svg>
+                                    </div>
+                                    <div class="overlay-text"><?=GetMessage("CT_VIEW")?></div>
+                                </a>
+                            </div>
+                        <?}?>
+                        <div class="col-xs-6 <?if($moderation!='Y' && $active == 'Y'){?>col-md-6<?}elseif($moderation!='Y' && $active == 'N'){?>col-md-4<?}else{?>col-md-4<?}?>">
                             <a href="<?=SITE_DIR?>personal/<?if($arItem["DISPLAY_PROPERTIES"]['CATEGORY']['LINK_SECTION_VALUE']){?>company<?}else{?>announcement<?}?>/?edit=Y&CODE=<?= $arItem['ID'] ?>" class="overlay-link">
                                 <div class="overlay-icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30"
@@ -169,8 +188,8 @@ foreach ($arResult["ITEMS"] as $arItem):?>
                                 <div class="overlay-text"><?=GetMessage("CT_EDIT")?></div>
                             </a>
                         </div>
-                        <?if($moderation!='Y' && $date >= $dateNow){?>
-                            <div class="col-xs-12 col-md-4">
+                        <?if($moderation!='Y'  && $date >= $dateNow){?>
+                            <div class="col-xs-6 <?if($moderation!='Y' && $active == 'Y'){?>col-md-6<?}elseif($moderation!='Y' && $active == 'N'){?>col-md-4<?}else{?>col-md-4<?}?>">
                             <a onclick="editItem(<?= $arItem['ID']?>,<?= $arItem['IBLOCK_ID']?>,'<?if($active=='Y'){?>N<?}elseif($active=='N'){?>Y<?}?>')"  class="overlay-link">
                                 <?if($active=='Y'){?>
                                     <div class="overlay-icon">
@@ -218,7 +237,7 @@ foreach ($arResult["ITEMS"] as $arItem):?>
                             </a>
                         </div>
                         <?}?>
-                        <div class="col-xs-12 <?if($moderation!='Y'){?>col-md-4<?}else{?>col-md-6<?}?>">
+                        <div class="col-xs-6 <?if($moderation!='Y' && $active == 'Y'){?>col-md-6<?}elseif($moderation!='Y' && $active == 'N'){?>col-md-4<?}else{?>col-md-4<?}?>">
                             <a onclick="deleteItem(<?= $arItem['ID']?>, <?= $arItem['IBLOCK_ID']?>);" class="overlay-link">
                                 <div class="overlay-icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30"
