@@ -54,7 +54,7 @@ if (SITE_ID == 'ua') {
     $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH . "/css/main.css");
     $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH . "/css/fancybox.css");
     
-    $APPLICATION->SetAdditionalCSS("https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.1/emojionearea.min.css");
+    $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH . "/css/emojionearea.min.css");
         
     $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH . "/css/styles.css");
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH . '/js/bundle.js');
@@ -62,8 +62,7 @@ if (SITE_ID == 'ua') {
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH . '/js/jquery.maskedinput.min.js');
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH . '/js/lazysizes.min.js');
     
-    $APPLICATION->AddHeadScript('https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.1/emojionearea.min.js');
-    
+    $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH . '/js/emojionearea.min.js');
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH . '/js/scripts.js');
     $APPLICATION->ShowHead(); ?>
     <meta name="robots" content="noindex, nofollow" />
