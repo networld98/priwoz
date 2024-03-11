@@ -13,6 +13,7 @@
 $this->setFrameMode(true);
 $this->addExternalCss("/bitrix/css/main/font-awesome.css");
 $this->addExternalCss($this->GetFolder() . '/themes/' . $arParams['TEMPLATE_THEME'] . '/style.css');
+$payActive = "N";
 ?>
 <div class="companies-wrap" id="companies-wrap">
     <div class="grid companies-masonry">
@@ -31,11 +32,6 @@ $this->addExternalCss($this->GetFolder() . '/themes/' . $arParams['TEMPLATE_THEM
             //Получаем дату окончания действия елемента и текущую
             $date=DateTime::createFromFormat('d.m.Y H:i:s', CIBlockElement::GetByID($arItem['ID'])->GetNextElement()->GetFields()['ACTIVE_TO']);
             $dateNow = new DateTime();
-            if ($USER->IsAdmin()) {
-                if ($date >  $dateNow) {
-                    'есть';
-                }
-            }
             $i++;
             if ($i == 3 || $i == 12 || $i == 18) {
                 ?>
@@ -93,7 +89,7 @@ $this->addExternalCss($this->GetFolder() . '/themes/' . $arParams['TEMPLATE_THEM
                     }
                 }
             }
-            if(($arItem["PROPERTIES"]['MODERATION']['VALUE']!='Y' && $date>=$dateNow) || $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID()){
+            if(($arItem["PROPERTIES"]['MODERATION']['VALUE']!='Y' && ($date>=$dateNow || $payActive == 'N')) || $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID()){
 
             $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
             $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
@@ -103,12 +99,12 @@ $this->addExternalCss($this->GetFolder() . '/themes/' . $arParams['TEMPLATE_THEM
             <div class="grid-item company-grid-item" id="<?= $this->GetEditAreaId($arItem['ID']); ?>">
                 <a href="<?= $arItem["DETAIL_PAGE_URL"] ?>" class="box">
                 <div class="img <?if(!$picture && $logo){?>-default<?}?>">
-                    <?if($arItem["PROPERTIES"]['MODERATION']['VALUE']=='Y' && $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID() && $date>=$dateNow){?>
+                    <?if($arItem["PROPERTIES"]['MODERATION']['VALUE']=='Y' && $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID() && ($date>=$dateNow || $payActive == 'N')){?>
                         <div class="overlay">
                             <p><?=GetMessage("T_ADS_NONE")?></p>
                         </div>
                     <?}?>
-                    <?if($date<$dateNow){?>
+                    <?if($date<$dateNow && $payActive == "Y"){?>
                         <div class="overlay">
                             <p><?=GetMessage("T_ADS_BUY")?>
                                 <?/*<span onclick="window.location.href='<?=SITE_DIR?>personal/company-list/'" class="btn btn-orange">Перейти к оплате</span>*/?>

@@ -12,7 +12,7 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 CUtil::InitJSCore(array('fx'));
-
+$payActive = "N";
 global $allUrl;
 $allUrl = 'companisAds='.$arResult['ID'];
 //Получаем дату окончания действия елемента и текущую
@@ -20,7 +20,7 @@ $date=DateTime::createFromFormat('d.m.Y H:i:s', CIBlockElement::GetByID($arResul
 $dateNow = new DateTime();
 
 //Если не прошел модерацию или автор, тогда редирект
-if(($arResult["PROPERTIES"]['MODERATION']['VALUE']=='Y' || $date<$dateNow) && $arResult["PROPERTIES"]['AUTHOR']['VALUE']!=$USER->GetID()){
+if(($arResult["PROPERTIES"]['MODERATION']['VALUE']=='Y' || ($date<$dateNow && $payActive == "Y")) && $arResult["PROPERTIES"]['AUTHOR']['VALUE']!=$USER->GetID()){
     header('Location: https://priwoz.info'.SITE_DIR."companies/");
     exit;
 }
@@ -86,12 +86,12 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 <?if($picture || $logo){?>col-md-6 offset-md-6<?}?>">
-                    <?if($arResult["PROPERTIES"]['MODERATION']['VALUE']=='Y' && $arResult["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID() && $date>=$dateNow){?>
+                    <?if($arResult["PROPERTIES"]['MODERATION']['VALUE']=='Y' && $arResult["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID() && ($date>=$dateNow || $payActive == 'N')){?>
                         <div class="overlay">
                             <p><?=GetMessage("T_ADS_NONE")?></p>
                         </div>
                     <?}?>
-                    <?if($date<$dateNow){?>
+                    <?if($date<$dateNow && $payActive == "Y"){?>
                         <div class="overlay">
                             <p><?=GetMessage("T_ADS_BUY")?>
                                 <span onclick="window.location.href='<?=SITE_DIR?>personal/company-list/'" class="btn btn-orange"><?=GetMessage("T_CABINET")?></span>
@@ -481,7 +481,7 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
         </div>
     </section>
 <? } ?>
-<? if ($arResult['PROPERTIES']['BANNER']['VALUE']) { ?>
+<? if ($arResult['PROPERTIES']['WHY']['VALUE'] && $arResult['PROPERTIES']['WHY']['VALUE'][0]!=' ') { ?>
     <section class="why-our-company-section">
         <div class="container">
             <h2 class="title"><?= GetMessage("T_WHY") ?></h2>

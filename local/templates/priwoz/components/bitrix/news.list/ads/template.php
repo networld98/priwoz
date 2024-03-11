@@ -14,7 +14,8 @@ $this->setFrameMode(true);
 $this->addExternalCss("/bitrix/css/main/font-awesome.css");
 $this->SetViewTarget("countElements");
 echo count((array)$arResult["ITEMS"]);
-$this->EndViewTarget(); ?>
+$this->EndViewTarget();
+$payActive = "N";?>
 <div class="products-wrap">
     <div id="products-wrap">
         <div class="grid products-masonry" id="products-masonry">
@@ -27,7 +28,7 @@ $this->EndViewTarget(); ?>
                 $date=DateTime::createFromFormat('d.m.Y H:i:s', CIBlockElement::GetByID($arItem['ID'])->GetNextElement()->GetFields()['ACTIVE_TO']);
                 $dateNow = new DateTime();
 
-                if(($arItem["PROPERTIES"]['MODERATION']['VALUE']!='Y' && $date>=$dateNow) || $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID()){
+                if(($arItem["PROPERTIES"]['MODERATION']['VALUE']!='Y' && ($date>=$dateNow || $payActive == 'N')) || $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID()){
                 $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
                 $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
                     //Добавляем обьявления
@@ -68,12 +69,12 @@ $this->EndViewTarget(); ?>
                             $file = CFile::ResizeImageGet($arItem['PROPERTIES']['PHOTOS']['VALUE'][0], array('width' => 450, 'height' => 450), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, true);
                             ?>
                             <div class="img">
-                                <?if($arItem["PROPERTIES"]['MODERATION']['VALUE']=='Y' && $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID() && $date>=$dateNow){?>
+                                <?if($arItem["PROPERTIES"]['MODERATION']['VALUE']=='Y' && $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID() && ($date>=$dateNow || $payActive == 'N')){?>
                                     <div class="overlay">
                                         <p><?=GetMessage("T_ADS_NONE")?></p>
                                     </div>
                                 <?}?>
-                                <?if($date<$dateNow){?>
+                                <?if($date<$dateNow && $payActive == "Y"){?>
                                     <div class="overlay">
                                         <p><?=GetMessage("T_ADS_BUY")?>
                                             <?/*<span onclick="window.location.href='<?=SITE_DIR?>personal/ads-list/'" class="btn btn-orange">Перейти к оплате</span>*/?>

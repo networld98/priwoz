@@ -19,6 +19,7 @@ if (!$USER->IsAuthorized() && ($APPLICATION->GetCurPage() != SITE_DIR."personal/
     header('Location: https://priwoz.info'.SITE_DIR."personal/");
     exit;
 }
+$payActive = "N";
 ?>
 <?php
 Bitrix\Main\Loader::includeModule('neti.favorite');
@@ -31,8 +32,7 @@ foreach ($arResult["ITEMS"] as $arItem):?>
     //Получаем дату окончания действия елемента и текущую
     $date=DateTime::createFromFormat('d.m.Y H:i:s', CIBlockElement::GetByID($arItem['ID'])->GetNextElement()->GetFields()['ACTIVE_TO']);
     $dateNow = new DateTime();
-
- if(($arItem["PROPERTIES"]['MODERATION']['VALUE']!='Y' && $date>=$dateNow) || $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID()){
+ if(($arItem["PROPERTIES"]['MODERATION']['VALUE']!='Y' && ($date>=$dateNow || $payActive == 'N')) || $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID()){
     $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
     $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
     $active = CIBlockElement::GetByID($arItem['ID'])->GetNextElement()->GetFields()['ACTIVE'];
@@ -62,7 +62,7 @@ foreach ($arResult["ITEMS"] as $arItem):?>
                             <p><?=$nameOverlay?><?=GetMessage("T_ADS_NONE")?></p>
                         </div>
                     <?}?>
-                    <?if($date<$dateNow && $APPLICATION->GetCurPage() == SITE_DIR . "personal/favorite/" && $date<$dateNow){?>
+                    <?if($date<$dateNow && $payActive == 'Y' && $APPLICATION->GetCurPage() == SITE_DIR . "personal/favorite/"){?>
                         <div class="overlay">
                             <p><?=$nameOverlay?><?=GetMessage("T_ADS_BUY")?>
                                <?/* <span onclick="window.location.href='<?=$link?>'" class="btn btn-orange">Перейти к оплате</span>*/?>
@@ -141,19 +141,19 @@ foreach ($arResult["ITEMS"] as $arItem):?>
                 <? } ?>
             </div>
             <? if ($APPLICATION->GetCurPage() == SITE_DIR."personal/ads-list/" || $APPLICATION->GetCurPage() == SITE_DIR."personal/company-list/" || $_POST['id']) { ?>
-                <? if ($active == 'N' || $moderation == 'Y' || $date < $dateNow) { ?>
+                <? if ($active == 'N' || $moderation == 'Y' || ($date < $dateNow && $payActive == "Y")) { ?>
                     <div class="overlay overlay-disabled">
-                        <? if ($moderation != 'Y' && $date >= $dateNow) { ?>
+                        <? if ($moderation != 'Y' && ($date >= $dateNow || $payActive == "N")) { ?>
                             <p><?= GetMessage("CT_DISABLED") ?></p>
-                        <? } elseif ($moderation == 'Y' && $date >= $dateNow) { ?>
+                        <? } elseif ($moderation == 'Y' && ($date >= $dateNow || $payActive == "N")) { ?>
                             <p><?= GetMessage("CT_MODERATION") ?></p>
-                        <? } elseif ($date < $dateNow) { ?>
+                        <? } elseif ($date < $dateNow && $payActive == "Y") { ?>
                             <p><?=GetMessage("T_NO_PAY")?></p>
                         <? } ?>
                     </div>
                 <? } ?>
                 <div class="overlay">
-                    <? if ($date >= $dateNow) { ?>
+                    <? if ($date >= $dateNow && $payActive == "Y") { ?>
                       <p class="element-date-to"><?=GetMessage("T_PAY_TO")?><?=FormatDate('d.m.Y',strtotime(CIBlockElement::GetByID($arItem['ID'])->GetNextElement()->GetFields()['ACTIVE_TO'])) ?></p>
                     <? } ?>
                        <?if($active=='Y'){?><a class="link-item" href="<?= $arItem["DETAIL_PAGE_URL"] ?>"></a><?}?>
@@ -183,7 +183,7 @@ foreach ($arResult["ITEMS"] as $arItem):?>
                                 <div class="overlay-text"><?=GetMessage("CT_EDIT")?></div>
                             </a>
                         </div>
-                        <?if($moderation!='Y'  && $date >= $dateNow){?>
+                        <?if($moderation!='Y' && ($date >= $dateNow || $payActive == "N")){?>
                             <div class="col-xs-6 <?if($moderation!='Y' && $active == 'Y'){?>col-md-6<?}elseif($moderation!='Y' && $active == 'N'){?>col-md-4<?}else{?>col-md-4<?}?>">
                             <a onclick="editItem(<?= $arItem['ID']?>,<?= $arItem['IBLOCK_ID']?>,'<?if($active=='Y'){?>N<?}elseif($active=='N'){?>Y<?}?>')"  class="overlay-link">
                                 <?if($active=='Y'){?>
@@ -251,11 +251,12 @@ foreach ($arResult["ITEMS"] as $arItem):?>
                             </a>
                         </div>
                         <?
+
                         // Отнимаем 3 дня чтоб, кнопка была на 3 дня раньше доступна чем закончится обьява
                         if($date){
                             $date->modify('-3 days');
                         }
-                        if ($date < $dateNow) { ?>
+                        if ($date < $dateNow && $payActive == 'Y') { ?>
                             <div class="col-xs-12">
                                 <a href="/local/scripts/monoPay/pay.php?id=<?= $arItem['ID']?>&p=<?= $priceVal ?>&link=<?=$link?>" class="overlay-link">
                                     <div class="btn btn-green btn-buy">

@@ -12,13 +12,13 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 CUtil::InitJSCore(array('fx'));
-
+$payActive = "N";
 //Получаем дату окончания действия елемента и текущую
 $date=DateTime::createFromFormat('d.m.Y H:i:s', CIBlockElement::GetByID($arResult['ID'])->GetNextElement()->GetFields()['ACTIVE_TO']);
 $dateNow = new DateTime();
 
 //Если не прошел модерацию или автор, тогда редирект
-if(($arResult["PROPERTIES"]['MODERATION']['VALUE']=='Y' || $date<$dateNow) && $arResult["PROPERTIES"]['AUTHOR']['VALUE']!=$USER->GetID()){
+if(($arResult["PROPERTIES"]['MODERATION']['VALUE']=='Y' || ($date<$dateNow && $payActive == "Y")) && $arResult["PROPERTIES"]['AUTHOR']['VALUE']!=$USER->GetID()){
     header('Location: https://priwoz.info'.SITE_DIR."ads/");
     exit;
 }
@@ -68,12 +68,12 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
                     <?}?>
                     <div class="sidebar-widget">
                         <div class="product-info">
-                            <?if($arResult["PROPERTIES"]['MODERATION']['VALUE']=='Y' && $arResult["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID() && $date>=$dateNow){?>
+                            <?if($arResult["PROPERTIES"]['MODERATION']['VALUE']=='Y' && $arResult["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID() && ($date>=$dateNow || $payActive == 'N')){?>
                                 <div class="overlay">
                                     <p><?=GetMessage("T_ADS_NONE")?></p>
                                 </div>
                             <?}?>
-                            <?if($date<$dateNow){?>
+                            <?if($date<$dateNow && $payActive == "Y"){?>
                                 <div class="overlay">
                                     <p><?=GetMessage("T_ADS_BUY")?>
                                         <span onclick="window.location.href='<?=SITE_DIR?>personal/ads-list/'" class="btn btn-orange"><?=GetMessage("T_CABINET")?></span>
@@ -274,8 +274,7 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
                     <?endif;?>
 
                     <div class="content-box">
-                        <?$obParser = new CTextParser;?>
-                        <?= $obParser->convertText($arResult['PREVIEW_TEXT'])?>
+                        <?= $arResult['PREVIEW_TEXT']?>
                     </div>
                     <div class="complaint-box">
                         <a href="/" class="report-popup-opener">
