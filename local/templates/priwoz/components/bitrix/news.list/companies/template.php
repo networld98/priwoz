@@ -13,7 +13,8 @@
 $this->setFrameMode(true);
 $this->addExternalCss("/bitrix/css/main/font-awesome.css");
 $this->addExternalCss($this->GetFolder() . '/themes/' . $arParams['TEMPLATE_THEME'] . '/style.css');
-$payActive = "N";
+use Bitrix\Main\Config\Option;
+$payActive  = Option::get("priwoz.option", "pay_on");
 ?>
 <div class="companies-wrap" id="companies-wrap">
     <div class="grid companies-masonry">

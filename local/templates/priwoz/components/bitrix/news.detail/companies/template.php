@@ -12,7 +12,8 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 CUtil::InitJSCore(array('fx'));
-$payActive = "N";
+use Bitrix\Main\Config\Option;
+$payActive  = Option::get("priwoz.option", "pay_on");
 global $allUrl;
 $allUrl = 'companisAds='.$arResult['ID'];
 //Получаем дату окончания действия елемента и текущую

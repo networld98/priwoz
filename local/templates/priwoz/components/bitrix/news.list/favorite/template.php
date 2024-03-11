@@ -15,11 +15,13 @@ $this->setFrameMode(true);
 $this->addExternalCss("/bitrix/css/main/font-awesome.css");
 $this->addExternalCss($this->GetFolder() . '/themes/' . $arParams['TEMPLATE_THEME'] . '/style.css');
 
+use Bitrix\Main\Config\Option;
+$payActive = Option::get("priwoz.option", "pay_on");
+
 if (!$USER->IsAuthorized() && ($APPLICATION->GetCurPage() != SITE_DIR."personal/ads-list/" || $APPLICATION->GetCurPage() != SITE_DIR."personal/company-list/")) {
     header('Location: https://priwoz.info'.SITE_DIR."personal/");
     exit;
 }
-$payActive = "N";
 ?>
 <?php
 Bitrix\Main\Loader::includeModule('neti.favorite');
@@ -42,14 +44,15 @@ foreach ($arResult["ITEMS"] as $arItem):?>
      if($arItem['IBLOCK_ID']==19){
          $link = SITE_DIR.'personal/ads-list/';
          $nameOverlay = GetMessage("T_ASD");
-         $price = "100 UAH";
-         $priceVal = "100";
+         $price = Option::get("priwoz.option", "price_ads")." UAH";
+         $priceVal = Option::get("priwoz.option", "price_ads");
      }elseif($arItem['IBLOCK_ID']==24){
          $link = SITE_DIR.'personal/company-list/';
          $nameOverlay = GetMessage("T_COMPANY");
-         $price = "2000 UAH";
-         $priceVal = "100";
-     }?>
+         $price = Option::get("priwoz.option", "price_company")." UAH";
+         $priceVal = Option::get("priwoz.option", "price_company");
+     }
+     ?>
     <div class="grid-item product-grid-item" id="<?= $this->GetEditAreaId($arItem['ID']); ?>">
         <<? if ($APPLICATION->GetCurPage() != SITE_DIR."personal/ads-list/" && $APPLICATION->GetCurPage() != SITE_DIR."personal/company-list/" && !$_POST['id']){?>a href="<?= $arItem["DETAIL_PAGE_URL"] ?>"<?}else{?>div<?}?> class="box <?if($arItem["DISPLAY_PROPERTIES"]['CATEGORY']['LINK_SECTION_VALUE']){?>company<?}?>">
             <? if ($arItem['PROPERTIES']['PHOTOS']['VALUE']){
@@ -258,7 +261,7 @@ foreach ($arResult["ITEMS"] as $arItem):?>
                         }
                         if ($date < $dateNow && $payActive == 'Y') { ?>
                             <div class="col-xs-12">
-                                <a href="/local/scripts/monoPay/pay.php?id=<?= $arItem['ID']?>&p=<?= $priceVal ?>&link=<?=$link?>" class="overlay-link">
+                                <a href="/local/scripts/monoPay/pay.php?id=<?= $arItem['ID']?>&p=<?= $priceVal ?>00&link=<?=$link?>" class="overlay-link">
                                     <div class="btn btn-green btn-buy">
                                         <?=GetMessage("T_PAY")?><?= $price ?>
                                         <span><?=GetMessage("T_MONTH")?></span>

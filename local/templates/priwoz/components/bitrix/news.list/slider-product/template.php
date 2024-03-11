@@ -12,7 +12,8 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 global $allUrl;
-$payActive = "N";
+use Bitrix\Main\Config\Option;
+$payActive  = Option::get("priwoz.option", "pay_on");
 if(count((array)$arResult["ITEMS"])>1){?>
 <section class="other-products-section">
     <div class="container">

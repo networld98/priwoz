@@ -15,7 +15,8 @@ $this->addExternalCss("/bitrix/css/main/font-awesome.css");
 $this->SetViewTarget("countElements");
 echo count((array)$arResult["ITEMS"]);
 $this->EndViewTarget();
-$payActive = "N";?>
+use Bitrix\Main\Config\Option;
+$payActive  = Option::get("priwoz.option", "pay_on");?>
 <div class="products-wrap">
     <div id="products-wrap">
         <div class="grid products-masonry" id="products-masonry">

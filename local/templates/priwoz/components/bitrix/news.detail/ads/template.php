@@ -12,7 +12,8 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 CUtil::InitJSCore(array('fx'));
-$payActive = "N";
+use Bitrix\Main\Config\Option;
+$payActive  = Option::get("priwoz.option", "pay_on");
 //Получаем дату окончания действия елемента и текущую
 $date=DateTime::createFromFormat('d.m.Y H:i:s', CIBlockElement::GetByID($arResult['ID'])->GetNextElement()->GetFields()['ACTIVE_TO']);
 $dateNow = new DateTime();
