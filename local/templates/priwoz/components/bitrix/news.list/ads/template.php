@@ -34,7 +34,7 @@ $payActive  = Option::get("priwoz.option", "pay_on");?>
                 $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
                     //Добавляем обьявления
                     $i++;
-                    if (($i == 7 || $i == 14 || $i == 18) || (count((array)$arResult["ITEMS"]) < 6 && $i == 3)) {
+                    if (($i == 7) || (count((array)$arResult["ITEMS"]) < 6 && $i == 3)) {
                         ?>
                         <div class="grid-item product-grid-item">
                             <div class="advertisement-slider swiper-container">
@@ -57,6 +57,34 @@ $payActive  = Option::get("priwoz.option", "pay_on");?>
                                         "NOINDEX" => "Y",
                                         "QUANTITY" => "5",
                                         "TYPE" => "asdblock"
+                                    )
+                                ); ?>
+                            </div>
+                        </div>
+                        <?
+                    }elseif($i == 17) {
+                        ?>
+                        <div class="grid-item product-grid-item">
+                            <div class="advertisement-slider swiper-container">
+                                <? $APPLICATION->IncludeComponent(
+                                    "bitrix:advertising.banner",
+                                    "slider-ads",
+                                    array(
+                                        "BS_ARROW_NAV" => "N",
+                                        "BS_BULLET_NAV" => "Y",
+                                        "BS_CYCLING" => "N",
+                                        "BS_EFFECT" => "fade",
+                                        "BS_HIDE_FOR_PHONES" => "Y",
+                                        "BS_HIDE_FOR_TABLETS" => "N",
+                                        "BS_KEYBOARD" => "Y",
+                                        "BS_PAUSE" => "Y",
+                                        "BS_WRAP" => "Y",
+                                        "CACHE_TIME" => "36000000",
+                                        "CACHE_TYPE" => "A",
+                                        "COMPONENT_TEMPLATE" => "",
+                                        "NOINDEX" => "Y",
+                                        "QUANTITY" => "5",
+                                        "TYPE" => "asdblockpage"
                                     )
                                 ); ?>
                             </div>
