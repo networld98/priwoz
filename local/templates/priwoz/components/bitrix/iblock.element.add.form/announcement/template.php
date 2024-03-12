@@ -13,8 +13,16 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /** @var CBitrixComponent $component */
 $this->setFrameMode(false);
 
+if($APPLICATION->GetCurPage() != SITE_DIR."personal/ads-list/"){
+    setcookie("current_page", $_SERVER['HTTP_REFERER'], time() + 3600, "/");
+}
+
 if($_GET['strIMessage']=="Элемент успешно добавлен" || $_GET['strIMessage']=="Изменения успешно сохранены"){
-    header('Location: https://'.$_SERVER['SERVER_NAME'].SITE_DIR."personal/ads-list/");
+    if($_COOKIE['current_page']){
+        header('Location: '.$_COOKIE['current_page']);
+    }else{
+        header('Location: https://'.$_SERVER['SERVER_NAME'].SITE_DIR.'personal/ads-list/');
+    }
     exit;
 }
 //Костыль чтоб вклинить PREVIEW_TEXT в средину блока
