@@ -13,7 +13,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /** @var CBitrixComponent $component */
 $this->setFrameMode(false);
 if($_GET['strIMessage']=="Элемент успешно добавлен" || $_GET['strIMessage']=="Изменения успешно сохранены"){
-    header('Location: https://priwoz.info'.SITE_DIR."personal/company-list/");
+    header('Location: https://'.$_SERVER['SERVER_NAME'].SITE_DIR."personal/company-list/");
     exit;
 }
 global $USER;

@@ -14,7 +14,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 $this->setFrameMode(false);
 
 if($_GET['strIMessage']=="Элемент успешно добавлен" || $_GET['strIMessage']=="Изменения успешно сохранены"){
-    header('Location: https://priwoz.info'.SITE_DIR."personal/ads-list/");
+    header('Location: https://'.$_SERVER['SERVER_NAME'].SITE_DIR."personal/ads-list/");
     exit;
 }
 //Костыль чтоб вклинить PREVIEW_TEXT в средину блока
@@ -151,7 +151,7 @@ if ($_GET['edit'] != 'Y') {
                                                 }
                                             } elseif ($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == "BETCATEGORY") {
                                                 if ($arElement['DEPTH_LEVEL'] == 2 && $arElement['IBLOCK_SECTION_ID'] == $arResult["ELEMENT_PROPERTIES"][527][0]['VALUE']) {
-                                                    $arAllElements[$arElement['ID']] = array('VALUE' => $arElement['NAME']);
+                                                    $arAllElements[$arElement['ID']] = array('VALUE' => $arElement['NAME'],'DATA' => $arElement['ID']);
                                                 }
                                             } else {
                                                 $arAllElements[$arElement['ID']] = array('VALUE' => $arElement['NAME'],'DATA' => $arElement['ID']);
@@ -572,6 +572,20 @@ if ($_GET['edit'] != 'Y') {
                     // Вывод текста результата отправки
                     $(betcategory).html(data);
                     $(subcategory).html('<div class="form-select-box"> <input type="text" class="form-control" readonly placeholder="<?=GetMessage("IBLOCK_CABINET_SELECT_CATEGORY")?>"> </div>');
+                }
+            });
+            return false;
+        });
+        $(".BETCATEGORY").change(function () {
+            let id = $(this).val();
+            let subcategory = $('.SUBCATEGORY-block');
+            $.ajax({
+                type: "POST",
+                url: '<?=SITE_TEMPLATE_PATH ?>/components/bitrix/iblock.element.add.form/announcement/ajaxCategory.php',
+                data: {CATEGORY: id, SITE_ID: "<?=SITE_ID?>"},
+                success: function (data) {
+                    // Вывод текста результата отправки
+                    $(subcategory).html(data);
                 }
             });
             return false;
