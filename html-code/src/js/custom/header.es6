@@ -54,6 +54,9 @@ itemHasChildMobileMenu.on('click', function (e) {
 });
 
 popupMenu.on('click', function (e) {
+    if ($(e.target).closest('.inner').length) {
+        return;
+    }
     if (e.target !== this) return;
 
     submenuOpener.removeClass('active');
