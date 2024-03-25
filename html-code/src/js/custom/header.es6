@@ -65,22 +65,25 @@ popupMenu.on('click', function (e) {
 });
 
 popupGeneral.on('click', function (e) {
+    if ($(e.target).closest('.inner').length) {
+        return;
+    }
     if (e.target !== this) return;
 
     popupGeneral.removeClass('active');
     $('body').removeClass('-overflow-hidden');
 });
 
-$(window).on('resize', function () {
-    $('.form-select').select2('close');
-    submenuOpener.removeClass('active');
-    popupMenu.removeClass('active');
-    if (popupGeneral.length > 0) {
-        popupGeneral.removeClass('active');
-    }
-    if (reportPopup.length > 0) {
-        reportPopup.removeClass('-open');
-    }
-
-    $('body').removeClass('-overflow-hidden');
-});
+// $(window).on('resize', function () {
+//     $('.form-select').select2('close');
+//     submenuOpener.removeClass('active');
+//     popupMenu.removeClass('active');
+//     if (popupGeneral.length > 0) {
+//         popupGeneral.removeClass('active');
+//     }
+//     if (reportPopup.length > 0) {
+//         reportPopup.removeClass('-open');
+//     }
+//
+//     $('body').removeClass('-overflow-hidden');
+// });
