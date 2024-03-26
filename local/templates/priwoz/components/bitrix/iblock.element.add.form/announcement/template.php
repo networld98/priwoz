@@ -13,17 +13,19 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /** @var CBitrixComponent $component */
 $this->setFrameMode(false);
 
-if($APPLICATION->GetCurPage() != SITE_DIR."personal/ads-list/"){
+if($APPLICATION->GetCurPage() != SITE_DIR."personal/ads-list/" ){
     setcookie("current_page", $_SERVER['HTTP_REFERER'], time() + 3600, "/");
 }
-
-if($_GET['strIMessage']=="Элемент успешно добавлен" || $_GET['strIMessage']=="Изменения успешно сохранены"){
+if($_GET['strIMessage']=="Изменения успешно сохранены"){
     if($_COOKIE['current_page']){
         header('Location: '.$_COOKIE['current_page']);
     }else{
         header('Location: https://'.$_SERVER['SERVER_NAME'].SITE_DIR.'personal/ads-list/');
     }
     exit;
+}
+if($_GET['strIMessage']=="Элемент успешно добавлен"){
+    header('Location: https://'.$_SERVER['SERVER_NAME'].SITE_DIR."personal/ads-list/");
 }
 //Костыль чтоб вклинить PREVIEW_TEXT в средину блока
 unset ($arResult["PROPERTY_LIST"][1]);
@@ -33,7 +35,7 @@ $arResult["PROPERTY_LIST"] = $first;
 $arResult["PROPERTY_LIST"][] = 'PREVIEW_TEXT';
 $arResult["PROPERTY_LIST"] = array_merge($arResult["PROPERTY_LIST"], $last);
 $annoBlock = array_slice($arResult["PROPERTY_LIST"], 0, -6);
-$contactBlock = array_slice($arResult["PROPERTY_LIST"], 9);
+$contactBlock = array_slice($arResult["PROPERTY_LIST"], 10);
 //костыль закончился
 if ($_GET['edit'] != 'Y') {
     $title = GetMessage("IBLOCK_FORM_SUBMIT");
@@ -73,7 +75,7 @@ if ($_GET['edit'] != 'Y') {
                         </h2>
                     </div>
                     <div class="col-xs-12 col-xl-8">
-                        <label class="form-label <?= $arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] ?>-block">
+                        <div class="form-label <?= $arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] ?>-block">
                             <? if ($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == 'SUBCATEGORY' && empty($arResult["ELEMENT_PROPERTIES"][$propertyID][0]["VALUE"])) { ?>
                                 <input type="text" class="form-control" readonly
                                        placeholder="<?=GetMessage("IBLOCK_CABINET_SELECT_CATEGORY")?>">
@@ -103,14 +105,14 @@ if ($_GET['edit'] != 'Y') {
                                     $arResult["PROPERTY_LIST_FULL"][$propertyID]['ENUM'] = $arAllElements;
 
                                     if (!in_array($propertyID, $arResult['PROPERTY_LIST_FULL']))
-                                        $arResult[$arResult['PROPERTY_LIST_FULL']][] = $arResult["PROPERTY_LIST_FULL"][$propertyID];
+                                        $arResult[$propertyID][] = $arResult["PROPERTY_LIST_FULL"][$propertyID];
 
                                 }
                             } ?>
                             <?
                             if (intval($propertyID) > 0) {
                                 // обновление подкатегорий с категорий
-                                if ($arResult["PROPERTY_LIST_FULL"][$propertyID]["PROPERTY_TYPE"] == "E" && ($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == "CITY" || $arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == "CONDITION")) {
+                                if ($arResult["PROPERTY_LIST_FULL"][$propertyID]["PROPERTY_TYPE"] == "E" && ($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == "CITY" || $arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == "CURRENCY" || $arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == "CONDITION")) {
                                     $arAllElements = [];
                                     $arResult["PROPERTY_LIST_FULL"][$propertyID]["PROPERTY_TYPE"] = "L";
 
@@ -136,7 +138,7 @@ if ($_GET['edit'] != 'Y') {
                                     $arResult["PROPERTY_LIST_FULL"][$propertyID]['ENUM'] = $arAllElements;
 
                                     if (!in_array($propertyID, $arResult['PROPERTY_LIST_FULL']))
-                                        $arResult[$arResult['PROPERTY_LIST_FULL']][] = $arResult["PROPERTY_LIST_FULL"][$propertyID];
+                                        $arResult[$propertyID][] = $arResult["PROPERTY_LIST_FULL"][$propertyID];
 
                                 }
 
@@ -168,7 +170,7 @@ if ($_GET['edit'] != 'Y') {
                                         $arResult["PROPERTY_LIST_FULL"][$propertyID]['ENUM'] = $arAllElements;
 
                                         if (!in_array($propertyID, $arResult['PROPERTY_LIST_FULL']))
-                                            $arResult[$arResult['PROPERTY_LIST_FULL']][] = $arResult["PROPERTY_LIST_FULL"][$propertyID];
+                                            $arResult[$propertyID][] = $arResult["PROPERTY_LIST_FULL"][$propertyID];
                                     }
                                 }
                                 if (
@@ -191,7 +193,7 @@ if ($_GET['edit'] != 'Y') {
                                 $arResult["PROPERTY_LIST_FULL"][$propertyID]["PROPERTY_TYPE"] = "TAGS";
 
                             if ($arResult["PROPERTY_LIST_FULL"][$propertyID]["MULTIPLE"] == "Y") {
-                                $inputNum = ($arParams["ID"] > 0 || count($arResult["ERRORS"]) > 0) ? count($arResult["ELEMENT_PROPERTIES"][$propertyID]) : 0;
+                                $inputNum = ($arParams["ID"] > 0 || count((array)$arResult["ERRORS"]) > 0) ? count((array)$arResult["ELEMENT_PROPERTIES"][$propertyID]) : 0;
                                 $inputNum += $arResult["PROPERTY_LIST_FULL"][$propertyID]["MULTIPLE_CNT"];
                             } else {
                                 $inputNum = 1;
@@ -205,7 +207,7 @@ if ($_GET['edit'] != 'Y') {
                             switch ($INPUT_TYPE):
                                 case "USER_TYPE":
                                     for ($i = 0; $i < $inputNum; $i++) {
-                                        if ($arParams["ID"] > 0 || count($arResult["ERRORS"]) > 0) {
+                                        if ($arParams["ID"] > 0 || count((array)$arResult["ERRORS"]) > 0) {
                                             $value = intval($propertyID) > 0 ? $arResult["ELEMENT_PROPERTIES"][$propertyID][$i]["~VALUE"] : $arResult["ELEMENT"][$propertyID];
                                             $description = intval($propertyID) > 0 ? $arResult["ELEMENT_PROPERTIES"][$propertyID][$i]["DESCRIPTION"] : "";
                                         } elseif ($i == 0) {
@@ -291,7 +293,7 @@ if ($_GET['edit'] != 'Y') {
                                 case "S":
                                 case "N":
                                     for ($i = 0; $i < $inputNum; $i++) {
-                                        if ($arParams["ID"] > 0 || count($arResult["ERRORS"]) > 0) {
+                                        if ($arParams["ID"] > 0 || count((array)$arResult["ERRORS"]) > 0) {
                                             $value = intval($propertyID) > 0 ? $arResult["ELEMENT_PROPERTIES"][$propertyID][$i]["VALUE"] : $arResult["ELEMENT"][$propertyID];
                                         } elseif ($i == 0) {
                                             $value = intval($propertyID) <= 0 ? "" : $arResult["PROPERTY_LIST_FULL"][$propertyID]["DEFAULT_VALUE"];
@@ -304,7 +306,7 @@ if ($_GET['edit'] != 'Y') {
                                                name="PROPERTY[<?= $propertyID ?>][<?= $i ?>]"
                                                size="<?= $arResult["PROPERTY_LIST_FULL"][$propertyID]["COL_COUNT"]; ?>"
                                                <?if($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == 'PRICE'){?>
-                                                   placeholder="BGN"
+                                                   placeholder="BGN/EUR"
                                                <?}?>
                                                value="<?= $value ?>"/><?
                                         if ($arResult["PROPERTY_LIST_FULL"][$propertyID]["USER_TYPE"] == "DateTime"):?><?
@@ -331,7 +333,7 @@ if ($_GET['edit'] != 'Y') {
                                     <div class="hint"><?=GetMessage("IBLOCK_FIRST_PHOTO")?></div>
                                     <div class="upload-group">
                                         <? for ($i = 0; $i < $inputNum; $i++) {
-                                            if($i<5){
+                                            if($i<10){
                                             $value = intval($propertyID) > 0 ? $arResult["ELEMENT_PROPERTIES"][$propertyID][$i]["VALUE"] : $arResult["ELEMENT"][$propertyID];
                                             $imgFile = SITE_TEMPLATE_PATH . '/images/icons/upload-file.svg';
                                             ?>
@@ -378,7 +380,7 @@ if ($_GET['edit'] != 'Y') {
                                 case "T":
                                     for ($i = 0; $i < $inputNum; $i++) {
 
-                                        if ($arParams["ID"] > 0 || count($arResult["ERRORS"]) > 0) {
+                                        if ($arParams["ID"] > 0 || count((array)$arResult["ERRORS"]) > 0) {
                                             $value = intval($propertyID) > 0 ? $arResult["ELEMENT_PROPERTIES"][$propertyID][$i]["VALUE"] : $arResult["ELEMENT"][$propertyID];
                                         } elseif ($i == 0) {
                                             $value = intval($propertyID) > 0 ? "" : $arResult["PROPERTY_LIST_FULL"][$propertyID]["DEFAULT_VALUE"];
@@ -405,7 +407,7 @@ if ($_GET['edit'] != 'Y') {
                                         case "radio":
                                             foreach ($arResult["PROPERTY_LIST_FULL"][$propertyID]["ENUM"] as $key => $arEnum) {
                                                 $checked = false;
-                                                if ($arParams["ID"] > 0 || count($arResult["ERRORS"]) > 0) {
+                                                if ($arParams["ID"] > 0 || count((array)$arResult["ERRORS"]) > 0) {
                                                     if (is_array($arResult["ELEMENT_PROPERTIES"][$propertyID])) {
                                                         foreach ($arResult["ELEMENT_PROPERTIES"][$propertyID] as $arElEnum) {
                                                             if ($arElEnum["VALUE"] == $key) {
@@ -450,7 +452,7 @@ if ($_GET['edit'] != 'Y') {
                                                             }
                                                         }
                                                         $checked = false;
-                                                        if ($arParams["ID"] > 0 || count($arResult["ERRORS"]) > 0) {
+                                                        if ($arParams["ID"] > 0 || count((array)$arResult["ERRORS"]) > 0) {
                                                             foreach ($arResult[$sKey][$propertyID] as $elKey => $arElEnum) {
                                                                 if ($key == $arElEnum["VALUE"]) {
                                                                     $checked = true;
@@ -474,7 +476,7 @@ if ($_GET['edit'] != 'Y') {
                                     break;
                             endswitch; ?>
 
-                        </label>
+                        </div>
                     </div>
                 </div>
             <? endforeach; ?>

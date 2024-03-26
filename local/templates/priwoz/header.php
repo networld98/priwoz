@@ -65,7 +65,6 @@ if (SITE_ID == 'ua') {
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH . '/js/emojionearea.min.js');
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH . '/js/scripts.js');
     $APPLICATION->ShowHead(); ?>
-    <meta name="robots" content="noindex, nofollow" />
     <title><?$APPLICATION->ShowTitle()?></title>
 </head>
 <body>
@@ -312,7 +311,7 @@ if (SITE_ID == 'ua') {
                     "CACHE_TIME" => "36000000",
                     "CACHE_TYPE" => "N",
                     "CACHE_GROUPS" => "Y",
-                    "SEARCH_PAGE" => "/search/",
+                    "SEARCH_PAGE" => SITE_DIR."/search/",
                 ),
                 false
             );

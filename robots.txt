@@ -1,13 +1,26 @@
 User-Agent: *
 Disallow: /
-
+Disallow: /bitrix/
+Disallow: /redesign/
+Allow: /bitrix/components/
+Allow: /bitrix/cache/
+Allow: /bitrix/js/
+Allow: /bitrix/templates/
+Allow: /bitrix/panel/
+Sitemap: https://priwoz.info/sitemap.xml
 
 User-Agent: Googlebot
 Disallow: /
-
+Disallow: /bitrix/
+Allow: /bitrix/components/
+Allow: /bitrix/cache/
+Allow: /bitrix/js/
+Allow: /bitrix/templates/
+Allow: /bitrix/panel/
 
 User-Agent: YandexBot
-Disallow: /
+Disallow: /bitrix/
+Host: https://priwoz.info
 
 User-agent: GPTBot
 Disallow: /

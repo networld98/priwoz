@@ -306,7 +306,6 @@
 .upload-group .upload-file-custom {
     position: relative;
 }
-
 .upload-group .upload-file-custom label.delete{
     position: absolute;
     top: calc((100% - 30px)/2);
@@ -677,5 +676,13 @@ span.blue-link, .personal-section .products-masonry.my-products .product-grid-it
     .ads-item .overlay, .company-grid-item .overlay{
         padding: 10px 10px;
         font-size: 18px;
+    }
+}
+@media (max-width: 450px){
+    .bx-touch .bx_filter.bx_horizontal .bx_filter_parameters_box {
+        padding: 0;
+    }
+    form.smartfilter {
+        margin-top:20px;
     }
 }

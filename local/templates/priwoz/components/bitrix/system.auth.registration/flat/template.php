@@ -50,7 +50,7 @@ if($arResult["SHOW_SMS_FIELD"] == true)
 
                 <div class="bx-authform">
                     <?
-                    if($arParams["~AUTH_RESULT"]["TYPE"] != "OK"){
+                    if(empty($arParams["~AUTH_RESULT"]["TYPE"])){
 
                     $arResult["AUTH_SERVICES"] = false;
                     if(CModule::IncludeModule("socialservices")) {

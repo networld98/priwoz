@@ -4,6 +4,7 @@ $( document ).ready(function() {
 	betCategoryVal = $('select[name=arrFilter_571] :selected').val(),
 	category = $('select[name=arrFilter_527] :selected').data('name'),
 	link = '<a href="/">Priwoz</a><span class="sep">-</span><span class="category-page">'+category+'</span>';
+	$( ".betcategory" ).remove();
 	$( ".subcategory" ).remove();
 	if(categoryVal != '' && subCategoryVal == '' ) {
 		$(".page-title").text(category);
@@ -16,6 +17,8 @@ $(document).ajaxComplete(function() {
 	let categoryVal = $('select[name=arrFilter_527] :selected').val(),
 	subCategoryVal = $('select[name=arrFilter_528] :selected').val(),
 	betcategoryVal = $('select[name=arrFilter_571] :selected').val(),
+	categoryData = $('select[name=arrFilter_527] :selected').data('id-element'),
+	betcategoryData = $('select[name=arrFilter_571] :selected').data('id-element'),
 	category = $('select[name=arrFilter_527] :selected').data('name'),
 	subCategory = $('select[name=arrFilter_528] :selected').data('name'),
 	betCategory = $('select[name=arrFilter_571] :selected').data('name'),
@@ -26,10 +29,14 @@ $(document).ajaxComplete(function() {
 	$(".filter-output .current-page").text(subCategory);
 
 	if(categoryVal != '') {
-		$( ".betcategory:not([data-section="+categoryVal+"])" ).remove();
+		$( ".betcategory:not([data-id-section="+categoryData+"])" ).remove();
+	}else{
+		$( ".betcategory" ).remove();
 	}
 	if(betcategoryVal != '') {
-		$( ".subcategory:not([data-section="+betcategoryVal+"])" ).remove();
+		$( ".subcategory:not([data-id-section="+betcategoryData+"])" ).remove();
+	}else{
+		$( ".subcategory" ).remove();
 	}
 	if(categoryVal == '' && subCategoryVal != '') {
 		$("#products-wrap").load(currentUrl +"?del_filter=Сбросить #products-masonry");
@@ -398,6 +405,7 @@ JCSmartFilter.prototype.values2post = function (values)
 	//Костыль для работы поиска не лету
 	url = url.join('&').slice(1);
 	if(url!=null){
+		console.log(url);
 		fullUrl = currentUrl+'?'+url;
 		$("#products-wrap").load(fullUrl +"&set_filter=Найти #products-masonry");
 		$("#smartFilterAds").load(fullUrl +"&set_filter=Найти #smartFilterAds-block");

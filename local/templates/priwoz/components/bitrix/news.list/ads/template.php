@@ -29,6 +29,13 @@ $payActive  = Option::get("priwoz.option", "pay_on");?>
                 $date=DateTime::createFromFormat('d.m.Y H:i:s', CIBlockElement::GetByID($arItem['ID'])->GetNextElement()->GetFields()['ACTIVE_TO']);
                 $dateNow = new DateTime();
 
+                if ($arItem['PROPERTIES']['CURRENCY']['VALUE'] != NULL) {
+                    $currency = CIBlockElement::GetByID($arItem['PROPERTIES']['CURRENCY']['VALUE'])->GetNextElement()->GetFields()['NAME'];
+                }
+
+                if ($arItem['PROPERTIES']['CURRENCY']['VALUE'] != NULL) {
+                    $currency = CIBlockElement::GetByID($arItem['PROPERTIES']['CURRENCY']['VALUE'])->GetNextElement()->GetFields()['NAME'];
+                }
                 if(($arItem["PROPERTIES"]['MODERATION']['VALUE']!='Y' && ($date>=$dateNow || $payActive == 'N')) || $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID()){
                 $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
                 $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
@@ -129,7 +136,8 @@ $payActive  = Option::get("priwoz.option", "pay_on");?>
                                       class="date"><?= strtolower(strftime('%d %b %Y', MakeTimeStamp($arItem['TIMESTAMP_X']))) ?></time>
                             </div>
                             <div class="price"><? if ($arItem['DISPLAY_PROPERTIES']['PRICE']['VALUE'] != 0 && $arItem['DISPLAY_PROPERTIES']['PRICE']['VALUE'] != NULL) {
-                                    echo $arItem['DISPLAY_PROPERTIES']['PRICE']['VALUE'] . " BGN";
+                                    echo $arItem['DISPLAY_PROPERTIES']['PRICE']['VALUE'];
+                                    if ($currency) { echo " ".$currency;}else{ echo " BGN";}
                                 } else {
                                     echo GetMessage("CT_DOGOVORNAYA");
                                 } ?></div>
@@ -144,10 +152,14 @@ $payActive  = Option::get("priwoz.option", "pay_on");?>
                 endforeach; ?>
         </div>
     </div>
-    <? if ($arParams["DISPLAY_BOTTOM_PAGER"]): ?>
+    <?if($arParams["DISPLAY_BOTTOM_PAGER"]&& $APPLICATION->GetCurPage() != SITE_DIR):?>
         <div id="pager-wrap">
             <?= $arResult["NAV_STRING"] ?>
         </div>
-    <? endif; ?>
+    <?else:?>
+        <div class="load-more-box">
+            <a href="<?=SITE_DIR?>ads/" class="btn btn-gray"><?=GetMessage("T_ADS_ALL")?></a>
+        </div>
+    <?endif;?>
 </div>
 

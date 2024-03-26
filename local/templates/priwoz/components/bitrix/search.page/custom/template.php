@@ -273,7 +273,6 @@ $smartPreFilter = array("ID" => $filterItems);
         }else{
             $('.form-select').select2();
         }
-
     })
 </script>
 

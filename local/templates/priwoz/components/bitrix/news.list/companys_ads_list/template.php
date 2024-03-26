@@ -70,7 +70,8 @@ if(count((array)$arResult["ITEMS"])>0){?>
                                                   class="date"><?= strtolower(strftime('%d %b %Y', MakeTimeStamp($arItem['TIMESTAMP_X']))) ?></time>
                                         </div>
                                         <div class="price"><? if ($arItem['DISPLAY_PROPERTIES']['PRICE']['VALUE'] != 0 && $arItem['DISPLAY_PROPERTIES']['PRICE']['VALUE'] != NULL) {
-                                                echo $arItem['DISPLAY_PROPERTIES']['PRICE']['VALUE'] . " BGN";
+                                                echo $arItem['DISPLAY_PROPERTIES']['PRICE']['VALUE'];
+                                                if ($currency) { echo " ".$currency;}else{ echo " BGN";};
                                             } else {
                                                 echo GetMessage("CT_DOGOVORNAYA");
                                             } ?></div>

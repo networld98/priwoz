@@ -33,3 +33,4 @@ $MESS["IBLOCK_CABINET_PREVIEW_TEXT"] = 'Описание для анонса *';
 $MESS["IBLOCK_CABINET_525"] = 'Стоимость *';
 $MESS["IBLOCK_CABINET_526"] = 'Состояние';
 $MESS["IBLOCK_CABINET_529"] = 'Населенный пункт *';
+$MESS["IBLOCK_CABINET_586"] = 'Валюта';

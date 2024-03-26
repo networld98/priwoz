@@ -128,7 +128,24 @@ if($id!=0 && $sub==NULL){
                 $sub = $id;
             }
             $arFilter = array("IBLOCK_ID" => $iblock, "IBLOCK_SECTION_ID" =>  $sub, "ACTIVE"=>"Y");
+            //Для мобільної версії
+            $arFilterMob = array("IBLOCK_ID" => $iblock, "ACTIVE"=>"Y");
+            //Для мобільної версії
+            $arSelect = array("ID", "NAME", "CODE", "UF_ICON", "UF_NAME_UA");
+            $obSections = CIBlockSection::GetList(array("name" => "asc"), $arFilter, false, $arSelect);
+            while ($ar_result = $obSections->GetNext()) {
+                if ($ar_result['UF_ICON'] || $id!=0) {
+                    if (SITE_ID == 's1') {
+                        $nameCategory = $ar_result['NAME'];
+                    }
+                    if (SITE_ID == 'ua') {
+                        $nameCategory = $ar_result['UF_NAME_UA'];
+                    }
+                    $mobCat[] = ["NAME"=>$nameCategory,"ICON"=>htmlspecialchars_decode($ar_result['UF_ICON']), "CODE"=>$ar_result['CODE']];
+                }
+            }
             if($id==0) {
+                //Для десктопа
                 $arSelect = array("ID", "NAME", "CODE", "UF_ICON", "UF_NAME_UA");
                 $obSections = CIBlockSection::GetList(array("name" => "asc"), $arFilter, false, $arSelect);
                 while ($ar_result = $obSections->GetNext()) {
@@ -146,7 +163,6 @@ if($id!=0 && $sub==NULL){
                             </a>
                         </div>
                         <?
-                        $mobCat[] = ["NAME"=>$nameCategory,"ICON"=>htmlspecialchars_decode($ar_result['UF_ICON']), "CODE"=>$ar_result['CODE']];
                     }
                 }
             }else{
@@ -168,7 +184,6 @@ if($id!=0 && $sub==NULL){
                             </a>
                         </div>
                         <?
-                        $mobCat[] = ["NAME"=>$nameCategory, "CODE"=>$ar_result['CODE']];
                     }
                 }
             }
@@ -181,16 +196,16 @@ if($id!=0 && $sub==NULL){
             <div class="row">
                 <div class="col-xs-12 col-md-12">
                     <div class="form-label"><?=GetMessage("T_NEWS_CATEGORY")?></div>
-                    <select class="form-select -without-search">
-                        <option><a href="<?= SITE_DIR ?>companies/">Все компанії</a></option>
+                    <select class="form-select -without-search companies-cat-mobile">
+                        <option value=""><?=GetMessage("T_NEWS_COMPANY_ALL")?></option>
                         <?foreach($mobCat as $item){?>
-                            <option ON><a href="<?= SITE_DIR ?>companies/?category=<?= $item['CODE'] ?>"><?= $item['ICON'] ?><?= $item['NAME']?></a></option>
+                            <option value="<?= $item['CODE'] ?>"><?= $item['ICON'] ?><?= $item['NAME']?></option>
                         <?}?>
                     </select>
                 </div>
             </div>
         </div>
-        <div class="container" id="companies-container">
+        <div id="companies-container">
             <?
             if($id!=0 && empty($_GET['category_548'])) {
                 global $category;

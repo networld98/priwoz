@@ -6,8 +6,8 @@ $this->createFrame()->begin("Загрузка навигации");
     $plus = $arResult["NavPageNomer"] + 1;
     $url = $arResult["sUrlPathParams"] . "PAGEN_" . $arResult["NavNum"] . "=" . $plus;
     if($plus>$arResult["nEndPage"]){?>
-        <div class="load-more-box load_page">
-            <a href="<?=SITE_DIR?>companies/" class="blue-link"><?=GetMessage("PAG_LOAD_ADS")?></a>
+        <div class="load-more-box load_all">
+            <a href="<?=SITE_DIR?>companies/" class="blue-link"><?=GetMessage("PAG_LOAD_COMP")?></a>
         </div>
     <?}else{?>
         <div class="load-more-box load_page" data-url="<?= $url ?>">
@@ -18,7 +18,7 @@ $this->createFrame()->begin("Загрузка навигации");
 <script>
     $('body').on('click', 'div.load_page', function () {
         $(this).css('pointer-events','none');
-        var targetContainer = $('.products-masonry'),          //  Контейнер, в котором хранятся элементы
+        var targetContainer = $('.companies-masonry'),          //  Контейнер, в котором хранятся элементы
             url = $('.load-more-box').attr('data-url');    //  URL, из которого будем брать элементы
         console.log(url);
         if (url !== undefined) {
@@ -30,8 +30,8 @@ $this->createFrame()->begin("Загрузка навигации");
                     //  Удаляем старую навигацию
                     $('.load_page').remove();
                     $('.load_all').remove();
-                    var elements = $(data).find('.ads-item'),  //  Ищем элементы
-                        pagination = '<div class="load-more-box load_page"> <a href="<?=SITE_DIR?>companies/" class="blue-link"><?=GetMessage("PAG_LOAD_ADS")?></a></div>';
+                    var elements = $(data).find('.company-grid-item'),  //  Ищем элементы
+                        pagination = '<div class="load-more-box load_page"> <a href="<?=SITE_DIR?>companies/" class="blue-link"><?=GetMessage("PAG_LOAD_COMP")?></a></div>';
                     targetContainer.append(elements);   //  Добавляем посты в конец контейнера
                     targetContainer.parent('div').append(pagination); //  добавляем навигацию следом
                 }

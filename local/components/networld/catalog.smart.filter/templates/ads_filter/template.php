@@ -35,7 +35,8 @@ while($arElement = $dbAllSections->GetNext())
     $arAllElements[$arElement['CODE']] = $res;
 }
 ?>
-<div class="bx_filter <?= $templateData["TEMPLATE_CLASS"] ?> bx_horizontal" id="smartFilterAds">
+<div class="collapse-head filter-box-opener" data-collapsed="#smartFilterAds">Фильтры поиска <span class="arrow"></span></div>
+<div class="bx_filter <?= $templateData["TEMPLATE_CLASS"] ?> bx_horizontal collapsed-content " id="smartFilterAds">
     <div class="bx_filter_section" id="smartFilterAds-block">
         <form name="<? echo $arResult["FILTER_NAME"] . "_form" ?>" action="<? echo $arResult["FORM_ACTION"] ?>"
               method="get" class="smartfilter">
@@ -529,7 +530,7 @@ while($arElement = $dbAllSections->GetNext())
                                 break;
                                 case "K"://RADIO_BUTTONS
                                 ?>
-                                    <label class="form-label ">
+                                    <div class="form-label">
                                         <select class="form-select -without-search"
                                                 name="<? echo $arCur["CONTROL_NAME_ALT"] ?>"
                                                 onChange="smartFilter.click(this)"
@@ -545,6 +546,13 @@ while($arElement = $dbAllSections->GetNext())
                                             </option>
 
                                             <? foreach ($arItem["VALUES"] as $val => $ar):
+                                                if($ar['SECTION']) {
+                                                    if(CUtil::JSEscape($key)=='571') {
+                                                        $iblockSectionId = CIBlockSection::GetByID($ar['SECTION'])->GetNext()['IBLOCK_SECTION_ID'];
+                                                    }elseif(CUtil::JSEscape($key)=='528'){
+                                                        $iblockSectionId = CIBlockElement::GetByID($ar['SECTION'])->GetNextElement()->GetFields()['IBLOCK_SECTION_ID'];
+                                                    }
+                                                }
                                                 if(SITE_ID=='ua'){
                                                     if(CUtil::JSEscape($key)=='527' || CUtil::JSEscape($key)=='571') {
                                                         $ar["VALUE"] = CIBlockSection::GetList(array(), array('IBLOCK_ID' => 20, 'ID' => $ar["SECTION"]), false, array('UF_NAME_UA'))->GetNext()['UF_NAME_UA'];
@@ -553,13 +561,18 @@ while($arElement = $dbAllSections->GetNext())
                                                     }
                                                 }?>
                                                 <option
-                                                        <?if(CUtil::JSEscape($key)=='528'){?>
+                                                        <?if(CUtil::JSEscape($key)=='528'){
+                                                            if($ar['SECTION']) {
+                                                                $iblockSectionId = CIBlockElement::GetByID($ar['SECTION'])->GetNextElement()->GetFields()['IBLOCK_SECTION_ID'];
+                                                            }?>
                                                             class="subcategory"
                                                         <?}?>
                                                         <?if(CUtil::JSEscape($key)=='571'){?>
                                                             class="betcategory"
                                                         <?}?>
                                                         data-count="<? echo $ar["ELEMENT_COUNT"]; ?>"
+                                                        data-id-element="<? echo $ar['SECTION']; ?>"
+                                                        data-id-section="<? echo $iblockSectionId; ?>"
                                                         data-section="<?=$arAllElements[$ar["URL_ID"]]?>"
                                                         value="<? echo $ar["HTML_VALUE_ALT"] ?>"
                                                         data-name="<?= str_replace(".", "", $ar["VALUE"]); ?>"
@@ -569,7 +582,7 @@ while($arElement = $dbAllSections->GetNext())
                                                 </option>
                                             <? endforeach; ?>
                                         </select>
-                                    </label>
+                                    </div>
                                 <?
                                 break;
                                 case "U"://CALENDAR

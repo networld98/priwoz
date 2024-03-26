@@ -39,6 +39,10 @@ if(count((array)$arResult["ITEMS"])>1){?>
                         $date=DateTime::createFromFormat('d.m.Y H:i:s', CIBlockElement::GetByID($arItem['ID'])->GetNextElement()->GetFields()['ACTIVE_TO']);
                         $dateNow = new DateTime();
 
+                        if ($arItem['PROPERTIES']['CURRENCY']['VALUE'] != NULL) {
+                            $currency = CIBlockElement::GetByID($arItem['PROPERTIES']['CURRENCY']['VALUE'])->GetNextElement()->GetFields()['NAME'];
+                        }
+
                         if(($arItem["PROPERTIES"]['MODERATION']['VALUE']!='Y' && ($date>=$dateNow || $payActive == 'N')) || $arItem["PROPERTIES"]['AUTHOR']['VALUE']==$USER->GetID()){
                         $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
                         $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
@@ -97,7 +101,8 @@ if(count((array)$arResult["ITEMS"])>1){?>
                                         <? if (!empty($arItem['DISPLAY_PROPERTIES']['PRICE'])) {
                                             ?>
                                             <div class="price"><? if ($arItem['DISPLAY_PROPERTIES']['PRICE']['VALUE'] != 0 && $arItem['DISPLAY_PROPERTIES']['PRICE']['VALUE'] != NULL) {
-                                                    echo $arItem['DISPLAY_PROPERTIES']['PRICE']['VALUE'] . " BGN";
+                                                    echo $arItem['DISPLAY_PROPERTIES']['PRICE']['VALUE'];
+                                                    if ($currency) { echo " ".$currency;}else{ echo " BGN";}
                                                 } else {
                                                     echo GetMessage("CT_DOGOVIRNAYA");
                                                 } ?></div>

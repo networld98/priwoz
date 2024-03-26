@@ -44,67 +44,31 @@ $templateData = array(
                         "PREVIEW_HEIGHT" => "75",
                         "CONVERT_CURRENCY" => "Y",
                         "CURRENCY_ID" => "RUB",
-                        "PAGE" => "#SITE_DIR#ads/index.php",
+                        "PAGE" => "#SITE_DIR#search/",
                         "NUM_CATEGORIES" => "1",
-                        "TOP_COUNT" => "1",
+                        "TOP_COUNT" => "10",
                         "ORDER" => "date",
                         "USE_LANGUAGE_GUESS" => "N",
                         "CHECK_DATES" => "N",
                         "SHOW_OTHERS" => "N",
                         "CATEGORY_0_TITLE" => "Обьявления",
                         "CATEGORY_0" => array(
-                            0 => "no",
+                            0 => "iblock_ads",
+                            1 => "iblock_companies",
                         ),
                         "CATEGORY_0_iblock_news" => array(
                             0 => "all",
                         ),
-                        "CATEGORY_1_TITLE" => "Врачи",
-                        "CATEGORY_1" => array(
-                            0 => "iblock_content",
-                        ),
-                        "CATEGORY_1_forum" => array(
+                        "CATEGORY_0_iblock_content" => array(
                             0 => "all",
                         ),
-                        "CATEGORY_2_TITLE" => "Услуги",
-                        "CATEGORY_2" => array(
-                            0 => "iblock_content",
+                        "COMPONENT_TEMPLATE" => "custom",
+                        "CATEGORY_0_iblock_ads" => array(
+                            0 => "all",
                         ),
-                        "CATEGORY_2_iblock_books" => "all",
-                        "CATEGORY_3_TITLE" => "Болезни",
-                        "CATEGORY_3" => array(
-                            0 => "iblock_content",
-                        ),
-                        "CATEGORY_3_iblock_illness" => "all",
-                        "CATEGORY_4_TITLE" => "Симптомы",
-                        "CATEGORY_4" => array(
-                            0 => "iblock_content",
-                        ),
-                        "CATEGORY_4_iblock_symptoms" => "all",
-                        "CATEGORY_5_TITLE" => "Статьи",
-                        "CATEGORY_5" => array(
-                            0 => "iblock_content",
-                        ),
-                        "CATEGORY_5_iblock_articles" => "all",
-                        "CATEGORY_0_iblock_content" => array(
-                            0 => "9",
-                        ),
-                        "CATEGORY_1_iblock_content" => array(
-                            0 => "10",
-                        ),
-                        "CATEGORY_2_iblock_content" => array(
-                            0 => "18",
-                            1 => "19",
-                        ),
-                        "CATEGORY_3_iblock_content" => array(
-                            0 => "21",
-                        ),
-                        "CATEGORY_4_iblock_content" => array(
-                            0 => "22",
-                        ),
-                        "CATEGORY_5_iblock_content" => array(
-                            0 => "20",
-                        ),
-                        "COMPONENT_TEMPLATE" => "custom"
+                        "CATEGORY_0_iblock_companies" => array(
+                            0 => "all",
+                        )
                     ),
                     false
                 ); ?>

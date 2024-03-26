@@ -181,7 +181,12 @@ $payActive  = Option::get("priwoz.option", "pay_on");
             </div>
         </section>
     <? endif; ?>
-</div>
-    <?if($arParams["DISPLAY_BOTTOM_PAGER"]):?>
+    <?if($arParams["DISPLAY_BOTTOM_PAGER"]&& $APPLICATION->GetCurPage() != SITE_DIR):?>
         <?=$arResult["NAV_STRING"]?>
+    <?else:?>
+        <div class="load-more-box">
+            <a href="<?=SITE_DIR?>companies/" class="btn btn-gray"><?=GetMessage("T_COM_ALL")?></a>
+        </div>
     <?endif;?>
+</div>
+

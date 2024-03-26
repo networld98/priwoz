@@ -255,7 +255,21 @@ $( document ).ready(function() {
             tones: false,
             buttonTitle: "Выбрать эмодзи",
             emojiPlaceholder: ":smile_cat:",
-            useInternalCDN: true
+            useInternalCDN: true,
+            search: false
         }
     );
+    //Костыль для передвижения фото компаний
+    $(".upload-group").dad();
+
+    //Фильтрация компаний на мобильном
+    $('.companies-cat-mobile').change(function(){
+        var currentUrl = window.location.href.split('?')[0],
+        selectedValue = $(this).val();
+        $("#companies-container").load(currentUrl+"?category="+selectedValue+" #companies-wrap");
+        $(document).ajaxComplete(function() {
+            var grid = $('.grid').masonry({}).css('opacity', '1');
+            grid.masonry('reloadItems');
+        })
+    });
 });

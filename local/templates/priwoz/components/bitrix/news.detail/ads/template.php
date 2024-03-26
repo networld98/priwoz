@@ -18,6 +18,10 @@ $payActive  = Option::get("priwoz.option", "pay_on");
 $date=DateTime::createFromFormat('d.m.Y H:i:s', CIBlockElement::GetByID($arResult['ID'])->GetNextElement()->GetFields()['ACTIVE_TO']);
 $dateNow = new DateTime();
 
+if ($arResult['PROPERTIES']['CURRENCY']['VALUE'] != NULL) {
+    $currency = CIBlockElement::GetByID($arResult['PROPERTIES']['CURRENCY']['VALUE'])->GetNextElement()->GetFields()['NAME'];
+}
+
 //Если не прошел модерацию или автор, тогда редирект
 if(($arResult["PROPERTIES"]['MODERATION']['VALUE']=='Y' || ($date<$dateNow && $payActive == "Y")) && $arResult["PROPERTIES"]['AUTHOR']['VALUE']!=$USER->GetID()){
     header('Location: https://priwoz.info'.SITE_DIR."ads/");
@@ -48,7 +52,7 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
 ?>
 <section class="single-product-section">
     <div class="container">
-        <?if($arResult['PROPERTIES']['AUTHOR']['VALUE']== $USER->GetID() && CUser::IsAuthorized()){?>
+        <?if($arResult['PROPERTIES']['AUTHOR']['VALUE']== $USER->GetID() && $USER->IsAuthorized()){?>
         <a href="/personal/announcement/?edit=Y&CODE=<?=$arResult["ID"]?>" class="sidebar-widget edit-link d-xs-block d-xl-none">
             <?=GetMessage("T_EDIT_ADS")?>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -59,7 +63,7 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
         <div class="content-row">
             <div class="sidebar">
                 <div class="sidebar-widgets">
-                    <?if($arResult['PROPERTIES']['AUTHOR']['VALUE']== $USER->GetID() && CUser::IsAuthorized()){?>
+                    <?if($arResult['PROPERTIES']['AUTHOR']['VALUE']== $USER->GetID() && $USER->IsAuthorized()){?>
                     <a href="<?=SITE_DIR?>personal/announcement/?edit=Y&CODE=<?=$arResult["ID"]?>" class="sidebar-widget edit-link d-xs-none d-xl-block">
                         <?=GetMessage("T_EDIT_ADS")?>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -89,7 +93,10 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
                                 </a>
                             </div>
                             <h1 class="product-title"><?=$arResult["NAME"]?></h1>
-                            <div class="price"><?if($arResult['PROPERTIES']['PRICE']['VALUE']!=0){echo $arResult['PROPERTIES']['PRICE']['VALUE'];?> BGN<?}else{echo GetMessage("T_PRICE_0");}?></div>
+                            <div class="price"><?if($arResult['PROPERTIES']['PRICE']['VALUE']!=0){
+                                echo $arResult['PROPERTIES']['PRICE']['VALUE'];
+                                if ($currency) { echo " ".$currency;}else{ echo " BGN";}
+                                }else{echo GetMessage("T_PRICE_0");}?></div>
                             <? if (SITE_ID == 's1') {
                                 $locationName = $arResult["DISPLAY_PROPERTIES"]['CITY']['LINK_ELEMENT_VALUE'][$arResult["DISPLAY_PROPERTIES"]['CITY']['VALUE']]['NAME'];
                             }

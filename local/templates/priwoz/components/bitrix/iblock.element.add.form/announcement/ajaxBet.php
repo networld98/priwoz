@@ -15,7 +15,7 @@ if ($_POST['CATEGORY']) {
     $arResult["PROPERTY_LIST_FULL"][$_POST['CATEGORY']]['ENUM'] = $arAllElements;
 
     if (!in_array($propertyID, $arResult['PROPERTY_LIST_FULL']))
-        $arResult[$arResult['PROPERTY_LIST_FULL']][] = $arResult["PROPERTY_LIST_FULL"][$propertyID];
+        $arResult[$propertyID][] = $arResult["PROPERTY_LIST_FULL"][$propertyID];
     ?>
     <div class="form-select-box">
         <? if (count((array)$arResult["PROPERTY_LIST_FULL"][$_POST['CATEGORY']]["ENUM"]) == 0) {?>
@@ -32,7 +32,7 @@ if ($_POST['CATEGORY']) {
                     $arEnum["VALUE"] = CIBlockSection::GetList(array(), array('IBLOCK_ID' => 20, 'ID' => $key), false, array('UF_NAME_UA'))->GetNext()['UF_NAME_UA'];
                 }
                 $checked = false;
-                if ($arParams["ID"] > 0 || count($arResult["ERRORS"]) > 0) {
+                if ($arParams["ID"] > 0 || count((array)$arResult["ERRORS"]) > 0) {
                     foreach ($arResult[$sKey][$_POST['CATEGORY']] as $elKey => $arElEnum) {
                         if ($key == $arElEnum["VALUE"]) {
                             $checked = true;

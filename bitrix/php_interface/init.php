@@ -1,12 +1,13 @@
 <?
 use Bitrix\Main\Loader;
+use Bitrix\Main\Config\Option;
 Loader::includeModule("iblock");
 
 AddEventHandler("iblock", "OnBeforeIBlockElementAdd", Array("CustomFields", "OnBeforeIBlockElementAddHandler"));
 class CustomFields
 {
 // создаем обработчик события "OnBeforeIBlockElementAdd" 
-    function OnBeforeIBlockElementAddHandler(&$arFields)
+    static function OnBeforeIBlockElementAddHandler(&$arFields)
     {
         //не добавлять дату если создаем в админке
         if ($GLOBALS['APPLICATION']->GetCurPage()!='/bitrix/admin/iblock_element_edit.php') {
@@ -206,5 +207,50 @@ class MyClass
         }
     }
 }
-
-?>
+//Ищет период между датами
+function differenceInDays($date1, $date2) {
+    $datetime1 = new DateTime($date1);
+    $datetime2 = new DateTime($date2);
+    $interval = $datetime1->diff($datetime2);
+    return abs($interval->format('%R%a'));
+}
+//функция на кроне которая будет проверять обьявы и отправлять уведомлени о окончании подписки
+function endOfSubscription()
+{
+    $payActive = Option::get("priwoz.option", "pay_on");
+    if($payActive == 'Y') {
+        ini_set("memory_limit", "512M");
+        $dateNow = date_create('d.m.Y H:i:s');
+        $arSelect = array("IBLOCK_ID", "NAME", "DATE_ACTIVE_TO", "PROPERTY_AUTHOR");
+        $arFilter = array("IBLOCK_ID" => array(19, 24), "ACTIVE_DATE" => "Y", "ACTIVE" => "Y");
+        $res = CIBlockElement::GetList(array(), $arFilter, false, array(), $arSelect);
+        while ($ob = $res->GetNextElement()) {
+            $arFields = $ob->GetFields();
+            $period = differenceInDays($arFields['DATE_ACTIVE_TO'], $dateNow);
+            if ($arFields['DATE_ACTIVE_TO'] >= $dateNow && $period <= 3 && $period != 0) {
+                if ($arFields['IBLOCK_ID'] == '19') {
+                    $url = "ads-list/";
+                    $urlName = "объявление";
+                }
+                if ($arFields['IBLOCK_ID'] == '24') {
+                    $url = "company-list/";
+                    $urlName = "компанию";
+                }
+                $rsUser = CUser::GetByID($arFields['PROPERTY_AUTHOR_VALUE']);
+                $arUser = $rsUser->Fetch();
+                $arField = array(
+                    "NAME" => $arUser['NAME'],
+                    "LAST_NAME" => $arUser['LAST_NAME'],
+                    "ADS" => $arFields['NAME'],
+                    "DATE" => $arFields['DATE_ACTIVE_TO'],
+                    "EMAIL" => $arUser['EMAIL'],
+                    "URL" => $url,
+                    "PERIOD" => $period,
+                    "URL_NAME" => $urlName,
+                );
+                CEvent::Send('END_OF_SUBSCRIPTION', 's1', $arField);
+            }
+        }
+    }
+    return "endOfSubscription();";
+}

@@ -58,7 +58,7 @@ Bitrix\Main\Loader::includeModule('neti.favorite');
 $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
     'removeClass');
 ?>
-<? if ($arResult['PROPERTIES']['AUTHOR']['VALUE'] == $USER->GetID() && CUser::IsAuthorized()) { ?>
+<? if ($arResult['PROPERTIES']['AUTHOR']['VALUE'] == $USER->GetID() && $USER->IsAuthorized()) { ?>
     <section class="edit-button-section">
         <div class="container">
             <a href="<?=SITE_DIR?>personal/company/?edit=Y&CODE=<?= $arResult["ID"] ?>" class="sidebar-widget edit-link">
@@ -230,7 +230,8 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
                         </div>
                         <? } ?>
                         <ul class="menu -social">
-                            <? if ($arResult['PROPERTIES']['TELEGRAM']['VALUE']) { ?>
+                            <? if ($arResult['PROPERTIES']['TELEGRAM']['VALUE']) {
+                                $arResult['PROPERTIES']['TELEGRAM']['VALUE'] = str_replace(array('@', 'https://t.me/'), array('', ''), $arResult['PROPERTIES']['TELEGRAM']['VALUE']);?>
                                 <li>
                                     <a target="_blank" href="https://telegram.me/<?= $arResult['PROPERTIES']['TELEGRAM']['VALUE'] ?>">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120"
