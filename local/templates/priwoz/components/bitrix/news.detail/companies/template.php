@@ -509,7 +509,18 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
             <h2 class="title"><?= GetMessage("T_COMPANY_VIDEO") ?></h2>
             <div class="videos-box">
                 <? foreach ($arResult['PROPERTIES']['YOUTUBEVIDEO']['VALUE'] as $key => $id) {
-                    if (stripos($id, '=')!==false) {
+                    if (stripos($id, 'youtu.be')!==false) {
+                        $id = explode('/',$id)[3];
+                        $id = explode('?',$id)[0];
+                    }
+                    if (stripos($id, 'feature=share')!==false) {
+                        $id = explode('/',$id)[4];
+                        $id = explode('?',$id)[0];
+                    }
+                    if (stripos($id, 'shorts')!==false) {
+                        $id = explode('/',$id)[4];
+                    }
+                    if (stripos($id, '=')!==false && stripos($id, 'feature=share')==false) {
                         $id = explode('=',$id)[1];
                     }
                   ?>
