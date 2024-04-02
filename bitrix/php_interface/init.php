@@ -254,3 +254,25 @@ function endOfSubscription()
     }
     return "endOfSubscription();";
 }
+
+//Получить пропорцию видео ютуба
+function get_youtube_video_aspect_ratio($video_id) {
+    $api_key = "AIzaSyCTSH2IUPX_ka8jf5_-ykyf2rCsyi8vKPE";
+    $url = "https://www.googleapis.com/youtube/v3/videos?id={$video_id}&key={$api_key}&part=snippet";
+
+    try {
+        $response = file_get_contents($url);
+        $data = json_decode($response, true);
+
+        if (isset($data['items']) && !empty($data['items'])) {
+            $aspect_ratio = $data['items'][0]['snippet']['thumbnails']['default']['width'] / $data['items'][0]['snippet']['thumbnails']['default']['height'];
+            return $aspect_ratio;
+        } else {
+            echo "Видео не найдено";
+            return null;
+        }
+    } catch (Exception $e) {
+        echo "Произошла ошибка: " . $e->getMessage();
+        return null;
+    }
+}

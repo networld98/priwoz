@@ -485,6 +485,11 @@ span.blue-link, .personal-section .products-masonry.my-products .product-grid-it
     height: auto;
     aspect-ratio: 16/9;
 }
+.video-modal .modal-box .video-box-vertical {
+    height: auto;
+    aspect-ratio: 9/16;
+    margin: 0 auto;
+}
 .link-item{
     position: absolute;
     left:0;

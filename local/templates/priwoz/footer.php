@@ -1,9 +1,11 @@
-<?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();?>
+<?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
+global $vertivalVideo;
+?>
 <div class="video-modal">
     <div class="modal-overlay"></div>
     <div class="modal-box">
         <div class="close-button"></div>
-        <div class="video-box">
+        <div class="video-box <?if($vertivalVideo=='Y'){?>video-box-vertical<?}?>">
         </div>
     </div>
 </div>

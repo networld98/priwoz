@@ -17,6 +17,10 @@ $this->addExternalCss($this->GetFolder().'/themes/'.$arParams['TEMPLATE_THEME'].
 CUtil::InitJSCore(array('fx'));
 $pictureID = CIBlockElement::GetByID($arResult["ID"])->GetNextElement()->GetFields()["PREVIEW_PICTURE"];
 $picture = CFile::ResizeImageGet($pictureID, array('width'=>1000,'height'=> 1000), BX_RESIZE_IMAGE_PROPORTIONAL, true);
+global $vertivalVideo;
+if($arResult['PROPERTIES']['YOUTUBE_VERTICAL']['VALUE']=='Y'){
+    $vertivalVideo = 'Y';
+}
 ?>
 <section class="post-section">
     <div class="container">
@@ -38,9 +42,13 @@ $picture = CFile::ResizeImageGet($pictureID, array('width'=>1000,'height'=> 1000
                 <div class="post-wrap">
                     <time datetime="<?= strtolower(strftime('%d.%b.%Y', MakeTimeStamp($arResult['TIMESTAMP_X']))) ?>" class="date"><?= strtolower(strftime('%d %b %Y', MakeTimeStamp($arResult['TIMESTAMP_X']))) ?></time>
                     <h1 class="section-title"><?=$arResult["NAME"]?></h1>
-                    <?if($arResult['PROPERTIES']['YOUTUBE']['VALUE']!='') {?>
+                    <?if($arResult['PROPERTIES']['YOUTUBE']['VALUE']!=''){?>
                     <div class="video-box youtube-open-trigger" data-youtube="<?=$arResult['PROPERTIES']['YOUTUBE']['VALUE']?>">
-                        <img class="bg-img" src="<?= $picture["src"]?>" alt="<?=$arResult["NAME"]?>-video">
+                        <?if($arResult['PROPERTIES']['YOUTUBE_PREVIEW']['VALUE']!='Y'){?>
+                            <img class="bg-img" src="<?= $picture["src"]?>" alt="<?=$arResult["NAME"]?>-video">
+                        <?}else{?>
+                            <img class="bg-img" src="https://i.ytimg.com/vi/<?=$arResult['PROPERTIES']['YOUTUBE']['VALUE']?>/maxresdefault.jpg" alt="<?=$arResult["NAME"]?>-video">
+                        <?}?>
                     </div>
                     <?}?>
                     <div class="content">

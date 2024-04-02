@@ -2,6 +2,7 @@ User-Agent: *
 Disallow: /
 Disallow: /bitrix/
 Disallow: /redesign/
+Disallow: /html-code/
 Allow: /bitrix/components/
 Allow: /bitrix/cache/
 Allow: /bitrix/js/
