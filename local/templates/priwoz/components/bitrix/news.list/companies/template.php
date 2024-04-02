@@ -63,7 +63,7 @@ $payActive  = Option::get("priwoz.option", "pay_on");
                 </div>
             <?
             }elseif ($i % 2 == 0) {
-                $arSelect = array("NAME", "PROPERTY_YOUTUBE","PROPERTY_YOUTUBE_IN_MAIN","PROPERTY_COMPANY", "PREVIEW_PICTURE", "TIMESTAMP_X");
+                $arSelect = array("NAME", "PROPERTY_YOUTUBE_PREVIEW", "PROPERTY_YOUTUBE","PROPERTY_YOUTUBE_IN_MAIN","PROPERTY_COMPANY", "PREVIEW_PICTURE", "TIMESTAMP_X");
                 $arFilter = array("IBLOCK_ID"=>25, "PROPERTY_COMPANY_VALUE" != NULL, "PROPERTY_YOUTUBE_VALUE"!= NULL,"PROPERTY_YOUTUBE_IN_MAIN_VALUE" => "Y" );
                 $res = CIBlockElement::GetList(Array("name" => "asc"), $arFilter, false, Array(), $arSelect);
                 while($ob = $res->GetNextElement()) {
@@ -77,7 +77,11 @@ $payActive  = Option::get("priwoz.option", "pay_on");
                     <div class="grid-item company-grid-item">
                         <div class="box -video youtube-open-trigger" data-youtube="<?=$arFields["PROPERTY_YOUTUBE_VALUE"]?>">
                             <div class="img">
-                                <img class="bg-img" src="<?=$picture['src']?>" alt="<?=$arFields["NAME"]?>">
+                                <?if($arFields['PROPERTY_YOUTUBE_PREVIEW_VALUE']!='Y'){?>
+                                    <img class="bg-img" src="<?= $picture["src"]?>" alt="<?=$arFields["NAME"]?>-video">
+                                <?}else{?>
+                                    <img class="bg-img" src="https://i.ytimg.com/vi/<?=$arFields['PROPERTY_YOUTUBE_VALUE']?>/maxresdefault.jpg" alt="<?=$arFields["NAME"]?>-video">
+                                <?}?>
                                 <img class="company-logo" src="<?=$logo['src']?>" alt="<?=$arFields["NAME"]?>">
                                 <div class="date"><?= strtolower(strftime('%d %b %Y', MakeTimeStamp($arFields['TIMESTAMP_X']))) ?></div>
                             </div>
