@@ -68,7 +68,7 @@ $payActive  = Option::get("priwoz.option", "pay_on");
                 $res = CIBlockElement::GetList(Array("name" => "asc"), $arFilter, false, Array(), $arSelect);
                 while($ob = $res->GetNextElement()) {
                     $arFields = $ob->GetFields();
-                    if($arFields["PPROPERTY_COMPANY"] && $arFields["PROPERTY_YOUTUBE_IN_MAIN_VALUE"] && !in_array($arFields["PROPERTY_YOUTUBE_IN_MAIN_VALUE"],$videoArray)){
+                    if($arFields["PROPERTY_COMPANY_VALUE"] && $arFields["PROPERTY_YOUTUBE_IN_MAIN_VALUE"] && !in_array($arFields["PROPERTY_YOUTUBE_IN_MAIN_VALUE"],$videoArray)){
                         $companyLogo = CIBlockElement::GetByID($arFields["PROPERTY_COMPANY_VALUE"])->GetNextElement()->GetProperties()["LOGO"]["VALUE"];
                         $logo = CFile::ResizeImageGet($companyLogo, array('width' => 150), BX_RESIZE_IMAGE_PROPORTIONAL, true);
                         $picture = CFile::ResizeImageGet($arFields["PREVIEW_PICTURE"], array('width' => 400), BX_RESIZE_IMAGE_EXACT, true);
