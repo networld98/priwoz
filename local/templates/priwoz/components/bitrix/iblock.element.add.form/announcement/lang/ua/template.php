@@ -3,6 +3,7 @@ $MESS["IBLOCK_FORM_SUBMIT"] = "Додати оголошення";
 $MESS["IBLOCK_FORM_APPLY"] = "Застосувати";
 $MESS["IBLOCK_FORM_RESET"] = "Скинути";
 $MESS["IBLOCK_FORM_CANCEL"] = "Скасувати";
+$MESS["IBLOCK_FORM_PRICE"] = "Тільки цифри, якщо 0 ціна буде 'Договірна'";
 $MESS["IBLOCK_FORM_BACK"] = "Назад до списку";
 $MESS["IBLOCK_FORM_DATE_FORMAT"] = "Формат: ";
 $MESS["IBLOCK_FORM_FILE_NAME"] = "Файл";

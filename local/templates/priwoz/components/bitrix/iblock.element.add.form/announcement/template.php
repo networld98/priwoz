@@ -306,7 +306,8 @@ if ($_GET['edit'] != 'Y') {
                                                name="PROPERTY[<?= $propertyID ?>][<?= $i ?>]"
                                                size="<?= $arResult["PROPERTY_LIST_FULL"][$propertyID]["COL_COUNT"]; ?>"
                                                <?if($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == 'PRICE'){?>
-                                                   placeholder="BGN/EUR"
+                                                   pattern="[0-9.]*"
+                                                   placeholder="<?=GetMessage("IBLOCK_FORM_PRICE")?>"
                                                <?}?>
                                                value="<?= $value ?>"/><?
                                         if ($arResult["PROPERTY_LIST_FULL"][$propertyID]["USER_TYPE"] == "DateTime"):?><?
