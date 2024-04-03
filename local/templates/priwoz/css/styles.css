@@ -415,7 +415,7 @@
     font-family: "Barista",sans-serif;
     font-size: 32px;
 }
-.products-overview-section .load-more-box, .products-section .load-more-box-ads {
+.products-overview-section .load-more-box, .companies-wrap .load-more-box, .products-section .load-more-box-ads {
     text-align: center;
     padding-top: 9px;
 }
