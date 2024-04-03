@@ -32,6 +32,7 @@ if($RIGHT >= "R"){
             "TITLE" => GetMessage("TOPTIONS_TAB_INDEX_TITLE"),
             "OPTIONS" => Array(
                 "pay_on" => Array(GetMessage("OPTIONS_TAB_PAY"), Array("checkbox", "N")),
+                "pay_on_company" => Array(GetMessage("OPTIONS_TAB_PAY_COMPANY"), Array("checkbox", "N")),
                 "price_ads" => Array(GetMessage("OPTIONS_PRICE_ADS"), Array("text")),
                 "price_company" => Array(GetMessage("OPTIONS_PRICE_COMPANY"), Array("text")),
             ),
