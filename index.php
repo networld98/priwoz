@@ -354,22 +354,39 @@ $APPLICATION->SetTitle("Priwoz.info");
             ); ?>
         </div>
     </section>
-<? $APPLICATION->IncludeComponent(
-    "bitrix:main.include",
-    "",
-    array(
-        "AREA_FILE_SHOW" => "file",
-        "PATH" => SITE_DIR . "includes/partnership-section.php"
-    )
-); ?>
-<? $APPLICATION->IncludeComponent(
-    "bitrix:main.include",
-    "",
-    array(
-        "AREA_FILE_SHOW" => "file",
-        "PATH" => SITE_DIR . "includes/about-section.php"
-    )
-); ?>
+    <section class="partnership-section">
+        <div class="container">
+            <? $APPLICATION->IncludeComponent(
+                "bitrix:advertising.banner",
+                "slider-main-big",
+                array(
+                    "BS_ARROW_NAV" => "N",
+                    "BS_BULLET_NAV" => "Y",
+                    "BS_CYCLING" => "N",
+                    "BS_EFFECT" => "fade",
+                    "BS_HIDE_FOR_PHONES" => "Y",
+                    "BS_HIDE_FOR_TABLETS" => "N",
+                    "BS_KEYBOARD" => "Y",
+                    "BS_PAUSE" => "Y",
+                    "BS_WRAP" => "Y",
+                    "CACHE_TIME" => "36000000",
+                    "CACHE_TYPE" => "A",
+                    "COMPONENT_TEMPLATE" => "",
+                    "NOINDEX" => "Y",
+                    "QUANTITY" => "5",
+                    "TYPE" => "mainbody"
+                )
+            ); ?>
+        </div>
+    </section>
+    <? $APPLICATION->IncludeComponent(
+        "bitrix:main.include",
+        "",
+        array(
+            "AREA_FILE_SHOW" => "file",
+            "PATH" => SITE_DIR . "includes/about-section.php"
+        )
+    ); ?>
     <section class="blog-section">
         <div class="container">
             <div class="row">

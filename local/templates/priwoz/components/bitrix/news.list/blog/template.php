@@ -19,19 +19,23 @@ $this->setFrameMode(true);
     $picture = CFile::ResizeImageGet($arItem["PREVIEW_PICTURE"]["ID"], array('width'=>400,'height'=> 400), BX_RESIZE_IMAGE_EXACT, true);
     ?>
         <div class="<? if($APPLICATION->GetCurPage() != SITE_DIR."blog/"){?>item<?}else{?>grid-item blog-grid-item<?}?>" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
-            <?if($arItem['PROPERTIES']['YOUTUBE']['VALUE']!='' && $arItem['PROPERTIES']['YOUTUBE_IN_MAIN']['VALUE'] == 'Y' && $APPLICATION->GetCurPage() == "/") {?>
+            <?if($arItem['PROPERTIES']['YOUTUBE']['VALUE']!='' && $arItem['PREVIEW_TEXT']=="") {?>
                 <div class="box -video youtube-open-trigger" data-youtube="<?=$arItem['PROPERTIES']['YOUTUBE']['VALUE']?>">
             <?}else{?>
                 <a href="<?= $arItem["DETAIL_PAGE_URL"]?>" class="box">
             <?}?>
                 <div class="img">
-                    <img src="<?= $picture["src"]?>" class="bg-img" alt="<?=$arItem['NAME']?>">
+                    <?if($arItem['PROPERTIES']['YOUTUBE_PREVIEW']['VALUE']!='Y'){?>
+                        <img src="<?= $picture["src"]?>" class="bg-img" alt="<?=$arItem['NAME']?>">
+                    <?}else{?>
+                        <img class="bg-img" src="https://i.ytimg.com/vi/<?=$arItem['PROPERTIES']['YOUTUBE']['VALUE']?>/maxresdefault.jpg" alt="<?=$arItem["NAME"]?>">
+                    <?}?>
                     <div class="date"><?= strtolower(strftime('%d %b %Y', MakeTimeStamp($arItem['TIMESTAMP_X']))) ?></div>
                 </div>
                 <div class="text">
                     <h3><?=$arItem['NAME']?></h3>
                 </div>
-            <? if ($arItem['PROPERTIES']['YOUTUBE']['VALUE'] && $arItem['PROPERTIES']['YOUTUBE_IN_MAIN']['VALUE'] == 'Y' && $APPLICATION->GetCurPage() == "/") {?>
+            <? if ($arItem['PROPERTIES']['YOUTUBE']['VALUE'] != ""  && $arItem['PREVIEW_TEXT']=="") {?>
                 </div>
             <? } else { ?>
                 </a>
