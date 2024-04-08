@@ -473,6 +473,14 @@ span.blue-link, .personal-section .products-masonry.my-products .product-grid-it
     text-align: center;
     margin-top: 45px;
 }
+.companies-wrap .company-grid-item .img svg {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 45px;
+    fill: #fbf037;
+    z-index: 1;
+}
 .personal-section .product-grid-item .default-text {
     position: absolute;
     padding: 45px 10px 0;

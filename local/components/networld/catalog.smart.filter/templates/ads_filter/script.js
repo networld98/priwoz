@@ -409,6 +409,7 @@ JCSmartFilter.prototype.values2post = function (values)
 		fullUrl = currentUrl+'?'+url;
 		$("#products-wrap").load(fullUrl +"&set_filter=Найти #products-masonry");
 		$("#smartFilterAds").load(fullUrl +"&set_filter=Найти #smartFilterAds-block");
+		$("#pager-wrap").load(fullUrl +"&set_filter=Найти .load-more-box");
 		$(".filter-output-box").hide('fast');
 		$("#price_asc").val(fullUrl +"&sort=PROPERTY_PRICE&ads=asc&set_filter=Найти");
 		$("#price_desc").val(fullUrl +"&sort=PROPERTY_PRICE&ads=desc&set_filter=Найти");

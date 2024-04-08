@@ -70,7 +70,8 @@ $APPLICATION->SetTitle("Компании");
             4 => "CONDITION",
             5 => "LOGO",
             6 => "CITY",
-            7 => "CATEGORY"
+            7 => "CATEGORY",
+            8 => "TOP"
         ),
         "MESSAGE_404" => "",
         "META_DESCRIPTION" => "-",
@@ -90,10 +91,10 @@ $APPLICATION->SetTitle("Компании");
         "SET_STATUS_404" => "Y",
         "SET_TITLE" => "N",
         "SHOW_404" => "Y",
-        "SORT_BY1" => "ACTIVE_FROM",
-        "SORT_BY2" => "SORT",
+        "SORT_BY1" => "PROPERTY_TOP",
+        "SORT_BY2" => "ACTIVE_FROM",
         "SORT_ORDER1" => "DESC",
-        "SORT_ORDER2" => "ASC",
+        "SORT_ORDER2" => "DESC",
         "STRICT_SECTION_CHECK" => "N",
         "USE_CATEGORIES" => "N",
         "USE_FILTER" => "Y",
