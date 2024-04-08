@@ -39,7 +39,9 @@ $this->createFrame()->begin("Загрузка навигации");
                     var elements = $(data).find('.company-grid-item'),  //  Ищем элементы
                         pagination = $(data).find('.load_page');//  Ищем навигацию
                     targetContainer.append(elements);   //  Добавляем посты в конец контейнера
-                    targetContainer.parent('div').append(pagination); //  добавляем навигацию следом
+                    targetContainer.parent('div').append(pagination); //  добавляем навигацию следом  let grid = $('.companies-masonry').masonry({}).css('opacity', '1');
+                    let grid = $('.grid').masonry({}).css('opacity', '1');
+                    grid.masonry('reloadItems');
                 }
             })
         }
