@@ -34,7 +34,7 @@ echo $newDateFormatted;
     $el = new CIBlockElement;
     $el->Update(
         $id,
-        ['DATE_ACTIVE_TO' => $newDateFormatted, 'ACTIVE' => 'Y', 'PAYMENT_DATE' => date('d.m.Y'), 'PAYMENT_NUMBER' => $data['invoiceId']],
+        ['DATE_ACTIVE_TO' => $newDateFormatted, 'ACTIVE' => 'Y', 'PAYMENT_DATE' => date('d.m.Y H:i:s'), 'PAYMENT_NUMBER' => $data['invoiceId']],
         true
     );
 
