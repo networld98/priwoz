@@ -14,8 +14,8 @@ $data = json_decode($postData, true);
 if ($data['status'] == 'success') {
 
 // Отримуємо айді елемента
-    $id = explode('/', $data['reference']);
-    $newDateElement = CIBlockElement::GetByID($id[0])->GetNextElement()->GetFields()['ACTIVE_TO'];
+    $id = substr($data['reference'], 0, -14);
+    $newDateElement = CIBlockElement::GetByID($id)->GetNextElement()->GetFields()['ACTIVE_TO'];
     $dateNow = new DateTime();
     if ($newDateElement && $newDateElement>=$dateNow) {
         $newDate = new DateTime($newDateElement);
@@ -33,7 +33,7 @@ echo $newDateFormatted;
 
     $el = new CIBlockElement;
     $el->Update(
-        $id[0],
+        $id,
         ['DATE_ACTIVE_TO' => $newDateFormatted, 'ACTIVE' => 'Y', 'PAYMENT_DATE' => date('d.m.Y'), 'PAYMENT_NUMBER' => $data['invoiceId']],
         true
     );
@@ -44,7 +44,7 @@ echo $newDateFormatted;
         "CACHE" => "MonoPay",
         "AUDIT_TYPE_ID" => "MonoPay",
         "MODULE_ID" => "mono",
-        "DESCRIPTION" => "MonoPay элемент " . $id[0] . " оплачен, данные от банка: " . $postData,
+        "DESCRIPTION" => "MonoPay элемент " . $id . " оплачен, данные от банка: " . $postData,
     ));
 }
 ?>

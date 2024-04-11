@@ -23,7 +23,7 @@ curl_setopt_array($curl, array(
         'redirectUrl' => 'https://'.$_SERVER['SERVER_NAME'].$_GET['link'],
         'webHookUrl' => 'https://'.$_SERVER['SERVER_NAME'].'/local/scripts/monoPay/result.php',
         'merchantPaymInfo' => array(
-            'reference' => $_GET['id'].'/'.date('dmYHis'),
+            'reference' => $_GET['id'].date('dmYHis'),
             'destination' => 'Оплата місячної підписки на сайті priwoz.info',
             'comment' => 'Оплата місячної підписки на сайті priwoz.info ('.$_GET['id'].')',
             'customerEmails' => array(
