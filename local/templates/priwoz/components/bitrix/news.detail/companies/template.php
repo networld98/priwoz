@@ -489,13 +489,13 @@ $defaultClass = \Bitrix\Main\Config\Option::get('neti.favorite',
             <h2 class="title"><?= GetMessage("T_WHY") ?></h2>
             <div class="advantages">
                 <? foreach ($arResult['PROPERTIES']['WHY']['VALUE'] as $key => $item) { ?>
-                    <? if ($key % 2 === 0) { ?>
+                    <? if ($key % 2 === 0 && $item != ' ') { ?>
                         <div class="item">
-                        <div class="box">
-                        <h3><?= $item ?></h3>
+                            <div class="box">
+                                <h3><?= trim($item) ?></h3>
                     <? } else { ?>
-                        <p><?= $item ?></p>
-                        </div>
+                                <p><?= trim($item) ?></p>
+                            </div>
                         </div>
                     <? } ?>
                 <? } ?>

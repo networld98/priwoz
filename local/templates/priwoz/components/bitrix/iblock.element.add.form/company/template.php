@@ -282,7 +282,14 @@ if ($_GET['edit'] != 'Y') {
                                 case "N":
                                     if ($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == "WHY" ||  $arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == "YOUTUBEVIDEO") { ?>
                                         <div class="row group-block">
-                                    <?}
+                                    <?
+                                    }
+                                    if ($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == "WHY" || $arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == "SERVICES") {
+                                        $inputNum = 10;
+                                    }
+                                    if ($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == "YOUTUBEVIDEO") {
+                                        $inputNum = 6;
+                                    }
                                     for ($i = 0; $i < $inputNum; $i++) {
                                     if ($arParams["ID"] > 0 || count((array)$arResult["ERRORS"]) > 0) {
                                     $value = intval($propertyID) > 0 ?
@@ -318,7 +325,12 @@ if ($_GET['edit'] != 'Y') {
                                             placeholder="BGN"
                                             <?
                                         } ?>
-                                                              value="<?= $value ?>"/>
+                                        <? if ($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == 'WHY' && $value == "") { ?>
+                                            value=" "
+                                        <?}else{?>
+                                            value="<?= $value ?>"
+                                        <?}?>
+                                    />
                                     <? if ($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == "WHY" ) { ?>
                                     </div>
                                     <?}?>
@@ -345,7 +357,6 @@ if ($_GET['edit'] != 'Y') {
                                 }
                                     if ($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == "WHY" || $arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == "YOUTUBEVIDEO") { ?>
                                         </div>
-
                                         <?
                                     }
                                     break;
@@ -358,8 +369,11 @@ if ($_GET['edit'] != 'Y') {
                                     <div class="hint"><?=GetMessage("IBLOCK_BANNER_SIZE")?></div>
                                     <?}?>
                                     <div class="upload-group">
+                                        <?if ($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == "PHOTOS") {
+                                            $inputNum = 16;
+                                        }?>
                                         <? for ($i = 0; $i < $inputNum; $i++) {
-                                            if($i<10){
+                                            if($i<15){
                                                 $value = intval($propertyID) > 0 ? $arResult["ELEMENT_PROPERTIES"][$propertyID][$i]["VALUE"] : $arResult["ELEMENT"][$propertyID];
                                                 $imgFile = SITE_TEMPLATE_PATH . '/images/icons/upload-file.svg';
                                                 ?>
@@ -632,6 +646,12 @@ if ($_GET['edit'] != 'Y') {
 </div>
 <script>
     $(document).ready(function () {
+        $('.form-label.WHY-block input').keyup(function(){
+            var value = $(this).val();
+            if(value.trim() === '') {
+                $(this).val(' ');
+            }
+        });
         $(".CATEGORY").change(function () {
             let id = $(this).val();
             let subcategory = $('.SUBCATEGORY-block');

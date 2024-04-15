@@ -333,6 +333,9 @@ if ($_GET['edit'] != 'Y') {
                                     ?>
                                     <div class="hint"><?=GetMessage("IBLOCK_FIRST_PHOTO")?></div>
                                     <div class="upload-group">
+                                        <?if ($arResult["PROPERTY_LIST_FULL"][$propertyID]["CODE"] == "PHOTOS") {
+                                            $inputNum = 11;
+                                        }?>
                                         <? for ($i = 0; $i < $inputNum; $i++) {
                                             if($i<10){
                                             $value = intval($propertyID) > 0 ? $arResult["ELEMENT_PROPERTIES"][$propertyID][$i]["VALUE"] : $arResult["ELEMENT"][$propertyID];
