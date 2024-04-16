@@ -8,7 +8,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die(); ?>
             $file = CFile::ResizeImageGet($banner['IMAGE_ID'], array('width' => 1570, 'height' => 160), BX_RESIZE_IMAGE_EXACT, true); ?>
             <div class="swiper-slide">
                 <div class="advertisement advertisement-type-3">
-                    <a href="<?= $banner['URL'] ?>">
+                    <a <?if($banner['URL_TARGET']){?>target="<?= $banner['URL_TARGET']?>" <?}?>href="<?= $banner['URL'] ?>">
                         <img <?if($banner['CODE']!=NULL){?>class="d-sm-none d-md-block"<?}?> src="<?= $file['src'] ?>" alt="<?= $banner['NAME'] ?>">
                         <?if($banner['CODE']!=NULL){?>
                             <?=  str_replace('<img', '<img class="d-none d-sm-block d-md-none"', $banner['CODE']); ?>

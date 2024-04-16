@@ -356,6 +356,7 @@ $APPLICATION->SetTitle("Priwoz.info");
     </section>
     <section class="partnership-section">
         <div class="container">
+            <div class="advertisement-slider swiper-container">
             <? $APPLICATION->IncludeComponent(
                 "bitrix:advertising.banner",
                 "slider-main-big",
@@ -377,6 +378,7 @@ $APPLICATION->SetTitle("Priwoz.info");
                     "TYPE" => "mainbody"
                 )
             ); ?>
+            </div>
         </div>
     </section>
     <? $APPLICATION->IncludeComponent(
