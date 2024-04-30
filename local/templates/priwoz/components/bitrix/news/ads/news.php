@@ -252,7 +252,7 @@ global $arUser;
                         "BS_PAUSE" => "Y",
                         "BS_WRAP" => "Y",
                         "CACHE_TIME" => "36000000",
-                        "CACHE_TYPE" => "A",
+                        "CACHE_TYPE" => "N",
                         "COMPONENT_TEMPLATE" => "",
                         "NOINDEX" => "Y",
                         "QUANTITY" => "5",
