@@ -60,7 +60,6 @@ if (SITE_ID == 'ua') {
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH . '/js/jquery.maskedinput.min.js');
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH . '/js/scripts.js');
     $APPLICATION->ShowHead(); ?>
-    <meta name="robots" content="noindex, nofollow" />
     <title><?$APPLICATION->ShowTitle()?></title>
 </head>
 <body>
