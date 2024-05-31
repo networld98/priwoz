@@ -653,6 +653,66 @@ span.blue-link, .personal-section .products-masonry.my-products .product-grid-it
 .why-our-company-section>p{
     display:none;
 }
+.table-reklama {
+    display: flex;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.reklama-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid lightgrey;
+}
+.sum-block {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: baseline;
+    justify-content: center;
+}
+.table-reklama .form-label.-with-icon .form-control {
+    height: 37px;
+    margin-bottom: 10px;
+    padding-left: 45px;
+}
+.table-reklama .form-label.-with-icon .input-icon {
+    width: 39px;
+    bottom: 11px;
+}
+.table-reklama .btn.btn-orange {
+    height: 25px;
+}
+#pay-btn.disabled {
+    pointer-events: none;
+}
+#pay-btn.disabled .btn-buy, #pay-btn.disabled .btn-buy:hover {
+    background: #aaa;
+    border: 1px solid #526172;
+}
+.pay-ok-message {
+    position: absolute;
+    background: #fff;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    border-radius: 10px;
+    color: #000;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.pay-ok-message h2 {
+    color: rgb(64, 147, 19);
+}
+.pay-ok-message .description-ok a {
+    color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1));
+}
 @media (min-width: 768px) {
     .personal-section .products-masonry.my-products .product-grid-item .box .img + .text + .overlay .overlay-inner {
         top: auto;

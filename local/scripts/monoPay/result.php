@@ -38,6 +38,12 @@ echo $newDateFormatted;
         true
     );
 
+    $res = CIBlockElement::GetByID($id);
+    if ($ar_res = $res->GetNext()) {
+        $iblockId = $ar_res['IBLOCK_ID'];
+    }
+    CIBlockElement::SetPropertyValuesEx($id, $iblockId, Array("PAYMENT_DATE" => date('d.m.Y H:i:s'), 'PAYMENT_NUMBER' => $data['invoiceId'], 'PAYMENT_URL' => $data['pageUrl']));
+
 // Робимо що-небудь з отриманими даними
 
     CEventLog::Add(array(

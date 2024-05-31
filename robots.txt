@@ -1,5 +1,6 @@
 User-Agent: *
 Disallow: /bitrix/
+Disallow: /reklama/
 Disallow: /html-code/
 Disallow: */index.php
 Disallow: /*show_include_exec_time=

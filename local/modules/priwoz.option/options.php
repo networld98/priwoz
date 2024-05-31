@@ -38,6 +38,20 @@ if($RIGHT >= "R"){
             ),
 
         ),
+        Array(
+            "DIV" => "ads",
+            "TAB" => GetMessage("OPTIONS_ADS_INDEX"),
+            "ICON" => "testmodule_settings",
+            "TITLE" => GetMessage("OPTIONS_ADS_INDEX"),
+            "OPTIONS" => Array(
+                "ads_count" => Array(GetMessage("OPTIONS_ADS_COUNT"), Array("text")),
+                "ads_percent" => Array(GetMessage("OPTIONS_ADS_PERCENT"), Array("text")),
+                "ads_text" => Array(GetMessage("OPTIONS_ADS_TEXT"), Array("textarea")),
+                "ads_ok_title" => Array(GetMessage("OPTIONS_ADS_OK_TITLE"), Array("text")),
+                "ads_ok_text" => Array(GetMessage("OPTIONS_ADS_OK_TEXT"), Array("textarea")),
+            ),
+
+        ),
         array(
             "DIV" => "rights",
             "TAB" => GetMessage("MAIN_TAB_RIGHTS"),

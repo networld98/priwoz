@@ -272,4 +272,11 @@ $( document ).ready(function() {
             grid.masonry('reloadItems');
         })
     });
+    $('.reklama-item input').change(function() {
+        updateSelectedValues();
+        console.log('click');
+    });
+    $('input.form-control').keyup(function() {
+        updateSelectedValues();
+    });
 });

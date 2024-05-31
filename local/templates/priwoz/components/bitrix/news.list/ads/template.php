@@ -128,8 +128,9 @@ $payActive  = Option::get("priwoz.option", "pay_on");?>
                                 }
                                 if (SITE_ID == 'ua') {
                                     $locationId = $arItem["DISPLAY_PROPERTIES"]['CITY']['LINK_ELEMENT_VALUE'][$arItem["DISPLAY_PROPERTIES"]['CITY']['VALUE']]['ID'];
-
-                                    $locationName = CIBlockElement::GetByID($locationId)->GetNextElement()->GetProperties()['NAME_UA']['VALUE'];
+                                    if($locationId){
+                                        $locationName = CIBlockElement::GetByID($locationId)->GetNextElement()->GetProperties()['NAME_UA']['VALUE'];
+                                    }
                                 }?>
                                 <div class="location"><?= $locationName ?></div>
                                 <time datetime="<?= strtolower(strftime('%d %b %Y', MakeTimeStamp($arItem['TIMESTAMP_X']))) ?>"
