@@ -718,8 +718,23 @@ span.blue-link, .personal-section .products-masonry.my-products .product-grid-it
         top: auto;
         bottom: -100px;
     }
+    .reklama-item>div {
+        display: flex;
+        width: 50%;
+        justify-content: space-between;
+    }
 }
 @media (max-width: 768px){
+    .reklama-item {
+        flex-direction: column;
+        align-items: baseline;
+    }
+    .reklama-item>div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
     span.blue-link, .personal-section .products-masonry.my-products .product-grid-item .box a.overlay-link {
         margin: 4px 0;
     }

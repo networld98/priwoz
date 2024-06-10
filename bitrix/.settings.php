@@ -61,4 +61,5 @@ return array (
     ),
     'readonly' => true,
   ),
+    'default_timezone' => 'Europe/Kiev',
 );

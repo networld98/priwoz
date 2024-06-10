@@ -43,12 +43,14 @@ $adsOkText = Option::get("priwoz.option", "ads_ok_text");
                         $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
                         $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
                         $props = CIBlockElement::GetByID($arItem["ID"])->GetNextElement()->GetProperties();?>
-                        <div class="reklama-item" >
+                        <div class="reklama-item">
                             <label for="item-<?=$arItem['ID']?>">
                                 <input type="checkbox" value="<?=$props["PRICE"]["VALUE"]?>" data-id="<?=$arItem['ID']?>" data-name="(<?=$arItem['ID']?>)<?=$arItem["NAME"]?>">
                                 <?=$arItem['NAME']?>
                             </label>
-                            <a class="btn btn-orange" href="<?=$props["LINK"]["VALUE"]?>">Перейти</a> <span>цена <strong><?=$props["PRICE"]["VALUE"]?></strong> грн./мес.</span>
+                            <div>
+                                <a class="btn btn-orange" target="_blank" href="<?=$props["LINK"]["VALUE"]?>">Перейти</a> <span>цена <strong><?=$props["PRICE"]["VALUE"]?></strong> грн./мес.</span>
+                            </div>
                         </div>
                     <?endforeach;?>
                     <div class="row">
